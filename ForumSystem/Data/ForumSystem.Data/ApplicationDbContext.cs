@@ -1,4 +1,4 @@
-namespace ForumSystem.Web.ViewModels.Account
+﻿namespace ForumSystem.Data
 {
     using ForumSystem.Data.Models;
 
@@ -7,7 +7,7 @@ namespace ForumSystem.Web.ViewModels.Account
     public class ApplicationDbContext : IdentityDbContext<ApplicationUser>
     {
         public ApplicationDbContext()
-            : base("DefaultConnection", throwIfV1Schema: false)
+            : base("DefaultConnection", false)
         {
         }
 
