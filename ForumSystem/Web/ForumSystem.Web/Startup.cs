@@ -1,6 +1,9 @@
-﻿using Microsoft.Owin;
+﻿using ForumSystem.Web;
 
-[assembly: OwinStartup(typeof(ForumSystem.Web.Startup))]
+using Microsoft.Owin;
+
+[assembly: OwinStartup(typeof(Startup))]
+
 namespace ForumSystem.Web
 {
     using Owin;
@@ -9,7 +12,7 @@ namespace ForumSystem.Web
     {
         public void Configuration(IAppBuilder app)
         {
-            ConfigureAuth(app);
+            this.ConfigureAuth(app);
         }
     }
 }
