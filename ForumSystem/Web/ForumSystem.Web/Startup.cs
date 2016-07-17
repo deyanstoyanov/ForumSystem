@@ -1,9 +1,10 @@
 ﻿using Microsoft.Owin;
-using Owin;
 
-[assembly: OwinStartupAttribute(typeof(ForumSystem.Web.Startup))]
+[assembly: OwinStartup(typeof(ForumSystem.Web.Startup))]
 namespace ForumSystem.Web
 {
+    using Owin;
+
     public partial class Startup
     {
         public void Configuration(IAppBuilder app)
