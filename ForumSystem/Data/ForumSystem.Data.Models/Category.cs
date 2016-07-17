@@ -1,9 +1,12 @@
 ﻿namespace ForumSystem.Data.Models
 {
+    using System;
     using System.Collections.Generic;
     using System.ComponentModel.DataAnnotations;
 
-    public class Category
+    using ForumSystem.Data.Common.Models;
+
+    public class Category : AuditInfo, IDeletableEntity
     {
         public Category()
         {
@@ -22,5 +25,9 @@
         public virtual Section Section { get; set; }
 
         public virtual ICollection<Post> Posts { get; set; }
+
+        public bool IsDeleted { get; set; }
+
+        public DateTime? DeletedOn { get; set; }
     }
 }

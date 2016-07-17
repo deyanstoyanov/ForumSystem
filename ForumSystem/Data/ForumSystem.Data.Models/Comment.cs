@@ -1,8 +1,11 @@
 ﻿namespace ForumSystem.Data.Models
 {
+    using System;
     using System.ComponentModel.DataAnnotations;
 
-    public class Comment
+    using ForumSystem.Data.Common.Models;
+
+    public class Comment : AuditInfo, IDeletableEntity
     {
         [Key]
         public int Id { get; set; }
@@ -18,5 +21,9 @@
         public string AuthorId { get; set; }
 
         public virtual ApplicationUser Author { get; set; }
+
+        public bool IsDeleted { get; set; }
+
+        public DateTime? DeletedOn { get; set; }
     }
 }

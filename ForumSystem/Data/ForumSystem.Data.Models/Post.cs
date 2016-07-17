@@ -1,9 +1,12 @@
 ﻿namespace ForumSystem.Data.Models
 {
+    using System;
     using System.Collections.Generic;
     using System.ComponentModel.DataAnnotations;
 
-    public class Post
+    using ForumSystem.Data.Common.Models;
+
+    public class Post : AuditInfo, IDeletableEntity
     {
         public Post()
         {
@@ -26,5 +29,9 @@
         public virtual ApplicationUser Author { get; set; }
 
         public virtual ICollection<Answer> Answers { get; set; }
+
+        public bool IsDeleted { get; set; }
+
+        public DateTime? DeletedOn { get; set; }
     }
 }

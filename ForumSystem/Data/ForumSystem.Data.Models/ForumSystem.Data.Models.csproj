@@ -69,6 +69,12 @@
     <None Include="App.config" />
     <None Include="packages.config" />
   </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\ForumSystem.Data.Common\ForumSystem.Data.Common.csproj">
+      <Project>{122071BD-42A5-40F2-A55F-A44E80CDD72B}</Project>
+      <Name>ForumSystem.Data.Common</Name>
+    </ProjectReference>
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.
