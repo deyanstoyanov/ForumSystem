@@ -310,6 +310,16 @@
     <Content Include="Scripts\jquery-3.1.0.slim.min.map" />
     <Content Include="Scripts\jquery-3.1.0.min.map" />
   </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\..\Data\ForumSystem.Data.Models\ForumSystem.Data.Models.csproj">
+      <Project>{60c287dd-71fa-466f-819a-06acdd846f2e}</Project>
+      <Name>ForumSystem.Data.Models</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\Data\ForumSystem.Data\ForumSystem.Data.csproj">
+      <Project>{06c954c6-c441-4319-b052-5fb7be3b5711}</Project>
+      <Name>ForumSystem.Data</Name>
+    </ProjectReference>
+  </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
     <VSToolsPath Condition="'$(VSToolsPath)' == ''">$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)</VSToolsPath>
