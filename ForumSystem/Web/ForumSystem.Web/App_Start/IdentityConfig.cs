@@ -4,7 +4,7 @@
     using System.Security.Claims;
     using System.Threading.Tasks;
 
-    using ForumSystem.Web.Models;
+    using ForumSystem.Web.ViewModels.Account;
 
     using Microsoft.AspNet.Identity;
     using Microsoft.AspNet.Identity.EntityFramework;
