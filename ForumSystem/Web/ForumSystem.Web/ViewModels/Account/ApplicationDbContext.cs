@@ -1,5 +1,7 @@
 namespace ForumSystem.Web.ViewModels.Account
 {
+    using ForumSystem.Data.Models;
+
     using Microsoft.AspNet.Identity.EntityFramework;
 
     public class ApplicationDbContext : IdentityDbContext<ApplicationUser>

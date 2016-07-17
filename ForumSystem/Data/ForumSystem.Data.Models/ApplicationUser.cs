@@ -1,4 +1,4 @@
-﻿namespace ForumSystem.Web.ViewModels.Account
+﻿namespace ForumSystem.Data.Models
 {
     using System.Security.Claims;
     using System.Threading.Tasks;

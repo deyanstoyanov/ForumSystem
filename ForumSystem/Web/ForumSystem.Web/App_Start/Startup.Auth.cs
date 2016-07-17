@@ -2,6 +2,7 @@
 {
     using System;
 
+    using ForumSystem.Data.Models;
     using ForumSystem.Web.ViewModels.Account;
 
     using Microsoft.AspNet.Identity;

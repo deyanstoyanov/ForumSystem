@@ -3,7 +3,7 @@ namespace ForumSystem.Web
     using System.Security.Claims;
     using System.Threading.Tasks;
 
-    using ForumSystem.Web.ViewModels.Account;
+    using ForumSystem.Data.Models;
 
     using Microsoft.AspNet.Identity.Owin;
     using Microsoft.Owin;

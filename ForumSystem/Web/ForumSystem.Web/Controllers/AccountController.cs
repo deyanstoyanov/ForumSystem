@@ -5,6 +5,7 @@
     using System.Web;
     using System.Web.Mvc;
 
+    using ForumSystem.Data.Models;
     using ForumSystem.Web.ViewModels.Account;
 
     using Microsoft.AspNet.Identity;
