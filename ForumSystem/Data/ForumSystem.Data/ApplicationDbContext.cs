@@ -16,6 +16,16 @@
         {
         }
 
+        public virtual IDbSet<Section> Sections { get; set; }
+
+        public virtual IDbSet<Category> Categories { get; set; }
+
+        public virtual IDbSet<Post> Posts { get; set; }
+
+        public virtual IDbSet<Answer> Answers { get; set; }
+
+        public virtual IDbSet<Comment> Comments { get; set; }
+
         public static ApplicationDbContext Create()
         {
             return new ApplicationDbContext();
