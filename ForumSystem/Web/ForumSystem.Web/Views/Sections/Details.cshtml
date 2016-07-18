@@ -1,0 +1,23 @@
+﻿@model ForumSystem.Web.ViewModels.Section.SectionViewModel
+
+@{
+    ViewBag.Title = Model.Title;
+}
+
+<h2>@ViewBag.Title</h2>
+
+<div class="row">
+    <h3> Category: @Model.Title</h3>
+    <div class="panel-group">
+        <div class="panel panel-default">
+            <div class="panel-body">
+                @foreach (var category in Model.Categories)
+                {
+                    <p>@category.Title</p>
+                    <p>@category.Description</p>
+                }
+            </div>
+        </div>
+    </div>
+</div>
+
