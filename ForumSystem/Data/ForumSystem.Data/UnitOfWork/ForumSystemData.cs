@@ -11,7 +11,7 @@
     using Microsoft.AspNet.Identity;
     using Microsoft.AspNet.Identity.EntityFramework;
 
-    internal class ForumSystemData : IForumSystemData
+    public class ForumSystemData : IForumSystemData
     {
         private readonly DbContext dbContext;
 
