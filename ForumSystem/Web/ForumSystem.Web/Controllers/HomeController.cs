@@ -2,7 +2,11 @@
 {
     using System.Web.Mvc;
 
+    using AutoMapper.QueryableExtensions;
+
     using ForumSystem.Data.UnitOfWork;
+    using ForumSystem.Web.ViewModels.Home;
+    using ForumSystem.Web.ViewModels.Section;
 
     public class HomeController : BaseController
     {
@@ -13,7 +17,10 @@
 
         public ActionResult Index()
         {
-            return this.View();
+            var sections = this.Data.Sections.All().ProjectTo<SectionViewModel>();
+            var viewModel = new IndexPageViewModel { Sections = sections };
+
+            return this.View(viewModel);
         }
     }
 }
