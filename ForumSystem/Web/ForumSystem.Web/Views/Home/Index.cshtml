@@ -10,14 +10,19 @@
             <div class="panel panel-default">
                 <div class="panel-heading">
                     <div class="panel-title">
-                        <a href="@Url.Action("Details", "Sections", new { area = string.Empty, id = item.Id })">@item.Title</a>
+                        <a href="@Url.Action("Details", "Sections", new { area = string.Empty, id = item.Id })">
+                            @item.Title
+                        </a>
                     </div>
                 </div>
                 <div class="panel-body">
                     @foreach (var category in item.Categories)
                     {
-                        <p>@category.Title</p>
+                        <a href="@Url.Action("Details", "Categories", new { area = string.Empty, id = category.Id })">
+                            <strong>@category.Title</strong>
+                        </a>
                         <p>@category.Description</p>
+                        <hr/>
                     }
                 </div>
             </div>

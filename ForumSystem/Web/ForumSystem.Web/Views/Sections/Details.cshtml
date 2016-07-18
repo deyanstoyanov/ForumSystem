@@ -7,14 +7,18 @@
 <h2>@ViewBag.Title</h2>
 
 <div class="row">
-    <h3> Category: @Model.Title</h3>
+    <h3> Section: @Model.Title</h3>
     <div class="panel-group">
         <div class="panel panel-default">
             <div class="panel-body">
                 @foreach (var category in Model.Categories)
                 {
-                    <p>@category.Title</p>
+                    <a href="@Url.Action("Details", "Categories", new { area = string.Empty, id = category.Id })">
+                        <strong>@category.Title</strong>
+                    </a>
                     <p>@category.Description</p>
+
+                    <hr/>
                 }
             </div>
         </div>

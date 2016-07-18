@@ -1,0 +1,10 @@
+﻿@model ForumSystem.Data.Models.Category
+
+@{
+    ViewBag.Title = "Details";
+}
+
+@foreach (var post in Model.Posts)
+{
+    <p>@post.Title</p>
+}
