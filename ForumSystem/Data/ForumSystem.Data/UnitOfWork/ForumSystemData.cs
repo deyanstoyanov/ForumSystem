@@ -28,24 +28,24 @@
         public IUserStore<ApplicationUser> UserStore
             => this.userStore ?? (this.userStore = new UserStore<ApplicationUser>(this.dbContext));
 
-        public IRepository<ApplicationUser> Users => this.GetRepository<ApplicationUser>();
+        public IDeletableEntityRepository<ApplicationUser> Users => this.GetRepository<ApplicationUser>();
 
-        public IRepository<Section> Sections => this.GetRepository<Section>();
+        public IDeletableEntityRepository<Section> Sections => this.GetRepository<Section>();
 
-        public IRepository<Category> Caregories => this.GetRepository<Category>();
+        public IDeletableEntityRepository<Category> Categories => this.GetRepository<Category>();
 
-        public IRepository<Post> Posts => this.GetRepository<Post>();
+        public IDeletableEntityRepository<Post> Posts => this.GetRepository<Post>();
 
-        public IRepository<Answer> Answers => this.GetRepository<Answer>();
+        public IDeletableEntityRepository<Answer> Answers => this.GetRepository<Answer>();
 
-        public IRepository<Comment> Comments => this.GetRepository<Comment>();
+        public IDeletableEntityRepository<Comment> Comments => this.GetRepository<Comment>();
 
         public void SaveChanges()
         {
             this.dbContext.SaveChanges();
         }
 
-        private IRepository<T> GetRepository<T>() where T : class, IDeletableEntity
+        private IDeletableEntityRepository<T> GetRepository<T>() where T : class, IDeletableEntity
         {
             if (!this.repositories.ContainsKey(typeof(T)))
             {
@@ -53,7 +53,7 @@
                 this.repositories.Add(typeof(T), Activator.CreateInstance(type, this.dbContext));
             }
 
-            return (IRepository<T>)this.repositories[typeof(T)];
+            return (IDeletableEntityRepository<T>)this.repositories[typeof(T)];
         }
     }
 }

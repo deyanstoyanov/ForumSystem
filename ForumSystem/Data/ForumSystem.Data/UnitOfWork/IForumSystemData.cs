@@ -5,17 +5,17 @@
 
     public interface IForumSystemData
     {
-        IRepository<ApplicationUser> Users { get; }
+        IDeletableEntityRepository<ApplicationUser> Users { get; }
 
-        IRepository<Section> Sections { get; }
+        IDeletableEntityRepository<Section> Sections { get; }
 
-        IRepository<Category> Caregories { get; }
+        IDeletableEntityRepository<Category> Categories { get; }
 
-        IRepository<Post> Posts { get; }
+        IDeletableEntityRepository<Post> Posts { get; }
 
-        IRepository<Answer> Answers { get; }
+        IDeletableEntityRepository<Answer> Answers { get; }
 
-        IRepository<Comment> Comments { get; }
+        IDeletableEntityRepository<Comment> Comments { get; }
 
         void SaveChanges();
     }
