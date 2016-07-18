@@ -2,13 +2,19 @@
 {
     using System.Data.Entity;
     using System.Reflection;
+    using System.Web;
     using System.Web.Mvc;
 
     using Autofac;
     using Autofac.Integration.Mvc;
 
     using ForumSystem.Data;
+    using ForumSystem.Data.Models;
     using ForumSystem.Data.UnitOfWork;
+
+    using Microsoft.AspNet.Identity;
+    using Microsoft.AspNet.Identity.EntityFramework;
+    using Microsoft.Owin.Security;
 
     public static class AutofacConfig
     {
@@ -46,8 +52,21 @@
                 .As<DbContext>()
                 .InstancePerRequest();
 
-            builder.RegisterType(typeof(ForumSystemData))
-                .As(typeof(IForumSystemData))
+            builder.RegisterType<ForumSystemData>()
+                .As<IForumSystemData>()
+                .InstancePerRequest();
+            builder.RegisterType<UserStore<ApplicationUser>>()
+                .As<IUserStore<ApplicationUser>>()
+                .InstancePerRequest();
+            builder.RegisterType<ApplicationUserManager>()
+                .AsSelf()
+                .InstancePerRequest();
+            builder.RegisterType<ApplicationSignInManager>()
+                .AsSelf()
+                .InstancePerRequest();
+
+            builder.Register(x => HttpContext.Current.GetOwinContext().Authentication)
+                .As<IAuthenticationManager>()
                 .InstancePerRequest();
         }
     }
