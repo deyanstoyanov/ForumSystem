@@ -242,6 +242,7 @@
     <Compile Include="Startup.cs" />
     <Compile Include="ViewModels\Manage\SetPasswordViewModel.cs" />
     <Compile Include="ViewModels\Manage\VerifyPhoneNumberViewModel.cs" />
+    <Compile Include="ViewModels\Post\PostConciseViewModel.cs" />
     <Compile Include="ViewModels\Section\SectionViewModel.cs" />
   </ItemGroup>
   <ItemGroup>
