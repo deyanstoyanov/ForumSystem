@@ -1,22 +1,18 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Data;
-using System.Data.Entity;
-using System.Linq;
-using System.Net;
-using System.Web;
-using System.Web.Mvc;
-using ForumSystem.Data;
-using ForumSystem.Data.Models;
-
-namespace ForumSystem.Web.Controllers
+﻿namespace ForumSystem.Web.Controllers
 {
+    using System.Linq;
+    using System.Net;
+    using System.Web.Mvc;
+
+    using AutoMapper.QueryableExtensions;
+
     using ForumSystem.Data.UnitOfWork;
+    using ForumSystem.Web.ViewModels.Category;
 
     public class CategoriesController : BaseController
     {
         public CategoriesController(IForumSystemData data)
-         : base(data)
+            : base(data)
         {
         }
 
@@ -31,10 +27,15 @@ namespace ForumSystem.Web.Controllers
             var category = this.Data.Categories.GetById(id);
             if (category == null)
             {
-                return HttpNotFound();
+                return this.HttpNotFound();
             }
 
-            return View(category);
+            var viewModel = this.Data.Categories.All()
+                .Where(c => c.Id == id)
+                .ProjectTo<CategoryViewModel>()
+                .FirstOrDefault();
+
+            return this.View(viewModel);
         }
     }
 }

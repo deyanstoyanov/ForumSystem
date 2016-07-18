@@ -1,10 +1,26 @@
-﻿@model ForumSystem.Data.Models.Category
+﻿@model ForumSystem.Web.ViewModels.Category.CategoryViewModel
 
 @{
     ViewBag.Title = "Details";
 }
 
-@foreach (var post in Model.Posts)
-{
-    <p>@post.Title</p>
-}
+<div class="row">
+    <h3> Category: @Model.Title</h3>
+    <h5>Description: @Model.Description</h5>
+    <div class="panel-group">
+        <div class="panel panel-default">
+            <div class="panel-body">
+                @foreach (var post in Model.Posts)
+                {
+                    <strong>@post.Title</strong>
+                    <p>Author: @post.Author</p>
+                    <p>Category: @post.Category</p>
+                    <p>CreatedOn: @post.CreatedOn</p>
+                    <p>Answers: @post.AnswersCount</p>
+
+                    <hr />
+                }
+            </div>
+        </div>
+    </div>
+</div>
