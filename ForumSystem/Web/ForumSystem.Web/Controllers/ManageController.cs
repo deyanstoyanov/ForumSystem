@@ -5,6 +5,7 @@
     using System.Web;
     using System.Web.Mvc;
 
+    using ForumSystem.Data.UnitOfWork;
     using ForumSystem.Web.ViewModels.Manage;
 
     using Microsoft.AspNet.Identity;
@@ -12,17 +13,17 @@
     using Microsoft.Owin.Security;
 
     [Authorize]
-    public class ManageController : Controller
+    public class ManageController : BaseController
     {
         private ApplicationSignInManager signInManager;
 
         private ApplicationUserManager userManager;
 
-        public ManageController()
-        {
-        }
-
-        public ManageController(ApplicationUserManager userManager, ApplicationSignInManager signInManager)
+        public ManageController(
+            IForumSystemData data, 
+            ApplicationUserManager userManager, 
+            ApplicationSignInManager signInManager)
+            : base(data)
         {
             this.UserManager = userManager;
             this.SignInManager = signInManager;
@@ -311,7 +312,9 @@
         {
             this.ViewBag.StatusMessage = message == ManageMessageId.RemoveLoginSuccess
                                              ? "The external login was removed."
-                                             : message == ManageMessageId.Error ? "An error has occurred." : string.Empty;
+                                             : message == ManageMessageId.Error
+                                                   ? "An error has occurred."
+                                                   : string.Empty;
             var user = await this.UserManager.FindByIdAsync(this.User.Identity.GetUserId());
             if (user == null)
             {

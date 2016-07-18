@@ -6,6 +6,7 @@
     using System.Web.Mvc;
 
     using ForumSystem.Data.Models;
+    using ForumSystem.Data.UnitOfWork;
     using ForumSystem.Web.ViewModels.Account;
 
     using Microsoft.AspNet.Identity;
@@ -13,17 +14,17 @@
     using Microsoft.Owin.Security;
 
     [Authorize]
-    public class AccountController : Controller
+    public class AccountController : BaseController
     {
         private ApplicationSignInManager signInManager;
 
         private ApplicationUserManager userManager;
 
-        public AccountController()
-        {
-        }
-
-        public AccountController(ApplicationUserManager userManager, ApplicationSignInManager signInManager)
+        public AccountController(
+            IForumSystemData data, 
+            ApplicationUserManager userManager, 
+            ApplicationSignInManager signInManager)
+            : base(data)
         {
             this.UserManager = userManager;
             this.SignInManager = signInManager;
