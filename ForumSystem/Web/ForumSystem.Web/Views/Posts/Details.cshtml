@@ -1,7 +1,16 @@
-﻿@model ForumSystem.Web.ViewModels.Post.PostViewModel
+﻿@using Microsoft.AspNet.Identity
+@model ForumSystem.Web.ViewModels.Post.PostViewModel
 
 @{
     ViewBag.Title = "Details";
+}
+
+@if (User.Identity.GetUserId() == Model.AuthorId)
+{
+    <a href="@Url.Action("Edit", "Posts", new { area = string.Empty, id = Model.Id })" class="btn btn-warning">
+        <i class="glyphicon glyphicon-pencil"></i>
+        <span>Edit Post</span>
+    </a>
 }
 
 <p>@Model.Title</p>
@@ -29,7 +38,7 @@
                 <p>@comment.CreatedOn</p>
                 <p>@comment.Content</p>
 
-                <hr />
+                <hr/>
             }
 
         </div>

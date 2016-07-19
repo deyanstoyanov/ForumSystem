@@ -86,5 +86,58 @@
 
             return this.View(input);
         }
+
+        [HttpGet]
+        [Authorize]
+        public ActionResult Edit(int? id)
+        {
+            if (id == null)
+            {
+                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+            }
+
+            var userId = this.User.Identity.GetUserId();
+            var post = this.Data.Posts.GetById(id);
+
+            if (post == null)
+            {
+                return this.HttpNotFound();
+            }
+
+            if (post.AuthorId != userId)
+            {
+                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+            }
+
+            var model = new PostEditModel { Id = post.Id, Title = post.Title, Content = post.Content };
+
+            return this.View(model);
+        }
+
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public ActionResult Edit([Bind(Include = "Id,Title,Content")] PostEditModel model)
+        {
+            if (model != null && this.ModelState.IsValid)
+            {
+                var userId = this.User.Identity.GetUserId();
+                var post = this.Data.Posts.GetById(model.Id);
+
+                if (post.AuthorId != userId)
+                {
+                    return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+                }
+
+                post.Title = model.Title;
+                post.Content = model.Content;
+
+                this.Data.Posts.Update(post);
+                this.Data.SaveChanges();
+
+                return this.RedirectToAction("Details", "Posts", new { area = string.Empty, id = post.Id });
+            }
+
+            return this.View(model);
+        }
     }
 }
