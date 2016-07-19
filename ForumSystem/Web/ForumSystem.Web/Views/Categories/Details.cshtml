@@ -12,7 +12,9 @@
             <div class="panel-body">
                 @foreach (var post in Model.Posts)
                 {
-                    <strong>@post.Title</strong>
+                    <a href="@Url.Action("Details", "Posts", new { area = string.Empty, id = post.Id })">
+                        <strong>@post.Title</strong>
+                    </a>
                     <p>Author: @post.Author</p>
                     <p>Category: @post.Category</p>
                     <p>CreatedOn: @post.CreatedOn</p>

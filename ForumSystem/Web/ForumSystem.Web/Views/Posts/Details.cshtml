@@ -1,0 +1,39 @@
+﻿@model ForumSystem.Web.ViewModels.Post.PostViewModel
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<p>@Model.Title</p>
+<p>@Model.Author</p>
+<p>@Model.CreatedOn</p>
+<p>@Model.Category</p>
+<p>@Model.Content</p>
+
+<hr/>
+
+@foreach (var answer in Model.Answers)
+{
+    <p>@answer.Author</p>
+    <p>@answer.CreatedOn</p>
+    <p>@answer.Content</p>
+
+    if (answer.Comments.Any())
+    {
+        <div class="col-md-12 pull-right">
+            <strong>Comments:</strong>
+            <hr/>
+            @foreach (var comment in answer.Comments)
+            {
+                <p>@comment.Author</p>
+                <p>@comment.CreatedOn</p>
+                <p>@comment.Content</p>
+
+                <hr />
+            }
+
+        </div>
+    }
+
+    <hr/>
+}
