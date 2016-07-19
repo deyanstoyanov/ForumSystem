@@ -5,11 +5,21 @@
 }
 
 <div class="row">
+
+    @if (User.Identity.IsAuthenticated)
+    {
+        <a href="@Url.Action("Create", "Posts", new { area = string.Empty, id = Model.Id })" class="btn btn-success">
+            <i class="glyphicon glyphicon-plus"></i>
+            <span>New Post</span>
+        </a>
+    }
+
     <h3> Category: @Model.Title</h3>
     <h5>Description: @Model.Description</h5>
     <div class="panel-group">
         <div class="panel panel-default">
             <div class="panel-body">
+
                 @foreach (var post in Model.Posts)
                 {
                     <a href="@Url.Action("Details", "Posts", new { area = string.Empty, id = post.Id })">
@@ -20,8 +30,9 @@
                     <p>CreatedOn: @post.CreatedOn</p>
                     <p>Answers: @post.AnswersCount</p>
 
-                    <hr />
+                    <hr/>
                 }
+
             </div>
         </div>
     </div>
