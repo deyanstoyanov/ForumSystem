@@ -35,6 +35,8 @@
                 .ForMember(p => p.Author, config => config.MapFrom(p => p.Author.UserName));
             configuration.CreateMap<Post, PostViewModel>()
                 .ForMember(p => p.Answers, config => config.MapFrom(p => p.Answers));
+            configuration.CreateMap<Post, PostViewModel>()
+                .ForMember(p => p.Category, config => config.MapFrom(p => p.Category.Title));
         }
     }
 }
