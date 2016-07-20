@@ -1,0 +1,35 @@
+﻿.lead-wrapper {}.lead-wrapper .header-wrapper {
+    position: relative;
+    z-index: 1000;
+}
+
+.lead-wrapper .heading-wrapper {
+    width: 100%;
+    position: relative;
+}
+
+.lead-wrapper .heading-wrapper .cell-page-title {
+    margin: auto;
+    padding: 10px 0;
+}
+
+.lead-wrapper .page-title {
+    font-family: "Lato","Arial","Helvetica",sans-serif;
+    font-size: 24px;
+}
+
+.cell-page-title {
+    vertical-align: middle;
+}
+
+    .cell-page-title h1 {
+        margin: 0;
+    }
+
+.container-holder {
+    position: relative;
+}
+
+.margin-bottom {
+    margin-bottom: 0;
+}
