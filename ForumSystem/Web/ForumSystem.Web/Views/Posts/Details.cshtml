@@ -2,7 +2,7 @@
 @model ForumSystem.Web.ViewModels.Post.PostViewModel
 
 @{
-    ViewBag.Title = "Details";
+    ViewBag.Title = Model.Title;
 }
 
 @if (User.Identity.GetUserId() == Model.AuthorId)
@@ -19,7 +19,7 @@
 <p>@Model.Category</p>
 <p>@Model.Content</p>
 
-<hr/>
+<hr />
 
 @foreach (var answer in Model.Answers)
 {
@@ -31,18 +31,18 @@
     {
         <div class="col-md-12 pull-right">
             <strong>Comments:</strong>
-            <hr/>
+            <hr />
             @foreach (var comment in answer.Comments)
             {
                 <p>@comment.Author</p>
                 <p>@comment.CreatedOn</p>
                 <p>@comment.Content</p>
 
-                <hr/>
+                <hr />
             }
 
         </div>
     }
 
-    <hr/>
+    <hr />
 }

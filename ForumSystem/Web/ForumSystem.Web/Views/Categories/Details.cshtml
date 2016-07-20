@@ -1,7 +1,7 @@
 ﻿@model ForumSystem.Web.ViewModels.Category.CategoryViewModel
 
 @{
-    ViewBag.Title = "Details";
+    ViewBag.Title = Model.Title;
 }
 
 <div class="row">
@@ -30,7 +30,7 @@
                     <p>CreatedOn: @post.CreatedOn</p>
                     <p>Answers: @post.AnswersCount</p>
 
-                    <hr/>
+                    <hr />
                 }
 
             </div>
