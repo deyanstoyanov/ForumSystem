@@ -1,0 +1,56 @@
+﻿.content {
+    z-index: -30;
+}
+
+    .content .main-container {
+        padding-top: 40px;
+        padding-bottom: 56px;
+    }
+
+.cell-page-title {
+    vertical-align: middle;
+}
+
+    .cell-page-title h1 {
+        margin: 0;
+    }
+
+.lead-wrapper {
+}
+
+    .lead-wrapper .header-wrapper {
+        position: relative;
+        z-index: 1000;
+    }
+
+    .lead-wrapper .heading-wrapper {
+        position: relative;
+        width: 100%;
+    }
+
+        .lead-wrapper .heading-wrapper .cell-page-title {
+            margin: auto;
+            padding: 10px 0;
+        }
+
+    .lead-wrapper .page-title {
+        font-family: "Lato","Arial","Helvetica",sans-serif;
+        font-size: 24px;
+    }
+
+.cell {
+    display: table-cell;
+    vertical-align: middle;
+}
+
+.container-holder {
+    position: relative;
+}
+
+.table-holder {
+    display: table;
+}
+
+.margin-bottom {
+    margin-bottom: 0;
+}
