@@ -253,6 +253,7 @@
     <Compile Include="ViewModels\Post\PostConciseViewModel.cs" />
     <Compile Include="ViewModels\Post\PostViewModel.cs" />
     <Compile Include="ViewModels\Section\SectionViewModel.cs" />
+    <Compile Include="ViewModels\SidebarViewModel.cs" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Content\bootstrap-theme.css" />
