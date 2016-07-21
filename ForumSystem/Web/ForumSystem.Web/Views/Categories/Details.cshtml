@@ -2,38 +2,77 @@
 
 @{
     ViewBag.Title = Model.Title;
+    Layout = "~/Views/Shared/_CategoryPageLayout.cshtml";
 }
 
-<div class="row">
+<a href="@Url.Action("Create", "Posts", new { area = string.Empty, id = Model.Id })" class="btn-success btn btn-sm">
+    <i class="glyphicon glyphicon-plus"></i>
+    <span>New Post</span>
+</a>
 
-    @if (User.Identity.IsAuthenticated)
-    {
-        <a href="@Url.Action("Create", "Posts", new { area = string.Empty, id = Model.Id })" class="btn btn-success">
-            <i class="glyphicon glyphicon-plus"></i>
-            <span>New Post</span>
-        </a>
-    }
-
-    <h3> Category: @Model.Title</h3>
-    <h5>Description: @Model.Description</h5>
-    <div class="panel-group">
-        <div class="panel panel-default">
-            <div class="panel-body">
-
-                @foreach (var post in Model.Posts)
-                {
-                    <a href="@Url.Action("Details", "Posts", new { area = string.Empty, id = post.Id })">
-                        <strong>@post.Title</strong>
+@foreach (var post in Model.Posts)
+{
+    <article class="forum-post">
+        <div class="head-post">
+            <h2 class="post-title">
+                <a href="@Url.Action("Details", "Posts", new { area = string.Empty, id = post.Id })" title="@post.Title">
+                    @post.Title
+                </a>
+            </h2>
+            <p>
+                <span class="user-wrap">
+                    <span class="cell">
+                        <a href="" class="user-name">@post.Author</a>
+                    </span>
+                </span>
+                <span class="item-wrap">
+                    <span class="icon-holder">
+                        <i class="glyphicon glyphicon-calendar"></i>
+                    </span>
+                    <span class="post-date">
+                        @post.CreatedOn
+                    </span>
+                </span>
+                <span class="item-wrap category-wrap">
+                    <span class="icon-holder">
+                        <i class="glyphicon glyphicon-folder-open"></i>
+                    </span>
+                    <a href="" class="category-post">
+                        @post.Category
                     </a>
-                    <p>Author: @post.Author</p>
-                    <p>Category: @post.Category</p>
-                    <p>CreatedOn: @post.CreatedOn</p>
-                    <p>Answers: @post.AnswersCount</p>
-
-                    <hr />
-                }
+                </span>
+            </p>
+        </div>
+        <div class="meta-info">
+            <div class="cell buttons-holder pending-vote">
+                <button class="vote-btn arrow-btn up-btn">
+                    <i class="glyphicon glyphicon-chevron-up"></i>
+                </button>
+                <button class="vote-btn arrow-btn down-btn">
+                    <i class="glyphicon glyphicon-chevron-down"></i>
+                </button>
+            </div>
+            <div class="cell stats-holder">
+                <span class="item-wrap votes-post">
+                    <span class="icon-holder">
+                        <i class="glyphicon glyphicon-hand-right"></i>
+                    </span>
+                    <span class="cell">0</span>
+                </span><!-- End .item-wrap -->
+                <span class="item-wrap viewed-post">
+                    <span class="icon-holder">
+                        <i class="glyphicon glyphicon-eye-open"></i>
+                    </span>
+                    <span class="cell">0</span>
+                </span><!-- End .item-wrap -->
+                <span class="item-wrap answers-post">
+                    <span class="icon-holder">
+                        <i class="glyphicon glyphicon-comment"></i>
+                    </span>
+                    <span class="cell">@post.AnswersCount</span>
+                </span><!-- End .item-wrap -->
 
             </div>
         </div>
-    </div>
-</div>
+    </article>
+}

@@ -4,21 +4,19 @@
     ViewBag.Title = Model.Title;
 }
 
-<div class="row">
-    <h4> Section: @Model.Title</h4>
-    <div class="panel-group">
-        <div class="panel panel-default">
-            <div class="panel-body">
-                @foreach (var category in Model.Categories)
-                {
-                    <a href="@Url.Action("Details", "Categories", new { area = string.Empty, id = category.Id })">
-                        <strong>@category.Title</strong>
-                    </a>
-                    <p>@category.Description</p>
+<h4> Section: @Model.Title</h4>
+<div class="panel-group">
+    <div class="panel panel-default">
+        <div class="panel-body">
+            @foreach (var category in Model.Categories)
+            {
+                <a href="@Url.Action("Details", "Categories", new { area = string.Empty, id = category.Id })">
+                    <strong>@category.Title</strong>
+                </a>
+                <p>@category.Description</p>
 
-                    <hr />
-                }
-            </div>
+                <hr />
+            }
         </div>
     </div>
 </div>
