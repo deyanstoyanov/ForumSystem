@@ -66,21 +66,32 @@
                 <div class="table-holder">
                     <div class="cell">
                         <span class="item-wrap">
-                            <span class="icon-holder">
+                            <span class="icon-holder" title="Created On">
                                 <i class="glyphicon glyphicon-calendar"></i>
                             </span>
-                            <span class="post-date">
+                            <span class="post-date" title="Created On">
                                 @Model.CreatedOn
                             </span>
                         </span>
                         <span class="item-wrap category-wrap">
-                            <span class="icon-holder">
+                            <span class="icon-holder" title="Category">
                                 <i class="glyphicon glyphicon-folder-open"></i>
                             </span>
                             <a href="@Url.Action("Details", "Categories", new { area = string.Empty, id = Model.CategoryId })" class="cell" title="Category">
                                 @Model.Category
                             </a>
                         </span>
+                        @if (Model.ModifiedOn.HasValue)
+                        {
+                            <span class="item-wrap category-wrap">
+                                <span class="icon-holder" title="Last Modified">
+                                    <i class="glyphicon glyphicon-refresh"></i>
+                                </span>
+                                <span class="last-redaction cell" title="Last Modified">
+                                    <span class="date-time">@Model.ModifiedOn</span>
+                                </span>
+                            </span>
+                        }
                     </div>
                 </div>
             </div>

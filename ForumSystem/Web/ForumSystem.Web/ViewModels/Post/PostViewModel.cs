@@ -27,6 +27,8 @@
 
         public DateTime CreatedOn { get; set; }
 
+        public DateTime? ModifiedOn { get; set; }
+
         public IEnumerable<AnswerViewModel> Answers { get; set; }
 
         public void CreateMappings(IMapperConfiguration configuration)
