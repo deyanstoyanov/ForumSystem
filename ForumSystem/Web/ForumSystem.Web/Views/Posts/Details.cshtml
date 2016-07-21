@@ -3,46 +3,134 @@
 
 @{
     ViewBag.Title = Model.Title;
+    Layout = "~/Views/Shared/_PostPageLayout.cshtml";
 }
 
-@if (User.Identity.GetUserId() == Model.AuthorId)
-{
-    <a href="@Url.Action("Edit", "Posts", new { area = string.Empty, id = Model.Id })" class="btn btn-warning">
-        <i class="glyphicon glyphicon-pencil"></i>
-        <span>Edit Post</span>
-    </a>
-}
 
-<p>@Model.Title</p>
-<p>@Model.Author</p>
-<p>@Model.CreatedOn</p>
-<p>@Model.Category</p>
-<p>@Model.Content</p>
+<a href="@Url.Action("Create", "Posts", new { area = string.Empty, id = Model.Id })" class="btn-success btn btn-sm">
+    <i class="glyphicon glyphicon-plus"></i>
+    <span>New Post</span>
+</a>
 
-<hr />
 
-@foreach (var answer in Model.Answers)
-{
-    <p>@answer.Author</p>
-    <p>@answer.CreatedOn</p>
-    <p>@answer.Content</p>
-
-    if (answer.Comments.Any())
-    {
-        <div class="col-md-12 pull-right">
-            <strong>Comments:</strong>
-            <hr />
-            @foreach (var comment in answer.Comments)
-            {
-                <p>@comment.Author</p>
-                <p>@comment.CreatedOn</p>
-                <p>@comment.Content</p>
-
-                <hr />
-            }
+<div id="@Model.Id">
+    <div class="forum-post post-item highlighted-post">
+        <div class="head-post table-holder">
+            <div class="cell">
+                <div class="user-wrap">
+                    <span class="cell">
+                        <a href="" class="user-name">@Model.Author</a>
+                    </span>
+                </div>
+            </div>
+        </div>
+        <div class="post-content">
+            <h2 class="post-title">
+                <a href="@Url.Action("Details", "Posts", new { area = string.Empty, id = Model.Id })">@Model.Title</a>
+            </h2>
+            <p>@Model.Content</p>
 
         </div>
-    }
+        <div class="meta-info table-holder meta-details">
 
-    <hr />
-}
+            @if (User.Identity.IsAuthenticated)
+            {
+                <div class="cell buttons-holder vote-holder">
+                    <div class="mobile-arrow-btn">
+                        <button class="vote-btn arrow-btn up-btn">
+                            <i class="glyphicon glyphicon-chevron-up"></i>
+                        </button>
+                    </div>
+                    <div class="mobile-arrow-btn">
+                        <button class="vote-btn arrow-btn down-btn">
+                            <i class="glyphicon glyphicon-chevron-down"></i>
+                        </button>
+                    </div>
+                </div>
+            }
+
+            <div class="cell stats-holder">
+                <div class="table-holder">
+                    <div class="cell">
+                        <span class="item-wrap votes-post">
+                            <span class="icon-holder">
+                                <i class="glyphicon glyphicon-hand-right"></i>
+                            </span>
+                            <span class="cell">0</span>
+                        </span>
+                    </div>
+                </div>
+
+            </div>
+            <div class="cell details-holder">
+                <div class="table-holder">
+                    <div class="cell">
+                        <span class="item-wrap">
+                            <span class="icon-holder">
+                                <i class="glyphicon glyphicon-calendar"></i>
+                            </span>
+                            <span class="post-date">
+                                @Model.CreatedOn
+                            </span>
+                        </span>
+                        <span class="item-wrap category-wrap">
+                            <span class="icon-holder">
+                                <i class="glyphicon glyphicon-folder-open"></i>
+                            </span>
+                            <a href="@Url.Action("Details", "Categories", new { area = string.Empty, id = Model.CategoryId })" class="cell" title="Category">
+                                @Model.Category
+                            </a>
+                        </span>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        @if (User.Identity.IsAuthenticated)
+        {
+            <div class="meta-info table-holder meta-details post-actions-toolbar">
+                <div class="cell buttons-holder">
+                    <div class="table-holder">
+                        <div class="cell">
+                            <a href="" class="btn btn-primary">
+                                Answer
+                            </a>
+                            @if (User.Identity.GetUserId() == Model.AuthorId)
+                            {
+                                <a href="@Url.Action("Edit", "Posts", new { area = string.Empty, id = Model.Id })" class="btn btn-warning btn-sm">
+                                    Edit
+                                </a>
+                            }
+                        </div>
+                    </div>
+                </div>
+            </div>
+        }
+
+    </div>
+</div>
+<div id="answers">
+    @foreach (var answer in Model.Answers)
+    {
+        <div id="answer-@answer.Id">
+            <article class="forum-post post-item comment-item">
+                @Html.Partial("_PostAnswerPartial", answer)
+            </article>
+        </div>
+
+        if (answer.Comments.Any())
+        {
+            <div id="comments-@answer.Id">
+                @foreach (var comment in answer.Comments)
+                {
+                    <div id="comment-@comment.Id">
+                        <article class="forum-post post-item comment-item replay-item">
+                            @Html.Partial("_PostAnswerPartial", comment)
+                        </article>
+
+                    </div>
+                }
+            </div>
+        }
+    }
+</div>
