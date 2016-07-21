@@ -330,6 +330,7 @@
     <Content Include="Views\Shared\_CategoryPageLayout.cshtml" />
     <Content Include="Views\Shared\_SidebarPartial.cshtml" />
     <Content Include="Views\Shared\_PostPageLayout.cshtml" />
+    <Content Include="Views\Shared\_PostAnswerPartial.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
