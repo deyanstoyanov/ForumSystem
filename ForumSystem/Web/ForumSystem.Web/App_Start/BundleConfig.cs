@@ -15,7 +15,7 @@
         {
             bundles.Add(
                 new StyleBundle("~/Content/css").Include(
-                    "~/Content/bootstrap.css", 
+                    "~/Content/bootstrap.flatly.css", 
                     "~/Content/custom/site.css", 
                     "~/Content/custom/site.common.css", 
                     "~/Content/custom/forum.css"));
