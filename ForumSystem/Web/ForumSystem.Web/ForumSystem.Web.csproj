@@ -329,6 +329,7 @@
     <Content Include="Views\Posts\Edit.cshtml" />
     <Content Include="Views\Shared\_CategoryPageLayout.cshtml" />
     <Content Include="Views\Shared\_SidebarPartial.cshtml" />
+    <Content Include="Views\Shared\_PostPageLayout.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
