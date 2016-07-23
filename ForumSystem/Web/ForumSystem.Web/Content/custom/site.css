@@ -1,12 +1,6 @@
 ﻿body {
 }
 
-/* Set padding to keep content from hitting the edges */
-.body-content {
-    /*padding-left: 15px;
-    padding-right: 15px;*/
-}
-
 ul, li {
     list-style: none;
 }
@@ -22,5 +16,5 @@ ul, li {
 input,
 select,
 textarea {
-    /*max-width: 280px;*/
+    /*max-width: 500px;*/
 }
