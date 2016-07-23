@@ -3,7 +3,7 @@
 }
 
 <div class="row">
-    @Html.Partial("_SidebarPartial")
+    @Html.Action("Index", "Sidebar", new { area = string.Empty })
     <section class="col-md-9 col-sm-12 article-wrapper">
         @RenderBody()
     </section>

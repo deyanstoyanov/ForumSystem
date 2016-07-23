@@ -7,7 +7,7 @@
 
     public class SidebarViewModel
     {
-        public IEnumerable<CategoryViewModel> Categories { get; set; }
+        public IEnumerable<CategoryConciseViewModel> Categories { get; set; }
 
         public IEnumerable<SectionViewModel> Sections { get; set; }
     }
