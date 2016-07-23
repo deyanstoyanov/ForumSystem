@@ -21,6 +21,12 @@
             </h2>
             <p>
                 <span class="user-wrap">
+                    <span class="user-avatar">
+                        @if (!string.IsNullOrEmpty(post.AuthorPictureUrl))
+                        {
+                            <img src="@Url.Content(post.AuthorPictureUrl)" alt="@(post.Author) avatar" />
+                        }
+                    </span>
                     <span class="cell">
                         <a href="" class="user-name">@post.Author</a>
                     </span>
@@ -58,20 +64,19 @@
                         <i class="glyphicon glyphicon-hand-right"></i>
                     </span>
                     <span class="cell">0</span>
-                </span><!-- End .item-wrap -->
-                <span class="item-wrap viewed-post">
+                </span>
+                <span class="item-wrap">
                     <span class="icon-holder">
                         <i class="glyphicon glyphicon-eye-open"></i>
                     </span>
                     <span class="cell">0</span>
-                </span><!-- End .item-wrap -->
-                <span class="item-wrap answers-post">
+                </span>
+                <span class="item-wrap">
                     <span class="icon-holder">
                         <i class="glyphicon glyphicon-comment"></i>
                     </span>
                     <span class="cell">@post.AnswersCount</span>
-                </span><!-- End .item-wrap -->
-
+                </span>
             </div>
         </div>
     </article>

@@ -23,6 +23,8 @@
 
         public string AuthorId { get; set; }
 
+        public string AuthorPictureUrl { get; set; }
+
         public string Author { get; set; }
 
         public DateTime CreatedOn { get; set; }
@@ -39,6 +41,8 @@
                 .ForMember(p => p.Answers, config => config.MapFrom(p => p.Answers));
             configuration.CreateMap<Post, PostViewModel>()
                 .ForMember(p => p.Category, config => config.MapFrom(p => p.Category.Title));
+            configuration.CreateMap<Post, PostViewModel>()
+                .ForMember(p => p.AuthorPictureUrl, config => config.MapFrom(p => p.Author.PictureUrl));
         }
     }
 }

@@ -28,6 +28,8 @@
 
         public virtual ICollection<Comment> Comments { get; set; }
 
+        public string PictureUrl { get; set; }
+
         public DateTime CreatedOn { get; set; }
 
         public bool PreserveCreatedOn { get; set; }

@@ -13,6 +13,8 @@
 
         public string Title { get; set; }
 
+        public string AuthorPictureUrl { get; set; }
+
         public string Author { get; set; }
 
         public DateTime CreatedOn { get; set; }
@@ -29,6 +31,8 @@
                 .ForMember(p => p.Category, config => config.MapFrom(p => p.Category.Title));
             configuration.CreateMap<Post, PostConciseViewModel>()
                 .ForMember(p => p.AnswersCount, config => config.MapFrom(p => p.Answers.Count));
+            configuration.CreateMap<Post, PostConciseViewModel>()
+               .ForMember(p => p.AuthorPictureUrl, config => config.MapFrom(p => p.Author.PictureUrl));
         }
     }
 }

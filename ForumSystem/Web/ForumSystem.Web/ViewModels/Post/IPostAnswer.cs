@@ -10,6 +10,8 @@
 
         string AuthorId { get; }
 
+        string AuthorPictureUrl { get; }
+
         string Author { get; }
 
         DateTime CreatedOn { get; }

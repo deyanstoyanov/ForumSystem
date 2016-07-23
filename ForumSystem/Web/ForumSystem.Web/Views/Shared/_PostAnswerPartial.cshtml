@@ -4,6 +4,12 @@
 <div class="head-post table-holder">
     <div class="cell">
         <div class="user-wrap">
+            <span class="user-avatar">
+                @if (!string.IsNullOrEmpty(Model.AuthorPictureUrl))
+                {
+                    <img src="@Url.Content(Model.AuthorPictureUrl)" alt="@(Model.Author) avatar" />
+                }
+            </span>
             <span class="cell">
                 <a href="" class="user-name">@Model.Author</a>
             </span>
@@ -71,7 +77,7 @@
                     </a>
                     @if (User.Identity.GetUserId() == Model.AuthorId)
                     {
-                        <a href="" class="btn btn-warning">
+                        <a href="" class="btn btn-primary">
                             Edit
                         </a>
                     }
