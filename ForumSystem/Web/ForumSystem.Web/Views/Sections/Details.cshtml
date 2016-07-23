@@ -2,22 +2,49 @@
 
 @{
     ViewBag.Title = Model.Title;
+    Layout = "~/Views/Shared/_SectionPageLayout.cshtml";
 }
 
-<h4> Section: @Model.Title</h4>
-<div class="panel-group">
-    <div class="panel panel-default">
-        <div class="panel-body">
-            @foreach (var category in Model.Categories)
-            {
+<a href="@Url.Action("Index", "Home", new { area = string.Empty })" class="btn-success btn btn-sm">
+    <i class="glyphicon glyphicon-chevron-left"></i>
+    <span>Home page</span>
+</a>
+
+@foreach (var category in Model.Categories)
+{
+    <article class="forum-post">
+        <div class="head-post">
+            <h2 class="post-title">
                 <a href="@Url.Action("Details", "Categories", new { area = string.Empty, id = category.Id })">
-                    <strong>@category.Title</strong>
+                    @category.Title
                 </a>
-                <p>@category.Description</p>
-
-                <hr />
-            }
+            </h2>
+            <p>
+                <span class="item-wrap">
+                    <span class="icon-holder">
+                        <i class="glyphicon glyphicon-tag"></i>
+                    </span>
+                    <span>
+                        @category.Description
+                    </span>
+                </span>
+            </p>
         </div>
-    </div>
-</div>
-
+        <div class="meta-info">
+            <div class="cell stats-holder">
+                <span class="item-wrap">
+                    <span class="icon-holder">
+                        <i class="glyphicon glyphicon-file"></i>
+                    </span>
+                    <span class="cell">@category.PostsCount</span>
+                </span>
+                <span class="item-wrap">
+                    <span class="icon-holder">
+                        <i class="glyphicon glyphicon-comment"></i>
+                    </span>
+                    <span class="cell">0</span>
+                </span>
+            </div>
+        </div>
+    </article>
+}
