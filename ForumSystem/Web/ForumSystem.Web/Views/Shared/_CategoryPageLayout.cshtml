@@ -1,14 +1,22 @@
-﻿@{
+﻿@*@model ForumSystem.Web.ViewModels.Category.CategoryViewModel
+@{
+    ViewBag.Title = Model.Title;
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 <div class="category-header-wrapper row">
     <div class="col-sm-8 col-xs-12">
-        <h1>Category "@(ViewBag.Title)"</h1>
+        <h1>Category "@Model.Title"</h1>
     </div>
 </div>
 <div class="row">
     @Html.Action("Index", "Sidebar", new { area = string.Empty })
     <section class="col-md-9 col-sm-12 article-wrapper">
+        <a href="@Url.Action("Create", "Posts", new { area = string.Empty, id = Model.Id })" class="btn-success btn btn-sm">
+            <i class="glyphicon glyphicon-plus"></i>
+            <span>New Post</span>
+        </a>
+
+        @Html.Action("Posts", "Categories", new { area = string.Empty, id = Model.Id })
         @RenderBody()
     </section>
-</div>
+</div>*@

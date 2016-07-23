@@ -19,6 +19,8 @@
 
         public DateTime CreatedOn { get; set; }
 
+        public int CategoryId { get; set; }
+
         public string Category { get; set; }
 
         public int AnswersCount { get; set; }
@@ -32,7 +34,7 @@
             configuration.CreateMap<Post, PostConciseViewModel>()
                 .ForMember(p => p.AnswersCount, config => config.MapFrom(p => p.Answers.Count));
             configuration.CreateMap<Post, PostConciseViewModel>()
-               .ForMember(p => p.AuthorPictureUrl, config => config.MapFrom(p => p.Author.PictureUrl));
+                .ForMember(p => p.AuthorPictureUrl, config => config.MapFrom(p => p.Author.PictureUrl));
         }
     }
 }
