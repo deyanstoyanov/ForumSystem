@@ -7,6 +7,8 @@
     {
         public int PostId { get; set; }
 
+        public string Post { get; set; }
+
         [Required]
         [AllowHtml]
         [DataType(DataType.Html)]

@@ -108,7 +108,7 @@
                 <div class="cell buttons-holder">
                     <div class="table-holder">
                         <div class="cell">
-                            <a href="" class="btn btn-primary">
+                            <a href="@Url.Action("Create", "Answers", new { area = string.Empty, id = Model.Id })" class="btn btn-primary">
                                 Answer
                             </a>
                             @if (User.Identity.GetUserId() == Model.AuthorId)

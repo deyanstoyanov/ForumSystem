@@ -573,6 +573,7 @@
     <Content Include="Scripts\tinymce\langs\readme.md" />
     <Content Include="Views\Shared\_SectionPageLayout.cshtml" />
     <Content Include="Views\Categories\_CategoryPostsPartial.cshtml" />
+    <Content Include="Views\Answers\Create.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
