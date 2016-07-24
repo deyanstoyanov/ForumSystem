@@ -232,6 +232,7 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
+    <Compile Include="InputModels\Answers\AnswerInputModel.cs" />
     <Compile Include="InputModels\Posts\PostEditModel.cs" />
     <Compile Include="InputModels\Posts\PostInputModel.cs" />
     <Compile Include="ViewModels\Account\ForgotPasswordViewModel.cs" />
