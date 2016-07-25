@@ -1,0 +1,92 @@
+﻿@using Microsoft.AspNet.Identity
+@model ForumSystem.Web.ViewModels.Answer.AnswerViewModel
+
+<div id="answer-@Model.Id">
+    <article class="forum-post post-item comment-item">
+        <div class="head-post table-holder">
+            <div class="cell">
+                <div class="user-wrap">
+                    <span class="user-avatar">
+                        @if (!string.IsNullOrEmpty(Model.AuthorPictureUrl))
+                        {
+                            <img src="@Url.Content(Model.AuthorPictureUrl)" alt="@(Model.Author) avatar" />
+                        }
+                    </span>
+                    <span class="cell">
+                        <a href="" class="user-name">@Model.Author</a>
+                    </span>
+                </div>
+            </div>
+        </div>
+        <div class="post-content">
+            @Html.Raw(Model.Content)
+        </div>
+        <div class="meta-info table-holder meta-details">
+
+            @if (User.Identity.IsAuthenticated)
+            {
+                <div class="cell buttons-holder vote-holder">
+                    <div class="mobile-arrow-btn">
+                        <button class="vote-btn arrow-btn up-btn">
+                            <i class="glyphicon glyphicon-chevron-up"></i>
+                        </button>
+                    </div>
+                    <div class="mobile-arrow-btn">
+                        <button class="vote-btn arrow-btn down-btn">
+                            <i class="glyphicon glyphicon-chevron-down"></i>
+                        </button>
+                    </div>
+                </div>
+            }
+
+            <div class="cell stats-holder">
+                <div class="table-holder">
+                    <div class="cell">
+                        <span class="item-wrap votes-post">
+                            <span class="icon-holder">
+                                <i class="glyphicon glyphicon-hand-right"></i>
+                            </span>
+                            <span class="cell">0</span>
+                        </span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="cell details-holder">
+                <div class="table-holder">
+                    <div class="cell">
+                        <span class="item-wrap">
+                            <span class="icon-holder">
+                                <i class="glyphicon glyphicon-calendar"></i>
+                            </span>
+                            <span class="post-date">
+                                @Model.CreatedOn
+                            </span>
+                        </span>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        @if (User.Identity.IsAuthenticated)
+        {
+            <div class="meta-info table-holder meta-details post-actions-toolbar">
+                <div class="cell buttons-holder">
+                    <div class="table-holder">
+                        <div class="cell">
+                            <a href="" class="btn btn-primary">
+                                Comment
+                            </a>
+                            @if (User.Identity.GetUserId() == Model.AuthorId)
+                            {
+                                <a href="" class="btn btn-primary">
+                                    Edit
+                                </a>
+                            }
+                        </div>
+                    </div>
+                </div>
+            </div>
+        }
+    </article>
+</div>
