@@ -574,6 +574,7 @@
     <Content Include="Views\Shared\_SectionPageLayout.cshtml" />
     <Content Include="Views\Categories\_CategoryPostsPartial.cshtml" />
     <Content Include="Views\Answers\Create.cshtml" />
+    <Content Include="Views\Posts\_PostDetailPartial.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
