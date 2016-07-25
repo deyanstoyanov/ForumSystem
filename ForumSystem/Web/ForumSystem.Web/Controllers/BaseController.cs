@@ -7,6 +7,7 @@
 
     using ForumSystem.Data.Models;
     using ForumSystem.Data.UnitOfWork;
+    using ForumSystem.Web.Infrastructure.ActionResults;
 
     using Microsoft.AspNet.Identity;
 
@@ -41,6 +42,15 @@
             }
 
             return base.BeginExecute(requestContext, callback, state);
+        }
+
+        protected StandardJsonResult JsonError(string errorMessage)
+        {
+            var result = new StandardJsonResult();
+
+            result.AddError(errorMessage);
+
+            return result;
         }
     }
 }
