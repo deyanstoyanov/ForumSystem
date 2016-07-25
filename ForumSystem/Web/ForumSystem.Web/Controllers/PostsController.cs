@@ -9,18 +9,23 @@
     using ForumSystem.Data.Models;
     using ForumSystem.Data.UnitOfWork;
     using ForumSystem.Web.InputModels.Posts;
+    using ForumSystem.Web.ViewModels.Answer;
     using ForumSystem.Web.ViewModels.Post;
 
     using Microsoft.AspNet.Identity;
 
+    using PagedList;
+
     public class PostsController : BaseController
     {
+        private const int AnswersPerPageDefaultValue = 10;
+
         public PostsController(IForumSystemData data)
             : base(data)
         {
         }
 
-        // GET: Posts/Details/5
+        [HttpGet]
         public ActionResult Details(int? id)
         {
             if (id == null)
@@ -34,12 +39,39 @@
                 return this.HttpNotFound();
             }
 
-            var viewModel = this.Data.Posts.All()
-                .Where(p => p.Id == id)
-                .ProjectTo<PostViewModel>()
-                .FirstOrDefault();
+            var viewModel = 
+                this.Data.Posts.All()
+                    .Where(p => p.Id == id)
+                    .ProjectTo<PostViewModel>()
+                    .FirstOrDefault();
 
             return this.View(viewModel);
+        }
+
+        [ChildActionOnly]
+        public ActionResult Answers(int? id, int? page)
+        {
+            if (id == null)
+            {
+                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+            }
+
+            var posts = this.Data.Posts.GetById(id);
+            if (posts == null)
+            {
+                return this.HttpNotFound();
+            }
+
+            var pageNumber = page ?? 1;
+
+            var answers =
+                this.Data.Answers.All()
+                    .Where(a => a.PostId == id)
+                    .OrderBy(x => x.CreatedOn)
+                    .ProjectTo<AnswerViewModel>();
+            var model = answers.ToPagedList(pageNumber, AnswersPerPageDefaultValue);
+
+            return this.PartialView("_PostAnswersPartial", model);
         }
 
         [HttpGet]

@@ -1,0 +1,20 @@
+﻿@using PagedList.Mvc
+@model PagedList.IPagedList<ForumSystem.Web.ViewModels.Answer.AnswerViewModel>
+
+@{
+    const string AnswerPartialViewsFolder = "~/Views/Answers/{0}.cshtml";
+    var postId = Model.Select(m => m.PostId).FirstOrDefault();
+}
+
+<div id="answers">
+    @foreach (var answer in Model)
+    {
+        @Html.Partial(string.Format(AnswerPartialViewsFolder, "_AnswerDetailPartial"), answer)
+    }
+</div>
+
+<div class="pagination-container">
+    <div class="inner-holder">
+        @Html.PagedListPager(Model, page => Url.Action("Details", new { id = postId, page }), PagedListRenderOptions.ClassicPlusFirstAndLast)
+    </div>
+</div>

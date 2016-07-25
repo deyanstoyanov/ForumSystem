@@ -1,5 +1,4 @@
-﻿@using System.Linq
-@using Microsoft.AspNet.Identity
+﻿@using Microsoft.AspNet.Identity
 @model ForumSystem.Web.ViewModels.Post.PostViewModel
 
 @{
@@ -126,28 +125,5 @@
 
     </div>
 </div>
-<div id="answers">
-    @foreach (var answer in Model.Answers)
-    {
-        <div id="answer-@answer.Id">
-            <article class="forum-post post-item comment-item">
-                @Html.Partial("_PostAnswerPartial", answer)
-            </article>
-        </div>
 
-        if (answer.Comments.Any())
-        {
-            <div id="comments-@answer.Id">
-                @foreach (var comment in answer.Comments)
-                {
-                    <div id="comment-@comment.Id">
-                        <article class="forum-post post-item comment-item replay-item">
-                            @Html.Partial("_PostAnswerPartial", comment)
-                        </article>
-
-                    </div>
-                }
-            </div>
-        }
-    }
-</div>
+@Html.Action("Answers", "Posts", new { area = string.Empty, id = Model.Id })
