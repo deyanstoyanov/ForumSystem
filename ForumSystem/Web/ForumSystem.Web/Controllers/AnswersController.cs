@@ -6,6 +6,7 @@
     using ForumSystem.Data.Models;
     using ForumSystem.Data.UnitOfWork;
     using ForumSystem.Web.InputModels.Answers;
+    using ForumSystem.Web.ViewModels.Answer;
 
     using Microsoft.AspNet.Identity;
 
@@ -33,7 +34,7 @@
 
             var inputModel = new AnswerInputModel { PostId = post.Id, Post = post.Title };
 
-            return this.View(inputModel);
+            return this.PartialView(inputModel);
         }
 
         [HttpPost]
@@ -46,18 +47,29 @@
                 var userId = this.User.Identity.GetUserId();
                 var answer = new Answer
                                  {
-                                     Content = input.Content, 
-                                     PostId = input.PostId, 
-                                     AuthorId = userId, 
+                                     Content = input.Content,
+                                     PostId = input.PostId,
+                                     AuthorId = userId
                                  };
 
                 this.Data.Answers.Add(answer);
                 this.Data.SaveChanges();
 
-                return this.RedirectToAction("Details", "Posts", new { area = string.Empty, id = answer.PostId });
+                var model = new AnswerViewModel
+                                {
+                                    Id = answer.Id, 
+                                    AuthorId = userId, 
+                                    Author = this.User.Identity.GetUserName(), 
+                                    AuthorPictureUrl = answer.Author.PictureUrl, 
+                                    Content = input.Content, 
+                                    PostId = input.PostId, 
+                                    CreatedOn = answer.CreatedOn
+                                };
+
+                return this.PartialView("_AnswerDetailPartial", model);
             }
 
-            return this.View(input);
+            return this.JsonError("Content is required");
         }
     }
 }

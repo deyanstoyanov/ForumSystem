@@ -108,9 +108,7 @@
                 <div class="cell buttons-holder">
                     <div class="table-holder">
                         <div class="cell">
-                            <a href="@Url.Action("Create", "Answers", new { area = string.Empty, id = Model.Id })" class="btn btn-primary">
-                                Answer
-                            </a>
+                            @Ajax.ActionLink("Answer", "Create", "Answers", new { id = Model.Id }, new AjaxOptions { HttpMethod = "GET", InsertionMode = InsertionMode.Replace, UpdateTargetId = "answer-action-container" }, new { @class = "btn btn-primary" })
                             @if (User.Identity.GetUserId() == Model.AuthorId)
                             {
                                 <a href="@Url.Action("Edit", "Posts", new { area = string.Empty, id = Model.Id })" class="btn btn-primary">
@@ -121,6 +119,8 @@
                     </div>
                 </div>
             </div>
+
+            <div class="meta-info" id="answer-action-container"></div>
         }
 
     </div>

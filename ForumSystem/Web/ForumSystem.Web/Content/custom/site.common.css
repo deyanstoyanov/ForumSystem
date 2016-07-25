@@ -59,3 +59,23 @@
     width: 100%;
     height: 500px;
 }
+
+.left-buffer {
+    margin-left: 10px;
+}
+
+.right-buffer {
+    margin-right: 10px;
+}
+
+.bottom-buffer {
+    margin-bottom: 10px;
+}
+
+.top-buffer {
+    margin-top: 10px;
+}
+
+.field-validation-error {
+    color: red;
+}

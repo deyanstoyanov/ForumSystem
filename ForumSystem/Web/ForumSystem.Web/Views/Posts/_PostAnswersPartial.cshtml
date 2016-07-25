@@ -18,3 +18,16 @@
         @Html.PagedListPager(Model, page => Url.Action("Details", new { id = postId, page }), PagedListRenderOptions.ClassicPlusFirstAndLast)
     </div>
 </div>
+
+<script>
+    function closeForm() {
+        $("#answer-action-container").empty();
+    }
+
+    function showAnswerRequiredError(data) {
+        $('<div class="top-buffer left-buffer field-validation-error">'
+                + data.responseJSON.errorMessage
+                + '</div>').prependTo('#field-validation-error-message')
+            .delay(3000).fadeOut();
+    }
+</script>

@@ -174,7 +174,7 @@
 }
 
     .forum-post.highlighted-post {
-        background: #eaeaea;
+        background: #ecf0f1;
     }
 
     .forum-post.blur {
@@ -661,6 +661,7 @@
     }
 }
 
+.post-item .meta-info .btn-success,
 .post-item .meta-info .btn-primary {
     margin-right: 8px;
     padding: 8px 15px;
