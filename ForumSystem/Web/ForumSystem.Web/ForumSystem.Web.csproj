@@ -261,7 +261,6 @@
     <Compile Include="Startup.cs" />
     <Compile Include="ViewModels\Manage\SetPasswordViewModel.cs" />
     <Compile Include="ViewModels\Manage\VerifyPhoneNumberViewModel.cs" />
-    <Compile Include="ViewModels\Post\IPostAnswer.cs" />
     <Compile Include="ViewModels\Post\PostConciseViewModel.cs" />
     <Compile Include="ViewModels\Post\PostViewModel.cs" />
     <Compile Include="ViewModels\Section\SectionViewModel.cs" />
@@ -561,7 +560,6 @@
     <Content Include="Views\Posts\Edit.cshtml" />
     <Content Include="Views\Shared\_SidebarPartial.cshtml" />
     <Content Include="Views\Shared\_PostPageLayout.cshtml" />
-    <Content Include="Views\Posts\_PostAnswerPartial.cshtml" />
     <Content Include="Views\Shared\EditorTemplates\tinymce_full.cshtml" />
     <Content Include="Scripts\tinymce\skins\lightgray\fonts\tinymce.woff" />
     <Content Include="Scripts\tinymce\skins\lightgray\fonts\tinymce.ttf" />
@@ -583,7 +581,6 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
-    <Folder Include="Views\Base\" />
     <Folder Include="Views\Comments\" />
   </ItemGroup>
   <ItemGroup>
