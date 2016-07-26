@@ -85,9 +85,12 @@
                 <div class="cell buttons-holder">
                     <div class="table-holder">
                         <div class="cell">
-                            <a href="" class="btn btn-primary">
-                                Comment
-                            </a>
+                            @Ajax.ActionLink("Comment", "Create", "Comments", new { area = string.Empty, id = Model.AnswerId }, new AjaxOptions
+                                               {
+                                                   HttpMethod = "GET",
+                                                   InsertionMode = InsertionMode.Replace,
+                                                   UpdateTargetId = $"answer-action-container-{Model.AnswerId}",
+                                               }, new { @class = "btn btn-primary" })
                             @if (User.Identity.GetUserId() == Model.AuthorId)
                             {
                                 <a href="" class="btn btn-primary">
@@ -98,7 +101,6 @@
                     </div>
                 </div>
             </div>
-
         }
     </article>
 </div>

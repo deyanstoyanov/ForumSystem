@@ -11,12 +11,12 @@
     {
         @Html.Partial(string.Format(AnswerPartialViewsFolder, "_AnswerDetailPartial"), answer)
 
-        if (answer.CommentsCount > 0)
-        {
-            <div id="comments-@answer.Id">
+        <div id="comments-@answer.Id">
+            @if (answer.HasComments)
+            {
                 @Html.Action("All", "Comments", new { area = string.Empty, id = answer.Id })
-            </div>
-        }
+            }
+        </div>
     }
 </div>
 

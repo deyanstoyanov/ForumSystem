@@ -73,6 +73,7 @@
         }
 
         [HttpGet]
+        [Authorize]
         public ActionResult Edit(int? id)
         {
             if (id == null)
@@ -98,6 +99,7 @@
         }
 
         [HttpPost]
+        [Authorize]
         [ValidateAntiForgeryToken]
         public ActionResult Edit([Bind(Include = "Id,Content")] AnswerEditModel model)
         {

@@ -1,6 +1,7 @@
 ﻿namespace ForumSystem.Web.ViewModels.Answer
 {
     using System;
+    using System.Linq;
 
     using AutoMapper;
 
@@ -27,6 +28,8 @@
 
         public int CommentsCount { get; set; }
 
+        public bool HasComments { get; set; }
+
         public void CreateMappings(IMapperConfiguration configuration)
         {
             configuration.CreateMap<Answer, AnswerViewModel>()
@@ -35,6 +38,8 @@
                 .ForMember(a => a.AuthorPictureUrl, config => config.MapFrom(a => a.Author.PictureUrl));
             configuration.CreateMap<Answer, AnswerViewModel>()
                 .ForMember(a => a.CommentsCount, config => config.MapFrom(a => a.Comments.Count));
+            configuration.CreateMap<Answer, AnswerViewModel>()
+                .ForMember(a => a.HasComments, config => config.MapFrom(a => a.Comments.Any()));
         }
     }
 }
