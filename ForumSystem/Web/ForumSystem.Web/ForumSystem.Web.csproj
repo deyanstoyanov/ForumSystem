@@ -578,10 +578,10 @@
     <Content Include="Views\Answers\_AnswerDetailPartial.cshtml" />
     <Content Include="Views\Posts\_PostAnswersPartial.cshtml" />
     <Content Include="Views\Answers\Edit.cshtml" />
+    <Content Include="Views\Comments\_CommentDetailPartial.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
-    <Folder Include="Views\Comments\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="packages.config">
