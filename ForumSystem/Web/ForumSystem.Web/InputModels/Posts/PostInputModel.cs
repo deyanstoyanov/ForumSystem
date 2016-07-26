@@ -6,7 +6,6 @@
     public class PostInputModel
     {
         [Required]
-        [AllowHtml]
         [Display(Name = "Title")]
         [StringLength(200, MinimumLength = 7, ErrorMessage = "{0} must be between {2} and {1} symbols.")]
         public string Title { get; set; }

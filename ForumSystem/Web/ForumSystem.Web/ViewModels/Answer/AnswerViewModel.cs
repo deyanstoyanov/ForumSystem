@@ -1,16 +1,13 @@
 ﻿namespace ForumSystem.Web.ViewModels.Answer
 {
     using System;
-    using System.Collections.Generic;
 
     using AutoMapper;
 
     using ForumSystem.Data.Models;
     using ForumSystem.Web.Infrastructure.Mapping;
-    using ForumSystem.Web.ViewModels.Comment;
-    using ForumSystem.Web.ViewModels.Post;
 
-    public class AnswerViewModel : IMapFrom<Answer>, IHaveCustomMappings, IPostAnswer
+    public class AnswerViewModel : IMapFrom<Answer>, IHaveCustomMappings
     {
         public int Id { get; set; }
 
@@ -28,14 +25,10 @@
 
         public DateTime? ModifiedOn { get; set; }
 
-        public IEnumerable<CommentViewModel> Comments { get; set; }
-
         public void CreateMappings(IMapperConfiguration configuration)
         {
             configuration.CreateMap<Answer, AnswerViewModel>()
                 .ForMember(a => a.Author, config => config.MapFrom(a => a.Author.UserName));
-            configuration.CreateMap<Answer, AnswerViewModel>()
-                .ForMember(a => a.Comments, config => config.MapFrom(a => a.Comments));
             configuration.CreateMap<Answer, AnswerViewModel>()
                 .ForMember(a => a.AuthorPictureUrl, config => config.MapFrom(a => a.Author.PictureUrl));
         }

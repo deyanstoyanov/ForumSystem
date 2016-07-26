@@ -6,9 +6,8 @@
 
     using ForumSystem.Data.Models;
     using ForumSystem.Web.Infrastructure.Mapping;
-    using ForumSystem.Web.ViewModels.Post;
 
-    public class CommentViewModel : IMapFrom<Comment>, IHaveCustomMappings, IPostAnswer
+    public class CommentViewModel : IMapFrom<Comment>, IHaveCustomMappings
     {
         public int Id { get; set; }
 

@@ -18,7 +18,6 @@
         public int Id { get; set; }
 
         [Required]
-        [AllowHtml]
         [StringLength(200, MinimumLength = 7, ErrorMessage = "The {0} must be between {1} and {2} symbols.")]
         public string Title { get; set; }
 
