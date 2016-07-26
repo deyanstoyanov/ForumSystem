@@ -97,5 +97,69 @@
 
             return this.JsonError("Content is required");
         }
+
+        [HttpGet]
+        [Authorize]
+        public ActionResult Edit(int? id)
+        {
+            if (id == null)
+            {
+                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+            }
+
+            var userId = this.User.Identity.GetUserId();
+            var comment = this.Data.Comments.GetById(id);
+            if (comment == null)
+            {
+                return this.HttpNotFound();
+            }
+
+            if (comment.AuthorId != userId)
+            {
+                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+            }
+
+            var model = new CommentEditModel { Id = comment.Id, Content = comment.Content };
+
+            return this.PartialView(model);
+        }
+
+        [HttpPost]
+        [Authorize]
+        [ValidateAntiForgeryToken]
+        public ActionResult Edit([Bind(Include = "Id,Content")] CommentEditModel model)
+        {
+            if (model != null && this.ModelState.IsValid)
+            {
+                var userId = this.User.Identity.GetUserId();
+                var comment = this.Data.Comments.GetById(model.Id);
+
+                if (comment.AuthorId != userId)
+                {
+                    return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+                }
+
+                comment.Content = model.Content;
+
+                this.Data.Comments.Update(comment);
+                this.Data.SaveChanges();
+
+                var viewModel = new CommentViewModel
+                                    {
+                                        Id = comment.Id, 
+                                        AnswerId = comment.AnswerId, 
+                                        AuthorId = comment.AuthorId, 
+                                        Author = comment.Author.UserName, 
+                                        AuthorPictureUrl = comment.Author.PictureUrl, 
+                                        Content = comment.Content, 
+                                        CreatedOn = comment.CreatedOn, 
+                                        ModifiedOn = comment.ModifiedOn
+                                    };
+
+                return this.PartialView("_CommentDetailPartial", viewModel);
+            }
+
+            return this.JsonError("Content is required");
+        }
     }
 }

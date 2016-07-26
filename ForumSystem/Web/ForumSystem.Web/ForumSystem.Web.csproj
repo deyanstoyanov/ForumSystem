@@ -583,6 +583,7 @@
     <Content Include="Views\Comments\_CommentDetailPartial.cshtml" />
     <Content Include="Views\Comments\All.cshtml" />
     <Content Include="Views\Comments\Create.cshtml" />
+    <Content Include="Views\Comments\Edit.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
