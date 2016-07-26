@@ -1,0 +1,6 @@
+﻿@model IEnumerable<ForumSystem.Web.ViewModels.Comment.CommentViewModel>
+
+@foreach (var comment in Model)
+{
+    @Html.Partial("_CommentDetailPartial", comment)
+}

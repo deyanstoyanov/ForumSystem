@@ -579,6 +579,7 @@
     <Content Include="Views\Posts\_PostAnswersPartial.cshtml" />
     <Content Include="Views\Answers\Edit.cshtml" />
     <Content Include="Views\Comments\_CommentDetailPartial.cshtml" />
+    <Content Include="Views\Comments\All.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

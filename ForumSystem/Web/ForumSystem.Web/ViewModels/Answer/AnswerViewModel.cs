@@ -25,12 +25,16 @@
 
         public DateTime? ModifiedOn { get; set; }
 
+        public int CommentsCount { get; set; }
+
         public void CreateMappings(IMapperConfiguration configuration)
         {
             configuration.CreateMap<Answer, AnswerViewModel>()
                 .ForMember(a => a.Author, config => config.MapFrom(a => a.Author.UserName));
             configuration.CreateMap<Answer, AnswerViewModel>()
                 .ForMember(a => a.AuthorPictureUrl, config => config.MapFrom(a => a.Author.PictureUrl));
+            configuration.CreateMap<Answer, AnswerViewModel>()
+                .ForMember(a => a.CommentsCount, config => config.MapFrom(a => a.Comments.Count));
         }
     }
 }
