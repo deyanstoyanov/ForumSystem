@@ -63,6 +63,17 @@
                                 @Model.CreatedOn
                             </span>
                         </span>
+                        @if (Model.ModifiedOn.HasValue)
+                        {
+                            <span class="item-wrap category-wrap">
+                                <span class="icon-holder">
+                                    <i class="glyphicon glyphicon-refresh"></i>
+                                </span>
+                                <span class="cell">
+                                    <span class="date-time">@Model.ModifiedOn</span>
+                                </span>
+                            </span>
+                        }
                     </div>
                 </div>
             </div>
@@ -79,14 +90,19 @@
                             </a>
                             @if (User.Identity.GetUserId() == Model.AuthorId)
                             {
-                                <a href="" class="btn btn-primary">
-                                    Edit
-                                </a>
+                                @Ajax.ActionLink("Edit", "Edit", "Answers", new { area = string.Empty, id = Model.Id }, new AjaxOptions
+                                                  {
+                                                      HttpMethod = "GET",
+                                                      InsertionMode = InsertionMode.Replace,
+                                                      UpdateTargetId = $"answer-action-container-{Model.Id}"
+                                                  }, new { @class = "btn btn-primary" })
                             }
                         </div>
                     </div>
                 </div>
             </div>
+
+            <div class="meta-info" id="answer-action-container-@Model.Id"></div>
         }
     </article>
 </div>

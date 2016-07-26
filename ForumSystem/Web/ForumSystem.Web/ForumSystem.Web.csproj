@@ -578,6 +578,7 @@
     <Content Include="Views\Posts\_PostDetailPartial.cshtml" />
     <Content Include="Views\Answers\_AnswerDetailPartial.cshtml" />
     <Content Include="Views\Posts\_PostAnswersPartial.cshtml" />
+    <Content Include="Views\Answers\Edit.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

@@ -26,6 +26,8 @@
 
         public DateTime CreatedOn { get; set; }
 
+        public DateTime? ModifiedOn { get; set; }
+
         public IEnumerable<CommentViewModel> Comments { get; set; }
 
         public void CreateMappings(IMapperConfiguration configuration)
