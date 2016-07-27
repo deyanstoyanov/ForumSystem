@@ -2,9 +2,9 @@
 
 <aside class="col-md-3 col-sm-12 forum-sidebar">
     <div class="section-wrapper">
-        <h3 class="sidebar-title">
+        <h3 class="sidebar-title" data-toggle="collapse" data-target="#displaySections">
             Sections
-            <i class="glyphicon glyphicon-chevron-down" data-toggle="collapse" data-target="#displaySections"></i>
+            <i class="glyphicon glyphicon-chevron-down"></i>
         </h3>
         <ul id="displaySections" class="sidebar-nav collapse in col-md-12 col-sm-4">
             @foreach (var item in Model.Sections)
@@ -18,9 +18,9 @@
         </ul>
     </div>
     <div class="forum-sidebar category-wrapper">
-        <h3 class="sidebar-title">
+        <h3 class="sidebar-title" data-toggle="collapse" data-target="#displayCategories">
             Popular Categories
-            <i class="glyphicon glyphicon-chevron-down" data-toggle="collapse" data-target="#displayCategories"></i>
+            <i class="glyphicon glyphicon-chevron-down"></i>
         </h3>
 
         <ul id="displayCategories" class="sidebar-nav collapse in col-md-12 col-sm-4">

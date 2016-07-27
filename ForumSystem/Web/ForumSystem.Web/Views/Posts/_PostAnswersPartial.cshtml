@@ -3,7 +3,18 @@
 
 @{
     const string AnswerPartialViewsFolder = "~/Views/Answers/{0}.cshtml";
+    const int AnswersPerPageDefaultValue = 10;
+
     var postId = Model.Select(m => m.PostId).FirstOrDefault();
+}
+
+@if (Model.HasNextPage || Model.HasPreviousPage)
+{
+    <div class="pagination-container">
+        <div class="inner-holder">
+            @Html.PagedListPager(Model, page => Url.Action("Details", new { id = postId, page }), PagedListRenderOptions.ClassicPlusFirstAndLast)
+        </div>
+    </div>
 }
 
 <div id="answers">
@@ -20,11 +31,15 @@
     }
 </div>
 
-<div class="pagination-container">
-    <div class="inner-holder">
-        @Html.PagedListPager(Model, page => Url.Action("Details", new { id = postId, page }), PagedListRenderOptions.ClassicPlusFirstAndLast)
+@if (Model.HasNextPage || Model.HasPreviousPage)
+{
+    <div class="pagination-container">
+        <div class="inner-holder">
+            @Html.PagedListPager(Model, page => Url.Action("Details", new { id = postId, page }), PagedListRenderOptions.ClassicPlusFirstAndLast)
+        </div>
     </div>
-</div>
+}
+
 
 <script>
     function closeForm() {

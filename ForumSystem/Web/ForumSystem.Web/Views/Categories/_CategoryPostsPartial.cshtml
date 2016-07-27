@@ -13,11 +13,15 @@
         @Html.Partial(string.Format(PostsPartialViewsFolder, "_PostDetailPartial"), post)
     }
 
-    <div class="pagination-container">
-        <div class="inner-holder">
-            @Html.PagedListPager(Model, page => Url.Action("Details", new { id = categoryId, page }), PagedListRenderOptions.ClassicPlusFirstAndLast)
+    if (Model.HasNextPage || Model.HasPreviousPage)
+    {
+        <div class="pagination-container">
+            <div class="inner-holder">
+                @Html.PagedListPager(Model, page => Url.Action("Details", new { id = categoryId, page }), PagedListRenderOptions.ClassicPlusFirstAndLast)
+            </div>
         </div>
-    </div>
+    }
+
 }
 else
 {
