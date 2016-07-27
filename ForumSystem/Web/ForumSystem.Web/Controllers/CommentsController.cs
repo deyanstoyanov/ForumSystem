@@ -4,6 +4,7 @@
     using System.Net;
     using System.Web.Mvc;
 
+    using AutoMapper;
     using AutoMapper.QueryableExtensions;
 
     using ForumSystem.Data.Models;
@@ -81,18 +82,9 @@
                 this.Data.Comments.Add(comment);
                 this.Data.SaveChanges();
 
-                var model = new CommentViewModel
-                                {
-                                    Id = comment.Id, 
-                                    AuthorId = comment.AuthorId, 
-                                    Author = comment.Author.UserName, 
-                                    AuthorPictureUrl = comment.Author.PictureUrl, 
-                                    AnswerId = comment.AnswerId, 
-                                    Content = comment.Content, 
-                                    CreatedOn = comment.CreatedOn
-                                };
+                var viewModel = Mapper.Map<CommentViewModel>(comment);
 
-                return this.PartialView("_CommentDetailPartial", model);
+                return this.PartialView("_CommentDetailPartial", viewModel);
             }
 
             return this.JsonError("Content is required");
@@ -144,17 +136,7 @@
                 this.Data.Comments.Update(comment);
                 this.Data.SaveChanges();
 
-                var viewModel = new CommentViewModel
-                                    {
-                                        Id = comment.Id, 
-                                        AnswerId = comment.AnswerId, 
-                                        AuthorId = comment.AuthorId, 
-                                        Author = comment.Author.UserName, 
-                                        AuthorPictureUrl = comment.Author.PictureUrl, 
-                                        Content = comment.Content, 
-                                        CreatedOn = comment.CreatedOn, 
-                                        ModifiedOn = comment.ModifiedOn
-                                    };
+                var viewModel = Mapper.Map<CommentViewModel>(comment);
 
                 return this.PartialView("_CommentDetailPartial", viewModel);
             }

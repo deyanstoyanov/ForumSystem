@@ -3,6 +3,8 @@
     using System.Net;
     using System.Web.Mvc;
 
+    using AutoMapper;
+
     using ForumSystem.Data.Models;
     using ForumSystem.Data.UnitOfWork;
     using ForumSystem.Web.InputModels.Answers;
@@ -55,18 +57,9 @@
                 this.Data.Answers.Add(answer);
                 this.Data.SaveChanges();
 
-                var model = new AnswerViewModel
-                                {
-                                    Id = answer.Id, 
-                                    AuthorId = userId, 
-                                    Author = this.User.Identity.GetUserName(), 
-                                    AuthorPictureUrl = answer.Author.PictureUrl, 
-                                    Content = answer.Content, 
-                                    PostId = answer.PostId, 
-                                    CreatedOn = answer.CreatedOn
-                                };
+                var viewModel = Mapper.Map<AnswerViewModel>(answer);
 
-                return this.PartialView("_AnswerDetailPartial", model);
+                return this.PartialView("_AnswerDetailPartial", viewModel);
             }
 
             return this.JsonError("Content is required");
@@ -118,17 +111,7 @@
                 this.Data.Answers.Update(answer);
                 this.Data.SaveChanges();
 
-                var viewModel = new AnswerViewModel
-                                    {
-                                        Id = answer.Id, 
-                                        AuthorId = answer.AuthorId, 
-                                        Author = answer.Author.UserName, 
-                                        AuthorPictureUrl = answer.Author.PictureUrl, 
-                                        PostId = answer.PostId, 
-                                        Content = answer.Content, 
-                                        CreatedOn = answer.CreatedOn, 
-                                        ModifiedOn = answer.ModifiedOn
-                                    };
+                var viewModel = Mapper.Map<AnswerViewModel>(answer);
 
                 return this.PartialView("_AnswerDetailPartial", viewModel);
             }
