@@ -100,12 +100,23 @@
                                                        UpdateTargetId = $"comment-action-container-{@Model.Id}"
                                                    }, new { @class = "btn btn-primary" })
                             }
+
+                            @if (User.Identity.GetUserId() != Model.AuthorId)
+                            {
+                                @Ajax.ActionLink("Report", "Create", "CommentReports", new { area = string.Empty, id = Model.Id }, new AjaxOptions
+                                                   {
+                                                       HttpMethod = "GET",
+                                                       InsertionMode = InsertionMode.Replace,
+                                                       UpdateTargetId = $"comment-action-container-{@Model.Id}"
+                                                   }, new { @class = "btn btn-default" })
+                            }
                         </div>
                     </div>
                 </div>
             </div>
 
             <div class="meta-info" id="comment-action-container-@Model.Id"></div>
+            <div id="comment-action-success-@Model.Id"></div>
         }
     </article>
 </div>

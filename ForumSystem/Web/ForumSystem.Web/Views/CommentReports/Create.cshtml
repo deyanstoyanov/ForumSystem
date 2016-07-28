@@ -1,0 +1,56 @@
+﻿@model ForumSystem.Web.InputModels.CommentReports.CommentReportInputModel
+
+@using (Ajax.BeginForm("Create", "CommentReports", new { id = Model.CommentId }, new AjaxOptions
+                        {
+                            HttpMethod = "POST",
+                            InsertionMode = InsertionMode.InsertAfter,
+                            OnFailure = "showCommentReportRequiredError",
+                            OnSuccess = "showCommentReportSuccess"
+                        }))
+{
+    @Html.AntiForgeryToken()
+
+    @Html.HiddenFor(model => model.CommentId)
+    @Html.ValidationSummary(true, string.Empty, new { @class = "text-danger" })
+
+    <div class="row">
+        <div class="col-md-12">
+            @Html.EditorFor(model => model.Description, new { htmlAttributes = new { @class = "form-control" } })
+            @Html.ValidationMessageFor(model => model.Description, string.Empty, new { @class = "text-danger" })
+            <div id="comment-field-validation-error-message"></div>
+        </div>
+    </div>
+    <div class="row top-buffer bottom-buffer post-actions-toolbar">
+        <div class="col-md-12">
+            <input type="submit" value="Report" class="btn btn-success pull-left left-buffer" />
+            <input type="button" value="Cancel" class="btn btn-primary pull-right right-buffer" onclick="closeCommentReportForm()" />
+        </div>
+    </div>
+}
+
+<script>
+    function showCommentReportSuccess(data) {
+        $('<div class="alert alert-dismissible alert-success">'
+                + data
+                + '</div>')
+            .prependTo('#comment-action-success-@Model.CommentId')
+            .delay(3000).fadeOut();
+
+        closeCommentReportForm();
+    }
+
+    function closeCommentReportForm() {
+        $("#comment-action-container-@Model.CommentId").empty();
+    }
+
+    function showCommentReportRequiredError(data) {
+        $('<div class="top-buffer left-buffer field-validation-error">'
+                + data.responseJSON.errorMessage
+                + '</div>').prependTo('#comment-field-validation-error-message')
+            .delay(3000).fadeOut();
+    }
+</script>
+
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+}
