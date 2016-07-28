@@ -52,5 +52,10 @@
 
             return result;
         }
+
+        protected StandardJsonResult<T> JsonSuccess<T>(T data)
+        {
+            return new StandardJsonResult<T> { Data = data };
+        }
     }
 }
