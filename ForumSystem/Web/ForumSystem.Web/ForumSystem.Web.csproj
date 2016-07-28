@@ -239,6 +239,7 @@
     <Compile Include="InputModels\AnswerReports\AnswerReportInputModel.cs" />
     <Compile Include="InputModels\Answers\AnswerEditModel.cs" />
     <Compile Include="InputModels\Answers\AnswerInputModel.cs" />
+    <Compile Include="InputModels\CommentReports\CommentReportInputModel.cs" />
     <Compile Include="InputModels\Comments\CommentEditModel.cs" />
     <Compile Include="InputModels\Comments\CommentInputModel.cs" />
     <Compile Include="InputModels\PostReports\PostReportInputModel.cs" />
