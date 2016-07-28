@@ -11,7 +11,7 @@
         [AllowHtml]
         [DataType(DataType.Html)]
         [UIHint("tinymce_full")]
-        [Display(Name = "Content")]
+        [Display(Name = "Description")]
         [StringLength(100000, MinimumLength = 12, ErrorMessage = "{0} must be between {2} and {1} symbols.")]
         public string Description { get; set; }
     }
