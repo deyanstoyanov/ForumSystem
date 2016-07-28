@@ -181,6 +181,7 @@
         opacity: .4;
     }
 
+    .forum-post .btn-default,
     .forum-post .btn-primary {
         margin-right: 4px;
         padding: 2px 15px;
@@ -343,12 +344,6 @@
         font-family: "LatoBlack", "Arial", "Helvetica", sans-serif;
     }
 
-        .forum-post .meta-info .buttons-holder .link-btn {
-            background-color: transparent;
-            color: #2c3e50;
-            text-align: center;
-        }
-
     .forum-post .meta-info .vote-btn {
         padding: 0;
         background-color: transparent;
@@ -481,11 +476,6 @@
             .forum-post .meta-info.meta-details .details-holder .table-holder .btn-success {
                 width: 100%;
                 margin-bottom: 10px;
-            }
-
-            .forum-post .meta-info.meta-details .buttons-holder .table-holder .link-btn,
-            .forum-post .meta-info.meta-details .details-holder .table-holder .link-btn {
-                width: 100%;
             }
 
     .forum-post .meta-info.meta-details .details-holder {
@@ -661,6 +651,7 @@
     }
 }
 
+.post-item .meta-info .btn-default,
 .post-item .meta-info .btn-success,
 .post-item .meta-info .btn-primary {
     margin-right: 8px;

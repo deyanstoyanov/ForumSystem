@@ -586,6 +586,7 @@
     <Content Include="Views\Comments\All.cshtml" />
     <Content Include="Views\Comments\Create.cshtml" />
     <Content Include="Views\Comments\Edit.cshtml" />
+    <Content Include="Views\PostReports\Create.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
