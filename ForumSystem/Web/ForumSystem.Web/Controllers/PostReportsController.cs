@@ -43,6 +43,7 @@
         }
 
         [HttpPost]
+        [ValidateAntiForgeryToken]
         public ActionResult Create([Bind(Include = "PostId,Description")] PostReportInputModel input)
         {
             if (input != null && this.ModelState.IsValid)
