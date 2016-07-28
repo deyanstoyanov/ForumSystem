@@ -42,6 +42,8 @@
 
         public IDeletableEntityRepository<PostReport> PostReports => this.GetRepository<PostReport>();
 
+        public IDeletableEntityRepository<AnswerReport> AnswerReports => this.GetRepository<AnswerReport>();
+
         public void SaveChanges()
         {
             this.dbContext.SaveChanges();

@@ -12,6 +12,7 @@
         public Answer()
         {
             this.Comments = new HashSet<Comment>();
+            this.Reports = new HashSet<AnswerReport>();
         }
 
         [Key]
@@ -31,10 +32,12 @@
 
         public virtual ApplicationUser Author { get; set; }
 
-        public virtual ICollection<Comment> Comments { get; set; }
-
         public bool IsDeleted { get; set; }
 
         public DateTime? DeletedOn { get; set; }
+
+        public virtual ICollection<Comment> Comments { get; set; }
+
+        public virtual ICollection<AnswerReport> Reports { get; set; }
     }
 }

@@ -28,6 +28,8 @@
 
         public virtual IDbSet<PostReport> PostReports { get; set; }
 
+        public virtual IDbSet<AnswerReport> AnswerReports { get; set; }
+
         public static ApplicationDbContext Create()
         {
             return new ApplicationDbContext();
