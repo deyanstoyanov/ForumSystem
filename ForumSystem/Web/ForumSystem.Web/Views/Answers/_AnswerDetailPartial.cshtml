@@ -100,12 +100,23 @@
                                                        UpdateTargetId = $"answer-action-container-{Model.Id}"
                                                    }, new { @class = "btn btn-primary" })
                             }
+
+                            @if (User.Identity.GetUserId() != Model.AuthorId)
+                            {
+                                @Ajax.ActionLink("Report", "Create", "AnswerReports", new { area = string.Empty, id = Model.Id }, new AjaxOptions
+                                                   {
+                                                       HttpMethod = "GET",
+                                                       InsertionMode = InsertionMode.Replace,
+                                                       UpdateTargetId = $"answer-action-container-{Model.Id}"
+                                                   }, new { @class = "btn btn-default" })
+                            }
                         </div>
                     </div>
                 </div>
             </div>
 
             <div class="meta-info" id="answer-action-container-@Model.Id"></div>
+            <div id="answer-action-success-@Model.Id"></div>
         }
     </article>
 </div>
