@@ -21,6 +21,8 @@
 
         IDeletableEntityRepository<AnswerReport> AnswerReports { get; }
 
+        IDeletableEntityRepository<CommentReport> CommentReports { get; }
+
         void SaveChanges();
     }
 }

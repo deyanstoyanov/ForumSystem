@@ -44,6 +44,8 @@
 
         public IDeletableEntityRepository<AnswerReport> AnswerReports => this.GetRepository<AnswerReport>();
 
+        public IDeletableEntityRepository<CommentReport> CommentReports => this.GetRepository<CommentReport>();
+
         public void SaveChanges()
         {
             this.dbContext.SaveChanges();

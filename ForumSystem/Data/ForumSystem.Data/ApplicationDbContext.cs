@@ -30,6 +30,8 @@
 
         public virtual IDbSet<AnswerReport> AnswerReports { get; set; }
 
+        public virtual IDbSet<CommentReport> CommentReports { get; set; }
+
         public static ApplicationDbContext Create()
         {
             return new ApplicationDbContext();

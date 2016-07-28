@@ -1,12 +1,18 @@
 ﻿namespace ForumSystem.Data.Models
 {
     using System;
+    using System.Collections.Generic;
     using System.ComponentModel.DataAnnotations;
 
     using ForumSystem.Data.Common.Models;
 
     public class Comment : AuditInfo, IDeletableEntity
     {
+        public Comment()
+        {
+            this.Reports = new HashSet<CommentReport>();
+        }
+
         [Key]
         public int Id { get; set; }
 
@@ -25,5 +31,8 @@
         public bool IsDeleted { get; set; }
 
         public DateTime? DeletedOn { get; set; }
+
+        public virtual ICollection<CommentReport> Reports { get; set; }
+
     }
 }
