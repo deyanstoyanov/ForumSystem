@@ -26,6 +26,8 @@
 
         public virtual IDbSet<Comment> Comments { get; set; }
 
+        public virtual IDbSet<PostReport> PostReports { get; set; }
+
         public static ApplicationDbContext Create()
         {
             return new ApplicationDbContext();

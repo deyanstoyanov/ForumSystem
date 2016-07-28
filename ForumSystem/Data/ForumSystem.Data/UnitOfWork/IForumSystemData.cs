@@ -17,6 +17,8 @@
 
         IDeletableEntityRepository<Comment> Comments { get; }
 
+        IDeletableEntityRepository<PostReport> PostReports { get; } 
+
         void SaveChanges();
     }
 }

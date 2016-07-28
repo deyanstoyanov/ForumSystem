@@ -40,6 +40,8 @@
 
         public IDeletableEntityRepository<Comment> Comments => this.GetRepository<Comment>();
 
+        public IDeletableEntityRepository<PostReport> PostReports => this.GetRepository<PostReport>();
+
         public void SaveChanges()
         {
             this.dbContext.SaveChanges();

@@ -12,6 +12,7 @@
         public Post()
         {
             this.Answers = new HashSet<Answer>();
+            this.Reports = new HashSet<PostReport>();
         }
 
         [Key]
@@ -35,10 +36,12 @@
 
         public virtual ApplicationUser Author { get; set; }
 
-        public virtual ICollection<Answer> Answers { get; set; }
-
         public bool IsDeleted { get; set; }
 
         public DateTime? DeletedOn { get; set; }
+
+        public virtual ICollection<Answer> Answers { get; set; }
+
+        public virtual ICollection<PostReport> Reports { get; set; }
     }
 }
