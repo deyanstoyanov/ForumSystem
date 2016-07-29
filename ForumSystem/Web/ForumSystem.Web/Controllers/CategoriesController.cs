@@ -7,8 +7,8 @@
     using AutoMapper.QueryableExtensions;
 
     using ForumSystem.Data.UnitOfWork;
-    using ForumSystem.Web.ViewModels.Category;
-    using ForumSystem.Web.ViewModels.Post;
+    using ForumSystem.Web.ViewModels.Categories;
+    using ForumSystem.Web.ViewModels.Posts;
 
     using PagedList;
 

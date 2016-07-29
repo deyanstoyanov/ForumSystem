@@ -1,4 +1,4 @@
-﻿namespace ForumSystem.Web.ViewModels.Post
+﻿namespace ForumSystem.Web.ViewModels.Posts
 {
     using System;
 
@@ -7,19 +7,11 @@
     using ForumSystem.Data.Models;
     using ForumSystem.Web.Infrastructure.Mapping;
 
-    public class PostViewModel : IMapFrom<Post>, IHaveCustomMappings
+    public class PostConciseViewModel : IMapFrom<Post>, IHaveCustomMappings
     {
         public int Id { get; set; }
 
         public string Title { get; set; }
-
-        public string Content { get; set; }
-
-        public int CategoryId { get; set; }
-
-        public string Category { get; set; }
-
-        public string AuthorId { get; set; }
 
         public string AuthorPictureUrl { get; set; }
 
@@ -27,15 +19,21 @@
 
         public DateTime CreatedOn { get; set; }
 
-        public DateTime? ModifiedOn { get; set; }
+        public int CategoryId { get; set; }
+
+        public string Category { get; set; }
+
+        public int AnswersCount { get; set; }
 
         public void CreateMappings(IMapperConfiguration configuration)
         {
-            configuration.CreateMap<Post, PostViewModel>()
+            configuration.CreateMap<Post, PostConciseViewModel>()
                 .ForMember(p => p.Author, config => config.MapFrom(p => p.Author.UserName));
-            configuration.CreateMap<Post, PostViewModel>()
+            configuration.CreateMap<Post, PostConciseViewModel>()
                 .ForMember(p => p.Category, config => config.MapFrom(p => p.Category.Title));
-            configuration.CreateMap<Post, PostViewModel>()
+            configuration.CreateMap<Post, PostConciseViewModel>()
+                .ForMember(p => p.AnswersCount, config => config.MapFrom(p => p.Answers.Count));
+            configuration.CreateMap<Post, PostConciseViewModel>()
                 .ForMember(p => p.AuthorPictureUrl, config => config.MapFrom(p => p.Author.PictureUrl));
         }
     }

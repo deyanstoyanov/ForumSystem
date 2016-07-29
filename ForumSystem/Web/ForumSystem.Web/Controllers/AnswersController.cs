@@ -8,7 +8,7 @@
     using ForumSystem.Data.Models;
     using ForumSystem.Data.UnitOfWork;
     using ForumSystem.Web.InputModels.Answers;
-    using ForumSystem.Web.ViewModels.Answer;
+    using ForumSystem.Web.ViewModels.Answers;
 
     using Microsoft.AspNet.Identity;
 

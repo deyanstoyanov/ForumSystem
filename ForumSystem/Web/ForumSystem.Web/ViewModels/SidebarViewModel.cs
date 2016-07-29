@@ -2,8 +2,8 @@
 {
     using System.Collections.Generic;
 
-    using ForumSystem.Web.ViewModels.Category;
-    using ForumSystem.Web.ViewModels.Section;
+    using ForumSystem.Web.ViewModels.Categories;
+    using ForumSystem.Web.ViewModels.Sections;
 
     public class SidebarViewModel
     {

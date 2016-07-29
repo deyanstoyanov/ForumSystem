@@ -2,7 +2,7 @@
 {
     using System.Collections.Generic;
 
-    using ForumSystem.Web.ViewModels.Section;
+    using ForumSystem.Web.ViewModels.Sections;
 
     public class IndexPageViewModel
     {

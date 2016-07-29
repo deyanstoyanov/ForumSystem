@@ -10,7 +10,7 @@
     using ForumSystem.Data.Models;
     using ForumSystem.Data.UnitOfWork;
     using ForumSystem.Web.InputModels.Comments;
-    using ForumSystem.Web.ViewModels.Comment;
+    using ForumSystem.Web.ViewModels.Comments;
 
     using Microsoft.AspNet.Identity;
 

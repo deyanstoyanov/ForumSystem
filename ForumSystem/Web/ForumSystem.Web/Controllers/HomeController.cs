@@ -6,7 +6,7 @@
 
     using ForumSystem.Data.UnitOfWork;
     using ForumSystem.Web.ViewModels.Home;
-    using ForumSystem.Web.ViewModels.Section;
+    using ForumSystem.Web.ViewModels.Sections;
 
     public class HomeController : BaseController
     {

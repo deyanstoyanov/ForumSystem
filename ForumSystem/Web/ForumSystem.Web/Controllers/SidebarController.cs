@@ -7,8 +7,8 @@
 
     using ForumSystem.Data.UnitOfWork;
     using ForumSystem.Web.ViewModels;
-    using ForumSystem.Web.ViewModels.Category;
-    using ForumSystem.Web.ViewModels.Section;
+    using ForumSystem.Web.ViewModels.Categories;
+    using ForumSystem.Web.ViewModels.Sections;
 
     public class SidebarController : BaseController
     {

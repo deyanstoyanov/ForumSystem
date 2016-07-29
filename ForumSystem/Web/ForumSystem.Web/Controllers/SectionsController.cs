@@ -7,7 +7,7 @@
     using AutoMapper.QueryableExtensions;
 
     using ForumSystem.Data.UnitOfWork;
-    using ForumSystem.Web.ViewModels.Section;
+    using ForumSystem.Web.ViewModels.Sections;
 
     public class SectionsController : BaseController
     {

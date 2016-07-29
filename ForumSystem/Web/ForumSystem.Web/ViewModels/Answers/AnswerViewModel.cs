@@ -1,4 +1,4 @@
-﻿namespace ForumSystem.Web.ViewModels.Answer
+﻿namespace ForumSystem.Web.ViewModels.Answers
 {
     using System;
     using System.Linq;

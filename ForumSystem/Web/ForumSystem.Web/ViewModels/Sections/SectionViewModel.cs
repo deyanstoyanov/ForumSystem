@@ -1,4 +1,4 @@
-﻿namespace ForumSystem.Web.ViewModels.Section
+﻿namespace ForumSystem.Web.ViewModels.Sections
 {
     using System.Collections.Generic;
 
@@ -6,7 +6,7 @@
 
     using ForumSystem.Data.Models;
     using ForumSystem.Web.Infrastructure.Mapping;
-    using ForumSystem.Web.ViewModels.Category;
+    using ForumSystem.Web.ViewModels.Categories;
 
     public class SectionViewModel : IMapFrom<Section>, IHaveCustomMappings
     {
