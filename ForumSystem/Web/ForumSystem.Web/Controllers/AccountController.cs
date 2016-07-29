@@ -157,9 +157,19 @@
         [ValidateAntiForgeryToken]
         public async Task<ActionResult> Register(RegisterViewModel model)
         {
+            if (this.userManager.FindByEmail(model.Email) != null)
+            {
+                this.ModelState.AddModelError("Email", "Email is already registered");
+            }
+
+            if (this.userManager.FindByName(model.UserName) != null)
+            {
+                this.ModelState.AddModelError("UserName", "UserName is already registered");
+            }
+
             if (this.ModelState.IsValid)
             {
-                var user = new ApplicationUser { UserName = model.Email, Email = model.Email };
+                var user = new ApplicationUser { UserName = model.UserName, Email = model.Email };
                 var result = await this.UserManager.CreateAsync(user, model.Password);
                 if (result.Succeeded)
                 {
