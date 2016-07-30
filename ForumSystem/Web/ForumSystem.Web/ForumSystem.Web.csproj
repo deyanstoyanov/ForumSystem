@@ -220,6 +220,7 @@
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="App_Start\SmsService.cs" />
     <Compile Include="App_Start\Startup.Auth.cs" />
+    <Compile Include="Areas\Moderator\ModeratorAreaRegistration.cs" />
     <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Controllers\AnswerReportsController.cs" />
     <Compile Include="Controllers\AnswersController.cs" />
@@ -299,6 +300,7 @@
     <Content Include="fonts\glyphicons-halflings-regular.eot" />
     <Content Include="Content\bootstrap.css.map" />
     <Content Include="Content\bootstrap-theme.css.map" />
+    <Content Include="Areas\Moderator\Views\web.config" />
     <None Include="Scripts\jquery-3.1.0.intellisense.js" />
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\bootstrap.min.js" />
@@ -596,6 +598,10 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
+    <Folder Include="Areas\Moderator\Controllers\" />
+    <Folder Include="Areas\Moderator\InputModels\" />
+    <Folder Include="Areas\Moderator\ViewModels\" />
+    <Folder Include="Areas\Moderator\Views\Shared\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="packages.config">
