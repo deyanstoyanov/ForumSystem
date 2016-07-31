@@ -1,0 +1,11 @@
+﻿@{
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+@Styles.Render("~/Content/css")
+
+@RenderBody()
+
+@Scripts.Render("~/bundles/jquery")
+@Scripts.Render("~/bundles/bootstrap")
+@RenderSection("scripts", false)

@@ -302,6 +302,8 @@
     <Content Include="Content\bootstrap.css.map" />
     <Content Include="Content\bootstrap-theme.css.map" />
     <Content Include="Areas\Moderator\Views\web.config" />
+    <Content Include="Areas\Moderator\Views\_ViewStart.cshtml" />
+    <Content Include="Areas\Moderator\Views\Shared\_ModeratorLayout.cshtml" />
     <None Include="Scripts\jquery-3.1.0.intellisense.js" />
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\bootstrap.min.js" />
@@ -599,9 +601,6 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
-    <Folder Include="Areas\Moderator\InputModels\" />
-    <Folder Include="Areas\Moderator\ViewModels\" />
-    <Folder Include="Areas\Moderator\Views\Shared\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="packages.config">
