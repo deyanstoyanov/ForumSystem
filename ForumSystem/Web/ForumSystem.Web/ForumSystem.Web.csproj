@@ -307,6 +307,7 @@
     <Content Include="Areas\Moderator\Views\web.config" />
     <Content Include="Areas\Moderator\Views\_ViewStart.cshtml" />
     <Content Include="Areas\Moderator\Views\Shared\_ModeratorLayout.cshtml" />
+    <Content Include="Areas\Moderator\Views\Posts\Edit.cshtml" />
     <None Include="Scripts\jquery-3.1.0.intellisense.js" />
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\bootstrap.min.js" />
