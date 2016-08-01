@@ -5,6 +5,7 @@
 
     using AutoMapper;
 
+    using ForumSystem.Common.Constants;
     using ForumSystem.Data.Models;
     using ForumSystem.Data.UnitOfWork;
     using ForumSystem.Web.InputModels.Answers;
@@ -81,7 +82,7 @@
                 return this.HttpNotFound();
             }
 
-            if (answer.AuthorId != userId)
+            if (answer.AuthorId != userId && !this.User.IsInRole(RoleConstants.Moderator))
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
@@ -101,7 +102,7 @@
                 var userId = this.User.Identity.GetUserId();
                 var answer = this.Data.Answers.GetById(model.Id);
 
-                if (answer.AuthorId != userId)
+                if (answer.AuthorId != userId && !this.User.IsInRole(RoleConstants.Moderator))
                 {
                     return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
                 }
