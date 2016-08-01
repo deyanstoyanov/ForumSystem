@@ -7,6 +7,7 @@
     using AutoMapper;
     using AutoMapper.QueryableExtensions;
 
+    using ForumSystem.Common.Constants;
     using ForumSystem.Data.Models;
     using ForumSystem.Data.UnitOfWork;
     using ForumSystem.Web.InputModels.Comments;
@@ -106,7 +107,7 @@
                 return this.HttpNotFound();
             }
 
-            if (comment.AuthorId != userId)
+            if (comment.AuthorId != userId && !this.User.IsInRole(RoleConstants.Moderator))
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
@@ -126,7 +127,7 @@
                 var userId = this.User.Identity.GetUserId();
                 var comment = this.Data.Comments.GetById(model.Id);
 
-                if (comment.AuthorId != userId)
+                if (comment.AuthorId != userId && !this.User.IsInRole(RoleConstants.Moderator))
                 {
                     return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
                 }
