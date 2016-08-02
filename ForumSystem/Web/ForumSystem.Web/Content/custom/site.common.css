@@ -79,3 +79,8 @@
 .field-validation-error {
     color: red;
 }
+
+.table-word-wrap {
+    word-wrap: break-word;
+    table-layout: fixed;
+}
