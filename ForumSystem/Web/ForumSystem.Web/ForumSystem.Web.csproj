@@ -221,6 +221,7 @@
     <Compile Include="App_Start\SmsService.cs" />
     <Compile Include="App_Start\Startup.Auth.cs" />
     <Compile Include="Areas\Moderator\Controllers\ModeratorController.cs" />
+    <Compile Include="Areas\Moderator\Controllers\PostReportsController.cs" />
     <Compile Include="Areas\Moderator\Controllers\PostsController.cs" />
     <Compile Include="Areas\Moderator\InputModels\Posts\PostEditModel.cs" />
     <Compile Include="Areas\Moderator\ModeratorAreaRegistration.cs" />
