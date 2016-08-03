@@ -1,5 +1,8 @@
 ﻿@model IEnumerable<ForumSystem.Web.Areas.Moderator.ViewModels.AnswerReports.AnswerReportViewModel>
 
+@{
+    ViewBag.Title = "Answer Reports";
+}
 
 <table class="table-word-wrap table table-responsive table-hover table-striped">
     <tr>
@@ -39,7 +42,9 @@
             <td>
                 @item.CreatedOn
             </td>
-            <td></td>
+            <td>
+                <a href="@Url.Action("Delete", "AnswerReports", new { area = "Moderator", id = item.Id })" class="btn btn-danger btn-sm">Delete</a>
+            </td>
         </tr>
     }
 
