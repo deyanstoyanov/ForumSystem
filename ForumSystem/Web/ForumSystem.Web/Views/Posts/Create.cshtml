@@ -32,8 +32,11 @@
         </div>
 
         <div class="form-group">
-            <div class="col-md-offset-2 col-md-10">
-                <input type="submit" value="Create" class="btn btn-success" />
+            <div class="col-md-offset-2 col-md-4">
+                <input type="submit" value="Create" class="btn btn-success"/>
+            </div>
+            <div class="col-md-offset-2 col-md-4">
+                <a href="@Url.Action("Details", "Categories", new { area = string.Empty, id = Model.CategoryId })" class="btn btn-default pull-right">Cancel</a>
             </div>
         </div>
     </div>
