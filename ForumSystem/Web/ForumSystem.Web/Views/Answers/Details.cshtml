@@ -1,0 +1,28 @@
+﻿@model ForumSystem.Web.ViewModels.Answers.AnswerViewModel
+
+@{
+    ViewBag.Title = Model.Post;
+}
+
+@Html.Action("GetById", "Posts", new { area = string.Empty, id = Model.PostId })
+
+<div class="text-center">
+    <a href="@Url.Action("Details", "Posts", new { area = string.Empty, id = Model.PostId })" class="btn btn-primary btn-sm bottom-buffer">
+        View all answers
+    </a>
+</div>
+
+@Html.Partial("_AnswerDetailPartial", Model)
+
+@if (Model.HasComments)
+{
+    <div id="comments-@Model.Id">
+        @Html.Action("All", "Comments", new { area = string.Empty, id = Model.Id })
+    </div>
+}
+
+<div class="text-center">
+    <a href="@Url.Action("Details", "Posts", new { area = string.Empty, id = Model.PostId })" class="btn btn-primary btn-sm bottom-buffer">
+        View all answers
+    </a>
+</div>

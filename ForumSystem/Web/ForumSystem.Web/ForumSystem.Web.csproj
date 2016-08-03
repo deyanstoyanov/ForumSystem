@@ -611,6 +611,7 @@
     <Content Include="Views\PostReports\Create.cshtml" />
     <Content Include="Views\AnswerReports\Create.cshtml" />
     <Content Include="Views\CommentReports\Create.cshtml" />
+    <Content Include="Views\Answers\Details.cshtml" />
     <Content Include="Views\Posts\_PostDetailPartial.cshtml" />
   </ItemGroup>
   <ItemGroup>

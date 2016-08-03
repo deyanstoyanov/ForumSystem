@@ -1,9 +1,11 @@
 ﻿namespace ForumSystem.Web.Controllers
 {
+    using System.Linq;
     using System.Net;
     using System.Web.Mvc;
 
     using AutoMapper;
+    using AutoMapper.QueryableExtensions;
 
     using ForumSystem.Common.Constants;
     using ForumSystem.Data.Models;
@@ -18,6 +20,29 @@
         public AnswersController(IForumSystemData data)
             : base(data)
         {
+        }
+
+        [HttpGet]
+        public ActionResult Details(int? id)
+        {
+            if (id == null)
+            {
+                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+            }
+
+            var answer = this.Data.Answers.GetById(id);
+            if (answer == null)
+            {
+                return this.HttpNotFound();
+            }
+
+            var model = 
+                this.Data.Answers.All()
+                    .Where(a => a.Id == id)
+                    .ProjectTo<AnswerViewModel>()
+                    .FirstOrDefault();
+
+            return this.View(model);
         }
 
         [HttpGet]
