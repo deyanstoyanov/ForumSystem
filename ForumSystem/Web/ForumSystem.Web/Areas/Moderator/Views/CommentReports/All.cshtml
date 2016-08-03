@@ -1,0 +1,45 @@
+﻿@model IEnumerable<ForumSystem.Web.Areas.Moderator.ViewModels.CommentReports.CommentReportViewModel>
+
+<table class="table-word-wrap table table-responsive table-hover table-striped">
+    <tr>
+        <th class="col-md-1">
+            @Html.DisplayNameFor(model => model.Id)
+        </th>
+        <th class="col-md-1">
+            @Html.DisplayNameFor(model => model.Author)
+        </th>
+        <th class="col-md-3">
+            @Html.DisplayNameFor(model => model.Post)
+        </th>
+        <th class="col-md-4">
+            @Html.DisplayNameFor(model => model.Description)
+        </th>
+        <th class="col-md-2">
+            @Html.DisplayNameFor(model => model.CreatedOn)
+        </th>
+        <th>Actions</th>
+    </tr>
+
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @item.Id
+            </td>
+            <td>
+                @item.Author
+            </td>
+            <td>
+                @item.Post
+            </td>
+            <td>
+                @item.Description
+            </td>
+            <td>
+                @item.CreatedOn
+            </td>
+            <td></td>
+        </tr>
+    }
+
+</table>
