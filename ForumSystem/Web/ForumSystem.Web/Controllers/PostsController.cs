@@ -74,6 +74,24 @@
             return this.PartialView("_PostAnswersPartial", model);
         }
 
+        [ChildActionOnly]
+        public ActionResult GetById(int id)
+        {
+            var post = this.Data.Posts.GetById(id);
+            if (post == null)
+            {
+                return this.HttpNotFound();
+            }
+
+            var model = 
+                this.Data.Posts.All()
+                    .Where(p => p.Id == id)
+                    .ProjectTo<PostViewModel>()
+                    .FirstOrDefault();
+
+            return this.PartialView("_PostDetailPartial", model);
+        }
+
         [HttpGet]
         [Authorize]
         public ActionResult Create(int? id)
