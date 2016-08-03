@@ -10,7 +10,7 @@
 {
     foreach (var post in Model)
     {
-        @Html.Partial(string.Format(PostsPartialViewsFolder, "_PostDetailPartial"), post)
+        @Html.Partial(string.Format(PostsPartialViewsFolder, "_PostConcisePartial"), post)
     }
 
     if (Model.HasNextPage || Model.HasPreviousPage)

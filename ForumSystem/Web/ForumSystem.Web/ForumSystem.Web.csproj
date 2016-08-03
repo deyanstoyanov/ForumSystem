@@ -600,7 +600,7 @@
     <Content Include="Views\Shared\_SectionPageLayout.cshtml" />
     <Content Include="Views\Categories\_CategoryPostsPartial.cshtml" />
     <Content Include="Views\Answers\Create.cshtml" />
-    <Content Include="Views\Posts\_PostDetailPartial.cshtml" />
+    <Content Include="Views\Posts\_PostConcisePartial.cshtml" />
     <Content Include="Views\Answers\_AnswerDetailPartial.cshtml" />
     <Content Include="Views\Posts\_PostAnswersPartial.cshtml" />
     <Content Include="Views\Answers\Edit.cshtml" />
