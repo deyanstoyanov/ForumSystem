@@ -75,6 +75,16 @@
                                 </span>
                             </span>
                         }
+
+                        @if (Model.ReportsCount > 0)
+                        {
+                            <span class="item-wrap category-wrap" title="Reports">
+                                <span class="icon-holder">
+                                    <i class="glyphicon glyphicon-bell"></i>
+                                </span>
+                                <span>@Model.ReportsCount</span>
+                            </span>
+                        }
                     </div>
                 </div>
             </div>

@@ -1,6 +1,7 @@
 ﻿namespace ForumSystem.Web.ViewModels.Comments
 {
     using System;
+    using System.Linq;
 
     using AutoMapper;
 
@@ -21,6 +22,8 @@
 
         public string Author { get; set; }
 
+        public int ReportsCount { get; set; }
+
         public DateTime CreatedOn { get; set; }
 
         public DateTime? ModifiedOn { get; set; }
@@ -31,6 +34,8 @@
                 .ForMember(c => c.Author, config => config.MapFrom(c => c.Author.UserName));
             configuration.CreateMap<Comment, CommentViewModel>()
                 .ForMember(c => c.AuthorPictureUrl, config => config.MapFrom(c => c.Author.PictureUrl));
+            configuration.CreateMap<Comment, CommentViewModel>()
+                .ForMember(c => c.ReportsCount, config => config.MapFrom(c => c.Reports.Count(r => !r.IsDeleted)));
         }
     }
 }
