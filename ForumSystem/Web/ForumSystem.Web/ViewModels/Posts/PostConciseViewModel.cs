@@ -1,6 +1,7 @@
 ﻿namespace ForumSystem.Web.ViewModels.Posts
 {
     using System;
+    using System.Linq;
 
     using AutoMapper;
 
@@ -25,6 +26,8 @@
 
         public int AnswersCount { get; set; }
 
+        public int ReportsCount { get; set; }
+
         public void CreateMappings(IMapperConfiguration configuration)
         {
             configuration.CreateMap<Post, PostConciseViewModel>()
@@ -35,6 +38,8 @@
                 .ForMember(p => p.AnswersCount, config => config.MapFrom(p => p.Answers.Count));
             configuration.CreateMap<Post, PostConciseViewModel>()
                 .ForMember(p => p.AuthorPictureUrl, config => config.MapFrom(p => p.Author.PictureUrl));
+            configuration.CreateMap<Post, PostConciseViewModel>()
+                .ForMember(p => p.ReportsCount, config => config.MapFrom(p => p.Reports.Count(r => !r.IsDeleted)));
         }
     }
 }

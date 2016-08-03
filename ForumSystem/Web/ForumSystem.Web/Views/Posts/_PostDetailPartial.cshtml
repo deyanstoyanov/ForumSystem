@@ -9,32 +9,32 @@
         </h2>
         <p>
             <span class="user-wrap">
-                    <span class="user-avatar">
-                        @if (!string.IsNullOrEmpty(Model.AuthorPictureUrl))
-                        {
-                            <img src="@Url.Content(Model.AuthorPictureUrl)" alt="@(Model.Author) avatar" />
-                        }
-                    </span>
-                    <span class="cell">
-                        <a href="" class="user-name">@Model.Author</a>
-                    </span>
+                <span class="user-avatar">
+                    @if (!string.IsNullOrEmpty(Model.AuthorPictureUrl))
+                    {
+                        <img src="@Url.Content(Model.AuthorPictureUrl)" alt="@(Model.Author) avatar" />
+                    }
                 </span>
+                <span class="cell">
+                    <a href="" class="user-name">@Model.Author</a>
+                </span>
+            </span>
             <span class="item-wrap">
-                    <span class="icon-holder">
-                        <i class="glyphicon glyphicon-calendar"></i>
-                    </span>
-                    <span class="post-date">
-                        @Model.CreatedOn
-                    </span>
+                <span class="icon-holder">
+                    <i class="glyphicon glyphicon-calendar"></i>
                 </span>
+                <span class="post-date">
+                    @Model.CreatedOn
+                </span>
+            </span>
             <span class="item-wrap category-wrap">
-                    <span class="icon-holder">
-                        <i class="glyphicon glyphicon-folder-open"></i>
-                    </span>
-                    <a href="" class="category-post">
-                        @Model.Category
-                    </a>
+                <span class="icon-holder">
+                    <i class="glyphicon glyphicon-folder-open"></i>
                 </span>
+                <a href="" class="category-post">
+                    @Model.Category
+                </a>
+            </span>
         </p>
     </div>
     <div class="meta-info">
@@ -48,23 +48,32 @@
         </div>
         <div class="cell stats-holder">
             <span class="item-wrap votes-post">
-                    <span class="icon-holder">
-                        <i class="glyphicon glyphicon-hand-right"></i>
-                    </span>
-                    <span class="cell">0</span>
+                <span class="icon-holder">
+                    <i class="glyphicon glyphicon-hand-right"></i>
                 </span>
+                <span class="cell">0</span>
+            </span>
             <span class="item-wrap">
-                    <span class="icon-holder">
-                        <i class="glyphicon glyphicon-eye-open"></i>
-                    </span>
-                    <span class="cell">0</span>
+                <span class="icon-holder">
+                    <i class="glyphicon glyphicon-eye-open"></i>
                 </span>
+                <span class="cell">0</span>
+            </span>
             <span class="item-wrap">
-                    <span class="icon-holder">
-                        <i class="glyphicon glyphicon-comment"></i>
-                    </span>
-                    <span class="cell">@Model.AnswersCount</span>
+                <span class="icon-holder">
+                    <i class="glyphicon glyphicon-comment"></i>
                 </span>
+                <span class="cell">@Model.AnswersCount</span>
+            </span>
+            @if (Model.ReportsCount > 0)
+            {
+                <span class="item-wrap">
+                    <span class="icon-holder">
+                        <i class="glyphicon glyphicon-bell"></i>
+                    </span>
+                    <span class="cell">@Model.ReportsCount</span>
+                </span>
+            }
         </div>
     </div>
 </article>
