@@ -226,6 +226,7 @@
     <Compile Include="Areas\Moderator\Controllers\PostsController.cs" />
     <Compile Include="Areas\Moderator\InputModels\Posts\PostEditModel.cs" />
     <Compile Include="Areas\Moderator\ModeratorAreaRegistration.cs" />
+    <Compile Include="Areas\Moderator\ViewModels\AnswerReports\AnswerReportViewModel.cs" />
     <Compile Include="Areas\Moderator\ViewModels\Categories\CategoryConciseViewModel.cs" />
     <Compile Include="Areas\Moderator\ViewModels\PostReports\PostReportViewModel.cs" />
     <Compile Include="Controllers\AccountController.cs" />
