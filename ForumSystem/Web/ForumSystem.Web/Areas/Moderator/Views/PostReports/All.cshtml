@@ -9,7 +9,7 @@
         <th class="col-md-1">
             @Html.DisplayNameFor(model => model.Id)
         </th>
-        <th class="col-md-2">
+        <th class="col-md-1">
             @Html.DisplayNameFor(model => model.Author)
         </th>
         <th class="col-md-3">
@@ -20,6 +20,9 @@
         </th>
         <th class="col-md-2">
             @Html.DisplayNameFor(model => model.CreatedOn)
+        </th>
+        <th class="col-md-1">
+            Actions
         </th>
     </tr>
 
@@ -40,6 +43,9 @@
             </td>
             <td>
                 @Html.DisplayFor(modelItem => item.CreatedOn)
+            </td>
+            <td>
+                <a href="@Url.Action("Delete", "PostReports", new { area = "Moderator", id = item.Id })" class="btn btn-danger btn-sm">Delete</a>
             </td>
         </tr>
     }
