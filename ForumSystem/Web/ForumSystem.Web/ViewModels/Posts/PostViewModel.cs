@@ -1,6 +1,7 @@
 ﻿namespace ForumSystem.Web.ViewModels.Posts
 {
     using System;
+    using System.Linq;
 
     using AutoMapper;
 
@@ -25,6 +26,8 @@
 
         public string Author { get; set; }
 
+        public int ReportsCount { get; set; }
+
         public DateTime CreatedOn { get; set; }
 
         public DateTime? ModifiedOn { get; set; }
@@ -37,6 +40,8 @@
                 .ForMember(p => p.Category, config => config.MapFrom(p => p.Category.Title));
             configuration.CreateMap<Post, PostViewModel>()
                 .ForMember(p => p.AuthorPictureUrl, config => config.MapFrom(p => p.Author.PictureUrl));
+            configuration.CreateMap<Post, PostViewModel>()
+                .ForMember(p => p.ReportsCount, config => config.MapFrom(p => p.Reports.Count(r => !r.IsDeleted)));
         }
     }
 }
