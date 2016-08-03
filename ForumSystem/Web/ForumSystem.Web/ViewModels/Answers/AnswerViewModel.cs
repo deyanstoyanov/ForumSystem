@@ -30,6 +30,8 @@
 
         public bool HasComments { get; set; }
 
+        public int ReportsCount { get; set; }
+
         public void CreateMappings(IMapperConfiguration configuration)
         {
             configuration.CreateMap<Answer, AnswerViewModel>()
@@ -40,6 +42,8 @@
                 .ForMember(a => a.CommentsCount, config => config.MapFrom(a => a.Comments.Count));
             configuration.CreateMap<Answer, AnswerViewModel>()
                 .ForMember(a => a.HasComments, config => config.MapFrom(a => a.Comments.Any()));
+            configuration.CreateMap<Answer, AnswerViewModel>()
+                .ForMember(a => a.ReportsCount, config => config.MapFrom(a => a.Reports.Count(r => !r.IsDeleted)));
         }
     }
 }
