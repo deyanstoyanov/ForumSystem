@@ -4,6 +4,7 @@
     using System.Net;
     using System.Web.Mvc;
 
+    using AutoMapper;
     using AutoMapper.QueryableExtensions;
 
     using ForumSystem.Data.UnitOfWork;
@@ -24,6 +25,7 @@
             return this.View(reports);
         }
 
+        [HttpGet]
         public ActionResult Delete(int? id)
         {
             if (id == null)
@@ -31,6 +33,21 @@
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
 
+            var report = this.Data.AnswerReports.GetById(id);
+            if (report == null)
+            {
+                return this.HttpNotFound();
+            }
+
+            var model = Mapper.Map<AnswerReportViewModel>(report);
+
+            return this.PartialView(model);
+        }
+
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public ActionResult Delete(int id)
+        {
             var report = this.Data.AnswerReports.GetById(id);
             if (report == null)
             {
