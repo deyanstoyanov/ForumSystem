@@ -1,8 +1,10 @@
 ﻿namespace ForumSystem.Web.Areas.Moderator.Controllers
 {
+    using System.Linq;
     using System.Net;
     using System.Web.Mvc;
 
+    using AutoMapper;
     using AutoMapper.QueryableExtensions;
 
     using ForumSystem.Data.UnitOfWork;
@@ -18,11 +20,12 @@
         [HttpGet]
         public ActionResult All()
         {
-            var reports = this.Data.PostReports.All().ProjectTo<PostReportViewModel>();
+            var reports = this.Data.PostReports.All().OrderBy(r => r.CreatedOn).ProjectTo<PostReportViewModel>();
 
             return this.View(reports);
         }
 
+        [HttpGet]
         public ActionResult Delete(int? id)
         {
             if (id == null)
@@ -30,6 +33,21 @@
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
 
+            var report = this.Data.PostReports.GetById(id);
+            if (report == null)
+            {
+                return this.HttpNotFound();
+            }
+
+            var model = Mapper.Map<PostReportViewModel>(report);
+
+            return this.PartialView(model);
+        }
+
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public ActionResult Delete(int id)
+        {
             var report = this.Data.PostReports.GetById(id);
             if (report == null)
             {
