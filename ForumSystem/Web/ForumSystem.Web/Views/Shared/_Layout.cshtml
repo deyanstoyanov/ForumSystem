@@ -1,4 +1,7 @@
 ﻿@using System
+
+@using ForumSystem.Common.Constants
+
 <!DOCTYPE html>
 <html>
 <head>
@@ -23,7 +26,28 @@
                     </div>
                     <div class="navbar-collapse collapse">
                         <ul class="nav navbar-nav">
-                            <li>@Html.ActionLink("Home", "Index", "Home")</li>
+                            <li>@Html.ActionLink("Home", "Index", "Home", new { area = string.Empty }, null)</li>
+                            @if (User.IsInRole(RoleConstants.Moderator))
+                            {
+                                <li class="dropdown">
+                                    <a href="" class="dropdown-toggle" id="moderator-menu" data-toggle="dropdown">
+                                        <i class="glyphicon glyphicon-user"></i>
+                                        Moderator
+                                        <span class="caret"></span>
+                                    </a>
+                                    <ul class="dropdown-menu" role="menu" aria-labelledby="moderator-menu">
+                                        <li class="text-center" role="presentation">
+                                            <a href="@Url.Action("All", "PostReports", new { area = "Moderator" })" role="menuitem">Posts Reports</a>
+                                        </li>
+                                        <li class="text-center" role="presentation">
+                                            <a href="@Url.Action("All", "AnswerReports", new { area = "Moderator" })" role="menuitem">Answers Reports</a>
+                                        </li>
+                                        <li class="text-center" role="presentation">
+                                            <a href="@Url.Action("All", "CommentReports", new { area = "Moderator" })" role="menuitem">Comments Reports</a>
+                                        </li>
+                                    </ul>
+                                </li>
+                            }
                         </ul>
                         @Html.Partial("_LoginPartial")
                     </div>
@@ -53,6 +77,7 @@
 
     @Scripts.Render("~/bundles/jquery")
     @Scripts.Render("~/bundles/bootstrap")
+    @Scripts.Render("~/bundles/administration-scripts")
     @RenderSection("scripts", false)
 </body>
 </html>
