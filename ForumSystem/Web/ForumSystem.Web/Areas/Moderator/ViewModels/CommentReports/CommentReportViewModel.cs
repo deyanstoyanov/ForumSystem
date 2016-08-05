@@ -21,6 +21,8 @@
 
         public string Post { get; set; }
 
+        public int AnswerId { get; set; }
+
         public int CommentId { get; set; }
 
         public DateTime CreatedOn { get; set; }
@@ -31,6 +33,8 @@
                 .ForMember(c => c.Author, config => config.MapFrom(c => c.Author.UserName));
             configuration.CreateMap<CommentReport, CommentReportViewModel>()
                 .ForMember(c => c.Post, config => config.MapFrom(c => c.Comment.Answer.Post.Title));
+            configuration.CreateMap<CommentReport, CommentReportViewModel>()
+                .ForMember(c => c.AnswerId, config => config.MapFrom(c => c.Comment.AnswerId));
         }
     }
 }
