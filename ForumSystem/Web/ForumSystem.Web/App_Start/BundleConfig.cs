@@ -18,7 +18,8 @@
                     "~/Content/bootstrap.flatly.css", 
                     "~/Content/custom/site.css", 
                     "~/Content/custom/site.common.css", 
-                    "~/Content/custom/forum.css"));
+                    "~/Content/custom/forum.css",
+                    "~/Content/MvcGrid/mvc-grid.css"));
         }
 
         private static void RegisterScripts(BundleCollection bundles)
@@ -31,6 +32,8 @@
             bundles.Add(new ScriptBundle("~/bundles/jqueryval").Include("~/Scripts/jquery.validate*"));
 
             bundles.Add(new ScriptBundle("~/bundles/bootstrap").Include("~/Scripts/bootstrap.js"));
+
+            bundles.Add(new ScriptBundle("~/bundles/administration-scripts").Include("~/Scripts/MvcGrid/mvc-grid.js"));
         }
     }
 }
