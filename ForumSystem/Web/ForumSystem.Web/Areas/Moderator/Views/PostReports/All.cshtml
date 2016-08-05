@@ -1,54 +1,40 @@
 ﻿@using System.Collections.Generic
-@model IEnumerable<ForumSystem.Web.Areas.Moderator.ViewModels.PostReports.PostReportViewModel>
+
+@using NonFactors.Mvc.Grid
+
+@using ForumSystem.Web.Areas.Moderator.ViewModels.PostReports
+
+@model IEnumerable<PostReportViewModel>
 
 @{
     ViewBag.Title = "Post Reports";
 }
 
-<table class="table-word-wrap table table-responsive table-hover table-striped">
-    <tr>
-        <th class="col-md-1">
-            @Html.DisplayNameFor(model => model.Id)
-        </th>
-        <th class="col-md-1">
-            @Html.DisplayNameFor(model => model.Author)
-        </th>
-        <th class="col-md-3">
-            @Html.DisplayNameFor(model => model.Post)
-        </th>
-        <th class="col-md-4">
-            @Html.DisplayNameFor(model => model.Description)
-        </th>
-        <th class="col-md-2">
-            @Html.DisplayNameFor(model => model.CreatedOn)
-        </th>
-        <th class="col-md-1">
-            Actions
-        </th>
-    </tr>
-
-    @foreach (var item in Model)
+@(Html
+    .Grid(Model)
+    .Build(columns =>
     {
-        <tr>
-            <td>
-                @item.Id
-            </td>
-            <td>
-                @item.Author
-            </td>
-            <td>
-                <a href="@Url.Action("Details", "Posts", new { area = string.Empty, id = item.PostId })">@item.Post</a>
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Description)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.CreatedOn)
-            </td>
-            <td>
-                <a href="@Url.Action("Delete", "PostReports", new { area = "Moderator", id = item.Id })" class="btn btn-danger btn-sm">Delete</a>
-            </td>
-        </tr>
-    }
+        columns.Add(model => model.Id).Titled("Id");
+        columns.Add(model => model.Author).Titled("Author");
+        columns.Add(model => model.Post).Titled("Post")
+            .RenderedAs(model => Html.ActionLink(model.Post, "Details", new { area = string.Empty, controller = "Posts", Id = model.PostId }));
+        columns.Add(model => model.Description).Titled("Description");
+        columns.Add(model => model.CreatedOn).Titled("CreatedOn");
+    })
+    .Pageable(pager =>
+    {
+        pager.PagesToDisplay = 3;
+        pager.RowsPerPage = 12;
+    })
+    .MultiFilterable()
+    .Filterable()
+    .Sortable()
+    .Css("table table-responsive table-bordered table-striped")
+    .Empty("No data found")
+)
 
-</table>
+@section scripts {
+    <script>
+        $('.mvc-grid').mvcgrid();
+    </script>
+}
