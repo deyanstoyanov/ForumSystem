@@ -1,5 +1,6 @@
 ﻿namespace ForumSystem.Web.Areas.Moderator.Controllers
 {
+    using System.Linq;
     using System.Net;
     using System.Web.Mvc;
 
@@ -18,7 +19,7 @@
         [HttpGet]
         public ActionResult All()
         {
-            var reports = this.Data.AnswerReports.All().ProjectTo<AnswerReportViewModel>();
+            var reports = this.Data.AnswerReports.All().OrderBy(r => r.CreatedOn).ProjectTo<AnswerReportViewModel>();
 
             return this.View(reports);
         }
