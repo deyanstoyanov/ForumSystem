@@ -20,6 +20,11 @@
             .RenderedAs(model => Html.ActionLink(model.Post, "Details", new { area = string.Empty, controller = "Answers", Id = model.AnswerId }));
         columns.Add(model => model.Description).Titled("Description");
         columns.Add(model => model.CreatedOn).Titled("CreatedOn");
+        columns.Add(model => model.Id)
+            .Encoded(false)
+            .Filterable(false)
+            .Sortable(false)
+            .RenderedAs(model => Html.Action("Delete", "CommentReports", new { area = "Moderator", id = model.Id }));
     })
     .Pageable(pager =>
     {
