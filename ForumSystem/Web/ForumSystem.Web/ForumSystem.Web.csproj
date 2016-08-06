@@ -224,6 +224,7 @@
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="App_Start\SmsService.cs" />
     <Compile Include="App_Start\Startup.Auth.cs" />
+    <Compile Include="Areas\Administration\AdministrationAreaRegistration.cs" />
     <Compile Include="Areas\Moderator\Controllers\AnswerReportsController.cs" />
     <Compile Include="Areas\Moderator\Controllers\CommentReportsController.cs" />
     <Compile Include="Areas\Moderator\Controllers\ModeratorController.cs" />
@@ -325,6 +326,7 @@
     <Content Include="Areas\Moderator\Views\PostReports\Delete.cshtml" />
     <Content Include="Areas\Moderator\Views\AnswerReports\Delete.cshtml" />
     <Content Include="Areas\Moderator\Views\CommentReports\Delete.cshtml" />
+    <Content Include="Areas\Administration\Views\web.config" />
     <None Include="Scripts\jquery-3.1.0.intellisense.js" />
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\bootstrap.min.js" />
@@ -631,6 +633,10 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
+    <Folder Include="Areas\Administration\Controllers\" />
+    <Folder Include="Areas\Administration\InputModels\" />
+    <Folder Include="Areas\Administration\ViewModels\" />
+    <Folder Include="Areas\Administration\Views\Shared\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="packages.config">
