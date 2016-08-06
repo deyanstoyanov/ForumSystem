@@ -225,6 +225,7 @@
     <Compile Include="App_Start\SmsService.cs" />
     <Compile Include="App_Start\Startup.Auth.cs" />
     <Compile Include="Areas\Administration\AdministrationAreaRegistration.cs" />
+    <Compile Include="Areas\Administration\Controllers\AdministrationController.cs" />
     <Compile Include="Areas\Moderator\Controllers\AnswerReportsController.cs" />
     <Compile Include="Areas\Moderator\Controllers\CommentReportsController.cs" />
     <Compile Include="Areas\Moderator\Controllers\ModeratorController.cs" />
@@ -633,7 +634,6 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
-    <Folder Include="Areas\Administration\Controllers\" />
     <Folder Include="Areas\Administration\InputModels\" />
     <Folder Include="Areas\Administration\ViewModels\" />
     <Folder Include="Areas\Administration\Views\Shared\" />
