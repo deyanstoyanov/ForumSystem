@@ -11,6 +11,6 @@
     <span>New Post</span>
 </a>
 
-@Html.Partial("_PostDetailPartial", Model);
+@Html.Partial("_PostDetailPartial", Model)
 
 @Html.Action("Answers", "Posts", new { area = string.Empty, id = Model.Id })
