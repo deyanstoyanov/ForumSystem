@@ -1,6 +1,7 @@
 ﻿namespace ForumSystem.Web.ViewModels.Sections
 {
     using System.Collections.Generic;
+    using System.Linq;
 
     using AutoMapper;
 
@@ -19,7 +20,7 @@
         public void CreateMappings(IMapperConfiguration configuration)
         {
             configuration.CreateMap<Section, SectionViewModel>()
-                .ForMember(s => s.Categories, config => config.MapFrom(s => s.Categories));
+                .ForMember(s => s.Categories, config => config.MapFrom(s => s.Categories.Where(c => !c.IsDeleted)));
         }
     }
 }
