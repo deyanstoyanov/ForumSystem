@@ -1,6 +1,7 @@
 ﻿namespace ForumSystem.Web.Areas.Administration.Controllers
 {
     using System.Linq;
+    using System.Net;
     using System.Web.Mvc;
 
     using AutoMapper.QueryableExtensions;
@@ -49,6 +50,44 @@
             }
 
             return this.View(input);
+        }
+
+        [HttpGet]
+        public ActionResult Edit(int? id)
+        {
+            if (id == null)
+            {
+                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+            }
+
+            var section = this.Data.Sections.GetById(id);
+            if (section == null)
+            {
+                return this.HttpNotFound();
+            }
+
+            var model = new SectionEditModel { Id = section.Id, Title = section.Title };
+
+            return this.View(model);
+        }
+
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public ActionResult Edit(SectionEditModel model)
+        {
+            if (model != null && this.ModelState.IsValid)
+            {
+                var section = this.Data.Sections.GetById(model.Id);
+
+                section.Title = model.Title;
+
+                this.Data.Sections.Update(section);
+                this.Data.SaveChanges();
+
+                return this.RedirectToAction("All");
+            }
+
+            return this.View(model);
         }
     }
 }
