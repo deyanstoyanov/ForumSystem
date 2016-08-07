@@ -4,6 +4,7 @@
     using System.Net;
     using System.Web.Mvc;
 
+    using AutoMapper;
     using AutoMapper.QueryableExtensions;
 
     using ForumSystem.Data.Models;
@@ -88,6 +89,41 @@
             }
 
             return this.View(model);
+        }
+
+        [HttpGet]
+        public ActionResult Delete(int? id)
+        {
+            if (id == null)
+            {
+                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+            }
+
+            var section = this.Data.Sections.GetById(id);
+            if (section == null)
+            {
+                return this.HttpNotFound();
+            }
+
+            var model = Mapper.Map<SectionConciseViewModel>(section);
+
+            return this.PartialView(model);
+        }
+
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public ActionResult Delete(int id)
+        {
+            var section = this.Data.Sections.GetById(id);
+            if (section == null)
+            {
+                return this.HttpNotFound();
+            }
+
+            this.Data.Sections.Delete(id);
+            this.Data.SaveChanges();
+
+            return this.RedirectToAction("All");
         }
     }
 }
