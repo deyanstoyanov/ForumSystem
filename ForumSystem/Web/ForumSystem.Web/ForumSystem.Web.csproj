@@ -343,6 +343,7 @@
     <Content Include="Areas\Administration\Views\Categories\Delete.cshtml" />
     <Content Include="Areas\Administration\Views\Categories\Edit.cshtml" />
     <Content Include="Areas\Administration\Views\Sections\All.cshtml" />
+    <Content Include="Areas\Administration\Views\Sections\Create.cshtml" />
     <None Include="Scripts\jquery-3.1.0.intellisense.js" />
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\bootstrap.min.js" />

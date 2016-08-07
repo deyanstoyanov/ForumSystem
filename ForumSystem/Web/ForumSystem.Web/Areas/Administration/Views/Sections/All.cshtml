@@ -8,6 +8,11 @@
     ViewBag.Title = "Sections";
 }
 
+<a href="@Url.Action("Create", "Sections", new { area = "Administration" })" class="btn btn-success btn-sm bottom-buffer top-buffer">
+    <i class="glyphicon glyphicon-plus"></i>
+    New Section
+</a>
+
 @(Html
     .Grid(Model)
     .Build(columns =>
