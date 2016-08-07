@@ -7,6 +7,7 @@
 
     using ForumSystem.Data.Models;
     using ForumSystem.Data.UnitOfWork;
+    using ForumSystem.Web.Infrastructure.Extensions;
     using ForumSystem.Web.ViewModels.Account;
 
     using Microsoft.AspNet.Identity;
@@ -378,7 +379,7 @@
             ExternalLoginConfirmationViewModel model, 
             string returnUrl)
         {
-            if (this.User.Identity.IsAuthenticated)
+            if (this.User.IsLoggedIn())
             {
                 return this.RedirectToAction("Index", "Manage");
             }

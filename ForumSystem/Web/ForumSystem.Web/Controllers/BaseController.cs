@@ -8,6 +8,7 @@
     using ForumSystem.Data.Models;
     using ForumSystem.Data.UnitOfWork;
     using ForumSystem.Web.Infrastructure.ActionResults;
+    using ForumSystem.Web.Infrastructure.Extensions;
 
     using Microsoft.AspNet.Identity;
 
@@ -33,7 +34,7 @@
             AsyncCallback callback, 
             object state)
         {
-            if (requestContext.HttpContext.User.Identity.IsAuthenticated)
+            if (requestContext.HttpContext.User.IsLoggedIn())
             {
                 var username = requestContext.HttpContext.User.Identity.GetUserName();
                 var user = this.Data.Users.All().FirstOrDefault(u => u.UserName == username);

@@ -1,4 +1,4 @@
-﻿@using ForumSystem.Common.Constants
+﻿@using ForumSystem.Web.Infrastructure.Extensions
 @using Microsoft.AspNet.Identity
 @model ForumSystem.Web.ViewModels.Posts.PostViewModel
 
@@ -28,7 +28,7 @@
         </div>
         <div class="meta-info table-holder meta-details">
 
-            @if (User.Identity.IsAuthenticated)
+            @if (User.IsLoggedIn())
             {
                 <div class="cell buttons-holder vote-holder">
                     <div class="mobile-arrow-btn">
@@ -102,7 +102,7 @@
             </div>
         </div>
 
-        @if (User.Identity.IsAuthenticated)
+        @if (User.IsLoggedIn())
         {
             <div class="meta-info table-holder meta-details post-actions-toolbar">
                 <div class="cell buttons-holder">
@@ -121,7 +121,7 @@
                                 </a>
                             }
 
-                            @if (User.IsInRole(RoleConstants.Moderator))
+                            @if (User.IsModerator())
                             {
                                 <a href="@Url.Action("Edit", "Posts", new { area = "Moderator", id = Model.Id })" class="btn btn-warning">
                                     Edit

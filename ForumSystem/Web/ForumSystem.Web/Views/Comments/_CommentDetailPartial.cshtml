@@ -1,4 +1,4 @@
-﻿@using ForumSystem.Common.Constants
+﻿@using ForumSystem.Web.Infrastructure.Extensions
 @using Microsoft.AspNet.Identity
 @model ForumSystem.Web.ViewModels.Comments.CommentViewModel
 
@@ -24,7 +24,7 @@
         </div>
         <div class="meta-info table-holder meta-details">
 
-            @if (User.Identity.IsAuthenticated)
+            @if (User.IsLoggedIn())
             {
                 <div class="cell buttons-holder vote-holder">
                     <div class="mobile-arrow-btn">
@@ -90,7 +90,7 @@
             </div>
         </div>
 
-        @if (User.Identity.IsAuthenticated)
+        @if (User.IsLoggedIn())
         {
             <div class="meta-info table-holder meta-details post-actions-toolbar">
                 <div class="cell buttons-holder">
@@ -102,7 +102,7 @@
                                                    InsertionMode = InsertionMode.Replace,
                                                    UpdateTargetId = $"answer-action-container-{Model.AnswerId}"
                                                }, new { @class = "btn btn-primary" })
-                            @if (User.Identity.GetUserId() == Model.AuthorId || User.IsInRole(RoleConstants.Moderator))
+                            @if (User.Identity.GetUserId() == Model.AuthorId || User.IsModerator())
                             {
                                 @Ajax.ActionLink("Edit", "Edit", "Comments", new { area = string.Empty, id = Model.Id }, new AjaxOptions
                                                    {
