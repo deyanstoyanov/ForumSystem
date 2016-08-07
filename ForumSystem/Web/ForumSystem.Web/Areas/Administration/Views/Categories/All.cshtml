@@ -32,6 +32,11 @@
         columns.Add(model => model.CreatedOn).Titled("CreatedOn");
         columns.Add(model => model.ModifiedOn).Titled("ModifiedOn");
         columns.Add(model => model.Id)
+         .Encoded(false)
+         .Filterable(false)
+         .Sortable(false)
+         .RenderedAs(model => Html.ActionLink("Edit", "Edit", new { area = "Administration", controller = "Categories", id = model.Id }, new { @class = "btn btn-primary btn-sm" }));
+        columns.Add(model => model.Id)
             .Encoded(false)
             .Filterable(false)
             .Sortable(false)

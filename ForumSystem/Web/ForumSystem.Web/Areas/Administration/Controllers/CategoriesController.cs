@@ -97,5 +97,53 @@
 
             return this.RedirectToAction("All");
         }
+
+        [HttpGet]
+        public ActionResult Edit(int? id)
+        {
+            if (id == null)
+            {
+                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+            }
+
+            var category = this.Data.Categories.GetById(id);
+            if (category == null)
+            {
+                return this.HttpNotFound();
+            }
+
+            var sections = this.Data.Sections.All().ProjectTo<SectionConciseViewModel>();
+            var model = new CategoryEditModel
+                            {
+                                Id = category.Id, 
+                                Title = category.Title, 
+                                Description = category.Description, 
+                                SectionId = category.SectionId, 
+                                Sections = new SelectList(sections, "Id", "Title", category.SectionId)
+                            };
+
+            return this.View(model);
+        }
+
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public ActionResult Edit(CategoryEditModel model)
+        {
+            if (model != null && this.ModelState.IsValid)
+            {
+                var category = this.Data.Categories.GetById(model.Id);
+
+                category.Title = model.Title;
+                category.Description = model.Description;
+                category.SectionId = model.SectionId;
+
+                this.Data.Categories.Update(category);
+                this.Data.SaveChanges();
+
+                return this.RedirectToAction("All");
+            }
+
+            return this.View(model);
+        }
     }
 }
