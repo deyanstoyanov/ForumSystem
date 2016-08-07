@@ -121,7 +121,7 @@
                                 </a>
                             }
 
-                            @if (User.IsModerator())
+                            @if (User.IsModerator() || User.IsAdmin())
                             {
                                 <a href="@Url.Action("Edit", "Posts", new { area = "Moderator", id = Model.Id })" class="btn btn-warning">
                                     Edit

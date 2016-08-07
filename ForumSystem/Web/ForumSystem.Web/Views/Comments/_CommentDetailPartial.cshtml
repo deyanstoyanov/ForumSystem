@@ -102,7 +102,7 @@
                                                    InsertionMode = InsertionMode.Replace,
                                                    UpdateTargetId = $"answer-action-container-{Model.AnswerId}"
                                                }, new { @class = "btn btn-primary" })
-                            @if (User.Identity.GetUserId() == Model.AuthorId || User.IsModerator())
+                            @if (User.Identity.GetUserId() == Model.AuthorId || User.IsModerator() || User.IsAdmin())
                             {
                                 @Ajax.ActionLink("Edit", "Edit", "Comments", new { area = string.Empty, id = Model.Id }, new AjaxOptions
                                                    {

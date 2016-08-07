@@ -1,13 +1,12 @@
 ﻿namespace ForumSystem.Web.Areas.Moderator.Controllers
 {
-    using System.Web.Mvc;
-
     using ForumSystem.Common.Constants;
     using ForumSystem.Data.Models;
     using ForumSystem.Data.UnitOfWork;
     using ForumSystem.Web.Controllers;
+    using ForumSystem.Web.Infrastructure.Attributes;
 
-    [Authorize(Roles = RoleConstants.Moderator)]
+    [AuthorizeRoles(RoleConstants.Moderator, RoleConstants.Administrator)]
     public class ModeratorController : BaseController
     {
         protected ModeratorController(IForumSystemData data)

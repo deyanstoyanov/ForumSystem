@@ -107,7 +107,7 @@
                 return this.HttpNotFound();
             }
 
-            if (answer.AuthorId != userId && !this.User.IsModerator())
+            if (answer.AuthorId != userId && !this.User.IsModerator() && !this.User.IsAdmin())
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
@@ -127,7 +127,7 @@
                 var userId = this.User.Identity.GetUserId();
                 var answer = this.Data.Answers.GetById(model.Id);
 
-                if (answer.AuthorId != userId && !this.User.IsModerator())
+                if (answer.AuthorId != userId && !this.User.IsModerator() && !this.User.IsAdmin())
                 {
                     return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
                 }
