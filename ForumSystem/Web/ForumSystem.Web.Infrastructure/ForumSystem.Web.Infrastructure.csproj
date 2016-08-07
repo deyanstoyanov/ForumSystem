@@ -54,6 +54,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="ActionResults\StandardJsonResult.cs" />
+    <Compile Include="Attributes\AuthorizeRolesAttribute.cs" />
     <Compile Include="Extensions\PrincipalExtensions.cs" />
     <Compile Include="Mapping\AutoMapperConfig.cs" />
     <Compile Include="Mapping\IHaveCustomMappings.cs" />
