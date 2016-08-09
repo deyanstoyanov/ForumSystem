@@ -1,0 +1,40 @@
+﻿@using System.Collections.Generic
+
+@using NonFactors.Mvc.Grid
+
+@model IEnumerable<ForumSystem.Web.Areas.Administration.ViewModels.Users.UserViewModel>
+
+@(Html
+    .Grid(Model)
+    .Build(columns =>
+    {
+        columns.Add(model => model.Id).Titled("Id");
+        columns.Add(model => model.UserName).Titled("UserName");
+        columns.Add(model => model.Email).Titled("Email");
+        columns.Add(model => model.PostsCount).Titled("Posts");
+        columns.Add(model => model.AnswersCount).Titled("Answers");
+        columns.Add(model => model.CommentsCount).Titled("Comments");
+        columns.Add(model => model.IsDeleted).Titled("Deleted?")
+            .Encoded(false)
+            .RenderedAs(model => model.IsDeleted ? "<span class='label label-success'>Yes</span>" : "<span class='label label-default'>No</span>");
+        columns.Add(model => model.DeletedOn).Titled("DeletedOn");
+        columns.Add(model => model.CreatedOn).Titled("CreatedOn");
+        columns.Add(model => model.ModifiedOn).Titled("ModifiedOn");
+    })
+    .Pageable(pager =>
+    {
+        pager.PagesToDisplay = 3;
+        pager.RowsPerPage = 10;
+    })
+    .MultiFilterable()
+    .Filterable()
+    .Sortable()
+    .Css("table table-responsive table-bordered table-striped")
+    .Empty("No data found")
+)
+
+@section scripts {
+    <script>
+        $('.mvc-grid').mvcgrid();
+    </script>
+}

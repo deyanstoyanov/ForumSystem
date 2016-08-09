@@ -37,7 +37,7 @@
 
         public int CommentsCount { get; set; }
 
-        public IEnumerable<IdentityUserRole> Roles { get; }
+        //public IEnumerable<IdentityUserRole> Roles { get; set; }
 
         public void CreateMappings(IMapperConfiguration configuration)
         {
@@ -47,8 +47,8 @@
                 .ForMember(u => u.AnswersCount, config => config.MapFrom(u => u.Answers.Count(a => !a.IsDeleted)));
             configuration.CreateMap<ApplicationUser, UserViewModel>()
                 .ForMember(u => u.CommentsCount, config => config.MapFrom(u => u.Comments.Count(c => !c.IsDeleted)));
-            configuration.CreateMap<ApplicationUser, UserViewModel>()
-                .ForMember(u => u.Roles, config => config.MapFrom(u => u.Roles));
+            //configuration.CreateMap<ApplicationUser, UserViewModel>()
+            //    .ForMember(u => u.Roles, config => config.MapFrom(u => u.Roles));
         }
     }
 }
