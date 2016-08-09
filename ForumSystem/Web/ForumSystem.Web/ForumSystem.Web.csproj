@@ -228,6 +228,7 @@
     <Compile Include="Areas\Administration\Controllers\AdministrationController.cs" />
     <Compile Include="Areas\Administration\Controllers\CategoriesController.cs" />
     <Compile Include="Areas\Administration\Controllers\SectionsController.cs" />
+    <Compile Include="Areas\Administration\Controllers\UsersController.cs" />
     <Compile Include="Areas\Administration\InputModels\Categories\CategoryEditModel.cs" />
     <Compile Include="Areas\Administration\InputModels\Categories\CategoryInputModel.cs" />
     <Compile Include="Areas\Administration\InputModels\Sections\SectionEditModel.cs" />
