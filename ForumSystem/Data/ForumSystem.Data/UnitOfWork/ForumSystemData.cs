@@ -48,6 +48,8 @@
 
         public IDeletableEntityRepository<PostLike> PostLikes => this.GetRepository<PostLike>();
 
+        public IDeletableEntityRepository<AnswerLike> AnswerLikes => this.GetRepository<AnswerLike>();
+
         public void SaveChanges()
         {
             this.dbContext.SaveChanges();
