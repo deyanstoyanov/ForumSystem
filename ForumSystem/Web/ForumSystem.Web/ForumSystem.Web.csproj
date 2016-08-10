@@ -271,6 +271,7 @@
     <Compile Include="InputModels\CommentReports\CommentReportInputModel.cs" />
     <Compile Include="InputModels\Comments\CommentEditModel.cs" />
     <Compile Include="InputModels\Comments\CommentInputModel.cs" />
+    <Compile Include="InputModels\PostLikes\PostLikeInputModel.cs" />
     <Compile Include="InputModels\PostReports\PostReportInputModel.cs" />
     <Compile Include="InputModels\Posts\PostEditModel.cs" />
     <Compile Include="InputModels\Posts\PostInputModel.cs" />
