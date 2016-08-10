@@ -266,6 +266,7 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
+    <Compile Include="InputModels\AnswerLikes\AnswerLikeInputModel.cs" />
     <Compile Include="InputModels\AnswerReports\AnswerReportInputModel.cs" />
     <Compile Include="InputModels\Answers\AnswerEditModel.cs" />
     <Compile Include="InputModels\Answers\AnswerInputModel.cs" />
