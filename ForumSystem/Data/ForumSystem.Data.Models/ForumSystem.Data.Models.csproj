@@ -66,6 +66,7 @@
     <Compile Include="ApplicationUser.cs" />
     <Compile Include="Category.cs" />
     <Compile Include="Comment.cs" />
+    <Compile Include="CommentLike.cs" />
     <Compile Include="CommentReport.cs" />
     <Compile Include="Like.cs" />
     <Compile Include="Post.cs" />

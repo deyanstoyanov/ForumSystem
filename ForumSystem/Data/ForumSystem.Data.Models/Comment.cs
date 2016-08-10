@@ -11,6 +11,7 @@
         public Comment()
         {
             this.Reports = new HashSet<CommentReport>();
+            this.Likes = new HashSet<CommentLike>();
         }
 
         [Key]
@@ -34,5 +35,6 @@
 
         public virtual ICollection<CommentReport> Reports { get; set; }
 
+        public virtual ICollection<CommentLike> Likes { get; set; }
     }
 }

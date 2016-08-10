@@ -36,6 +36,8 @@
 
         public virtual IDbSet<AnswerLike> AnswerLikes { get; set; }
 
+        public virtual IDbSet<CommentLike> CommentLikes { get; set; }
+
         public static ApplicationDbContext Create()
         {
             return new ApplicationDbContext();

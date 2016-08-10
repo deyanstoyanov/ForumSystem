@@ -27,6 +27,8 @@
 
         IDeletableEntityRepository<AnswerLike> AnswerLikes { get; }
 
+        IDeletableEntityRepository<CommentLike> CommentLikes { get; }
+
         void SaveChanges();
     }
 }
