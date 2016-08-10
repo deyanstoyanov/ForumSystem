@@ -13,6 +13,7 @@
         {
             this.Answers = new HashSet<Answer>();
             this.Reports = new HashSet<PostReport>();
+            this.Likes = new HashSet<PostLike>();
         }
 
         [Key]
@@ -43,5 +44,7 @@
         public virtual ICollection<Answer> Answers { get; set; }
 
         public virtual ICollection<PostReport> Reports { get; set; }
+
+        public virtual ICollection<PostLike> Likes { get; set; }
     }
 }

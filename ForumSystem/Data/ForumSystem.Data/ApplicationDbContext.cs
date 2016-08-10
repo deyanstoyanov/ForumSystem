@@ -32,6 +32,8 @@
 
         public virtual IDbSet<CommentReport> CommentReports { get; set; }
 
+        public virtual IDbSet<PostLike> PostLikes { get; set; }
+
         public static ApplicationDbContext Create()
         {
             return new ApplicationDbContext();
