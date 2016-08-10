@@ -36,6 +36,8 @@
 
         public int ReportsCount { get; set; }
 
+        public int LikesCount { get; set; }
+
         public IEnumerable<CommentViewModel> Comments { get; set; }
 
         public void CreateMappings(IMapperConfiguration configuration)
@@ -54,6 +56,8 @@
                 .ForMember(a => a.Post, config => config.MapFrom(a => a.Post.Title));
             configuration.CreateMap<Answer, AnswerViewModel>()
                 .ForMember(a => a.Comments, config => config.MapFrom(a => a.Comments));
+            configuration.CreateMap<Answer, AnswerViewModel>()
+                .ForMember(a => a.LikesCount, config => config.MapFrom(a => a.Likes.Count(l => !l.IsDeleted)));
         }
     }
 }

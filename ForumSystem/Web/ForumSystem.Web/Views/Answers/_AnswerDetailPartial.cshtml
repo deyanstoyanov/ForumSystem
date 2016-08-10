@@ -27,16 +27,7 @@
             @if (User.IsLoggedIn())
             {
                 <div class="cell buttons-holder vote-holder">
-                    <div class="mobile-arrow-btn">
-                        <button class="vote-btn arrow-btn up-btn">
-                            <i class="glyphicon glyphicon-chevron-up"></i>
-                        </button>
-                    </div>
-                    <div class="mobile-arrow-btn">
-                        <button class="vote-btn arrow-btn down-btn">
-                            <i class="glyphicon glyphicon-chevron-down"></i>
-                        </button>
-                    </div>
+                    @Html.Action("Like", "AnswerLikes", new { area = string.Empty, id = Model.Id })
                 </div>
             }
 
@@ -45,9 +36,9 @@
                     <div class="cell">
                         <span class="item-wrap votes-post">
                             <span class="icon-holder">
-                                <i class="glyphicon glyphicon-hand-right"></i>
+                                <i class="glyphicon glyphicon-thumbs-up"></i>
                             </span>
-                            <span class="cell">0</span>
+                            <span class="cell" id="answer-likes-count-@Model.Id">@Model.LikesCount</span>
                         </span>
                     </div>
                 </div>
@@ -97,11 +88,11 @@
                     <div class="table-holder">
                         <div class="cell">
                             @Ajax.ActionLink("Comment", "Create", "Comments", new { area = string.Empty, id = Model.Id }, new AjaxOptions
-                                               {
-                                                   HttpMethod = "GET",
-                                                   InsertionMode = InsertionMode.Replace,
-                                                   UpdateTargetId = $"answer-action-container-{Model.Id}"
-                                               }, new { @class = "btn btn-primary" })
+                                                {
+                                                    HttpMethod = "GET",
+                                                    InsertionMode = InsertionMode.Replace,
+                                                    UpdateTargetId = $"answer-action-container-{Model.Id}"
+                                                }, new { @class = "btn btn-primary" })
                             @if (User.Identity.GetUserId() == Model.AuthorId || User.IsModerator() || User.IsAdmin())
                             {
                                 @Ajax.ActionLink("Edit", "Edit", "Answers", new { area = string.Empty, id = Model.Id }, new AjaxOptions

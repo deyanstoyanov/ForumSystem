@@ -1,0 +1,17 @@
+﻿@model ForumSystem.Web.InputModels.AnswerLikes.AnswerLikeInputModel
+
+@using (Ajax.BeginForm("Like", "AnswerLikes", new { area = string.Empty, id = Model.AnswerId }, new AjaxOptions
+                        {
+                            HttpMethod = "POST",
+                            InsertionMode = InsertionMode.Replace,
+                            UpdateTargetId = $"answer-likes-count-{Model.AnswerId}"
+                        }))
+{
+    @Html.AntiForgeryToken()
+    @Html.HiddenFor(model => model.AnswerId)
+
+    <button type="submit" class="like-btn thumbs-btn">
+        <i class="glyphicon glyphicon-thumbs-up"></i>
+        Like
+    </button>
+}
