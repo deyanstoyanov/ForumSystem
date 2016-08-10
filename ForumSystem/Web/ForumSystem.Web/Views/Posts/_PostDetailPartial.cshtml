@@ -30,17 +30,8 @@
 
             @if (User.IsLoggedIn())
             {
-                <div class="cell buttons-holder vote-holder">
-                    <div class="mobile-arrow-btn">
-                        <button class="vote-btn arrow-btn up-btn">
-                            <i class="glyphicon glyphicon-chevron-up"></i>
-                        </button>
-                    </div>
-                    <div class="mobile-arrow-btn">
-                        <button class="vote-btn arrow-btn down-btn">
-                            <i class="glyphicon glyphicon-chevron-down"></i>
-                        </button>
-                    </div>
+                <div class="cell buttons-holder pending-vote vote-holder">
+                    @Html.Action("Like", "PostLikes", new { area = string.Empty, id = Model.Id })
                 </div>
             }
 
@@ -51,7 +42,7 @@
                             <span class="icon-holder">
                                 <i class="glyphicon glyphicon-hand-right"></i>
                             </span>
-                            <span class="cell">0</span>
+                            <span class="cell" id="post-likes-count-@Model.Id">@Model.LikesCount</span>
                         </span>
                     </div>
                 </div>

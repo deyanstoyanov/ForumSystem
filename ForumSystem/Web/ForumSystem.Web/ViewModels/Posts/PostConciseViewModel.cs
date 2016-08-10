@@ -28,6 +28,8 @@
 
         public int ReportsCount { get; set; }
 
+        public int LikesCount { get; set; }
+
         public void CreateMappings(IMapperConfiguration configuration)
         {
             configuration.CreateMap<Post, PostConciseViewModel>()
@@ -40,6 +42,8 @@
                 .ForMember(p => p.AuthorPictureUrl, config => config.MapFrom(p => p.Author.PictureUrl));
             configuration.CreateMap<Post, PostConciseViewModel>()
                 .ForMember(p => p.ReportsCount, config => config.MapFrom(p => p.Reports.Count(r => !r.IsDeleted)));
+            configuration.CreateMap<Post, PostConciseViewModel>()
+                .ForMember(p => p.LikesCount, config => config.MapFrom(p => p.Likes.Count(l => !l.IsDeleted)));
         }
     }
 }

@@ -28,6 +28,8 @@
 
         public int ReportsCount { get; set; }
 
+        public int LikesCount { get; set; }
+
         public DateTime CreatedOn { get; set; }
 
         public DateTime? ModifiedOn { get; set; }
@@ -42,6 +44,8 @@
                 .ForMember(p => p.AuthorPictureUrl, config => config.MapFrom(p => p.Author.PictureUrl));
             configuration.CreateMap<Post, PostViewModel>()
                 .ForMember(p => p.ReportsCount, config => config.MapFrom(p => p.Reports.Count(r => !r.IsDeleted)));
+            configuration.CreateMap<Post, PostViewModel>()
+               .ForMember(p => p.LikesCount, config => config.MapFrom(p => p.Likes.Count(l => !l.IsDeleted)));
         }
     }
 }

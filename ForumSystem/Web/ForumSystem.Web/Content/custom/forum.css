@@ -210,7 +210,7 @@
     }
 }
 
-.forum-post .arrow-btn {
+.forum-post .thumbs-btn i {
     font-size: 20px;
 }
 
@@ -339,31 +339,31 @@
     }
 
     .forum-post .meta-info .buttons-holder {
-        padding: 0 19px;
+        padding: 0 12px;
         border-right: 1px solid #ccc;
         font-family: "LatoBlack", "Arial", "Helvetica", sans-serif;
     }
 
-    .forum-post .meta-info .vote-btn {
+    .forum-post .meta-info .like-btn {
         padding: 0;
         background-color: transparent;
         border: none;
     }
 
-        .forum-post .meta-info .vote-btn:focus {
+        .forum-post .meta-info .like-btn:focus {
             outline: none;
         }
 
-    .forum-post .meta-info .arrow-btn {
+    .forum-post .meta-info .thumbs-btn {
         color: #999;
         transition: all .2s ease;
     }
 
-        .forum-post .meta-info .arrow-btn.active {
+        .forum-post .meta-info .thumbs-btn.active {
             color: #2c3e50;
         }
 
-        .forum-post .meta-info .arrow-btn:hover {
+        .forum-post .meta-info .thumbs-btn:hover {
             color: #18bc9c;
         }
 
@@ -372,18 +372,12 @@
         padding: 0 10px;
     }
 
-    .forum-post .meta-info .up-btn i {
+    .forum-post .meta-info .thumbs-btn i {
         vertical-align: bottom;
     }
 
-    .forum-post .meta-info .down-btn i {
-        vertical-align: top;
-    }
-
-    .forum-post .meta-info .up-btn,
-    .forum-post .meta-info .down-btn {
+    .forum-post .meta-info .thumbs-btn {
         text-align: center;
-        display: block;
     }
 
     .forum-post .meta-info.meta-details {
@@ -410,14 +404,6 @@
             text-align: center;
             border-right: 1px solid #ccc;
         }
-
-            .forum-post .meta-info.meta-details .vote-holder .mobile-arrow-btn {
-                display: inline-block;
-            }
-
-                .forum-post .meta-info.meta-details .vote-holder .mobile-arrow-btn i {
-                    padding: 4px 0;
-                }
 
 @media only screen and (min-width: 992px) and (max-width: 1199px) {
     .forum-post .meta-info.meta-details .stats-holder {
