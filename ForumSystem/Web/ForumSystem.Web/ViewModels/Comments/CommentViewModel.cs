@@ -28,6 +28,8 @@
 
         public DateTime? ModifiedOn { get; set; }
 
+        public int LikesCount { get; set; }
+
         public void CreateMappings(IMapperConfiguration configuration)
         {
             configuration.CreateMap<Comment, CommentViewModel>()
@@ -36,6 +38,8 @@
                 .ForMember(c => c.AuthorPictureUrl, config => config.MapFrom(c => c.Author.PictureUrl));
             configuration.CreateMap<Comment, CommentViewModel>()
                 .ForMember(c => c.ReportsCount, config => config.MapFrom(c => c.Reports.Count(r => !r.IsDeleted)));
+            configuration.CreateMap<Comment, CommentViewModel>()
+                .ForMember(c => c.LikesCount, config => config.MapFrom(c => c.Likes.Count(l => !l.IsDeleted)));
         }
     }
 }

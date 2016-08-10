@@ -661,6 +661,7 @@
     <Content Include="Views\Shared\MvcGrid\_AjaxGrid.cshtml" />
     <Content Include="Views\PostLikes\Like.cshtml" />
     <Content Include="Views\AnswerLikes\Like.cshtml" />
+    <Content Include="Views\CommentLikes\Like.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
