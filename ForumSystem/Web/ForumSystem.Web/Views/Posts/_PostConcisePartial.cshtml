@@ -49,7 +49,7 @@
         <div class="cell stats-holder">
             <span class="item-wrap votes-post">
                 <span class="icon-holder">
-                    <i class="glyphicon glyphicon-hand-right"></i>
+                    <i class="glyphicon glyphicon-thumbs-up"></i>
                 </span>
                 <span class="cell" id="post-likes-count-@Model.Id">@Model.LikesCount</span>
             </span>
@@ -75,5 +75,6 @@
                 </span>
             }
         </div>
+       @Html.Action("Post", "LastActivities", new { area = string.Empty, id = Model.Id })
     </div>
 </article>

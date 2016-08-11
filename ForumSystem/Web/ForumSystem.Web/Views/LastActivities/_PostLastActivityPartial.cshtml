@@ -1,0 +1,13 @@
+﻿@model ForumSystem.Web.ViewModels.LastActivities.PostLastActivityViewModel
+
+<div class="cell last-replay">
+    <div class="table-holder">
+        <div class=".last-replay-inner cell">
+            <a href="@Url.Action("Details", "Answers", new { area = string.Empty, id = Model.AnswerId })">
+                Last activity:
+            </a>
+            <a href="" class="user-name">@Model.Author</a>
+            <span class="replay-date">@Model.CreatedOn</span>
+        </div>
+    </div>
+</div>
