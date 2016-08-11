@@ -19,6 +19,7 @@
         }
 
         [HttpGet]
+        [ChildActionOnly]
         public ActionResult Like(int? id)
         {
             if (id == null)
@@ -30,6 +31,12 @@
             if (post == null || post.IsDeleted)
             {
                 return this.HttpNotFound();
+            }
+
+            var userId = this.User.Identity.GetUserId();
+            if (post.AuthorId == userId)
+            {
+                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
 
             var model = new PostLikeInputModel { PostId = post.Id };

@@ -28,7 +28,7 @@
         </div>
         <div class="meta-info table-holder meta-details">
 
-            @if (User.IsLoggedIn())
+            @if (User.IsLoggedIn() && User.Identity.GetUserId() != Model.AuthorId)
             {
                 <div class="cell buttons-holder pending-vote vote-holder">
                     @Html.Action("Like", "PostLikes", new { area = string.Empty, id = Model.Id })

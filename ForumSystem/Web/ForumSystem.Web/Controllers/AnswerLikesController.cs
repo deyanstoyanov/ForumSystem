@@ -19,6 +19,7 @@
         }
 
         [HttpGet]
+        [ChildActionOnly]
         public ActionResult Like(int? id)
         {
             if (id == null)
@@ -30,6 +31,12 @@
             if (answer == null || answer.IsDeleted)
             {
                 return this.HttpNotFound();
+            }
+
+            var userId = this.User.Identity.GetUserId();
+            if (answer.AuthorId == userId)
+            {
+                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
 
             var model = new AnswerLikeInputModel { AnswerId = answer.Id };
@@ -47,7 +54,6 @@
                 var isLiked =
                     this.Data.AnswerLikes.All()
                         .Any(l => l.UserId == userId && l.AnswerId == input.AnswerId && !l.IsDeleted);
-
                 if (isLiked)
                 {
                     return this.Dislike(input);

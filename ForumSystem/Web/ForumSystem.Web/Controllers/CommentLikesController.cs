@@ -19,6 +19,7 @@
         }
 
         [HttpGet]
+        [ChildActionOnly]
         public ActionResult Like(int? id)
         {
             if (id == null)
@@ -30,6 +31,12 @@
             if (comment == null || comment.IsDeleted)
             {
                 return this.HttpNotFound();
+            }
+
+            var userId = this.User.Identity.GetUserId();
+            if (comment.AuthorId == userId)
+            {
+                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
 
             var model = new CommentLikeInputModel { CommentId = comment.Id };
