@@ -34,12 +34,16 @@
             }
 
             var userId = this.User.Identity.GetUserId();
-            if (comment.AuthorId == userId)
-            {
-                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
-            }
+            var isLiked = this.Data.CommentLikes.All().Any(l => l.UserId == userId && l.CommentId == id && !l.IsDeleted);
+            var likesCount = this.Data.CommentLikes.All().Count(a => a.CommentId == id);
 
-            var model = new CommentLikeInputModel { CommentId = comment.Id };
+            var model = new CommentLikeInputModel
+                            {
+                                CommentId = comment.Id, 
+                                CommentAuthorId = comment.AuthorId, 
+                                IsLiked = isLiked, 
+                                LikesCount = likesCount
+                            };
 
             return this.PartialView(model);
         }
@@ -50,7 +54,18 @@
         {
             if (this.ModelState.IsValid)
             {
+                var comment = this.Data.Comments.GetById(input.CommentId);
+                if (comment == null || comment.IsDeleted)
+                {
+                    return this.HttpNotFound();
+                }
+
                 var userId = this.User.Identity.GetUserId();
+                if (comment.AuthorId == userId)
+                {
+                    return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+                }
+
                 var isLiked =
                     this.Data.CommentLikes.All()
                         .Any(l => l.UserId == userId && l.CommentId == input.CommentId && !l.IsDeleted);
@@ -67,7 +82,10 @@
 
                 var likesCount = this.Data.CommentLikes.All().Count(a => a.CommentId == input.CommentId);
 
-                return this.JsonSuccess(likesCount);
+                input.IsLiked = true;
+                input.LikesCount = likesCount;
+
+                return this.PartialView(input);
             }
 
             return this.JsonError("Comment id is required");
@@ -82,13 +100,15 @@
             if (like != null)
             {
                 this.Data.CommentLikes.Delete(like.Id);
+                this.Data.SaveChanges();
             }
-
-            this.Data.SaveChanges();
 
             var likesCount = this.Data.CommentLikes.All().Count(a => a.CommentId == input.CommentId);
 
-            return this.JsonSuccess(likesCount);
+            input.IsLiked = false;
+            input.LikesCount = likesCount;
+
+            return this.PartialView("Like", input);
         }
     }
 }
