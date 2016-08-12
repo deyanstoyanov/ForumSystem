@@ -1,7 +1,7 @@
 ﻿@using ForumSystem.Web.Infrastructure.Extensions
 @using Microsoft.AspNet.Identity
-@model ForumSystem.Web.ViewModels.Posts.PostViewModel
 
+@model ForumSystem.Web.ViewModels.Posts.PostViewModel
 
 <div id="@Model.Id">
     <div class="forum-post post-item highlighted-post">
@@ -26,29 +26,11 @@
             </h2>
             @Html.Raw(Model.Content)
         </div>
-        <div class="meta-info table-holder meta-details">
-
-            @if (User.IsLoggedIn() && User.Identity.GetUserId() != Model.AuthorId)
-            {
-                <div class="cell buttons-holder pending-vote vote-holder">
-                    @Html.Action("Like", "PostLikes", new { area = string.Empty, id = Model.Id })
-                </div>
-            }
-
-            <div class="cell stats-holder">
-                <div class="table-holder">
-                    <div class="cell">
-                        <span class="item-wrap votes-post">
-                            <span class="icon-holder">
-                                <i class="glyphicon glyphicon-hand-right"></i>
-                            </span>
-                            <span class="cell" id="post-likes-count-@Model.Id">@Model.LikesCount</span>
-                        </span>
-                    </div>
-                </div>
-
+        <div class="meta-info">
+            <div class="cell" id="post-like-@Model.Id">
+                @Html.Action("Like", "PostLikes", new { area = string.Empty, id = Model.Id })
             </div>
-            <div class="cell details-holder">
+            <div class="cell post-details-holder">
                 <div class="table-holder">
                     <div class="cell">
                         <span class="item-wrap">

@@ -34,12 +34,16 @@
             }
 
             var userId = this.User.Identity.GetUserId();
-            if (post.AuthorId == userId)
-            {
-                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
-            }
+            var isLiked = this.Data.PostLikes.All().Any(l => l.PostId == id && l.UserId == userId && !l.IsDeleted);
+            var likesCount = this.Data.PostLikes.All().Count(p => p.PostId == id);
 
-            var model = new PostLikeInputModel { PostId = post.Id };
+            var model = new PostLikeInputModel
+                            {
+                                PostId = post.Id, 
+                                IsLiked = isLiked, 
+                                LikesCount = likesCount, 
+                                PostAuthorId = post.AuthorId
+                            };
 
             return this.PartialView(model);
         }
@@ -50,10 +54,20 @@
         {
             if (this.ModelState.IsValid)
             {
+                var post = this.Data.Posts.GetById(input.PostId);
+                if (post == null || post.IsDeleted)
+                {
+                    return this.HttpNotFound();
+                }
+
                 var userId = this.User.Identity.GetUserId();
+                if (post.AuthorId == userId)
+                {
+                    return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+                }
+
                 var isLiked =
                     this.Data.PostLikes.All().Any(l => l.UserId == userId && l.PostId == input.PostId && !l.IsDeleted);
-
                 if (isLiked)
                 {
                     return this.Dislike(input);
@@ -66,7 +80,10 @@
 
                 var likesCount = this.Data.PostLikes.All().Count(p => p.PostId == input.PostId);
 
-                return this.JsonSuccess(likesCount);
+                input.IsLiked = true;
+                input.LikesCount = likesCount;
+
+                return this.PartialView(input);
             }
 
             return this.JsonError("Post id is required");
@@ -81,13 +98,15 @@
             if (like != null)
             {
                 this.Data.PostLikes.Delete(like.Id);
+                this.Data.SaveChanges();
             }
-
-            this.Data.SaveChanges();
 
             var likesCount = this.Data.PostLikes.All().Count(p => p.PostId == input.PostId);
 
-            return this.JsonSuccess(likesCount);
+            input.IsLiked = false;
+            input.LikesCount = likesCount;
+
+            return this.PartialView("Like", input);
         }
     }
 }

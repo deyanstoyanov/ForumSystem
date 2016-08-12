@@ -304,6 +304,14 @@
     line-height: 100%;
 }
 
+    .forum-post .icon-holder.liked {
+        color: #4081ff;
+    }
+
+    .forum-post .icon-holder .liked {
+        color: #4081ff;
+    }
+
 .forum-post .user-avatar {
     width: 20px;
     height: 20px;
@@ -359,6 +367,19 @@
         transition: all .2s ease;
     }
 
+        .forum-post .meta-info .thumbs-btn.liked-btn {
+            color: #4081ff;
+            transition: all .2s ease;
+        }
+
+            .forum-post .meta-info .thumbs-btn.liked-btn.active {
+                color: #4081ff;
+            }
+
+            .forum-post .meta-info .thumbs-btn.liked-btn:hover {
+                color: #4081ff;
+            }
+
         .forum-post .meta-info .thumbs-btn.active {
             color: #2c3e50;
         }
@@ -406,17 +427,19 @@
 @media only screen and (min-width: 992px) and (max-width: 1199px) {
     .forum-post .meta-info.meta-details .stats-holder {
         width: 88px;
-        padding: 0;
+        padding: 12px 20px;
         border-right: none;
     }
 
-    .forum-post .meta-info.meta-details .details-holder {
+    .forum-post .meta-info.meta-details .details-holder,
+    .forum-post .meta-info .post-details-holder {
         padding: 0;
         display: table-footer-group;
         float: none;
     }
 
-        .forum-post .meta-info.meta-details .details-holder .table-holder {
+        .forum-post .meta-info.meta-details .details-holder .table-holder,
+        .forum-post .meta-info .post-details-holder .table-holder {
             padding: 10px;
             border-top: 1px solid #ccc;
         }
@@ -429,17 +452,19 @@
 @media only screen and (min-width: 768px) and (max-width: 991px) {
     .forum-post .meta-info.meta-details .stats-holder {
         width: 88px;
-        padding: 0;
+        padding: 12px 20px;
         border-right: none;
     }
 
-    .forum-post .meta-info.meta-details .details-holder {
+    .forum-post .meta-info.meta-details .details-holder,
+    .forum-post .meta-info .post-details-holder {
         padding: 0;
         display: table-footer-group;
         float: none;
     }
 
-        .forum-post .meta-info.meta-details .details-holder .table-holder {
+        .forum-post .meta-info.meta-details .details-holder .table-holder,
+        .forum-post .meta-info .post-details-holder .table-holder {
             padding: 10px;
             border-top: 1px solid #ccc;
         }
@@ -447,26 +472,31 @@
 
 @media only screen and (max-width: 767px) {
     .forum-post .meta-info.meta-details .buttons-holder,
-    .forum-post .meta-info.meta-details .details-holder {
+    .forum-post .meta-info.meta-details .details-holder,
+    .forum-post .meta-info .post-details-holder {
         display: table-footer-group;
     }
 
         .forum-post .meta-info.meta-details .buttons-holder .table-holder,
-        .forum-post .meta-info.meta-details .details-holder .table-holder {
+        .forum-post .meta-info.meta-details .details-holder .table-holder,
+        .forum-post .meta-info .post-details-holder .table-holder {
             padding: 10px;
         }
 
             .forum-post .meta-info.meta-details .buttons-holder .table-holder .btn-success,
-            .forum-post .meta-info.meta-details .details-holder .table-holder .btn-success {
+            .forum-post .meta-info.meta-details .details-holder .table-holder .btn-success,
+            .forum-post .meta-info .post-details-holder .table-holder .btn-success {
                 width: 100%;
                 margin-bottom: 10px;
             }
 
-    .forum-post .meta-info.meta-details .details-holder {
+    .forum-post .meta-info.meta-details .details-holder,
+    .forum-post .meta-info .post-details-holder {
         float: none;
     }
 
-        .forum-post .meta-info.meta-details .details-holder .table-holder {
+        .forum-post .meta-info.meta-details .details-holder .table-holder,
+        .forum-post .meta-info .post-details-holder .table-holder {
             border-top: 1px solid #ccc;
         }
 
@@ -490,8 +520,12 @@
 
 @media only screen and (min-width: 768px) and (max-width: 991px) {
     .forum-post .stats-holder {
-        width: 260px;
+        width: 200px;
     }
+
+        .forum-post .stats-holder.likes-holder {
+            width: 0;
+        }
 }
 
 @media only screen and (max-width: 767px) {
@@ -499,6 +533,11 @@
         width: 100%;
         border-right: none;
     }
+
+        .forum-post .stats-holder.likes-holder {
+            width: 100%;
+            border-right: 1px solid #ccc;
+        }
 }
 
 .forum-post .stats-holder .item-wrap {
@@ -514,6 +553,10 @@
 .forum-post .stats-holder .cell {
     padding-top: 2px;
     line-height: 100%;
+}
+
+.forum-post .stats-holder .liked {
+    color: #4081ff;
 }
 
 @media only screen and (max-width: 767px) {
@@ -632,6 +675,12 @@
     margin: 0 auto;
 }
 
+.post-item .meta-info .post-details-holder {
+    vertical-align: middle;
+    padding: 10px 18px;
+    color: #2c3e50;
+}
+
 .post-item .meta-info .details-holder {
     float: left;
     vertical-align: middle;
@@ -639,7 +688,8 @@
     color: #2c3e50;
 }
 
-    .post-item .meta-info .details-holder .item-wrap {
+    .post-item .meta-info .details-holder .item-wrap,
+    .post-item .meta-info .post-details-holder .item-wrap {
         margin-top: 4px;
         margin-right: 20px;
         margin-bottom: 4px;
@@ -648,13 +698,15 @@
         float: left;
     }
 
-        .post-item .meta-info .details-holder .item-wrap:last-child {
+        .post-item .meta-info .details-holder .item-wrap:last-child,
+        .post-item .meta-info .post-details-holder .item-wrap:last-child {
             margin-right: 0;
             margin-bottom: 0;
         }
 
 @media only screen and (min-width: 992px) and (max-width: 1199px) {
-    .post-item .meta-info .details-holder {
+    .post-item .meta-info .details-holder,
+    .post-item .meta-info .post-details-holder {
         padding: 0 12px;
     }
 }

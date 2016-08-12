@@ -1,6 +1,4 @@
-﻿@using ForumSystem.Web.Infrastructure.Extensions
-@using Microsoft.AspNet.Identity
-@model ForumSystem.Web.ViewModels.Posts.PostConciseViewModel
+﻿@model ForumSystem.Web.ViewModels.Posts.PostConciseViewModel
 
 <article class="forum-post">
     <div class="head-post">
@@ -40,19 +38,11 @@
         </p>
     </div>
     <div class="meta-info">
-        @if (User.IsLoggedIn() && User.Identity.GetUserId() != Model.AuthorId)
-        {
-            <div class="cell buttons-holder pending-vote">
-                @Html.Action("Like", "PostLikes", new { area = string.Empty, id = Model.Id })
-            </div>
-        }
+        <div class="cell" id="post-like-@Model.Id">
+            @Html.Action("Like", "PostLikes", new { area = string.Empty, id = Model.Id })
+        </div>
         <div class="cell stats-holder">
-            <span class="item-wrap votes-post">
-                <span class="icon-holder">
-                    <i class="glyphicon glyphicon-thumbs-up"></i>
-                </span>
-                <span class="cell" id="post-likes-count-@Model.Id">@Model.LikesCount</span>
-            </span>
+
             <span class="item-wrap">
                 <span class="icon-holder">
                     <i class="glyphicon glyphicon-eye-open"></i>
@@ -75,6 +65,6 @@
                 </span>
             }
         </div>
-       @Html.Action("Post", "LastActivities", new { area = string.Empty, id = Model.Id })
+        @Html.Action("Post", "LastActivities", new { area = string.Empty, id = Model.Id })
     </div>
 </article>

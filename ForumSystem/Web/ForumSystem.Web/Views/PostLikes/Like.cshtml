@@ -1,17 +1,56 @@
-﻿@model ForumSystem.Web.InputModels.PostLikes.PostLikeInputModel
+﻿@using ForumSystem.Web.Infrastructure.Extensions
+@using Microsoft.AspNet.Identity
 
-@using (Ajax.BeginForm("Like", "PostLikes", new { area = string.Empty, id = Model.PostId }, new AjaxOptions
-                        {
-                            HttpMethod = "POST",
-                            InsertionMode = InsertionMode.Replace,
-                            UpdateTargetId = $"post-likes-count-{Model.PostId}"
-                        }))
+@model ForumSystem.Web.InputModels.PostLikes.PostLikeInputModel
+
+@if (User.IsLoggedIn() && User.Identity.GetUserId() != Model.PostAuthorId)
 {
-    @Html.AntiForgeryToken()
-    @Html.HiddenFor(model => model.PostId)
+    <div class="cell buttons-holder pending-vote">
+        @using (Ajax.BeginForm("Like", "PostLikes", new { area = string.Empty, id = Model.PostId }, new AjaxOptions
+                                {
+                                    HttpMethod = "POST",
+                                    InsertionMode = InsertionMode.Replace,
+                                    UpdateTargetId = $"post-like-{Model.PostId}"
+                                }))
+        {
+            @Html.AntiForgeryToken()
+            @Html.HiddenFor(model => model.PostId)
 
-    <button type="submit" class="like-btn thumbs-btn">
-        <i class="glyphicon glyphicon-thumbs-up"></i>
-        Like
-    </button>
+            if (Model.IsLiked)
+            {
+                <button type="submit" class="like-btn thumbs-btn liked-btn">
+                    <i class="glyphicon glyphicon-thumbs-up"></i>
+                    Like
+                </button>
+            }
+            else
+            {
+                <button type="submit" class="like-btn thumbs-btn">
+                    <i class="glyphicon glyphicon-thumbs-up"></i>
+                    Like
+                </button>
+            }
+        }
+    </div>
 }
+
+<div class="cell stats-holder likes-holder">
+    <span class="item-wrap votes-post">
+        @if (Model.IsLiked)
+        {
+            <span class="icon-holder liked">
+                <i class="glyphicon glyphicon-thumbs-up"></i>
+            </span>
+
+            <span class="cell liked">@Model.LikesCount</span>
+        }
+        else
+        {
+            <span class="icon-holder">
+                <i class="glyphicon glyphicon-thumbs-up"></i>
+            </span>
+            <span class="cell">@Model.LikesCount</span>
+        }
+
+    </span>
+</div>
