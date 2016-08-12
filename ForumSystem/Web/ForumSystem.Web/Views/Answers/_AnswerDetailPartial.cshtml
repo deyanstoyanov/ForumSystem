@@ -1,5 +1,6 @@
 ﻿@using ForumSystem.Web.Infrastructure.Extensions
 @using Microsoft.AspNet.Identity
+
 @model ForumSystem.Web.ViewModels.Answers.AnswerViewModel
 
 <div id="answer-@Model.Id">
@@ -23,26 +24,27 @@
             @Html.Raw(Model.Content)
         </div>
         <div class="meta-info table-holder meta-details">
-
-            @if (User.IsLoggedIn() && User.Identity.GetUserId() != Model.AuthorId)
+            @if (User.IsLoggedIn())
             {
-                <div class="cell buttons-holder vote-holder">
+                <div id="answer-like-@Model.Id">
                     @Html.Action("Like", "AnswerLikes", new { area = string.Empty, id = Model.Id })
                 </div>
             }
-
-            <div class="cell stats-holder">
-                <div class="table-holder">
-                    <div class="cell">
-                        <span class="item-wrap votes-post">
-                            <span class="icon-holder">
-                                <i class="glyphicon glyphicon-thumbs-up"></i>
+            else
+            {
+                <div class="cell stats-holder">
+                    <div class="table-holder">
+                        <div class="cell">
+                            <span class="item-wrap votes-post">
+                                <span class="icon-holder">
+                                    <i class="glyphicon glyphicon-thumbs-up"></i>
+                                </span>
+                                <span class="cell" id="answer-likes-count-@Model.Id">@Model.LikesCount</span>
                             </span>
-                            <span class="cell" id="answer-likes-count-@Model.Id">@Model.LikesCount</span>
-                        </span>
+                        </div>
                     </div>
                 </div>
-            </div>
+            }
 
             <div class="cell details-holder">
                 <div class="table-holder">
@@ -88,11 +90,11 @@
                     <div class="table-holder">
                         <div class="cell">
                             @Ajax.ActionLink("Comment", "Create", "Comments", new { area = string.Empty, id = Model.Id }, new AjaxOptions
-                                                {
-                                                    HttpMethod = "GET",
-                                                    InsertionMode = InsertionMode.Replace,
-                                                    UpdateTargetId = $"answer-action-container-{Model.Id}"
-                                                }, new { @class = "btn btn-primary" })
+                                               {
+                                                   HttpMethod = "GET",
+                                                   InsertionMode = InsertionMode.Replace,
+                                                   UpdateTargetId = $"answer-action-container-{Model.Id}"
+                                               }, new { @class = "btn btn-primary" })
                             @if (User.Identity.GetUserId() == Model.AuthorId || User.IsModerator() || User.IsAdmin())
                             {
                                 @Ajax.ActionLink("Edit", "Edit", "Answers", new { area = string.Empty, id = Model.Id }, new AjaxOptions

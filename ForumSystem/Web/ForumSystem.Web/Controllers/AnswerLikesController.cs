@@ -34,12 +34,16 @@
             }
 
             var userId = this.User.Identity.GetUserId();
-            if (answer.AuthorId == userId)
-            {
-                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
-            }
+            var isLiked = this.Data.AnswerLikes.All().Any(l => l.UserId == userId && l.AnswerId == id && !l.IsDeleted);
+            var likesCount = this.Data.AnswerLikes.All().Count(a => a.AnswerId == id);
 
-            var model = new AnswerLikeInputModel { AnswerId = answer.Id };
+            var model = new AnswerLikeInputModel
+                            {
+                                AnswerId = answer.Id, 
+                                AnswerAuthorId = answer.AuthorId, 
+                                IsLiked = isLiked, 
+                                LikesCount = likesCount
+                            };
 
             return this.PartialView(model);
         }
@@ -50,7 +54,18 @@
         {
             if (this.ModelState.IsValid)
             {
+                var answer = this.Data.Answers.GetById(input.AnswerId);
+                if (answer == null || answer.IsDeleted)
+                {
+                    return this.HttpNotFound();
+                }
+
                 var userId = this.User.Identity.GetUserId();
+                if (answer.AuthorId == userId)
+                {
+                    return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+                }
+
                 var isLiked =
                     this.Data.AnswerLikes.All()
                         .Any(l => l.UserId == userId && l.AnswerId == input.AnswerId && !l.IsDeleted);
@@ -66,7 +81,10 @@
 
                 var likesCount = this.Data.AnswerLikes.All().Count(a => a.AnswerId == input.AnswerId);
 
-                return this.JsonSuccess(likesCount);
+                input.IsLiked = true;
+                input.LikesCount = likesCount;
+
+                return this.PartialView(input);
             }
 
             return this.JsonError("Answer id is required");
@@ -81,13 +99,15 @@
             if (like != null)
             {
                 this.Data.AnswerLikes.Delete(like.Id);
+                this.Data.SaveChanges();
             }
-
-            this.Data.SaveChanges();
 
             var likesCount = this.Data.AnswerLikes.All().Count(a => a.AnswerId == input.AnswerId);
 
-            return this.JsonSuccess(likesCount);
+            input.IsLiked = false;
+            input.LikesCount = likesCount;
+
+            return this.PartialView("Like", input);
         }
     }
 }

@@ -377,7 +377,7 @@
             }
 
             .forum-post .meta-info .thumbs-btn.liked-btn:hover {
-                color: #4081ff;
+                color: #2c3e50;
             }
 
         .forum-post .meta-info .thumbs-btn.active {
@@ -385,7 +385,7 @@
         }
 
         .forum-post .meta-info .thumbs-btn:hover {
-            color: #18bc9c;
+            color: #2c3e50;
         }
 
     .forum-post .meta-info .arrows-buttons {
