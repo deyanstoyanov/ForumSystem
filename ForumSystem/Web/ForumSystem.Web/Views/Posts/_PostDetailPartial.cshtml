@@ -27,10 +27,29 @@
             @Html.Raw(Model.Content)
         </div>
         <div class="meta-info">
-            <div class="cell" id="post-like-@Model.Id">
-                @Html.Action("Like", "PostLikes", new { area = string.Empty, id = Model.Id })
-            </div>
+            @if (User.IsLoggedIn())
+            {
+                <div class="cell" id="post-like-@Model.Id">
+                    @Html.Action("Like", "PostLikes", new { area = string.Empty, id = Model.Id })
+                </div>
+            }
+            else
+            {
+                <div class="cell stats-holder">
+                    <div class="table-holder">
+                        <div class="cell">
+                            <span class="item-wrap votes-post">
+                                <span class="icon-holder">
+                                    <i class="glyphicon glyphicon-thumbs-up"></i>
+                                </span>
+                                <span class="cell">@Model.LikesCount</span>
+                            </span>
+                        </div>
+                    </div>
+                </div>
+            }
             <div class="cell post-details-holder">
+
                 <div class="table-holder">
                     <div class="cell">
                         <span class="item-wrap">
@@ -82,11 +101,11 @@
                     <div class="table-holder">
                         <div class="cell">
                             @Ajax.ActionLink("Answer", "Create", "Answers", new { id = Model.Id }, new AjaxOptions
-                                               {
-                                                   HttpMethod = "GET",
-                                                   InsertionMode = InsertionMode.Replace,
-                                                   UpdateTargetId = "answer-action-container"
-                                               }, new { @class = "btn btn-primary" })
+                       {
+                           HttpMethod = "GET",
+                           InsertionMode = InsertionMode.Replace,
+                           UpdateTargetId = "answer-action-container"
+                       }, new { @class = "btn btn-primary" })
                             @if (User.Identity.GetUserId() == Model.AuthorId)
                             {
                                 <a href="@Url.Action("Edit", "Posts", new { area = string.Empty, id = Model.Id })" class="btn btn-primary">
@@ -104,11 +123,11 @@
                             @if (User.Identity.GetUserId() != Model.AuthorId)
                             {
                                 @Ajax.ActionLink("Report", "Create", "PostReports", new { area = string.Empty, id = Model.Id }, new AjaxOptions
-                                                   {
-                                                       HttpMethod = "GET",
-                                                       InsertionMode = InsertionMode.Replace,
-                                                       UpdateTargetId = "answer-action-container"
-                                                   }, new { @class = "btn btn-default" })
+                           {
+                               HttpMethod = "GET",
+                               InsertionMode = InsertionMode.Replace,
+                               UpdateTargetId = "answer-action-container"
+                           }, new { @class = "btn btn-default" })
                             }
                         </div>
                     </div>
