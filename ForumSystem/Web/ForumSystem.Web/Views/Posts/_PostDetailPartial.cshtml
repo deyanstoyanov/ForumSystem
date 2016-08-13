@@ -120,6 +120,11 @@
                                 </a>
                             }
 
+                            @if (Model.ReportsCount > 0 && User.IsModerator() || User.IsAdmin())
+                            {
+                                @Html.Action("GetAllById", "PostReports", new { area = "Moderator", id = Model.Id })
+                            }
+
                             @if (User.Identity.GetUserId() != Model.AuthorId)
                             {
                                 @Ajax.ActionLink("Report", "Create", "PostReports", new { area = string.Empty, id = Model.Id }, new AjaxOptions
