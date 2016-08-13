@@ -24,7 +24,7 @@
             @Html.Raw(Model.Content)
         </div>
         <div class="meta-info table-holder meta-details">
-            @if (User.IsLoggedIn())
+            @if (User.IsLoggedIn() && User.Identity.GetUserId() != Model.AuthorId)
             {
                 <div id="answer-like-@Model.Id">
                     @Html.Action("Like", "AnswerLikes", new { area = string.Empty, id = Model.Id })
@@ -94,7 +94,7 @@
                                                    HttpMethod = "GET",
                                                    InsertionMode = InsertionMode.Replace,
                                                    UpdateTargetId = $"answer-action-container-{Model.Id}"
-                                               }, new { @class = "btn btn-primary" })
+                                               }, new { @class = "btn primary-btn" })
                             @if (User.Identity.GetUserId() == Model.AuthorId || User.IsModerator() || User.IsAdmin())
                             {
                                 @Ajax.ActionLink("Edit", "Edit", "Answers", new { area = string.Empty, id = Model.Id }, new AjaxOptions
@@ -102,7 +102,7 @@
                                                        HttpMethod = "GET",
                                                        InsertionMode = InsertionMode.Replace,
                                                        UpdateTargetId = $"answer-action-container-{Model.Id}"
-                                                   }, new { @class = "btn btn-primary" })
+                                                   }, new { @class = "btn primary-btn" })
                             }
 
                             @if (User.Identity.GetUserId() != Model.AuthorId)
@@ -112,7 +112,7 @@
                                                        HttpMethod = "GET",
                                                        InsertionMode = InsertionMode.Replace,
                                                        UpdateTargetId = $"answer-action-container-{Model.Id}"
-                                                   }, new { @class = "btn btn-default" })
+                                                   }, new { @class = "btn btn-link link-btn pull-right" })
                             }
                         </div>
                     </div>

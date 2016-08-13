@@ -101,21 +101,21 @@
                     <div class="table-holder">
                         <div class="cell">
                             @Ajax.ActionLink("Answer", "Create", "Answers", new { id = Model.Id }, new AjaxOptions
-                       {
-                           HttpMethod = "GET",
-                           InsertionMode = InsertionMode.Replace,
-                           UpdateTargetId = "answer-action-container"
-                       }, new { @class = "btn btn-primary" })
+                                               {
+                                                   HttpMethod = "GET",
+                                                   InsertionMode = InsertionMode.Replace,
+                                                   UpdateTargetId = "answer-action-container"
+                                               }, new { @class = "btn primary-btn" })
                             @if (User.Identity.GetUserId() == Model.AuthorId)
                             {
-                                <a href="@Url.Action("Edit", "Posts", new { area = string.Empty, id = Model.Id })" class="btn btn-primary">
+                                <a href="@Url.Action("Edit", "Posts", new { area = string.Empty, id = Model.Id })" class="btn primary-btn">
                                     Edit
                                 </a>
                             }
 
                             @if (User.IsModerator() || User.IsAdmin())
                             {
-                                <a href="@Url.Action("Edit", "Posts", new { area = "Moderator", id = Model.Id })" class="btn btn-warning">
+                                <a href="@Url.Action("Edit", "Posts", new { area = "Moderator", id = Model.Id })" class="btn primary-btn">
                                     Edit
                                 </a>
                             }
@@ -123,11 +123,11 @@
                             @if (User.Identity.GetUserId() != Model.AuthorId)
                             {
                                 @Ajax.ActionLink("Report", "Create", "PostReports", new { area = string.Empty, id = Model.Id }, new AjaxOptions
-                           {
-                               HttpMethod = "GET",
-                               InsertionMode = InsertionMode.Replace,
-                               UpdateTargetId = "answer-action-container"
-                           }, new { @class = "btn btn-default" })
+                                                   {
+                                                       HttpMethod = "GET",
+                                                       InsertionMode = InsertionMode.Replace,
+                                                       UpdateTargetId = "answer-action-container"
+                                                   }, new { @class = "btn btn-link link-btn pull-right" })
                             }
                         </div>
                     </div>

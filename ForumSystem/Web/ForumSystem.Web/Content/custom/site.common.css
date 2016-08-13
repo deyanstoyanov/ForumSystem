@@ -84,3 +84,64 @@
     word-wrap: break-word;
     table-layout: fixed;
 }
+
+.primary-btn {
+    color: #2c3e50;
+    background-color: transparent;
+    border-color: #2c3e50;
+}
+
+    .primary-btn:focus,
+    .primary-btn.focus {
+        background-color: #2c3e50;
+        color: #fff;
+    }
+
+    .primary-btn:hover {
+        background-color: #2c3e50;
+        color: #fff;
+    }
+
+    .primary-btn:active,
+    .primary-btn.active,
+    .open > .dropdown-toggle.primary-btn {
+        background-color: #2c3e50;
+        color: #fff;
+    }
+
+        .primary-btn:active:hover,
+        .primary-btn.active:hover,
+        .open > .dropdown-toggle.primary-btn:hover,
+        .primary-btn:active:focus,
+        .primary-btn.active:focus,
+        .open > .dropdown-toggle.primary-btn:focus,
+        .primary-btn:active.focus,
+        .primary-btn.active.focus,
+        .open > .dropdown-toggle.primary-btn.focus {
+            background-color: #2c3e50;
+            color: #fff;
+        }
+
+    .primary-btn:active,
+    .primary-btn.active,
+    .open > .dropdown-toggle.primary-btn {
+        background-image: none;
+    }
+
+    .primary-btn.disabled:hover,
+    .primary-btn[disabled]:hover,
+    fieldset[disabled] .primary-btn:hover,
+    .primary-btn.disabled:focus,
+    .primary-btn[disabled]:focus,
+    fieldset[disabled] .primary-btn:focus,
+    .primary-btn.disabled.focus,
+    .primary-btn[disabled].focus,
+    fieldset[disabled] .primary-btn.focus {
+        background-color: #2c3e50;
+        border-color: #2c3e50;
+    }
+
+    .primary-btn .badge {
+        color: #2c3e50;
+        background-color: #ffffff;
+    }
