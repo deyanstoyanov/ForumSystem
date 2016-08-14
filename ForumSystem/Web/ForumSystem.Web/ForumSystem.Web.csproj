@@ -359,6 +359,7 @@
     <Content Include="Areas\Administration\Views\Sections\Delete.cshtml" />
     <Content Include="Areas\Administration\Views\Users\All.cshtml" />
     <Content Include="Areas\Moderator\Views\PostReports\GetAllById.cshtml" />
+    <Content Include="Areas\Moderator\Views\AnswerReports\GetAllById.cshtml" />
     <None Include="Scripts\jquery-3.1.0.intellisense.js" />
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\bootstrap.min.js" />

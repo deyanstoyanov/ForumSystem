@@ -105,6 +105,11 @@
                                                    }, new { @class = "btn primary-btn" })
                             }
 
+                            @if (Model.ReportsCount > 0 && (User.IsModerator() || User.IsAdmin()))
+                            {
+                                @Html.Action("GetAllById", "AnswerReports", new { area = "Moderator", id = Model.Id })
+                            }
+
                             @if (User.Identity.GetUserId() != Model.AuthorId)
                             {
                                 @Ajax.ActionLink("Report", "Create", "AnswerReports", new { area = string.Empty, id = Model.Id }, new AjaxOptions

@@ -26,6 +26,29 @@
         }
 
         [HttpGet]
+        public ActionResult GetAllById(int? id)
+        {
+            if (id == null)
+            {
+                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+            }
+
+            var answer = this.Data.Answers.GetById(id);
+            if (answer == null)
+            {
+                return this.HttpNotFound();
+            }
+
+            var reports =
+                this.Data.AnswerReports.All()
+                    .Where(r => r.AnswerId == id)
+                    .OrderBy(r => r.CreatedOn)
+                    .ProjectTo<AnswerReportViewModel>();
+
+            return this.PartialView(reports);
+        }
+
+        [HttpGet]
         public ActionResult Delete(int? id)
         {
             if (id == null)

@@ -1,0 +1,53 @@
+﻿@using NonFactors.Mvc.Grid
+
+@model IEnumerable<ForumSystem.Web.Areas.Moderator.ViewModels.AnswerReports.AnswerReportViewModel>
+
+@{
+    int answerId = Model.Select(r => r.AnswerId).FirstOrDefault();
+}
+
+<button type="button" class="btn primary-btn" data-toggle="modal" data-target="#answer-reports-@answerId">
+    Reports
+</button>
+
+<div class="modal fade" id="answer-reports-@answerId" tabindex="-1" role="dialog" aria-labelledby="answer-reports-label-@answerId">
+    <div class="modal-dialog modal-lg" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+                <h4 class="modal-title" id="answer-reports-label-@answerId">Reports</h4>
+            </div>
+            <div class="modal-body">
+                @(Html
+                    .Grid(Model)
+                    .Build(columns =>
+                    {
+                        columns.Add(model => model.Id).Titled("Id");
+                        columns.Add(model => model.Author).Titled("Author");
+                        columns.Add(model => model.Post).Titled("Post")
+                            .RenderedAs(model => Html.ActionLink(model.Post, "Details", new { area = string.Empty, controller = "Answers", Id = model.AnswerId }));
+                        columns.Add(model => model.Description).Titled("Description");
+                        columns.Add(model => model.CreatedOn).Titled("CreatedOn");
+                        columns.Add(model => model.Id)
+                            .Encoded(false)
+                            .RenderedAs(model => Html.Action("Delete", "AnswerReports", new { area = "Moderator", id = model.Id }));
+                    })
+                      .Css("table table-responsive table-bordered table-striped")
+                      .Empty("No data found")
+                )
+            </div>
+            <div class="modal-footer">
+                <a href="#" type="button" class="btn btn-default btn-sm pull-left" data-dismiss="modal">Cancel</a>
+                <a href="@Url.Action("All", "AnswerReports", new { area = "Moderator" })" class="btn btn-primary btn-sm pull-right">All reports</a>
+            </div>
+        </div>
+    </div>
+</div>
+
+@section scripts {
+    <script>
+        $('.mvc-grid').mvcgrid();
+    </script>
+}
