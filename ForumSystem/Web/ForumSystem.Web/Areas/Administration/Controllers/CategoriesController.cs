@@ -118,7 +118,8 @@
                                 Id = category.Id, 
                                 Title = category.Title, 
                                 Description = category.Description, 
-                                SectionId = category.SectionId, 
+                                SectionId = category.SectionId,
+                                IsDeleted = category.IsDeleted,
                                 Sections = new SelectList(sections, "Id", "Title", category.SectionId)
                             };
 
@@ -136,6 +137,7 @@
                 category.Title = model.Title;
                 category.Description = model.Description;
                 category.SectionId = model.SectionId;
+                category.IsDeleted = model.IsDeleted;
 
                 this.Data.Categories.Update(category);
                 this.Data.SaveChanges();

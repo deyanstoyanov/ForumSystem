@@ -17,6 +17,8 @@
 
         public int SectionId { get; set; }
 
+        public bool IsDeleted { get; set; }
+
         public IEnumerable<SelectListItem> Sections { get; set; }
     }
 }
