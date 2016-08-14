@@ -120,7 +120,7 @@
                                 </a>
                             }
 
-                            @if (Model.ReportsCount > 0 && User.IsModerator() || User.IsAdmin())
+                            @if (Model.ReportsCount > 0 && (User.IsModerator() || User.IsAdmin()))
                             {
                                 @Html.Action("GetAllById", "PostReports", new { area = "Moderator", id = Model.Id })
                             }
