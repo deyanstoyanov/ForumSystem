@@ -29,7 +29,7 @@
                 </span>
                 <span class="cell">@Model.PostsCount</span>
             </span>
-            @Html.Action("AllReplies", "LastActivities", new { area = string.Empty, id = Model.Id })
+            @Html.Action("CategoryAllReplies", "LastActivities", new { area = string.Empty, id = Model.Id })
         </div>
     </div>
 </article>

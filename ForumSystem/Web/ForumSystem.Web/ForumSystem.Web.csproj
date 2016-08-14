@@ -294,6 +294,7 @@
     <Compile Include="ViewModels\Categories\CategoryViewModel.cs" />
     <Compile Include="ViewModels\Comments\CommentViewModel.cs" />
     <Compile Include="ViewModels\Home\IndexPageViewModel.cs" />
+    <Compile Include="ViewModels\LastActivities\CategoryAllRepliesViewModel.cs" />
     <Compile Include="ViewModels\LastActivities\PostLastActivityViewModel.cs" />
     <Compile Include="ViewModels\Manage\AddPhoneNumberViewModel.cs" />
     <Compile Include="ViewModels\Manage\ChangePasswordViewModel.cs" />
@@ -670,6 +671,7 @@
     <Content Include="Views\LastActivities\_PostLastActivityPartial.cshtml" />
     <Content Include="Views\Categories\_CategoryDetailPartial.cshtml" />
     <Content Include="Views\Sections\_SectionCategoriesPartial.cshtml" />
+    <Content Include="Views\LastActivities\CategoryAllReplies.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

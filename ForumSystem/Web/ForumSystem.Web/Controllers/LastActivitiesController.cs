@@ -36,10 +36,11 @@
                     .Where(a => a.PostId == id)
                     .OrderByDescending(a => a.CreatedOn)
                     .FirstOrDefault();
+
             var lastComment =
-                this.Data.Answers.All()
-                    .Where(a => a.PostId == id)
-                    .Select(a => a.Comments.OrderByDescending(c => c.CreatedOn).FirstOrDefault())
+                this.Data.Comments.All()
+                    .Where(c => c.Answer.PostId == id)
+                    .OrderByDescending(c => c.CreatedOn)
                     .FirstOrDefault();
 
             if (lastAnswer == null && lastComment == null)
@@ -112,6 +113,29 @@
                             };
 
             return model;
+        }
+
+        [ChildActionOnly]
+        public ActionResult CategoryAllReplies(int? id)
+        {
+            if (id == null)
+            {
+                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+            }
+
+            var category = this.Data.Categories.GetById(id);
+            if (category == null || category.IsDeleted)
+            {
+                return this.HttpNotFound();
+            }
+
+            var answers = this.Data.Answers.All().Count(a => a.Post.CategoryId == id && !a.IsDeleted);
+            var comments = this.Data.Comments.All().Count(c => c.Answer.Post.CategoryId == id && !c.IsDeleted);
+            var allReplies = answers + comments;
+
+            var model = new CategoryAllRepliesViewModel() { AllReplies = allReplies };
+
+            return this.PartialView(model);
         }
     }
 }
