@@ -67,7 +67,7 @@
                 return this.HttpNotFound();
             }
 
-            var model = new SectionEditModel { Id = section.Id, Title = section.Title };
+            var model = new SectionEditModel { Id = section.Id, Title = section.Title, IsDeleted = section.IsDeleted };
 
             return this.View(model);
         }
@@ -81,6 +81,7 @@
                 var section = this.Data.Sections.GetById(model.Id);
 
                 section.Title = model.Title;
+                section.IsDeleted = model.IsDeleted;
 
                 this.Data.Sections.Update(section);
                 this.Data.SaveChanges();
