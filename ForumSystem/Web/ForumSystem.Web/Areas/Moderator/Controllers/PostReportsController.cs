@@ -46,7 +46,6 @@
                     .ProjectTo<PostReportViewModel>();
 
             return this.PartialView(reports);
-
         }
 
         [HttpGet]

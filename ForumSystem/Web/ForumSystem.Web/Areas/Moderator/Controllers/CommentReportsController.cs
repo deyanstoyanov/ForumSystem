@@ -25,6 +25,29 @@
         }
 
         [HttpGet]
+        public ActionResult GetAllById(int? id)
+        {
+            if (id == null)
+            {
+                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+            }
+
+            var comment = this.Data.Comments.GetById(id);
+            if (comment == null)
+            {
+                return this.HttpNotFound();
+            }
+
+            var reports =
+                this.Data.CommentReports.All()
+                    .Where(r => r.CommentId == id)
+                    .OrderBy(r => r.CreatedOn)
+                    .ProjectTo<CommentReportViewModel>();
+
+            return this.PartialView(reports);
+        }
+
+        [HttpGet]
         public ActionResult Delete(int? id)
         {
             if (id == null)
