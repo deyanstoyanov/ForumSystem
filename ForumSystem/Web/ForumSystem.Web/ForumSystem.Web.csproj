@@ -668,6 +668,8 @@
     <Content Include="Views\AnswerLikes\Like.cshtml" />
     <Content Include="Views\CommentLikes\Like.cshtml" />
     <Content Include="Views\LastActivities\_PostLastActivityPartial.cshtml" />
+    <Content Include="Views\Categories\_CategoryDetailPartial.cshtml" />
+    <Content Include="Views\Sections\_SectionCategoriesPartial.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

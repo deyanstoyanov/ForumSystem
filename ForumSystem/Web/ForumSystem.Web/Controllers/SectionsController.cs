@@ -7,6 +7,7 @@
     using AutoMapper.QueryableExtensions;
 
     using ForumSystem.Data.UnitOfWork;
+    using ForumSystem.Web.ViewModels.Categories;
     using ForumSystem.Web.ViewModels.Sections;
 
     public class SectionsController : BaseController
@@ -16,7 +17,7 @@
         {
         }
 
-        // GET: Sections/Details/5
+        [HttpGet]
         public ActionResult Details(int? id)
         {
             if (id == null)
@@ -30,11 +31,35 @@
                 return this.HttpNotFound();
             }
 
-            var viewModel = this.Data.Sections.All()
-                .Where(s => s.Id == id)
-                .ProjectTo<SectionViewModel>().FirstOrDefault();
+            var viewModel =
+                this.Data.Sections.All()
+                    .Where(s => s.Id == id)
+                    .ProjectTo<SectionViewModel>().FirstOrDefault();
 
             return this.View(viewModel);
+        }
+
+        [ChildActionOnly]
+        public ActionResult Categories(int? id)
+        {
+            if (id == null)
+            {
+                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+            }
+
+            var section = this.Data.Sections.GetById(id);
+            if (section == null || section.IsDeleted)
+            {
+                return this.HttpNotFound();
+            }
+
+            var categories =
+                this.Data.Categories.All()
+                    .Where(c => c.SectionId == id)
+                    .OrderByDescending(c => c.CreatedOn)
+                    .ProjectTo<CategoryConciseViewModel>();
+
+            return this.PartialView("_SectionCategoriesPartial", categories);
         }
     }
 }

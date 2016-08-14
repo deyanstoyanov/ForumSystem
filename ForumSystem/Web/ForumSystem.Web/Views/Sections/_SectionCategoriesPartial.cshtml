@@ -1,0 +1,10 @@
+﻿@model IEnumerable<ForumSystem.Web.ViewModels.Categories.CategoryConciseViewModel>
+
+@{
+    const string CategoryPartialViewsFolder = "~/Views/Categories/{0}.cshtml";
+}
+
+@foreach (var category in Model)
+{
+    @Html.Partial(string.Format(CategoryPartialViewsFolder, "_CategoryDetailPartial"), category)
+}

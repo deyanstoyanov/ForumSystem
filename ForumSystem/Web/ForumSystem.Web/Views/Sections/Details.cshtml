@@ -5,46 +5,9 @@
     Layout = "~/Views/Shared/_SectionPageLayout.cshtml";
 }
 
-<a href="@Url.Action("Index", "Home", new { area = string.Empty })" class="btn-success btn btn-sm">
+<a href="@Url.Action("Index", "Home", new { area = string.Empty })" class="btn primary-btn btn-sm">
     <i class="glyphicon glyphicon-chevron-left"></i>
-    <span>Home page</span>
+    <span>All Sections</span>
 </a>
 
-@foreach (var category in Model.Categories)
-{
-    <article class="forum-post">
-        <div class="head-post">
-            <h2 class="post-title">
-                <a href="@Url.Action("Details", "Categories", new { area = string.Empty, id = category.Id })">
-                    @category.Title
-                </a>
-            </h2>
-            <p>
-                <span class="item-wrap">
-                    <span class="icon-holder">
-                        <i class="glyphicon glyphicon-tag"></i>
-                    </span>
-                    <span>
-                        @category.Description
-                    </span>
-                </span>
-            </p>
-        </div>
-        <div class="meta-info">
-            <div class="cell stats-holder">
-                <span class="item-wrap">
-                    <span class="icon-holder">
-                        <i class="glyphicon glyphicon-file"></i>
-                    </span>
-                    <span class="cell">@category.PostsCount</span>
-                </span>
-                <span class="item-wrap">
-                    <span class="icon-holder">
-                        <i class="glyphicon glyphicon-comment"></i>
-                    </span>
-                    <span class="cell">0</span>
-                </span>
-            </div>
-        </div>
-    </article>
-}
+@Html.Action("Categories", "Sections", new { area = string.Empty, id = Model.Id })

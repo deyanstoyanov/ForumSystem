@@ -1,0 +1,35 @@
+﻿@model ForumSystem.Web.ViewModels.Categories.CategoryConciseViewModel
+
+<article class="forum-post">
+    <div class="head-post">
+        <h2 class="post-title">
+            <a href="@Url.Action("Details", "Categories", new { area = string.Empty, id = Model.Id })">
+                @Model.Title
+            </a>
+        </h2>
+        <p>
+            @if (!string.IsNullOrEmpty(Model.Description))
+            {
+                <span class="item-wrap">
+                    <span class="icon-holder">
+                        <i class="glyphicon glyphicon-tag"></i>
+                    </span>
+                    <span>
+                        @Model.Description
+                    </span>
+                </span>
+            }
+        </p>
+    </div>
+    <div class="meta-info">
+        <div class="cell stats-holder">
+            <span class="item-wrap">
+                <span class="icon-holder" title="Posts">
+                    <i class="glyphicon glyphicon-file"></i>
+                </span>
+                <span class="cell">@Model.PostsCount</span>
+            </span>
+            @Html.Action("AllReplies", "LastActivities", new { area = string.Empty, id = Model.Id })
+        </div>
+    </div>
+</article>
