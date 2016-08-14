@@ -2,7 +2,8 @@
     position: relative;
 }
 
-    .article-wrapper > .btn-success {
+    .article-wrapper > .primary-btn,
+    .article-wrapper > .success-btn {
         position: absolute;
         top: 0;
         left: -277px;
@@ -10,14 +11,16 @@
     }
 
 @media only screen and (min-width: 992px) and (max-width: 1199px) {
-    .article-wrapper > .btn-success {
+    .article-wrapper > .primary-btn,
+    .article-wrapper > .success-btn {
         left: -228px;
         width: 27%;
     }
 }
 
 @media only screen and (min-width: 768px) and (max-width: 991px) {
-    .article-wrapper > .btn-success {
+    .article-wrapper > .primary-btn,
+    .article-wrapper > .success-btn {
         margin-bottom: 30px;
         position: static;
         width: 100%;
@@ -25,7 +28,8 @@
 }
 
 @media only screen and (max-width: 767px) {
-    .article-wrapper > .btn-success {
+    .article-wrapper > .primary-btn,
+    .article-wrapper > .success-btn {
         position: relative;
         left: 0;
         width: 100%;
@@ -41,6 +45,13 @@
     font-weight: 700;
     text-transform: uppercase;
 }
+
+.index-sidebar {
+}
+
+    .index-sidebar .section-wrapper {
+        margin-top: 0px;
+    }
 
 .section-wrapper {
     margin-top: 45px;
@@ -167,6 +178,25 @@
             height: 100%;
             vertical-align: middle;
         }
+
+.section-container {
+}
+
+    .section-container .panel {
+        border: none;
+    }
+
+    .section-container .section-title .icon-holder {
+        cursor: pointer;
+    }
+
+        .section-container .section-title .icon-holder > i {
+            padding-top: 5px;
+        }
+
+    .section-container .forum-post {
+        margin-bottom: 0;
+    }
 
 .forum-post {
     margin-bottom: 20px;
