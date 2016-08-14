@@ -671,6 +671,7 @@
     <Content Include="Views\LastActivities\_PostLastActivityPartial.cshtml" />
     <Content Include="Views\Categories\_CategoryDetailPartial.cshtml" />
     <Content Include="Views\Sections\_SectionCategoriesPartial.cshtml" />
+    <Content Include="Views\Shared\_IndexPageLayout.cshtml" />
     <Content Include="Views\LastActivities\CategoryAllReplies.cshtml" />
   </ItemGroup>
   <ItemGroup>

@@ -1,0 +1,12 @@
+﻿@{
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div class="row">
+    <div class="index-sidebar">
+        @Html.Action("Index", "Sidebar", new { area = string.Empty })
+    </div>
+    <section class="col-md-9 col-sm-12 article-wrapper">
+        @RenderBody()
+    </section>
+</div>
