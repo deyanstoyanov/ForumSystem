@@ -144,5 +144,54 @@
 
             return this.JsonError("Content is required");
         }
+
+        [HttpGet]
+        [Authorize]
+        public ActionResult Delete(int? id)
+        {
+            if (id == null)
+            {
+                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+            }
+
+            var comment = this.Data.Comments.GetById(id);
+            if (comment == null || comment.IsDeleted)
+            {
+                return this.HttpNotFound();
+            }
+
+            var userId = this.User.Identity.GetUserId();
+            if (comment.AuthorId != userId && !this.User.IsModerator() && !this.User.IsAdmin())
+            {
+                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+            }
+
+            var model = Mapper.Map<CommentViewModel>(comment);
+
+            return this.PartialView(model);
+        }
+
+        [HttpPost]
+        [Authorize]
+        [ValidateAntiForgeryToken]
+        public ActionResult Delete(int id)
+        {
+            var comment = this.Data.Comments.GetById(id);
+            if (comment == null || comment.IsDeleted)
+            {
+                return this.HttpNotFound();
+            }
+
+            var userId = this.User.Identity.GetUserId();
+            if (comment.AuthorId != userId && !this.User.IsModerator() && !this.User.IsAdmin())
+            {
+                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+            }
+
+            this.Data.Comments.Delete(id);
+            this.Data.SaveChanges();
+
+            return this.RedirectToAction("Details", "Posts", new { area = string.Empty, id = comment.Answer.PostId });
+        }
     }
 }

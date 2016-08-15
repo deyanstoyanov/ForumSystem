@@ -678,6 +678,7 @@
     <Content Include="Views\Shared\_CategoryPageLayout.cshtml" />
     <Content Include="Views\Posts\Delete.cshtml" />
     <Content Include="Views\Answers\Delete.cshtml" />
+    <Content Include="Views\Comments\Delete.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

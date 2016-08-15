@@ -106,6 +106,16 @@
                                                    }, new { @class = "btn primary-btn" })
                             }
 
+                            @if (User.Identity.GetUserId() == Model.AuthorId || User.IsModerator() || User.IsAdmin())
+                            {
+                                @Ajax.ActionLink("Delete", "Delete", "Comments", new { area = string.Empty, id = Model.Id }, new AjaxOptions
+                                                   {
+                                                       HttpMethod = "GET",
+                                                       InsertionMode = InsertionMode.ReplaceWith,
+                                                       UpdateTargetId = $"delete-comment-confirm-btn-{Model.Id}"
+                                                   }, new { @class = "btn primary-btn", id = $"delete-comment-confirm-btn-{Model.Id}" })
+                            }
+
                             @if (Model.ReportsCount > 0 && (User.IsModerator() || User.IsAdmin()))
                             {
                                 @Html.Action("GetAllById", "CommentReports", new { area = "Moderator", id = Model.Id })
