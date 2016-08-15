@@ -120,6 +120,11 @@
                                 </a>
                             }
 
+                            @if (User.Identity.GetUserId() == Model.AuthorId || User.IsModerator() || User.IsAdmin())
+                            {
+                                @Html.Action("Delete", "Posts", new { area = string.Empty, id = Model.Id })
+                            }
+
                             @if (Model.ReportsCount > 0 && (User.IsModerator() || User.IsAdmin()))
                             {
                                 @Html.Action("GetAllById", "PostReports", new { area = "Moderator", id = Model.Id })

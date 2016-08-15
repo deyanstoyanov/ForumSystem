@@ -4,10 +4,12 @@
     using System.Net;
     using System.Web.Mvc;
 
+    using AutoMapper;
     using AutoMapper.QueryableExtensions;
 
     using ForumSystem.Data.Models;
     using ForumSystem.Data.UnitOfWork;
+    using ForumSystem.Web.Infrastructure.Extensions;
     using ForumSystem.Web.InputModels.Posts;
     using ForumSystem.Web.ViewModels.Answers;
     using ForumSystem.Web.ViewModels.Posts;
@@ -189,6 +191,53 @@
             }
 
             return this.View(model);
+        }
+
+        [HttpGet]
+        public ActionResult Delete(int? id)
+        {
+            if (id == null)
+            {
+                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+            }
+
+            var post = this.Data.Posts.GetById(id);
+            if (post == null || post.IsDeleted)
+            {
+                return this.HttpNotFound();
+            }
+
+            var userId = this.User.Identity.GetUserId();
+            if (post.AuthorId != userId && !this.User.IsModerator() && !this.User.IsAdmin())
+            {
+                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+            }
+
+            var model = Mapper.Map<PostViewModel>(post);
+
+            return this.PartialView(model);
+        }
+
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public ActionResult Delete(int id)
+        {
+            var post = this.Data.Posts.GetById(id);
+            if (post == null || post.IsDeleted)
+            {
+                return this.HttpNotFound();
+            }
+
+            var userId = this.User.Identity.GetUserId();
+            if (post.AuthorId != userId && !this.User.IsModerator() && !this.User.IsAdmin())
+            {
+                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+            }
+
+            this.Data.Posts.Delete(id);
+            this.Data.SaveChanges();
+
+            return this.RedirectToAction("Details", "Categories", new { area = string.Empty, id = post.CategoryId });
         }
     }
 }

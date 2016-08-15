@@ -726,10 +726,6 @@
         width: 100%;
     }
 
-        .post-item .meta-info .table-holder form {
-            display: inline-block;
-        }
-
 @media only screen and (max-width: 767px) {
     .post-item .meta-info .table-holder form {
         display: block;
