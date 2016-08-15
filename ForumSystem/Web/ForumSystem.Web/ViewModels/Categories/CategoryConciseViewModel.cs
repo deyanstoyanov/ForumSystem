@@ -1,5 +1,7 @@
 ﻿namespace ForumSystem.Web.ViewModels.Categories
 {
+    using System.Linq;
+
     using AutoMapper;
 
     using ForumSystem.Data.Models;
@@ -18,7 +20,7 @@
         public void CreateMappings(IMapperConfiguration configuration)
         {
             configuration.CreateMap<Category, CategoryConciseViewModel>()
-                .ForMember(c => c.PostsCount, config => config.MapFrom(c => c.Posts.Count));
+                .ForMember(c => c.PostsCount, config => config.MapFrom(c => c.Posts.Count(p => !p.IsDeleted)));
         }
     }
 }
