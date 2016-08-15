@@ -39,7 +39,7 @@
             configuration.CreateMap<Post, PostConciseViewModel>()
                 .ForMember(p => p.Category, config => config.MapFrom(p => p.Category.Title));
             configuration.CreateMap<Post, PostConciseViewModel>()
-                .ForMember(p => p.AnswersCount, config => config.MapFrom(p => p.Answers.Count));
+                .ForMember(p => p.AnswersCount, config => config.MapFrom(p => p.Answers.Count(a => !a.IsDeleted)));
             configuration.CreateMap<Post, PostConciseViewModel>()
                 .ForMember(p => p.AuthorPictureUrl, config => config.MapFrom(p => p.Author.PictureUrl));
             configuration.CreateMap<Post, PostConciseViewModel>()
