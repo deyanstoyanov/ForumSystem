@@ -9,6 +9,7 @@
 
     using ForumSystem.Data.Models;
     using ForumSystem.Data.UnitOfWork;
+    using ForumSystem.Web.Controllers.Base;
     using ForumSystem.Web.Infrastructure.Extensions;
     using ForumSystem.Web.InputModels.Answers;
     using ForumSystem.Web.ViewModels.Answers;

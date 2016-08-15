@@ -3,7 +3,7 @@
     using ForumSystem.Common.Constants;
     using ForumSystem.Data.Models;
     using ForumSystem.Data.UnitOfWork;
-    using ForumSystem.Web.Controllers;
+    using ForumSystem.Web.Controllers.Base;
     using ForumSystem.Web.Infrastructure.Attributes;
 
     [AuthorizeRoles(RoleConstants.Moderator, RoleConstants.Administrator)]

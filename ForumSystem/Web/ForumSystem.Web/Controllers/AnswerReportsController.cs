@@ -5,6 +5,7 @@
 
     using ForumSystem.Data.Models;
     using ForumSystem.Data.UnitOfWork;
+    using ForumSystem.Web.Controllers.Base;
     using ForumSystem.Web.InputModels.AnswerReports;
 
     using Microsoft.AspNet.Identity;

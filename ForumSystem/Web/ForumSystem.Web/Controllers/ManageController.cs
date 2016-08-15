@@ -6,6 +6,7 @@
     using System.Web.Mvc;
 
     using ForumSystem.Data.UnitOfWork;
+    using ForumSystem.Web.Controllers.Base;
     using ForumSystem.Web.ViewModels.Manage;
 
     using Microsoft.AspNet.Identity;

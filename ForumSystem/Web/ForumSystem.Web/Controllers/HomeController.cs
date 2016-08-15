@@ -5,6 +5,7 @@
     using AutoMapper.QueryableExtensions;
 
     using ForumSystem.Data.UnitOfWork;
+    using ForumSystem.Web.Controllers.Base;
     using ForumSystem.Web.ViewModels.Home;
     using ForumSystem.Web.ViewModels.Sections;
 

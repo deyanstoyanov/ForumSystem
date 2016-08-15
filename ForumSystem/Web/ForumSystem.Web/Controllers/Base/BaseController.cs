@@ -1,4 +1,4 @@
-﻿namespace ForumSystem.Web.Controllers
+﻿namespace ForumSystem.Web.Controllers.Base
 {
     using System;
     using System.Linq;
