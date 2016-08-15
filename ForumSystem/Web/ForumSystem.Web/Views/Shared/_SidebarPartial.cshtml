@@ -1,38 +1,5 @@
-﻿@model ForumSystem.Web.ViewModels.SidebarViewModel
-
-<aside class="col-md-3 col-sm-12 forum-sidebar">
-    <div class="section-wrapper">
-        <h3 class="sidebar-title" data-toggle="collapse" data-target="#displaySections">
-            Sections
-            <i class="glyphicon glyphicon-chevron-down"></i>
-        </h3>
-        <ul id="displaySections" class="sidebar-nav collapse in col-md-12 col-sm-4">
-            @foreach (var item in Model.Sections)
-            {
-                <li>
-                    <a href="@Url.Action("Details", "Sections", new { area = string.Empty, id = item.Id })" class="nav-link">
-                        @item.Title
-                    </a>
-                </li>
-            }
-        </ul>
-    </div>
-    <div class="forum-sidebar category-wrapper">
-        <h3 class="sidebar-title" data-toggle="collapse" data-target="#displayCategories">
-            Popular Categories
-            <i class="glyphicon glyphicon-chevron-down"></i>
-        </h3>
-
-        <ul id="displayCategories" class="sidebar-nav collapse in col-md-12 col-sm-4">
-            @foreach (var category in Model.Categories)
-            {
-                <li>
-                    <a href="@Url.Action("Details", "Categories", new { area = string.Empty, id = category.Id })" class="nav-link">
-                        @category.Title
-                        <span class="badge-note">(@category.PostsCount)</span>
-                    </a>
-                </li>
-            }
-        </ul>
-    </div>
+﻿<aside class="col-md-3 col-sm-12 forum-sidebar">
+    @Html.Action("AllSections", "Sidebar", new { area = string.Empty })
+    @Html.Action("TopCategories", "Sidebar", new { araa = string.Empty })
+    @Html.Action("LastPosts", "Sidebar", new { area = string.Empty })
 </aside>

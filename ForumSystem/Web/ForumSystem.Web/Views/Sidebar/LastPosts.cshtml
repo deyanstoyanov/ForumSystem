@@ -1,0 +1,43 @@
+﻿@model IEnumerable<ForumSystem.Web.ViewModels.Posts.PostConciseViewModel>
+
+<div class="forum-sidebar post-wrapper">
+    <h3 class="sidebar-title" data-toggle="collapse" data-target="#displayLastPosts">
+        Last Posts
+        <i class="glyphicon glyphicon-chevron-down"></i>
+    </h3>
+
+    <ul id="displayLastPosts" class="sidebar-nav collapse in col-md-12 col-sm-4">
+        @foreach (var item in Model)
+        {
+            <li>
+                <div class="cell last-post">
+                    <div class="table-holder">
+                        <div class="cell">
+                            <a href="@Url.Action("Details", "Posts", new { area = string.Empty, id = item.Id })" class="nav-link">
+                                @item.Title
+                            </a>
+                            <div class="cell">
+                                <i>by:</i>
+                                <a href="" class="user-name">
+                                    <i class="glyphicon glyphicon-user"></i>
+                                    @item.Author
+                                </a>
+                                <span class="badge-note">(@(item.AnswersCount) replies)</span>
+                                <span class="cell replay-date">
+                                    <span class="icon-holder">
+                                        <i class="glyphicon glyphicon-time"></i>
+                                    </span>
+                                    @item.CreatedOn
+                                </span>
+                                <i>in</i>
+                                <a href="@Url.Action("Details", "Categories", new { area = string.Empty, id = item.CategoryId })" class="bottom-buffer">
+                                    @item.Category
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </li>
+        }
+    </ul>
+</div>

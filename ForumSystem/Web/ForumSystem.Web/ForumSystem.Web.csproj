@@ -309,7 +309,6 @@
     <Compile Include="ViewModels\Posts\PostConciseViewModel.cs" />
     <Compile Include="ViewModels\Posts\PostViewModel.cs" />
     <Compile Include="ViewModels\Sections\SectionViewModel.cs" />
-    <Compile Include="ViewModels\SidebarViewModel.cs" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Content\bootstrap-theme.css" />
@@ -673,6 +672,10 @@
     <Content Include="Views\Sections\_SectionCategoriesPartial.cshtml" />
     <Content Include="Views\Shared\_IndexPageLayout.cshtml" />
     <Content Include="Views\LastActivities\CategoryAllReplies.cshtml" />
+    <Content Include="Views\Sidebar\AllSections.cshtml" />
+    <Content Include="Views\Sidebar\TopCategories.cshtml" />
+    <Content Include="Views\Sidebar\LastPosts.cshtml" />
+    <Content Include="Views\Shared\_CategoryPageLayout.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

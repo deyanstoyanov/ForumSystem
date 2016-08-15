@@ -2,9 +2,10 @@
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-<div class="section-header-wrapper row">
-    <div class="col-sm-8 col-xs-12">
-        <h1>Section "@(ViewBag.Title)"</h1>
+<div class="category-header-wrapper row">
+    <div class="col-sm-12 col-xs-12">
+        <h1>Category "@Model.Title"</h1>
+        <h2 class="header-title">@Model.Description</h2>
     </div>
 </div>
 <div class="row">
