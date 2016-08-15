@@ -194,6 +194,7 @@
         }
 
         [HttpGet]
+        [Authorize]
         public ActionResult Delete(int? id)
         {
             if (id == null)
@@ -219,6 +220,7 @@
         }
 
         [HttpPost]
+        [Authorize]
         [ValidateAntiForgeryToken]
         public ActionResult Delete(int id)
         {
