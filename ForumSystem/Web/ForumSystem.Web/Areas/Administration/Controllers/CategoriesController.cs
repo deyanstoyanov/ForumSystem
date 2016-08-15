@@ -9,6 +9,7 @@
 
     using ForumSystem.Data.Models;
     using ForumSystem.Data.UnitOfWork;
+    using ForumSystem.Web.Areas.Administration.Controllers.Base;
     using ForumSystem.Web.Areas.Administration.InputModels.Categories;
     using ForumSystem.Web.Areas.Administration.ViewModels.Categories;
     using ForumSystem.Web.Areas.Administration.ViewModels.Sections;

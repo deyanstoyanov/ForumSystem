@@ -6,6 +6,7 @@
     using AutoMapper.QueryableExtensions;
 
     using ForumSystem.Data.UnitOfWork;
+    using ForumSystem.Web.Areas.Administration.Controllers.Base;
     using ForumSystem.Web.Areas.Administration.ViewModels.Users;
 
     public class UsersController : AdministrationController

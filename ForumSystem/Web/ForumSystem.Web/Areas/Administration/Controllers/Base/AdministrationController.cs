@@ -1,4 +1,4 @@
-﻿namespace ForumSystem.Web.Areas.Administration.Controllers
+﻿namespace ForumSystem.Web.Areas.Administration.Controllers.Base
 {
     using System.Web.Mvc;
 
