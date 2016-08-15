@@ -89,12 +89,14 @@
                 <div class="cell buttons-holder">
                     <div class="table-holder">
                         <div class="cell">
+
                             @Ajax.ActionLink("Comment", "Create", "Comments", new { area = string.Empty, id = Model.Id }, new AjaxOptions
                                                {
                                                    HttpMethod = "GET",
                                                    InsertionMode = InsertionMode.Replace,
                                                    UpdateTargetId = $"answer-action-container-{Model.Id}"
                                                }, new { @class = "btn primary-btn" })
+
                             @if (User.Identity.GetUserId() == Model.AuthorId || User.IsModerator() || User.IsAdmin())
                             {
                                 @Ajax.ActionLink("Edit", "Edit", "Answers", new { area = string.Empty, id = Model.Id }, new AjaxOptions
@@ -103,6 +105,16 @@
                                                        InsertionMode = InsertionMode.Replace,
                                                        UpdateTargetId = $"answer-action-container-{Model.Id}"
                                                    }, new { @class = "btn primary-btn" })
+                            }
+
+                            @if (User.Identity.GetUserId() == Model.AuthorId || User.IsModerator() || User.IsAdmin())
+                            {
+                                @Ajax.ActionLink("Delete", "Delete", "Answers", new { area = string.Empty, id = Model.Id }, new AjaxOptions
+                                                   {
+                                                       HttpMethod = "GET",
+                                                       InsertionMode = InsertionMode.ReplaceWith,
+                                                       UpdateTargetId = $"delete-answer-confirm-btn-{Model.Id}"
+                                                   }, new { @class = "btn primary-btn", id = $"delete-answer-confirm-btn-{Model.Id}" })
                             }
 
                             @if (Model.ReportsCount > 0 && (User.IsModerator() || User.IsAdmin()))

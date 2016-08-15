@@ -677,6 +677,7 @@
     <Content Include="Views\Sidebar\LastPosts.cshtml" />
     <Content Include="Views\Shared\_CategoryPageLayout.cshtml" />
     <Content Include="Views\Posts\Delete.cshtml" />
+    <Content Include="Views\Answers\Delete.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
