@@ -1,12 +1,12 @@
 ﻿namespace ForumSystem.Web.Areas.Moderator.Controllers
 {
-    using System.Linq;
     using System.Net;
     using System.Web.Mvc;
 
     using AutoMapper.QueryableExtensions;
 
     using ForumSystem.Data.UnitOfWork;
+    using ForumSystem.Web.Areas.Moderator.Controllers.Base;
     using ForumSystem.Web.Areas.Moderator.InputModels.Posts;
     using ForumSystem.Web.Areas.Moderator.ViewModels.Categories;
 

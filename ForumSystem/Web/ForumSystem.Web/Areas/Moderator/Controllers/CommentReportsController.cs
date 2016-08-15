@@ -8,6 +8,7 @@
     using AutoMapper.QueryableExtensions;
 
     using ForumSystem.Data.UnitOfWork;
+    using ForumSystem.Web.Areas.Moderator.Controllers.Base;
     using ForumSystem.Web.Areas.Moderator.ViewModels.CommentReports;
 
     public class CommentReportsController : ModeratorController

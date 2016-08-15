@@ -1,4 +1,4 @@
-﻿namespace ForumSystem.Web.Areas.Moderator.Controllers
+﻿namespace ForumSystem.Web.Areas.Moderator.Controllers.Base
 {
     using ForumSystem.Common.Constants;
     using ForumSystem.Data.Models;
