@@ -240,6 +240,7 @@
     <Compile Include="Areas\Administration\InputModels\Sections\SectionInputModel.cs" />
     <Compile Include="Areas\Administration\ViewModels\Answers\AnswerViewModel.cs" />
     <Compile Include="Areas\Administration\ViewModels\Categories\CategoryViewModel.cs" />
+    <Compile Include="Areas\Administration\ViewModels\Comments\CommentViewModel.cs" />
     <Compile Include="Areas\Administration\ViewModels\Posts\PostViewModel.cs" />
     <Compile Include="Areas\Administration\ViewModels\Sections\SectionConciseViewModel.cs" />
     <Compile Include="Areas\Administration\ViewModels\Sections\SectionViewModel.cs" />
