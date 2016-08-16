@@ -311,16 +311,17 @@
     <Compile Include="ViewModels\Sections\SectionViewModel.cs" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="Content\bootstrap-theme.css" />
-    <Content Include="Content\bootstrap-theme.min.css" />
-    <Content Include="Content\bootstrap.css" />
-    <Content Include="Content\bootstrap.flatly.css" />
-    <Content Include="Content\bootstrap.flatly.min.css" />
-    <Content Include="Content\bootstrap.min.css" />
+    <Content Include="Content\bootstrap\bootstrap-theme.css" />
+    <Content Include="Content\bootstrap\bootstrap-theme.min.css" />
+    <Content Include="Content\bootstrap\bootstrap.css" />
+    <Content Include="Content\bootstrap\bootstrap.flatly.css" />
+    <Content Include="Content\bootstrap\bootstrap.flatly.min.css" />
+    <Content Include="Content\bootstrap\bootstrap.min.css" />
     <Content Include="Content\custom\forum.css" />
     <Content Include="Content\custom\site.common.css" />
+    <Content Include="Content\fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Content\MvcGrid\mvc-grid.css" />
-    <Content Include="Content\PagedList.css" />
+    <Content Include="Content\PagedList\PagedList.css" />
     <Content Include="favicon.ico" />
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Global.asax" />
@@ -334,8 +335,8 @@
     <Content Include="fonts\glyphicons-halflings-regular.woff" />
     <Content Include="fonts\glyphicons-halflings-regular.ttf" />
     <Content Include="fonts\glyphicons-halflings-regular.eot" />
-    <Content Include="Content\bootstrap.css.map" />
-    <Content Include="Content\bootstrap-theme.css.map" />
+    <Content Include="Content\bootstrap\bootstrap.css.map" />
+    <Content Include="Content\bootstrap\bootstrap-theme.css.map" />
     <Content Include="Areas\Moderator\Views\web.config" />
     <Content Include="Areas\Moderator\Views\_ViewStart.cshtml" />
     <Content Include="Areas\Moderator\Views\Shared\_ModeratorLayout.cshtml" />
@@ -361,6 +362,10 @@
     <Content Include="Areas\Moderator\Views\PostReports\GetAllById.cshtml" />
     <Content Include="Areas\Moderator\Views\AnswerReports\GetAllById.cshtml" />
     <Content Include="Areas\Moderator\Views\CommentReports\GetAllById.cshtml" />
+    <Content Include="Content\fonts\glyphicons-halflings-regular.eot" />
+    <Content Include="Content\fonts\glyphicons-halflings-regular.ttf" />
+    <Content Include="Content\fonts\glyphicons-halflings-regular.woff" />
+    <Content Include="Content\fonts\glyphicons-halflings-regular.woff2" />
     <None Include="Scripts\jquery-3.1.0.intellisense.js" />
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\bootstrap.min.js" />
