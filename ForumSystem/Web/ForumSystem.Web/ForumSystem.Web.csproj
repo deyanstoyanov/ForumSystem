@@ -97,8 +97,8 @@
       <HintPath>..\..\packages\Newtonsoft.Json.9.0.1\lib\net45\Newtonsoft.Json.dll</HintPath>
       <Private>True</Private>
     </Reference>
-    <Reference Include="NonFactors.Mvc.Grid, Version=3.0.0.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\..\packages\NonFactors.Grid.Core.Mvc5.3.0.0\lib\net45\NonFactors.Mvc.Grid.dll</HintPath>
+    <Reference Include="NonFactors.Mvc.Grid, Version=3.1.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\..\packages\NonFactors.Grid.Core.Mvc5.3.1.0\lib\net45\NonFactors.Mvc.Grid.dll</HintPath>
       <Private>True</Private>
     </Reference>
     <Reference Include="PagedList, Version=1.17.0.0, Culture=neutral, PublicKeyToken=abbb863e9397c5e1, processorArchitecture=MSIL">
@@ -684,9 +684,6 @@
     <Content Include="Views\CommentReports\Create.cshtml" />
     <Content Include="Views\Answers\Details.cshtml" />
     <Content Include="Views\Posts\_PostDetailPartial.cshtml" />
-    <Content Include="Views\Shared\MvcGrid\_Pager.cshtml" />
-    <Content Include="Views\Shared\MvcGrid\_Grid.cshtml" />
-    <Content Include="Views\Shared\MvcGrid\_AjaxGrid.cshtml" />
     <Content Include="Views\PostLikes\Like.cshtml" />
     <Content Include="Views\AnswerLikes\Like.cshtml" />
     <Content Include="Views\CommentLikes\Like.cshtml" />
@@ -702,6 +699,9 @@
     <Content Include="Views\Posts\Delete.cshtml" />
     <Content Include="Views\Answers\Delete.cshtml" />
     <Content Include="Views\Comments\Delete.cshtml" />
+    <Content Include="Views\Shared\MvcGrid\_Pager.cshtml" />
+    <Content Include="Views\Shared\MvcGrid\_Grid.cshtml" />
+    <Content Include="Views\Shared\MvcGrid\_AjaxGrid.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
