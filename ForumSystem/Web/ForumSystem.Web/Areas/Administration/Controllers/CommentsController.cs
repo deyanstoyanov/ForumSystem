@@ -4,6 +4,7 @@
     using System.Net;
     using System.Web.Mvc;
 
+    using AutoMapper;
     using AutoMapper.QueryableExtensions;
 
     using ForumSystem.Data.UnitOfWork;
@@ -70,6 +71,41 @@
             }
 
             return this.View(model);
+        }
+
+        [HttpGet]
+        public ActionResult Delete(int? id)
+        {
+            if (id == null)
+            {
+                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+            }
+
+            var comment = this.Data.Comments.GetById(id);
+            if (comment == null)
+            {
+                return this.HttpNotFound();
+            }
+
+            var model = Mapper.Map<CommentViewModel>(comment);
+
+            return this.PartialView(model);
+        }
+
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public ActionResult Delete(int id)
+        {
+            var comment = this.Data.Comments.GetById(id);
+            if (comment == null)
+            {
+                return this.HttpNotFound();
+            }
+
+            this.Data.Comments.Delete(id);
+            this.Data.SaveChanges();
+
+            return this.RedirectToAction("All");
         }
     }
 }

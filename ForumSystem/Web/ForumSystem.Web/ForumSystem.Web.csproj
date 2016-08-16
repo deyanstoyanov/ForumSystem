@@ -383,6 +383,7 @@
     <Content Include="Areas\Administration\Views\Answers\Edit.cshtml" />
     <Content Include="Areas\Administration\Views\Comments\All.cshtml" />
     <Content Include="Areas\Administration\Views\Comments\Edit.cshtml" />
+    <Content Include="Areas\Administration\Views\Comments\Delete.cshtml" />
     <None Include="Scripts\jquery\jquery-3.1.0.intellisense.js" />
     <Content Include="Scripts\bootstrap\bootstrap.js" />
     <Content Include="Scripts\bootstrap\bootstrap.min.js" />
