@@ -26,7 +26,12 @@
             .RenderedAs(model => model.IsDeleted ? "<span class='label label-success'>Yes</span>" : "<span class='label label-default'>No</span>");
         columns.Add(model => model.DeletedOn).Titled("DeletedOn");
         columns.Add(model => model.CreatedOn).Titled("CreatedOn");
-        columns.Add(model => model.ModifiedOn).Titled("ModifiedOn");       
+        columns.Add(model => model.ModifiedOn).Titled("ModifiedOn");
+        columns.Add(model => model.Id)
+            .Encoded(false)
+            .Filterable(false)
+            .Sortable(false)
+            .RenderedAs(model => Html.ActionLink("Edit", "Edit", new { area = "Administration", controller = "Posts", id = model.Id }, new { @class = "btn btn-primary btn-sm" }));
     })
     .Pageable(pager =>
     {
