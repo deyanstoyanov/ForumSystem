@@ -25,6 +25,11 @@
         columns.Add(model => model.DeletedOn).Titled("DeletedOn");
         columns.Add(model => model.CreatedOn).Titled("CreatedOn");
         columns.Add(model => model.ModifiedOn).Titled("ModifiedOn");
+        columns.Add(model => model.Id)
+            .Encoded(false)
+            .Filterable(false)
+            .Sortable(false)
+            .RenderedAs(model => Html.Action("Delete", "Answers", new { area = "Administration", id = model.Id }));
     })
     .Pageable(pager =>
     {
