@@ -15,10 +15,10 @@
         {
             bundles.Add(
                 new StyleBundle("~/Content/css").Include(
-                    "~/Content/bootstrap.flatly.css", 
+                    "~/Content/bootstrap/bootstrap.flatly.css", 
                     "~/Content/custom/site.css", 
                     "~/Content/custom/site.common.css", 
-                    "~/Content/custom/forum.css",
+                    "~/Content/custom/forum.css", 
                     "~/Content/MvcGrid/mvc-grid.css"));
         }
 
@@ -26,12 +26,12 @@
         {
             bundles.Add(
                 new ScriptBundle("~/bundles/jquery").Include(
-                    "~/Scripts/jquery-{version}.js", 
-                    "~/Scripts/jquery.unobtrusive-ajax.js"));
+                    "~/Scripts/jquery/jquery-{version}.js", 
+                    "~/Scripts/jquery/jquery.unobtrusive-ajax.js"));
 
-            bundles.Add(new ScriptBundle("~/bundles/jqueryval").Include("~/Scripts/jquery.validate*"));
+            bundles.Add(new ScriptBundle("~/bundles/jqueryval").Include("~/Scripts/jquery/jquery.validate*"));
 
-            bundles.Add(new ScriptBundle("~/bundles/bootstrap").Include("~/Scripts/bootstrap.js"));
+            bundles.Add(new ScriptBundle("~/bundles/bootstrap").Include("~/Scripts/bootstrap/bootstrap.js"));
 
             bundles.Add(new ScriptBundle("~/bundles/administration-scripts").Include("~/Scripts/MvcGrid/mvc-grid.js"));
         }
