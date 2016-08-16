@@ -231,6 +231,7 @@
     <Compile Include="Areas\Administration\Controllers\PostsController.cs" />
     <Compile Include="Areas\Administration\Controllers\SectionsController.cs" />
     <Compile Include="Areas\Administration\Controllers\UsersController.cs" />
+    <Compile Include="Areas\Administration\InputModels\Answers\AnswerEditModel.cs" />
     <Compile Include="Areas\Administration\InputModels\Categories\CategoryEditModel.cs" />
     <Compile Include="Areas\Administration\InputModels\Categories\CategoryInputModel.cs" />
     <Compile Include="Areas\Administration\InputModels\Posts\PostEditModel.cs" />
@@ -376,6 +377,7 @@
     <Content Include="Areas\Administration\Views\Posts\Delete.cshtml" />
     <Content Include="Areas\Administration\Views\Answers\All.cshtml" />
     <Content Include="Areas\Administration\Views\Answers\Delete.cshtml" />
+    <Content Include="Areas\Administration\Views\Answers\Edit.cshtml" />
     <None Include="Scripts\jquery\jquery-3.1.0.intellisense.js" />
     <Content Include="Scripts\bootstrap\bootstrap.js" />
     <Content Include="Scripts\bootstrap\bootstrap.min.js" />
