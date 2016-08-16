@@ -106,16 +106,23 @@
                                                    InsertionMode = InsertionMode.Replace,
                                                    UpdateTargetId = "answer-action-container"
                                                }, new { @class = "btn primary-btn" })
-                            @if (User.Identity.GetUserId() == Model.AuthorId)
+                            @if (User.Identity.GetUserId() == Model.AuthorId && (!User.IsAdmin() && !User.IsModerator()))
                             {
                                 <a href="@Url.Action("Edit", "Posts", new { area = string.Empty, id = Model.Id })" class="btn primary-btn">
                                     Edit
                                 </a>
                             }
 
-                            @if (User.IsModerator() || User.IsAdmin())
+                            @if (User.IsModerator())
                             {
                                 <a href="@Url.Action("Edit", "Posts", new { area = "Moderator", id = Model.Id })" class="btn primary-btn">
+                                    Edit
+                                </a>
+                            }
+
+                            @if (User.IsAdmin())
+                            {
+                                <a href="@Url.Action("Edit", "Posts", new { area = "Administration", id = Model.Id })" class="btn primary-btn">
                                     Edit
                                 </a>
                             }

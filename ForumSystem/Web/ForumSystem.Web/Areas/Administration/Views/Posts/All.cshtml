@@ -32,6 +32,11 @@
             .Filterable(false)
             .Sortable(false)
             .RenderedAs(model => Html.ActionLink("Edit", "Edit", new { area = "Administration", controller = "Posts", id = model.Id }, new { @class = "btn btn-primary btn-sm" }));
+        columns.Add(model => model.Id)
+            .Encoded(false)
+            .Filterable(false)
+            .Sortable(false)
+            .RenderedAs(model => Html.Action("Delete", "Posts", new { area = "Administration", id = model.Id }));
     })
     .Pageable(pager =>
     {

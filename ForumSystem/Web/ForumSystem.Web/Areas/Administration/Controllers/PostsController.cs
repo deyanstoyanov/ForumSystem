@@ -4,6 +4,7 @@
     using System.Net;
     using System.Web.Mvc;
 
+    using AutoMapper;
     using AutoMapper.QueryableExtensions;
 
     using ForumSystem.Data.UnitOfWork;
@@ -48,6 +49,7 @@
                                 Title = post.Title, 
                                 Content = post.Content, 
                                 IsDeleted = post.IsDeleted, 
+                                CategoryId = post.CategoryId, 
                                 Categories = new SelectList(categories, "Id", "Title", post.CategoryId)
                             };
 
@@ -74,6 +76,41 @@
             }
 
             return this.View(model);
+        }
+
+        [HttpGet]
+        public ActionResult Delete(int? id)
+        {
+            if (id == null)
+            {
+                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+            }
+
+            var post = this.Data.Posts.GetById(id);
+            if (post == null)
+            {
+                return this.HttpNotFound();
+            }
+
+            var model = Mapper.Map<PostViewModel>(post);
+
+            return this.PartialView(model);
+        }
+
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public ActionResult Delete(int id)
+        {
+            var post = this.Data.Posts.GetById(id);
+            if (post == null)
+            {
+                return this.HttpNotFound();
+            }
+
+            this.Data.Posts.Delete(id);
+            this.Data.SaveChanges();
+
+            return this.RedirectToAction("All");
         }
     }
 }
