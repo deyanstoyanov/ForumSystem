@@ -6,7 +6,7 @@
             <a href="@Url.Action("Details", "Answers", new { area = string.Empty, id = Model.AnswerId })">
                 Last activity:
             </a>
-            <a href="" class="user-name">
+            <a href="@Url.Action("Details", "Users", new { area = string.Empty, id = Model.AuthorId })" class="user-name">
                 <i class="glyphicon glyphicon-user"></i>
                 @Model.Author
             </a>

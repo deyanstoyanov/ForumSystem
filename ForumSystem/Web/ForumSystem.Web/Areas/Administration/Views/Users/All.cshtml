@@ -9,7 +9,8 @@
     .Build(columns =>
     {
         columns.Add(model => model.Id).Titled("Id");
-        columns.Add(model => model.UserName).Titled("UserName");
+        columns.Add(model => model.UserName).Titled("UserName")
+            .RenderedAs(model => Html.ActionLink(model.UserName, "Details", new { area = string.Empty, controller = "Users", id = model.Id }));
         columns.Add(model => model.Email).Titled("Email");
         columns.Add(model => model.PostsCount).Titled("Posts");
         columns.Add(model => model.AnswersCount).Titled("Answers");

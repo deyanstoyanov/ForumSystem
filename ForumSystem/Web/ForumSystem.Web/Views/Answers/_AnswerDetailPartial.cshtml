@@ -15,7 +15,7 @@
                         }
                     </span>
                     <span class="cell">
-                        <a href="" class="user-name">@Model.Author</a>
+                        <a href="@Url.Action("Details", "Users", new { area = string.Empty, id = Model.AuthorId })" class="user-name">@Model.Author</a>
                     </span>
                 </div>
             </div>

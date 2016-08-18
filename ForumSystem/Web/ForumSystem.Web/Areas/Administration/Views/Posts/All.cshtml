@@ -15,7 +15,8 @@
         columns.Add(model => model.Id).Titled("Id");
         columns.Add(model => model.Category).Titled("Category")
             .RenderedAs(model => Html.ActionLink(model.Category, "Details", new { area = string.Empty, controller = "Categories", Id = model.CategoryId }));
-        columns.Add(model => model.Author).Titled("Author");
+        columns.Add(model => model.Author).Titled("Author")
+            .RenderedAs(model => Html.ActionLink(model.Author, "Details", new { area = string.Empty, controller = "Users", id = model.AuthorId }));
         columns.Add(model => model.Title).Titled("Title")
             .RenderedAs(model => Html.ActionLink(model.Title, "Details", new { area = string.Empty, controller = "Posts", Id = model.Id }));
         columns.Add(model => model.AnswersCount).Titled("Answers");

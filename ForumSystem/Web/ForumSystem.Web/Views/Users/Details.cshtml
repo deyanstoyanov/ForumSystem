@@ -1,0 +1,123 @@
+﻿@model ForumSystem.Web.ViewModels.Users.UserViewModel
+
+@{
+    ViewBag.Title = "User Profile";
+}
+
+<div class="profile-container">
+    <div class="profile-wrapper">
+        <div class="row base-info">
+            <div class="col-md-6">
+                <div class="row base-info">
+                    <div class="col-sm-12 col-xs-12">
+                        <div class="user-wrap">
+                            <div class="user-avatar">
+                                @if (!string.IsNullOrEmpty(Model.PictureUrl))
+                                {
+                                    <img src="@Url.Content(Model.PictureUrl)" alt="@(Model.UserName) avatar" />
+                                }
+                            </div>
+                            <ul class="profile-info-social">
+                                <li>
+                                    <a href="#">
+                                        <i class="glyphicon glyphicon-link"></i>
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href="#">
+                                        <i class="glyphicon glyphicon-link"></i>
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href="#">
+                                        <i class="glyphicon glyphicon-link"></i>
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href="#">
+                                        <i class="glyphicon glyphicon-link"></i>
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href="#">
+                                        <i class="glyphicon glyphicon-link"></i>
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href="#">
+                                        <i class="glyphicon glyphicon-link"></i>
+                                    </a>
+                                </li>
+                            </ul>
+                            <div class="cell">
+                                <div class="profile-info">
+                                    <div class="panel panel-default info-holder">
+                                        <div class="panel-heading heading-wrap ">
+                                            <h4 class="user-name">
+                                                <strong>
+                                                    @Model.UserName
+                                                </strong>
+                                            </h4>
+                                        </div>
+                                        <div class="panel-body">
+                                            <div class="user-info">
+                                                <label>Id:</label>
+                                                <span class="user-detail">@Model.Id</span>
+                                            </div>
+                                            <div class="user-info">
+                                                <label>Email:</label>
+                                                <span class="user-detail">@Model.Email</span>
+                                            </div>
+                                            <div class="user-info">
+                                                <label>Joined on:</label>
+                                                <span class="user-detail">@Model.CreatedOn</span>
+                                            </div>
+                                            <div class="user-info">
+                                                <label>PhoneNumber:</label>
+                                                @if (!string.IsNullOrEmpty(Model.PhoneNumber))
+                                                {
+                                                    <span class="user-detail">@Model.PhoneNumber</span>
+                                                }
+                                                else
+                                                {
+                                                    <span class="user-detail">No information</span>
+                                                }
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-6">
+                <div class="col-sm-6 col-md-4">
+                    <div class="row">
+                        <div class="profile-info forum-info">
+                            <div class="panel panel-default info-holder">
+                                <div class="panel-heading heading-wrap">
+                                    <h4>Forum</h4>
+                                </div>
+                                <div class="panel-body">
+                                    <div class="user-info">
+                                        <label>Posts:</label>
+                                        <span class="user-detail">@Model.PostsCount</span>
+                                    </div>
+                                    <div class="user-info">
+                                        <label>Answers:</label>
+                                        <span class="user-detail">@Model.AnswersCount</span>
+                                    </div>
+                                    <div class="user-info">
+                                        <label>Comments:</label>
+                                        <span class="user-detail">@Model.CommentsCount</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

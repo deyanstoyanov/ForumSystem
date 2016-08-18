@@ -20,7 +20,7 @@
                             </a>
                             <div class="cell">
                                 <i>by:</i>
-                                <a href="" class="user-name">
+                                <a href="@Url.Action("Details", "Users", new { area = string.Empty, id = item.AuthorId })" class="user-name">
                                     <i class="glyphicon glyphicon-user"></i>
                                     @item.Author
                                 </a>
