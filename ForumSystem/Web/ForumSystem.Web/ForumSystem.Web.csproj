@@ -319,6 +319,7 @@
     <Compile Include="ViewModels\Posts\PostConciseViewModel.cs" />
     <Compile Include="ViewModels\Posts\PostViewModel.cs" />
     <Compile Include="ViewModels\Sections\SectionViewModel.cs" />
+    <Compile Include="ViewModels\Users\UserViewModel.cs" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Content\bootstrap-theme.css" />
