@@ -12,8 +12,13 @@
 
 @section scripts {
     <script>
-        function SelectTab() {
+        function SelectPostTab() {
+            $('.selected-item').removeClass('selected-item');
             $('#user-posts-item').addClass('selected-item');
+        }
+        function SelectAnswerTab() {
+            $('.selected-item').removeClass('selected-item');
+            $('#user-answers-item').addClass('selected-item');
         }
     </script>
 }

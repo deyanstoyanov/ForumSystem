@@ -14,11 +14,17 @@
                                                    HttpMethod = "GET",
                                                    InsertionMode = InsertionMode.Replace,
                                                    UpdateTargetId = "forum-activity-data-holder",
-                                                   OnSuccess = "SelectTab"
+                                                   OnSuccess = "SelectPostTab"
                                                }, new { @class = "navbar-item", id = "user-posts-item" })
                         </li>
                         <li>
-                            <a href="" class="navbar-item">Answers</a>
+                            @Ajax.ActionLink("Answers", "Answers", "Users", new { area = string.Empty, id = Model.Id }, new AjaxOptions
+                                                 {
+                                                     HttpMethod = "GET",
+                                                     InsertionMode = InsertionMode.Replace,
+                                                     UpdateTargetId = "forum-activity-data-holder",
+                                                     OnSuccess = "SelectAnswerTab"
+                                                 }, new { @class = "navbar-item", id = "user-answers-item" })
                         </li>
                         <li>
                             <a href="" class="navbar-item">Comments</a>

@@ -9,6 +9,7 @@
 
     using ForumSystem.Data.UnitOfWork;
     using ForumSystem.Web.Controllers.Base;
+    using ForumSystem.Web.ViewModels.Answers;
     using ForumSystem.Web.ViewModels.Posts;
     using ForumSystem.Web.ViewModels.Users;
 
@@ -60,6 +61,30 @@
                     .ToList();
 
             return this.PartialView("_UserPostsPartial", posts);
+        }
+
+        [HttpGet]
+        public ActionResult Answers(string id)
+        {
+            if (id == null)
+            {
+                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+            }
+
+            var user = this.Data.Users.GetById(id);
+            if (user == null)
+            {
+                return this.HttpNotFound();
+            }
+
+            var answers =
+                this.Data.Answers.All()
+                    .Where(a => a.AuthorId == id)
+                    .OrderByDescending(a => a.CreatedOn)
+                    .ProjectTo<AnswerViewModel>()
+                    .ToList();
+
+            return this.PartialView("_UserAnswersPartial", answers);
         }
     }
 }
