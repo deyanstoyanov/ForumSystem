@@ -705,6 +705,9 @@
     <Content Include="Views\Shared\MvcGrid\_Grid.cshtml" />
     <Content Include="Views\Shared\MvcGrid\_AjaxGrid.cshtml" />
     <Content Include="Views\Users\Details.cshtml" />
+    <Content Include="Views\Users\_UserPostsPartial.cshtml" />
+    <Content Include="Views\Users\_ProfileBaseInfoPartial.cshtml" />
+    <Content Include="Views\Users\_ProfileForumActivitiesPartial.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

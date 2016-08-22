@@ -823,51 +823,55 @@
     margin: 0;
 }
 
-.profile-wrapper .user-avatar {
-    height: 164px;
-    width: 164px;
-    margin-right: 30px;
+.profile-wrapper {
+    margin-bottom: 50px;
 }
 
-.profile-wrapper .user-wrap {
-    display: table;
-    float: left;
-    line-height: 100%;
-}
-
-.profile-wrapper .profile-info {
-    margin-top: 0;
-}
-
-    .profile-wrapper .profile-info .heading-wrap {
-        padding-top: 5px;
-        padding-bottom: 5px;
-        text-align: center;
-        border-radius: 29px 29px 29px 29px;
+    .profile-wrapper .user-avatar {
+        height: 164px;
+        width: 164px;
+        margin-right: 30px;
     }
 
-    .profile-wrapper .profile-info .info-holder {
-        border: 0;
+    .profile-wrapper .user-wrap {
+        display: table;
+        float: left;
+        line-height: 100%;
     }
 
-    .profile-wrapper .profile-info .user-info {
-        margin-bottom: 5px;
+    .profile-wrapper .profile-info {
+        margin-top: 0;
     }
 
-        .profile-wrapper .profile-info .user-info .user-detail {
-            padding-left: 5px;
+        .profile-wrapper .profile-info .heading-wrap {
+            padding-top: 5px;
+            padding-bottom: 5px;
+            text-align: center;
+            border-radius: 29px 29px 29px 29px;
         }
 
-.profile-wrapper .profile-info-social {
-    padding-left: 0;
-    margin-top: 29px;
-}
+        .profile-wrapper .profile-info .info-holder {
+            border: 0;
+        }
 
-    .profile-wrapper .profile-info-social > li {
-        float: left;
-        margin-right: 13px;
-        margin-bottom: 10px;
+        .profile-wrapper .profile-info .user-info {
+            margin-bottom: 5px;
+        }
+
+            .profile-wrapper .profile-info .user-info .user-detail {
+                padding-left: 5px;
+            }
+
+    .profile-wrapper .profile-info-social {
+        padding-left: 0;
+        margin-top: 29px;
     }
+
+        .profile-wrapper .profile-info-social > li {
+            float: left;
+            margin-right: 13px;
+            margin-bottom: 10px;
+        }
 
 @media only screen and (max-width: 767px) {
     .profile-wrapper .user-wrap {
@@ -884,3 +888,21 @@
         margin-top: 10px;
     }
 }
+
+.navbar-forum-activity {
+    width: 100%;
+}
+
+    .navbar-forum-activity .navbar-item {
+        float: left;
+    }
+
+    .navbar-forum-activity .selected-item {
+        border-bottom: 2px solid #2c3e50;
+        color: #2c3e50;
+    }
+
+    .navbar-forum-activity li {
+        position: relative;
+        display: inline-block;
+    }

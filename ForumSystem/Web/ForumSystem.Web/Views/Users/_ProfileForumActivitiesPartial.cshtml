@@ -1,0 +1,32 @@
+﻿@model ForumSystem.Web.ViewModels.Users.UserViewModel
+
+<div class="profile-forum-activity-wrapper">
+    <div class="row">
+        <div class="col-md-12">
+            <a href="" type="button"></a>
+            <button class="btn btn-primary btn-group-justified" data-toggle="collapse" data-target="#forum-activity">Forum Activities</button>
+            <div class="panel panel-default">
+                <div class="panel-body collapse in" id="forum-activity">
+                    <ul class="nav navbar-nav navbar-forum-activity">
+                        <li>
+                            @Ajax.ActionLink("Posts", "Posts", "Users", new { area = string.Empty, id = Model.Id }, new AjaxOptions
+                                               {
+                                                   HttpMethod = "GET",
+                                                   InsertionMode = InsertionMode.Replace,
+                                                   UpdateTargetId = "forum-activity-data-holder",
+                                                   OnSuccess = "SelectTab"
+                                               }, new { @class = "navbar-item", id = "user-posts-item" })
+                        </li>
+                        <li>
+                            <a href="" class="navbar-item">Answers</a>
+                        </li>
+                        <li>
+                            <a href="" class="navbar-item">Comments</a>
+                        </li>
+                    </ul>
+                    <div id="forum-activity-data-holder"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
