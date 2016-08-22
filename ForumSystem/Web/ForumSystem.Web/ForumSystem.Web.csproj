@@ -709,6 +709,7 @@
     <Content Include="Views\Users\_ProfileBaseInfoPartial.cshtml" />
     <Content Include="Views\Users\_ProfileForumActivitiesPartial.cshtml" />
     <Content Include="Views\Users\_UserAnswersPartial.cshtml" />
+    <Content Include="Views\Users\_UserCommentsPartial.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

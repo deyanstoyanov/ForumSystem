@@ -1,0 +1,18 @@
+﻿@model IEnumerable<ForumSystem.Web.ViewModels.Comments.CommentViewModel>
+
+@(Html
+    .Grid(Model)
+    .Build(columns =>
+    {
+        columns.Add(model => model.Post).Titled("Post")
+            .RenderedAs(model => Html.ActionLink(model.Post, "Details", new { area = string.Empty, controller = "Answers", Id = model.AnswerId }));
+        columns.Add(model => model.Author).Titled("Author")
+            .RenderedAs(model => Html.ActionLink(model.Author, "Details", new { area = string.Empty, controller = "Users", id = model.AuthorId }));
+        columns.Add(model => model.LikesCount).Titled("Likes");
+        columns.Add(model => model.ReportsCount).Titled("Reports");
+        columns.Add(model => model.CreatedOn).Titled("CreatedOn");
+        columns.Add(model => model.ModifiedOn).Titled("ModifiedOn");
+    })
+    .Css("table table-responsive table-bordered table-striped")
+    .Empty("No data found")
+)

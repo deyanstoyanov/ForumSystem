@@ -10,6 +10,7 @@
     using ForumSystem.Data.UnitOfWork;
     using ForumSystem.Web.Controllers.Base;
     using ForumSystem.Web.ViewModels.Answers;
+    using ForumSystem.Web.ViewModels.Comments;
     using ForumSystem.Web.ViewModels.Posts;
     using ForumSystem.Web.ViewModels.Users;
 
@@ -85,6 +86,30 @@
                     .ToList();
 
             return this.PartialView("_UserAnswersPartial", answers);
+        }
+
+        [HttpGet]
+        public ActionResult Comments(string id)
+        {
+            if (id == null)
+            {
+                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+            }
+
+            var user = this.Data.Users.GetById(id);
+            if (user == null)
+            {
+                return this.HttpNotFound();
+            }
+
+            var comments =
+                this.Data.Comments.All()
+                    .Where(c => c.AuthorId == id)
+                    .OrderByDescending(c => c.CreatedOn)
+                    .ProjectTo<CommentViewModel>()
+                    .ToList();
+
+            return this.PartialView("_UserCommentsPartial", comments);
         }
     }
 }

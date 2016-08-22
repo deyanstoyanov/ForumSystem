@@ -19,15 +19,21 @@
                         </li>
                         <li>
                             @Ajax.ActionLink("Answers", "Answers", "Users", new { area = string.Empty, id = Model.Id }, new AjaxOptions
-                                                 {
-                                                     HttpMethod = "GET",
-                                                     InsertionMode = InsertionMode.Replace,
-                                                     UpdateTargetId = "forum-activity-data-holder",
-                                                     OnSuccess = "SelectAnswerTab"
-                                                 }, new { @class = "navbar-item", id = "user-answers-item" })
+                                                {
+                                                    HttpMethod = "GET",
+                                                    InsertionMode = InsertionMode.Replace,
+                                                    UpdateTargetId = "forum-activity-data-holder",
+                                                    OnSuccess = "SelectAnswerTab"
+                                                }, new { @class = "navbar-item", id = "user-answers-item" })
                         </li>
                         <li>
-                            <a href="" class="navbar-item">Comments</a>
+                            @Ajax.ActionLink("Comments", "Comments", "Users", new { area = string.Empty, id = Model.Id }, new AjaxOptions
+                                                {
+                                                    HttpMethod = "GET",
+                                                    InsertionMode = InsertionMode.Replace,
+                                                    UpdateTargetId = "forum-activity-data-holder",
+                                                    OnSuccess = "SelectCommentTab"
+                                                }, new { @class = "navbar-item", id = "user-comments-item" })
                         </li>
                     </ul>
                     <div id="forum-activity-data-holder"></div>
