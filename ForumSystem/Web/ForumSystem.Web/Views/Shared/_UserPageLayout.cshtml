@@ -1,0 +1,12 @@
+﻿@using Microsoft.AspNet.Identity
+
+@{
+    const string UsersPartialViewsFolder = "~/Views/Users/{0}.cshtml";
+    var userId = User.Identity.GetUserId();
+
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+@Html.Partial(string.Format(UsersPartialViewsFolder, "_ProfileHeadNavigationPartial"), userId)
+
+@RenderBody()

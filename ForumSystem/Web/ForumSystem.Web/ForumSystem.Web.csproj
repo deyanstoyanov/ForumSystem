@@ -710,6 +710,8 @@
     <Content Include="Views\Users\_ProfileForumActivitiesPartial.cshtml" />
     <Content Include="Views\Users\_UserAnswersPartial.cshtml" />
     <Content Include="Views\Users\_UserCommentsPartial.cshtml" />
+    <Content Include="Views\Shared\_UserPageLayout.cshtml" />
+    <Content Include="Views\Users\_ProfileHeadNavigationPartial.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

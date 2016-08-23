@@ -816,7 +816,6 @@
 }
 
 .profile-container {
-    padding-top: 25px;
 }
 
 .base-info {
@@ -906,3 +905,25 @@
         position: relative;
         display: inline-block;
     }
+
+.navbar-user {
+    margin-top: -40px;
+    margin-bottom: 56px;
+    border-bottom: 1px solid #ecf0f1;
+}
+
+@media only screen and (max-width: 767px) {
+    .navbar-user {
+        margin-top: -50px;
+        border-bottom: 1px solid #ecf0f1;
+    }
+}
+
+.head-nav-selected-item {
+    border-bottom: 2px solid #2c3e50;
+    color: #2c3e50;
+}
+
+.heading-nav {
+    margin-bottom: 0;
+}

@@ -1,0 +1,19 @@
+﻿@model string
+
+<div class="navbar-user">
+    <div class="container container-holder">
+        <ul class="nav navbar-nav">
+            <li>
+                <a href="@Url.Action("Details", "Users", new { area = string.Empty, id = Model })" id="profile-item">
+                    Profile
+                </a>
+            </li>
+            <li>
+                <a href="#">Edit</a>
+            </li>
+            <li>
+                <a href="@Url.Action("ChangePassword", "Manage", new { area = string.Empty })" id="change-password-item">Change Password</a>
+            </li>
+        </ul>
+    </div>
+</div>
