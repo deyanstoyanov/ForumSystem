@@ -2,6 +2,7 @@
 {
     using System;
     using System.Collections.Generic;
+    using System.ComponentModel.DataAnnotations;
     using System.Security.Claims;
     using System.Threading.Tasks;
 
@@ -22,13 +23,33 @@
             this.CreatedOn = DateTime.Now;
         }
 
-        public virtual ICollection<Post> Posts { get; set; }
-
-        public virtual ICollection<Answer> Answers { get; set; }
-
-        public virtual ICollection<Comment> Comments { get; set; }
-
         public string PictureUrl { get; set; }
+
+        public string WebsiteUrl { get; set; }
+
+        public string Occupation { get; set; }
+
+        public string Interests { get; set; }
+
+        [DataType(DataType.MultilineText)]
+        [StringLength(500, MinimumLength = 6, ErrorMessage = "{0} text must be between {2} and {1} symbols long.")]
+        public string AboutMe { get; set; }
+
+        public string Country { get; set; }
+
+        public string City { get; set; }
+
+        public string GitHubProfile { get; set; }
+
+        public string StackOverflowProfile { get; set; }
+
+        public string LinkedInProfile { get; set; }
+
+        public string FacebookProfile { get; set; }
+
+        public string TwitterProfile { get; set; }
+
+        public string SkypeProfile { get; set; }
 
         public DateTime CreatedOn { get; set; }
 
@@ -39,6 +60,12 @@
         public bool IsDeleted { get; set; }
 
         public DateTime? DeletedOn { get; set; }
+
+        public virtual ICollection<Post> Posts { get; set; }
+
+        public virtual ICollection<Answer> Answers { get; set; }
+
+        public virtual ICollection<Comment> Comments { get; set; }
 
         public async Task<ClaimsIdentity> GenerateUserIdentityAsync(UserManager<ApplicationUser> manager)
         {
