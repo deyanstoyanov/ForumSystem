@@ -2,6 +2,7 @@
 
 @{
     ViewBag.Title = "Edit User Profile";
+    Layout = "~/Views/Shared/_UserPageLayout.cshtml";
 }
 
 @using (Html.BeginForm())
@@ -165,7 +166,10 @@
     </div>
 }
 
-@section scripts
-{
-    @Scripts.Render("~/bundles/jqueryval")
-}
+<script>
+    $(document).ready(function () {
+        $('#edit-profile-item').addClass('head-nav-selected-item');
+    });
+</script>
+
+@Scripts.Render("~/bundles/jqueryval")

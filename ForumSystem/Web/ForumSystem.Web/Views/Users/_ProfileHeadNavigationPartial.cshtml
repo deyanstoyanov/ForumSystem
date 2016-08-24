@@ -9,10 +9,22 @@
                 </a>
             </li>
             <li>
-                <a href="#">Edit</a>
+                <a href="@Url.Action("Edit", "Users", new { area = string.Empty, id = Model })" id="edit-profile-item">
+                    Edit
+                </a>
             </li>
             <li>
-                <a href="@Url.Action("ChangePassword", "Manage", new { area = string.Empty })" id="change-password-item">Change Password</a>
+                <a href="@Url.Action("Index", "Manage", new { area = string.Empty })" id="settings-item">
+                    Settings
+                </a>
+            </li>
+            <li>
+                <a href="@Url.Action("ChangePassword", "Manage", new { area = string.Empty })" id="change-password-item">
+                    Change Password
+                </a>
+            </li>
+            <li>
+                <a href="javascript:document.getElementById('logoutForm').submit()">Logout</a>
             </li>
         </ul>
     </div>
