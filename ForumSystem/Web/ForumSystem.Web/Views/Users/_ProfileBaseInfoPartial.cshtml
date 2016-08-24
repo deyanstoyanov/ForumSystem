@@ -2,48 +2,51 @@
 
 <div class="profile-wrapper">
     <div class="row base-info">
-        <div class="col-md-6">
+        <div class="col-md-9">
             <div class="row base-info">
                 <div class="col-sm-12 col-xs-12">
                     <div class="user-wrap">
-                        <div class="user-avatar">
-                            @if (!string.IsNullOrEmpty(Model.PictureUrl))
-                            {
-                                <img src="@Url.Content(Model.PictureUrl)" alt="@(Model.UserName) avatar" />
-                            }
+                        <div class="head-info">
+                            <div class="user-avatar">
+                                @if (!string.IsNullOrEmpty(Model.PictureUrl))
+                                {
+                                    <img src="@Url.Content(Model.PictureUrl)" alt="@(Model.UserName) avatar" />
+                                }
+                            </div>
+                            <ul class="profile-info-social">
+                                <li>
+                                    <a href="@Model.FacebookProfile" target="_blank">
+                                        <i class="glyphicon glyphicon-link"></i>
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href="@Model.GitHubProfile" target="_blank">
+                                        <i class="glyphicon glyphicon-link"></i>
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href="@Model.LinkedInProfile" target="_blank">
+                                        <i class="glyphicon glyphicon-link"></i>
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href="@Model.SkypeProfile" target="_blank">
+                                        <i class="glyphicon glyphicon-link"></i>
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href="@Model.StackOverflowProfile" target="_blank">
+                                        <i class="glyphicon glyphicon-link"></i>
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href="@Model.TwitterProfile" target="_blank">
+                                        <i class="glyphicon glyphicon-link"></i>
+                                    </a>
+                                </li>
+                            </ul>
                         </div>
-                        <ul class="profile-info-social">
-                            <li>
-                                <a href="#">
-                                    <i class="glyphicon glyphicon-link"></i>
-                                </a>
-                            </li>
-                            <li>
-                                <a href="#">
-                                    <i class="glyphicon glyphicon-link"></i>
-                                </a>
-                            </li>
-                            <li>
-                                <a href="#">
-                                    <i class="glyphicon glyphicon-link"></i>
-                                </a>
-                            </li>
-                            <li>
-                                <a href="#">
-                                    <i class="glyphicon glyphicon-link"></i>
-                                </a>
-                            </li>
-                            <li>
-                                <a href="#">
-                                    <i class="glyphicon glyphicon-link"></i>
-                                </a>
-                            </li>
-                            <li>
-                                <a href="#">
-                                    <i class="glyphicon glyphicon-link"></i>
-                                </a>
-                            </li>
-                        </ul>
+
                         <div class="cell">
                             <div class="profile-info">
                                 <div class="panel panel-default info-holder">
@@ -54,29 +57,98 @@
                                             </strong>
                                         </h4>
                                     </div>
-                                    <div class="panel-body">
-                                        <div class="user-info">
-                                            <label>Id:</label>
-                                            <span class="user-detail">@Model.Id</span>
-                                        </div>
-                                        <div class="user-info">
-                                            <label>Email:</label>
-                                            <span class="user-detail">@Model.Email</span>
-                                        </div>
-                                        <div class="user-info">
-                                            <label>Joined on:</label>
-                                            <span class="user-detail">@Model.CreatedOn</span>
-                                        </div>
-                                        <div class="user-info">
-                                            <label>PhoneNumber:</label>
-                                            @if (!string.IsNullOrEmpty(Model.PhoneNumber))
-                                            {
-                                                <span class="user-detail">@Model.PhoneNumber</span>
-                                            }
-                                            else
-                                            {
-                                                <span class="user-detail">No information</span>
-                                            }
+                                    <div class="panel-body word-wrap">
+                                        <div class="col-sm-12">
+                                            <div class="col-sm-6 info-wrap">
+                                                <div class="user-info">
+                                                    <label>Email:</label>
+                                                    <span class="user-detail">@Model.Email</span>
+                                                </div>
+                                                <div class="user-info">
+                                                    <label>Joined on:</label>
+                                                    <span class="user-detail">@Model.CreatedOn</span>
+                                                </div>
+                                                <div class="user-info">
+                                                    <label>Website:</label>
+                                                    @if (!string.IsNullOrEmpty(Model.WebsiteUrl))
+                                                    {
+                                                        <span class="user-detail">@Model.WebsiteUrl</span>
+                                                    }
+                                                    else
+                                                    {
+                                                        @Html.Partial("_NoInformationPartial")
+                                                    }
+                                                </div>
+                                                <div class="user-info">
+                                                    <label>Phone Number:</label>
+                                                    @if (!string.IsNullOrEmpty(Model.PhoneNumber))
+                                                    {
+                                                        <span class="user-detail">@Model.PhoneNumber</span>
+                                                    }
+                                                    else
+                                                    {
+                                                        @Html.Partial("_NoInformationPartial")
+                                                    }
+                                                </div>
+                                                <div class="user-info">
+                                                    <label>Country:</label>
+                                                    @if (!string.IsNullOrEmpty(Model.Country))
+                                                    {
+                                                        <span class="user-detail">@Model.Country</span>
+                                                    }
+                                                    else
+                                                    {
+                                                        @Html.Partial("_NoInformationPartial")
+                                                    }
+                                                </div>
+                                                <div class="user-info">
+                                                    <label>City:</label>
+                                                    @if (!string.IsNullOrEmpty(Model.City))
+                                                    {
+                                                        <span class="user-detail">@Model.City</span>
+                                                    }
+                                                    else
+                                                    {
+                                                        @Html.Partial("_NoInformationPartial")
+                                                    }
+                                                </div>
+                                            </div>
+
+                                            <div class="col-sm-6 info-wrap">
+                                                <div class="user-info">
+                                                    <label>Occupation:</label>
+                                                    @if (!string.IsNullOrEmpty(Model.Occupation))
+                                                    {
+                                                        <span class="user-detail">@Model.Occupation</span>
+                                                    }
+                                                    else
+                                                    {
+                                                        @Html.Partial("_NoInformationPartial")
+                                                    }
+                                                </div>
+                                                <div class="user-info">
+                                                    <label>Interests:</label>
+                                                    @if (!string.IsNullOrEmpty(Model.Interests))
+                                                    {
+                                                        <span class="user-detail">@Model.Interests</span>
+                                                    }
+                                                    else
+                                                    {
+                                                        @Html.Partial("_NoInformationPartial")
+                                                    }
+                                                </div>
+                                                <div class="user-info">
+                                                    <label>About Me:</label>
+                                                    @if (!string.IsNullOrEmpty(Model.AboutMe))
+                                                    {
+                                                        <span class="user-detail">@Model.AboutMe</span>
+                                                    }
+                                                    else
+                                                    {
+                                                        @Html.Partial("_NoInformationPartial")
+                                                    }
+                                                </div>
+                                            </div>
                                         </div>
                                     </div>
                                 </div>
@@ -86,15 +158,15 @@
                 </div>
             </div>
         </div>
-        <div class="col-md-6">
-            <div class="col-sm-6 col-md-4">
-                <div class="row">
-                    <div class="profile-info forum-info">
-                        <div class="panel panel-default info-holder">
-                            <div class="panel-heading heading-wrap">
-                                <h4>Forum</h4>
-                            </div>
-                            <div class="panel-body">
+        <div class="col-md-3">
+            <div class="profile-info forum-info">
+                <div class="panel panel-default info-holder">
+                    <div class="panel-heading heading-wrap">
+                        <h4>Forum</h4>
+                    </div>
+                    <div class="panel-body">
+                        <div class="cell">
+                            <div class="col-sm-12">
                                 <div class="user-info">
                                     <label>Posts:</label>
                                     <span class="user-detail">@Model.PostsCount</span>

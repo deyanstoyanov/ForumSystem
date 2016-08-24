@@ -81,6 +81,12 @@
     table-layout: fixed;
 }
 
+.word-wrap {
+    word-wrap: break-word;
+    overflow-wrap: break-word;
+    width: 100%;
+}
+
 .primary-btn {
     color: #2c3e50;
     background-color: transparent;

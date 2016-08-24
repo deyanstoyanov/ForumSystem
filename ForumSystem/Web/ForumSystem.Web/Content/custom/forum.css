@@ -838,6 +838,11 @@
         line-height: 100%;
     }
 
+        .profile-wrapper .user-wrap .head-info {
+            vertical-align: top;
+            display: block;
+        }
+
     .profile-wrapper .profile-info {
         margin-top: 0;
     }
@@ -880,11 +885,33 @@
     .profile-wrapper .profile-info {
         margin-top: 20px;
     }
+
+    .profile-wrapper .profile-info-social {
+        margin-bottom: 60px;
+    }
 }
 
 @media only screen and (max-width: 991px) and (min-width: 768px) {
     .profile-wrapper .profile-info.forum-info {
         margin-top: 10px;
+    }
+}
+
+@media only screen and (min-width: 992px) and (max-width: 1199px) {
+    .profile-wrapper .info-wrap {
+        width: 100%;
+    }
+}
+
+@media only screen and (min-width: 768px) and (max-width: 991px) {
+    .profile-wrapper .info-wrap {
+        width: 100%;
+    }
+}
+
+@media only screen and (max-width: 767px) {
+    .profile-wrapper .info-wrap {
+        width: 100%;
     }
 }
 

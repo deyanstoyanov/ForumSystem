@@ -712,6 +712,7 @@
     <Content Include="Views\Users\_UserCommentsPartial.cshtml" />
     <Content Include="Views\Shared\_UserPageLayout.cshtml" />
     <Content Include="Views\Users\_ProfileHeadNavigationPartial.cshtml" />
+    <Content Include="Views\Users\_NoInformationPartial.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

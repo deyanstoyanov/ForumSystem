@@ -28,6 +28,30 @@
 
         public int CommentsCount { get; set; }
 
+        public string WebsiteUrl { get; set; }
+
+        public string Occupation { get; set; }
+
+        public string Interests { get; set; }
+
+        public string AboutMe { get; set; }
+
+        public string Country { get; set; }
+
+        public string City { get; set; }
+
+        public string GitHubProfile { get; set; }
+
+        public string StackOverflowProfile { get; set; }
+
+        public string LinkedInProfile { get; set; }
+
+        public string FacebookProfile { get; set; }
+
+        public string TwitterProfile { get; set; }
+
+        public string SkypeProfile { get; set; }
+
         public void CreateMappings(IMapperConfiguration configuration)
         {
             configuration.CreateMap<ApplicationUser, UserViewModel>()
