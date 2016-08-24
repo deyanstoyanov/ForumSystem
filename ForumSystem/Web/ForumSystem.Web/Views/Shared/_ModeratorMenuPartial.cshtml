@@ -1,0 +1,17 @@
+﻿<li class="dropdown">
+    <a href="" class="dropdown-toggle" id="moderator-menu" data-toggle="dropdown">
+        Moderator
+        <span class="caret"></span>
+    </a>
+    <ul class="dropdown-menu" role="menu" aria-labelledby="moderator-menu">
+        <li class="text-center" role="presentation">
+            <a href="@Url.Action("All", "PostReports", new { area = "Moderator" })" role="menuitem">Posts Reports</a>
+        </li>
+        <li class="text-center" role="presentation">
+            <a href="@Url.Action("All", "AnswerReports", new { area = "Moderator" })" role="menuitem">Answers Reports</a>
+        </li>
+        <li class="text-center" role="presentation">
+            <a href="@Url.Action("All", "CommentReports", new { area = "Moderator" })" role="menuitem">Comments Reports</a>
+        </li>
+    </ul>
+</li>

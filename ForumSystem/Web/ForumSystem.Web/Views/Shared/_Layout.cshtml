@@ -1,7 +1,6 @@
 ﻿@using System
 
-@using ForumSystem.Common.Constants
-
+@using ForumSystem.Web.Infrastructure.Extensions
 <!DOCTYPE html>
 <html>
 <head>
@@ -9,6 +8,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>@ViewBag.Title - Forum System</title>
     @Styles.Render("~/Content/css")
+    @Scripts.Render("~/bundles/jquery")
 
 </head>
 <body>
@@ -26,27 +26,16 @@
                     </div>
                     <div class="navbar-collapse collapse">
                         <ul class="nav navbar-nav">
-                            <li>@Html.ActionLink("Home", "Index", "Home", new { area = string.Empty }, null)</li>
-                            @if (User.IsInRole(RoleConstants.Moderator))
+                            <li>@Html.ActionLink("Forum", "Index", "Home", new { area = string.Empty }, null)</li>
+
+                            @if (User.IsAdmin())
                             {
-                                <li class="dropdown">
-                                    <a href="" class="dropdown-toggle" id="moderator-menu" data-toggle="dropdown">
-                                        <i class="glyphicon glyphicon-user"></i>
-                                        Moderator
-                                        <span class="caret"></span>
-                                    </a>
-                                    <ul class="dropdown-menu" role="menu" aria-labelledby="moderator-menu">
-                                        <li class="text-center" role="presentation">
-                                            <a href="@Url.Action("All", "PostReports", new { area = "Moderator" })" role="menuitem">Posts Reports</a>
-                                        </li>
-                                        <li class="text-center" role="presentation">
-                                            <a href="@Url.Action("All", "AnswerReports", new { area = "Moderator" })" role="menuitem">Answers Reports</a>
-                                        </li>
-                                        <li class="text-center" role="presentation">
-                                            <a href="@Url.Action("All", "CommentReports", new { area = "Moderator" })" role="menuitem">Comments Reports</a>
-                                        </li>
-                                    </ul>
-                                </li>
+                                @Html.Partial("_AdministrationMenuPartial")
+                            }
+
+                            @if (User.IsModerator() || User.IsAdmin())
+                            {
+                                @Html.Partial("_ModeratorMenuPartial")
                             }
                         </ul>
                         @Html.Partial("_LoginPartial")
@@ -55,7 +44,7 @@
             </div>
         </div>
         <div class="heading-wrapper">
-            <div class="breadcrumb">
+            <div class="breadcrumb heading-nav">
                 <div class="cell-page-title">
                     <div class="container container-holder">
                         <h1 class="page-title">@ViewBag.Title</h1>
@@ -75,9 +64,8 @@
         </footer>
     </div>
 
-    @Scripts.Render("~/bundles/jquery")
-    @Scripts.Render("~/bundles/bootstrap")
     @Scripts.Render("~/bundles/administration-scripts")
+    @Scripts.Render("~/bundles/bootstrap")
     @RenderSection("scripts", false)
 </body>
 </html>

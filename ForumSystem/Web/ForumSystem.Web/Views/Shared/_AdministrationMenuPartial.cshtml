@@ -1,0 +1,26 @@
+﻿<li class="dropdown">
+    <a href="" class="dropdown-toggle" id="administration-menu" data-toggle="dropdown">
+        Administration
+        <span class="caret"></span>
+    </a>
+    <ul class="dropdown-menu" role="menu" aria-labelledby="administration-menu">
+        <li class="text-center" role="presentation">
+            <a href="@Url.Action("All", "Sections", new { area = "Administration" })" role="menuitem">Sections</a>
+        </li>
+        <li class="text-center" role="presentation">
+            <a href="@Url.Action("All", "Categories", new { area = "Administration" })" role="menuitem">Categories</a>
+        </li>
+        <li class="text-center" role="presentation">
+            <a href="@Url.Action("All", "Users", new { area = "Administration" })" role="menuitem">Users</a>
+        </li>
+        <li class="text-center" role="presentation">
+            <a href="@Url.Action("All", "Posts", new { area = "Administration" })" role="menuitem">Posts</a>
+        </li>
+        <li class="text-center" role="presentation">
+            <a href="@Url.Action("All", "Answers", new { area = "Administration" })" role="menuitem">Answers</a>
+        </li>
+        <li class="text-center" role="presentation">
+            <a href="@Url.Action("All", "Comments", new { area = "Administration" })" role="menuitem">Comments</a>
+        </li>
+    </ul>
+</li>
