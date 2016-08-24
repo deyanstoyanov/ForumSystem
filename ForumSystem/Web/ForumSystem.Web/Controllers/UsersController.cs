@@ -9,11 +9,15 @@
 
     using ForumSystem.Data.UnitOfWork;
     using ForumSystem.Web.Controllers.Base;
+    using ForumSystem.Web.InputModels.Users;
     using ForumSystem.Web.ViewModels.Answers;
     using ForumSystem.Web.ViewModels.Comments;
     using ForumSystem.Web.ViewModels.Posts;
     using ForumSystem.Web.ViewModels.Users;
 
+    using Microsoft.AspNet.Identity;
+
+    [Authorize]
     public class UsersController : BaseController
     {
         public UsersController(IForumSystemData data)
@@ -110,6 +114,77 @@
                     .ToList();
 
             return this.PartialView("_UserCommentsPartial", comments);
+        }
+
+        [HttpGet]
+        public ActionResult Edit(string id)
+        {
+            if (id == null)
+            {
+                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+            }
+
+            var user = this.Data.Users.GetById(id);
+            if (user == null)
+            {
+                return this.HttpNotFound();
+            }
+
+            var model = Mapper.Map<UserEditModel>(user);
+
+            return this.View(model);
+        }
+
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public ActionResult Edit(UserEditModel model)
+        {
+            var user = this.Data.Users.GetById(model.Id);
+            var loggedUserId = this.User.Identity.GetUserId();
+            if (user.Id != loggedUserId)
+            {
+                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+            }
+
+            var checkEmail = this.Data.Users.All().Any(u => u.Email == model.Email);
+            var checkUserName = this.Data.Users.All().Any(u => u.UserName == model.UserName);
+
+            if (checkEmail && user.Email != model.Email)
+            {
+                this.ModelState.AddModelError("Email", $"There is an existing account associated with {model.Email}");
+            }
+
+            if (checkUserName && user.UserName != model.UserName)
+            {
+                this.ModelState.AddModelError("UserName", "That username is taken. Try another.");
+            }
+
+            if (this.ModelState.IsValid)
+            {
+                user.UserName = model.UserName;
+                user.Email = model.Email;
+                user.PhoneNumber = model.PhoneNumber;
+                user.AboutMe = model.AboutMe;
+                user.City = model.City;
+                user.Country = model.Country;
+                user.Interests = model.Interests;
+                user.Occupation = model.Occupation;
+                user.PictureUrl = model.PictureUrl;
+                user.FacebookProfile = model.FacebookProfile;
+                user.GitHubProfile = model.GitHubProfile;
+                user.LinkedInProfile = model.LinkedInProfile;
+                user.SkypeProfile = model.SkypeProfile;
+                user.StackOverflowProfile = model.StackOverflowProfile;
+                user.TwitterProfile = model.TwitterProfile;
+                user.WebsiteUrl = model.WebsiteUrl;
+
+                this.Data.Users.Update(user);
+                this.Data.SaveChanges();
+
+                return this.RedirectToAction("Details", "Users", new { area = string.Empty, id = user.Id });
+            }
+
+            return this.View(model);
         }
     }
 }
