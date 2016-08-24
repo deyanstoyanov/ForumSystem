@@ -290,6 +290,7 @@
     <Compile Include="InputModels\PostReports\PostReportInputModel.cs" />
     <Compile Include="InputModels\Posts\PostEditModel.cs" />
     <Compile Include="InputModels\Posts\PostInputModel.cs" />
+    <Compile Include="InputModels\Users\UserEditModel.cs" />
     <Compile Include="ViewModels\Account\ForgotPasswordViewModel.cs" />
     <Compile Include="ViewModels\Account\ExternalLoginConfirmationViewModel.cs" />
     <Compile Include="ViewModels\Account\ExternalLoginListViewModel.cs" />
