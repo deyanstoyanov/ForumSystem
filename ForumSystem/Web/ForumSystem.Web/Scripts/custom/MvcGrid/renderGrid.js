@@ -1,0 +1,1 @@
+﻿$(".mvc-grid").mvcgrid();

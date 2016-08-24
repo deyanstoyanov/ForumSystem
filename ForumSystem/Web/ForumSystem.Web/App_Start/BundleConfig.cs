@@ -34,6 +34,8 @@
             bundles.Add(new ScriptBundle("~/bundles/bootstrap").Include("~/Scripts/bootstrap/bootstrap.js"));
 
             bundles.Add(new ScriptBundle("~/bundles/administration-scripts").Include("~/Scripts/MvcGrid/mvc-grid.js"));
+
+            bundles.Add(new ScriptBundle("~/bundles/renderGrid").Include("~/Scripts/custom/MvcGrid/renderGrid.js"));
         }
     }
 }

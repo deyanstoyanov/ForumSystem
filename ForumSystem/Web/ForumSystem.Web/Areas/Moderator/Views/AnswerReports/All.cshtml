@@ -8,6 +8,7 @@
 
 @{
     ViewBag.Title = "Answer Reports";
+    Layout = "~/Areas/Moderator/Views/Shared/_ModeratorLayout.cshtml";
 }
 
 @(Html
@@ -30,7 +31,7 @@
     .Pageable(pager =>
     {
         pager.PagesToDisplay = 3;
-        pager.RowsPerPage = 12;
+        pager.RowsPerPage = 10;
     })
     .MultiFilterable()
     .Filterable()
@@ -39,8 +40,8 @@
     .Empty("No data found")
 )
 
-@section scripts {
-    <script>
-        $('.mvc-grid').mvcgrid();
-    </script>
-}
+<script>
+    $(document).ready(function() {
+        $('#answer-reports-item').addClass('head-nav-selected-item');
+    });
+</script>

@@ -939,8 +939,19 @@
     border-bottom: 1px solid #ecf0f1;
 }
 
+.navbar-administration {
+    margin-top: -40px;
+    margin-bottom: 30px;
+    border-bottom: 1px solid #ecf0f1;
+}
+
 @media only screen and (max-width: 767px) {
     .navbar-user {
+        margin-top: -50px;
+        border-bottom: 1px solid #ecf0f1;
+    }
+
+    .navbar-administration {
         margin-top: -50px;
         border-bottom: 1px solid #ecf0f1;
     }

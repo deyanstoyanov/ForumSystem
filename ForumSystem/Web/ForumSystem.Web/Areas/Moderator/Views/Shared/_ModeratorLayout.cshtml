@@ -1,11 +1,26 @@
-﻿@*@{
+﻿@{
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-@Styles.Render("~/Content/css")
+<div class="navbar-administration">
+    <div class="container container-holder">
+        <ul class="nav navbar-nav">
+            <li>
+                <a href="@Url.Action("All", "PostReports", new { area = "Moderator" })" id="post-reports-item">Posts Reports</a>
+            </li>
+            <li>
+                <a href="@Url.Action("All", "AnswerReports", new { area = "Moderator" })" id="answer-reports-item">Answers Reports</a>
+            </li>
+            <li>
+                <a href="@Url.Action("All", "CommentReports", new { area = "Moderator" })" id="comment-reports-item">Comments Reports</a>
+            </li>
+        </ul>
+    </div>
+</div>
 
 @RenderBody()
 
-@Scripts.Render("~/bundles/jquery")
-@Scripts.Render("~/bundles/bootstrap")
-@RenderSection("scripts", false)*@
+@section scripts
+{
+    @Scripts.Render("~/bundles/renderGrid")
+}

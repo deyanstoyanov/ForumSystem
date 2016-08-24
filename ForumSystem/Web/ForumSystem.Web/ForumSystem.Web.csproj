@@ -390,6 +390,7 @@
     <None Include="Scripts\jquery\jquery-3.1.0.intellisense.js" />
     <Content Include="Scripts\bootstrap\bootstrap.js" />
     <Content Include="Scripts\bootstrap\bootstrap.min.js" />
+    <Content Include="Scripts\custom\MvcGrid\renderGrid.js" />
     <Content Include="Scripts\jquery\jquery-3.1.0.js" />
     <Content Include="Scripts\jquery\jquery-3.1.0.min.js" />
     <Content Include="Scripts\jquery\jquery-3.1.0.slim.js" />
