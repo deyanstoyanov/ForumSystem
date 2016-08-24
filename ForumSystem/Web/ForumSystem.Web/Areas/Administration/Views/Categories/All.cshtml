@@ -6,6 +6,7 @@
     
 @{
     ViewBag.Title = "Categories";
+    Layout = "~/Areas/Administration/Views/Shared/_AdministrationLayout.cshtml";
 }
 
 <a href="@Url.Action("Create", "Categories", new { area = "Administration" })" class="btn btn-success btn-sm bottom-buffer top-buffer">
@@ -18,10 +19,10 @@
     .Build(columns =>
     {
         columns.Add(model => model.Id).Titled("Id");
-        columns.Add(model => model.Section).Titled("Section")
-            .RenderedAs(model => Html.ActionLink(model.Section, "Details", new { area = string.Empty, controller = "Sections", Id = model.SectionId }));
         columns.Add(model => model.Title).Titled("Title")
             .RenderedAs(model => Html.ActionLink(model.Title, "Details", new { area = string.Empty, controller = "Categories", Id = model.Id }));
+        columns.Add(model => model.Section).Titled("Section")
+            .RenderedAs(model => Html.ActionLink(model.Section, "Details", new { area = string.Empty, controller = "Sections", Id = model.SectionId }));
         columns.Add(model => model.Description).Titled("Description");
         columns.Add(model => model.ActivePostsCount).Titled("ActivePosts");
         columns.Add(model => model.DeletedPostsCount).Titled("DeletedPosts");
@@ -54,8 +55,8 @@
     .Empty("No data found")
 )
 
-@section scripts {
-    <script>
-        $('.mvc-grid').mvcgrid();
-    </script>
-}
+<script>
+    $(document).ready(function() {
+        $('#categories-item').addClass('head-nav-selected-item');
+    });
+</script>

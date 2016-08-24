@@ -6,6 +6,7 @@
 
 @{
     ViewBag.Title = "Answers";
+    Layout = "~/Areas/Administration/Views/Shared/_AdministrationLayout.cshtml";
 }
 
 @(Html
@@ -49,8 +50,8 @@
     .Empty("No data found")
 )
 
-@section scripts {
-    <script>
-        $('.mvc-grid').mvcgrid();
-    </script>
-}
+<script>
+    $(document).ready(function () {
+        $('#answers-item').addClass('head-nav-selected-item');
+    });
+</script>

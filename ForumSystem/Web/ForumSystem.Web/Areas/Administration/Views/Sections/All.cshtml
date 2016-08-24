@@ -6,6 +6,7 @@
 
 @{
     ViewBag.Title = "Sections";
+    Layout = "~/Areas/Administration/Views/Shared/_AdministrationLayout.cshtml";
 }
 
 <a href="@Url.Action("Create", "Sections", new { area = "Administration" })" class="btn btn-success btn-sm bottom-buffer top-buffer">
@@ -51,8 +52,8 @@
     .Empty("No data found")
 )
 
-@section scripts {
-    <script>
-        $('.mvc-grid').mvcgrid();
-    </script>
-}
+<script>
+    $(document).ready(function() {
+        $('#sections-item').addClass('head-nav-selected-item');
+    });
+</script>

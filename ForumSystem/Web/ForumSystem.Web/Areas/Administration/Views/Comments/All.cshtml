@@ -5,7 +5,8 @@
 @model IEnumerable<ForumSystem.Web.Areas.Administration.ViewModels.Comments.CommentViewModel>
 
 @{
-    ViewBag.Title = "Answers";
+    ViewBag.Title = "Comments";
+    Layout = "~/Areas/Administration/Views/Shared/_AdministrationLayout.cshtml";
 }
 
 @(Html
@@ -48,8 +49,8 @@
     .Empty("No data found")
 )
 
-@section scripts {
-    <script>
-        $('.mvc-grid').mvcgrid();
-    </script>
-}
+<script>
+    $(document).ready(function () {
+        $('#comments-item').addClass('head-nav-selected-item');
+    });
+</script>

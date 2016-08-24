@@ -1,0 +1,35 @@
+﻿@{
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div class="navbar-administration">
+    <div class="container container-holder">
+        <ul class="nav navbar-nav">
+            <li>
+                <a href="@Url.Action("All", "Sections", new { area = "Administration" })" id="sections-item">Sections</a>
+            </li>
+            <li>
+                <a href="@Url.Action("All", "Categories", new { area = "Administration" })" id="categories-item">Categories</a>
+            </li>
+            <li>
+                <a href="@Url.Action("All", "Users", new { area = "Administration" })" id="users-item">Users</a>
+            </li>
+            <li>
+                <a href="@Url.Action("All", "Posts", new { area = "Administration" })" id="posts-item">Posts</a>
+            </li>
+            <li>
+                <a href="@Url.Action("All", "Answers", new { area = "Administration" })" id="answers-item">Answers</a>
+            </li>
+            <li>
+                <a href="@Url.Action("All", "Comments", new { area = "Administration" })" id="comments-item">Comments</a>
+            </li>
+        </ul>
+    </div>
+</div>
+
+@RenderBody()
+
+@section scripts
+{
+    @Scripts.Render("~/bundles/renderGrid")
+}

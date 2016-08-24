@@ -4,6 +4,11 @@
 
 @model IEnumerable<ForumSystem.Web.Areas.Administration.ViewModels.Users.UserViewModel>
 
+@{
+    ViewBag.Title = "Users";
+    Layout = "~/Areas/Administration/Views/Shared/_AdministrationLayout.cshtml";
+}
+
 @(Html
     .Grid(Model)
     .Build(columns =>
@@ -34,8 +39,9 @@
     .Empty("No data found")
 )
 
-@section scripts {
-    <script>
-        $('.mvc-grid').mvcgrid();
-    </script>
-}
+<script>
+    $(document).ready(function () {
+        $('#users-item').addClass('head-nav-selected-item');
+    });
+</script>
+

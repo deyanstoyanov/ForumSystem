@@ -361,7 +361,7 @@
     <Content Include="Areas\Moderator\Views\CommentReports\Delete.cshtml" />
     <Content Include="Areas\Administration\Views\web.config" />
     <Content Include="Areas\Administration\Views\_ViewStart.cshtml" />
-    <Content Include="Areas\Administration\Views\Shared\_Layout.cshtml" />
+    <Content Include="Areas\Administration\Views\Shared\_AdministrationLayout.cshtml" />
     <Content Include="Areas\Administration\Views\Categories\All.cshtml" />
     <Content Include="Areas\Administration\Views\Categories\Create.cshtml" />
     <Content Include="Areas\Administration\Views\Categories\Delete.cshtml" />
