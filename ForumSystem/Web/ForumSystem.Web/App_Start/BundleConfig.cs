@@ -20,6 +20,9 @@
                     "~/Content/custom/site.common.css", 
                     "~/Content/custom/forum.css", 
                     "~/Content/MvcGrid/mvc-grid.css"));
+
+            bundles.Add(
+                new StyleBundle("~/Content/font-awesome").Include("~/Content/fonts/font-awesome/css/font-awesome.css"));
         }
 
         private static void RegisterScripts(BundleCollection bundles)
