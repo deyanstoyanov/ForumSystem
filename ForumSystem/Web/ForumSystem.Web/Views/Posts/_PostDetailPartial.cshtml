@@ -40,7 +40,7 @@
                         <div class="cell">
                             <span class="item-wrap votes-post">
                                 <span class="icon-holder">
-                                    <i class="glyphicon glyphicon-thumbs-up"></i>
+                                    <i class="fa fa-thumbs-o-up"></i>
                                 </span>
                                 <span class="cell">@Model.LikesCount</span>
                             </span>
@@ -54,7 +54,7 @@
                     <div class="cell">
                         <span class="item-wrap">
                             <span class="icon-holder" title="Created On">
-                                <i class="glyphicon glyphicon-calendar"></i>
+                                <i class="fa fa-clock-o"></i>
                             </span>
                             <span class="post-date" title="Created On">
                                 @Model.CreatedOn
@@ -62,7 +62,7 @@
                         </span>
                         <span class="item-wrap category-wrap">
                             <span class="icon-holder" title="Category">
-                                <i class="glyphicon glyphicon-folder-open"></i>
+                                <i class="fa fa-folder-open"></i>
                             </span>
                             <a href="@Url.Action("Details", "Categories", new { area = string.Empty, id = Model.CategoryId })" class="cell" title="Category">
                                 @Model.Category
@@ -72,7 +72,7 @@
                         {
                             <span class="item-wrap category-wrap">
                                 <span class="icon-holder" title="Last Modified">
-                                    <i class="glyphicon glyphicon-refresh"></i>
+                                    <i class="fa fa-refresh"></i>
                                 </span>
                                 <span class="last-redaction cell" title="Last Modified">
                                     <span class="date-time">@Model.ModifiedOn</span>
@@ -84,7 +84,7 @@
                         {
                             <span class="item-wrap category-wrap" title="Reports">
                                 <span class="icon-holder">
-                                    <i class="glyphicon glyphicon-bell"></i>
+                                    <i class="fa fa-exclamation-circle"></i>
                                 </span>
                                 <span>@Model.ReportsCount</span>
                             </span>

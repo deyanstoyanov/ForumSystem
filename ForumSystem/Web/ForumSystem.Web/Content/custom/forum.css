@@ -311,6 +311,11 @@
         margin-right: 0;
     }
 
+    .forum-post .head-post .item-wrap .description {
+        color: #666;
+        font-style: italic;
+    }
+
 .forum-post .head-post .item-wrap,
 .forum-post .head-post .user-wrap {
     display: table;

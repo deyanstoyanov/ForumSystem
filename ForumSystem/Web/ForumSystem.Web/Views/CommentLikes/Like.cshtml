@@ -19,14 +19,14 @@
             if (Model.IsLiked)
             {
                 <button type="submit" class="like-btn thumbs-btn liked-btn">
-                    <i class="glyphicon glyphicon-thumbs-up"></i>
+                    <i class="fa fa-thumbs-up"></i>
                     Like
                 </button>
             }
             else
             {
                 <button type="submit" class="like-btn thumbs-btn">
-                    <i class="glyphicon glyphicon-thumbs-up"></i>
+                    <i class="fa fa-thumbs-o-up"></i>
                     Like
                 </button>
             }
@@ -41,14 +41,14 @@
                 @if (Model.IsLiked)
                 {
                     <span class="icon-holder liked">
-                        <i class="glyphicon glyphicon-thumbs-up"></i>
+                        <i class="fa fa-thumbs-up"></i>
                     </span>
                     <span class="cell liked">@Model.LikesCount</span>
                 }
                 else
                 {
                     <span class="icon-holder">
-                        <i class="glyphicon glyphicon-thumbs-up"></i>
+                        <i class="fa fa-thumbs-o-up"></i>
                     </span>
                     <span class="cell">@Model.LikesCount</span>
                 }
