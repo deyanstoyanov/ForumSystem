@@ -306,6 +306,7 @@
     <Compile Include="ViewModels\Comments\CommentViewModel.cs" />
     <Compile Include="ViewModels\Home\IndexPageViewModel.cs" />
     <Compile Include="ViewModels\LastActivities\CategoryAllRepliesViewModel.cs" />
+    <Compile Include="ViewModels\LastActivities\CategoryLastPostViewModel.cs" />
     <Compile Include="ViewModels\LastActivities\PostLastActivityViewModel.cs" />
     <Compile Include="ViewModels\Manage\AddPhoneNumberViewModel.cs" />
     <Compile Include="ViewModels\Manage\ChangePasswordViewModel.cs" />
