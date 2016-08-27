@@ -3,6 +3,7 @@
     using System;
     using System.Linq;
     using System.Net;
+    using System.Text;
     using System.Web.Mvc;
 
     using ForumSystem.Data.Models;
@@ -12,6 +13,8 @@
 
     public class LastActivitiesController : BaseController
     {
+        private const int PostShortTitleLenght = 30;
+
         public LastActivitiesController(IForumSystemData data)
             : base(data)
         {
@@ -134,9 +137,58 @@
             var comments = this.Data.Comments.All().Count(c => c.Answer.Post.CategoryId == id && !c.IsDeleted);
             var allReplies = answers + comments;
 
-            var model = new CategoryAllRepliesViewModel() { AllReplies = allReplies };
+            var model = new CategoryAllRepliesViewModel { AllReplies = allReplies };
 
             return this.PartialView(model);
+        }
+
+        [ChildActionOnly]
+        public ActionResult LastPost(int? id)
+        {
+            if (id == null)
+            {
+                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+            }
+
+            var category = this.Data.Categories.GetById(id);
+            if (category == null || category.IsDeleted)
+            {
+                return this.HttpNotFound();
+            }
+
+            var lastPost =
+                this.Data.Posts.All()
+                    .Where(p => p.CategoryId == id)
+                    .OrderByDescending(p => p.CreatedOn)
+                    .FirstOrDefault();
+
+            if (lastPost == null)
+            {
+                return new EmptyResult();
+            }
+
+            string shortTitle = this.SubstringTitle(lastPost.Title, PostShortTitleLenght);
+
+            var model = new CategoryLastPostViewModel
+                            {
+                                Id = lastPost.Id, 
+                                AuthorId = lastPost.AuthorId, 
+                                Author = lastPost.Author.UserName, 
+                                CreatedOn = lastPost.CreatedOn, 
+                                Title = shortTitle
+                            };
+
+            return this.PartialView("_CategoryLastPostPartial", model);
+        }
+
+        private string SubstringTitle(string title, int maxLenght)
+        {
+            StringBuilder newTitle = new StringBuilder();
+
+            newTitle.AppendFormat(
+                title.Length < maxLenght ? $"{title.Substring(0, title.Length)}" : $"{title.Substring(0, maxLenght)}...");
+
+            return newTitle.ToString();
         }
     }
 }

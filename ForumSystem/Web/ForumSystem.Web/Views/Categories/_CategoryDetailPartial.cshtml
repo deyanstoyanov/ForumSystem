@@ -31,5 +31,6 @@
             </span>
             @Html.Action("CategoryAllReplies", "LastActivities", new { area = string.Empty, id = Model.Id })
         </div>
+        @Html.Action("LastPost", "LastActivities", new { area = string.Empty, id = Model.Id })
     </div>
 </article>
