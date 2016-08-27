@@ -81,6 +81,10 @@
     table-layout: fixed;
 }
 
+.table-borderless {
+    border: 1px solid transparent;
+}
+
 .word-wrap {
     word-wrap: break-word;
     overflow-wrap: break-word;
