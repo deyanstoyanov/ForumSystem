@@ -2,6 +2,7 @@
 {
     using System.Linq;
     using System.Net;
+    using System.Web;
     using System.Web.Mvc;
 
     using AutoMapper;
@@ -16,6 +17,7 @@
     using ForumSystem.Web.ViewModels.Users;
 
     using Microsoft.AspNet.Identity;
+    using Microsoft.AspNet.Identity.Owin;
 
     [Authorize]
     public class UsersController : BaseController
@@ -185,6 +187,25 @@
             }
 
             return this.View(model);
+        }
+
+        [ChildActionOnly]
+        public ActionResult Roles(string id)
+        {
+            if (id == null)
+            {
+                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+            }
+
+            var user = this.Data.Users.GetById(id);
+            if (user == null)
+            {
+                return this.HttpNotFound();
+            }
+
+            var roles = this.HttpContext.GetOwinContext().GetUserManager<ApplicationUserManager>().GetRoles(id);
+
+            return this.PartialView("_UserRolesPartial", roles);
         }
     }
 }

@@ -1,0 +1,19 @@
+﻿@using ForumSystem.Common.Constants
+@model IEnumerable<string>
+
+@foreach (var role in Model)
+{
+    switch (role)
+    {
+        case RoleConstants.Administrator:
+            <span class="label label-primary">
+                @role
+            </span>
+            break;
+        case RoleConstants.Moderator:
+            <span class="label label-success">
+                @role
+            </span>
+            break;
+    }
+}

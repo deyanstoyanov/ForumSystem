@@ -56,11 +56,10 @@
                                 <div class="profile-info">
                                     <div class="panel panel-default info-holder">
                                         <div class="panel-heading heading-wrap ">
-                                            <h4 class="user-name">
-                                                <strong>
-                                                    @Model.UserName
-                                                </strong>
-                                            </h4>
+                                            <span class="user-name">
+                                                @Model.UserName
+                                            </span>
+                                            @Html.Action("Roles", "Users", new { area = string.Empty, id = Model.Id })
                                         </div>
                                         <div class="panel-body word-wrap">
                                             <div class="col-sm-12">
@@ -69,7 +68,7 @@
                                                     @if (User.IsAdmin())
                                                     {
                                                         <div class="user-info">
-                                                            <label>Email:</label>
+                                                            <label>Id:</label>
                                                             <span class="user-detail">
                                                                 @Model.Id
                                                             </span>

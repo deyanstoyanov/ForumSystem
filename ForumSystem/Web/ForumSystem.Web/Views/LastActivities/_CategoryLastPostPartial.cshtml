@@ -14,6 +14,7 @@
                     <i class="fa fa-user"></i>
                     @Model.Author
                 </a>
+                @Html.Action("Roles", "Users", new { area = string.Empty, id = Model.AuthorId })
             </div>
             <div class="last-replay-date">
                 <span class="replay-date">

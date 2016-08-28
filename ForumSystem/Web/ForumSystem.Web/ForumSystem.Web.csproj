@@ -728,6 +728,7 @@
     <Content Include="Views\Shared\_AdministrationMenuPartial.cshtml" />
     <Content Include="Views\Shared\_ModeratorMenuPartial.cshtml" />
     <Content Include="Views\LastActivities\_CategoryLastPostPartial.cshtml" />
+    <Content Include="Views\Users\_UserRolesPartial.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

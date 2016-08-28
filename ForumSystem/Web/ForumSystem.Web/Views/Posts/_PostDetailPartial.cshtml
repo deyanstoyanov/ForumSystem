@@ -16,6 +16,7 @@
                     </span>
                     <span class="cell">
                         <a href="@Url.Action("Details", "Users", new { area = string.Empty, id = Model.AuthorId })" class="user-name">@Model.Author</a>
+                        @Html.Action("Roles", "Users", new { area = string.Empty, id = Model.AuthorId })
                     </span>
                 </div>
             </div>
