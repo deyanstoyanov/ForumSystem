@@ -1,0 +1,22 @@
+﻿@{
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div class="navbar-user">
+    <div class="container container-holder">
+        <ul class="nav navbar-nav">
+            <li>
+                <a href="@Url.Action("Login", "Account", new { area = string.Empty })" id="login-item">
+                    Login
+                </a>
+            </li>
+            <li>
+                <a href="@Url.Action("Register", "Account", new { area = string.Empty })" id="register-item">
+                    Register
+                </a>
+            </li>
+        </ul>
+    </div>
+</div>
+
+@RenderBody()
