@@ -17,15 +17,27 @@
         columns.Add(model => model.UserName).Titled("UserName")
             .RenderedAs(model => Html.ActionLink(model.UserName, "Details", new { area = string.Empty, controller = "Users", id = model.Id }));
         columns.Add(model => model.Email).Titled("Email");
-        columns.Add(model => model.PostsCount).Titled("Posts");
-        columns.Add(model => model.AnswersCount).Titled("Answers");
-        columns.Add(model => model.CommentsCount).Titled("Comments");
+        columns.Add(model => model.Id).Titled("Roles")
+            .Encoded(false)
+            .Sortable(false)
+            .Filterable(false)
+            .RenderedAs(model => Html.Action("Roles", "Users", new { area = string.Empty, id = model.Id }));
         columns.Add(model => model.IsDeleted).Titled("Deleted?")
             .Encoded(false)
             .RenderedAs(model => model.IsDeleted ? "<span class='label label-success'>Yes</span>" : "<span class='label label-default'>No</span>");
         columns.Add(model => model.DeletedOn).Titled("DeletedOn");
         columns.Add(model => model.CreatedOn).Titled("CreatedOn");
         columns.Add(model => model.ModifiedOn).Titled("ModifiedOn");
+        columns.Add(model => model.Id)
+            .Encoded(false)
+            .Filterable(false)
+            .Sortable(false)
+            .RenderedAs(model => Html.ActionLink("Profile", "Details", "Users", new { area = string.Empty, id = model.Id }, new { @class = "btn btn-primary btn-sm" }));
+        columns.Add(model => model.Id)
+           .Encoded(false)
+           .Filterable(false)
+           .Sortable(false)
+           .RenderedAs(model => Html.ActionLink("Add In Role", "AddUserInRole", "Users", new { area = "Administration", id = model.Id }, new { @class = "btn btn-primary btn-sm" }));
     })
     .Pageable(pager =>
     {
@@ -44,4 +56,3 @@
         $('#users-item').addClass('head-nav-selected-item');
     });
 </script>
-

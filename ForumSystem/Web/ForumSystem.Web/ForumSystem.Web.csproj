@@ -239,6 +239,7 @@
     <Compile Include="Areas\Administration\InputModels\Posts\PostEditModel.cs" />
     <Compile Include="Areas\Administration\InputModels\Sections\SectionEditModel.cs" />
     <Compile Include="Areas\Administration\InputModels\Sections\SectionInputModel.cs" />
+    <Compile Include="Areas\Administration\InputModels\Users\AddUserInRoleInputModel.cs" />
     <Compile Include="Areas\Administration\ViewModels\Answers\AnswerViewModel.cs" />
     <Compile Include="Areas\Administration\ViewModels\Categories\CategoryViewModel.cs" />
     <Compile Include="Areas\Administration\ViewModels\Comments\CommentViewModel.cs" />
@@ -396,6 +397,7 @@
     <Content Include="Content\fonts\font-awesome\fonts\fontawesome-webfont.woff" />
     <Content Include="Content\fonts\font-awesome\fonts\fontawesome-webfont.woff2" />
     <Content Include="Content\fonts\font-awesome\fonts\FontAwesome.otf" />
+    <Content Include="Areas\Administration\Views\Users\AddUserInRole.cshtml" />
     <None Include="Scripts\jquery\jquery-3.1.0.intellisense.js" />
     <Content Include="Scripts\bootstrap\bootstrap.js" />
     <Content Include="Scripts\bootstrap\bootstrap.min.js" />
