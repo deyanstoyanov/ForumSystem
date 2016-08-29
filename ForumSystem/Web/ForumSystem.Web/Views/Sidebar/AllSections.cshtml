@@ -18,3 +18,25 @@
         }
     </ul>
 </div>
+
+<script>
+    $(document).ready(function () {
+        if ($(window).width() < 991) {
+            $('.section-wrapper').find('.sidebar-nav').removeClass('in');
+        }
+
+        $(window).resize(function () {
+            var isCollapsed = $('.section-wrapper').find('.in');
+
+            if ($(window).width() < 991 && isCollapsed.length > 0) {
+                console.log("Remove");
+                $('.section-wrapper').find('.sidebar-nav').removeClass('in');
+            }
+
+            if ($(window).width() > 991 && isCollapsed.length === 0) {
+                console.log("Down");
+                $('.section-wrapper').find('.sidebar-nav').addClass('in');
+            }
+        });
+    });
+</script>
