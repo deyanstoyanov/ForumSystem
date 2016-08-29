@@ -26,3 +26,12 @@
         View all answers
     </a>
 </div>
+
+@section scripts
+{
+    <script>
+        $(document).ready(function () {
+            $("#answer-@(Model.Id)").find('.comment-item').addClass('highlighted');
+        });
+    </script>
+}

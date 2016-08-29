@@ -1,0 +1,31 @@
+﻿@model ForumSystem.Web.ViewModels.Comments.CommentViewModel
+
+@{
+    ViewBag.Title = Model.Post;
+}
+
+@Html.Action("GetById", "Posts", new { area = string.Empty, id = Model.PostId })
+@Html.Action("GetById", "Answers", new { area = string.Empty, id = Model.AnswerId })
+
+<div class="text-center bottom-buffer">
+    <a href="@Url.Action("Details", "Answers", new { area = string.Empty, id = Model.AnswerId })" class="btn btn-primary btn-sm bottom-buffer">
+        View all comments
+    </a>
+</div>
+
+@Html.Partial("_CommentDetailPartial", Model)
+
+<div class="text-center">
+    <a href="@Url.Action("Details", "Answers", new { area = string.Empty, id = Model.AnswerId })" class="btn btn-primary btn-sm bottom-buffer">
+        View all comments
+    </a>
+</div>
+
+@section scripts
+{
+    <script>
+        $(document).ready(function () {
+            $("#comment-@(Model.Id)").find('.replay-item').addClass('highlighted');
+        });
+    </script>
+}

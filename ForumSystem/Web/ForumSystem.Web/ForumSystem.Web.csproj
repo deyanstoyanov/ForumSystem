@@ -733,6 +733,7 @@
     <Content Include="Views\LastActivities\_CategoryLastPostPartial.cshtml" />
     <Content Include="Views\Users\_UserRolesPartial.cshtml" />
     <Content Include="Views\Shared\_AnonymousUserLayout.cshtml" />
+    <Content Include="Views\Comments\Details.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

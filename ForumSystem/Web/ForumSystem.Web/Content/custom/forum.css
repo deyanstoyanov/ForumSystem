@@ -1121,3 +1121,7 @@
 .heading-nav {
     margin-bottom: 0;
 }
+
+.highlighted {
+    background: #ecf0f1;
+}

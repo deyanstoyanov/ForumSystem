@@ -37,13 +37,27 @@
                 return this.HttpNotFound();
             }
 
-            var model = 
+            var model =
                 this.Data.Answers.All()
                     .Where(a => a.Id == id)
                     .ProjectTo<AnswerViewModel>()
                     .FirstOrDefault();
 
             return this.View(model);
+        }
+
+        [ChildActionOnly]
+        public ActionResult GetById(int id)
+        {
+            var answer = this.Data.Answers.GetById(id);
+            if (answer == null)
+            {
+                return this.HttpNotFound();
+            }
+
+            var model = this.Data.Answers.All().Where(a => a.Id == id).ProjectTo<AnswerViewModel>().FirstOrDefault();
+
+            return this.PartialView("_AnswerDetailPartial", model);
         }
 
         [HttpGet]

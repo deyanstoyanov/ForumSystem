@@ -47,6 +47,25 @@
         }
 
         [HttpGet]
+        public ActionResult Details(int? id)
+        {
+            if (id == null)
+            {
+                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+            }
+
+            var comment = this.Data.Comments.GetById(id);
+            if (comment == null)
+            {
+                return this.HttpNotFound();
+            }
+
+            var model = this.Data.Comments.All().Where(c => c.Id == id).ProjectTo<CommentViewModel>().FirstOrDefault();
+
+            return this.View(model);
+        }
+
+        [HttpGet]
         [Authorize]
         public ActionResult Create(int? id)
         {

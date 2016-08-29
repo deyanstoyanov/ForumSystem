@@ -16,6 +16,8 @@
 
         public string Post { get; set; }
 
+        public int PostId { get; set; }
+
         public int AnswerId { get; set; }
 
         public string AuthorId { get; set; }
@@ -44,6 +46,8 @@
                 .ForMember(c => c.LikesCount, config => config.MapFrom(c => c.Likes.Count(l => !l.IsDeleted)));
             configuration.CreateMap<Comment, CommentViewModel>()
                 .ForMember(c => c.Post, config => config.MapFrom(c => c.Answer.Post.Title));
+            configuration.CreateMap<Comment, CommentViewModel>()
+                .ForMember(c => c.PostId, config => config.MapFrom(c => c.Answer.PostId));
         }
     }
 }
