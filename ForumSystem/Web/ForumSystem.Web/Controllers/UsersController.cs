@@ -190,6 +190,7 @@
         }
 
         [ChildActionOnly]
+        [AllowAnonymous]
         public ActionResult Roles(string id)
         {
             if (id == null)
