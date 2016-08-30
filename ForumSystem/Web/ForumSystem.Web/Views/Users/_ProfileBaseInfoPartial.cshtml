@@ -1,4 +1,5 @@
 ﻿@using ForumSystem.Web.Infrastructure.Extensions
+
 @model ForumSystem.Web.ViewModels.Users.UserViewModel
 
 <div class="profile-wrapper">
@@ -11,41 +12,99 @@
                             <div class="head-info">
                                 <div class="user-avatar">
                                     @if (!string.IsNullOrEmpty(Model.PictureUrl))
-                                    {
+            {
                                         <img src="@Url.Content(Model.PictureUrl)" alt="@(Model.UserName) avatar" />
+                                    }
+                                    else
+                                    {
+                                        @Html.Partial("_UserDefaultImagePartial", Model.UserName)
                                     }
                                 </div>
                                 <div class="">
                                     <ul class="profile-info-social">
                                         <li>
-                                            <a href="@Model.LinkedInProfile" class="social-item" target="_blank">
-                                                <i class="fa fa-linkedin"></i>
-                                            </a>
+                                            @if (!string.IsNullOrEmpty(Model.LinkedInProfile))
+                                            {
+                                                <a href="@Model.LinkedInProfile" class="social-item" target="_blank">
+                                                    <i class="fa fa-linkedin"></i>
+                                                </a>
+                                            }
+                                            else
+                                            {
+                                                <span class="social-item empty">
+                                                    <i class="fa fa-linkedin"></i>
+                                                </span>
+                                            }
                                         </li>
                                         <li>
-                                            <a href="@Model.GitHubProfile" class="social-item" target="_blank">
-                                                <i class="fa fa-github"></i>
-                                            </a>
+                                            @if (!string.IsNullOrEmpty(Model.GitHubProfile))
+                                            {
+                                                <a href="@Model.GitHubProfile" class="social-item" target="_blank">
+                                                    <i class="fa fa-github"></i>
+                                                </a>
+                                            }
+                                            else
+                                            {
+                                                <span class="social-item empty">
+                                                    <i class="fa fa-github"></i>
+                                                </span>
+                                            }
                                         </li>
                                         <li>
-                                            <a href="@Model.StackOverflowProfile" class="social-item" target="_blank">
-                                                <i class="fa fa-stack-overflow"></i>
-                                            </a>
+                                            @if (!string.IsNullOrEmpty(Model.StackOverflowProfile))
+                                            {
+                                                <a href="@Model.StackOverflowProfile" class="social-item" target="_blank">
+                                                    <i class="fa fa-stack-overflow"></i>
+                                                </a>
+                                            }
+                                            else
+                                            {
+                                                <span class="social-item empty">
+                                                    <i class="fa fa-stack-overflow"></i>
+                                                </span>
+                                            }
                                         </li>
                                         <li>
-                                            <a href="@Model.FacebookProfile" class="social-item" target="_blank">
-                                                <i class="fa fa-facebook"></i>
-                                            </a>
+                                            @if (!string.IsNullOrEmpty(Model.FacebookProfile))
+                                            {
+                                                <a href="@Model.FacebookProfile" class="social-item" target="_blank">
+                                                    <i class="fa fa-facebook"></i>
+                                                </a>
+                                            }
+                                            else
+                                            {
+                                                <span class="social-item empty">
+                                                    <i class="fa fa-facebook"></i>
+                                                </span>
+                                            }
                                         </li>
                                         <li>
-                                            <a href="@Model.TwitterProfile" class="social-item" target="_blank">
-                                                <i class="fa fa-twitter"></i>
-                                            </a>
+                                            @if (!string.IsNullOrEmpty(Model.TwitterProfile))
+                                            {
+                                                <a href="@Model.TwitterProfile" class="social-item" target="_blank">
+                                                    <i class="fa fa-twitter"></i>
+                                                </a>
+                                            }
+                                            else
+                                            {
+                                                <span class="social-item empty">
+                                                    <i class="fa fa-twitter"></i>
+                                                </span>
+                                            }
                                         </li>
                                         <li>
-                                            <a href="@Model.SkypeProfile" class="social-item" target="_blank">
-                                                <i class="fa fa-skype"></i>
-                                            </a>
+                                            @if (!string.IsNullOrEmpty(Model.SkypeProfile))
+                                            {
+                                                <a href="skype:@(Model.SkypeProfile)?chat" class="social-item" target="_blank">
+                                                    <i class="fa fa-skype"></i>
+                                                </a>
+                                            }
+                                            else
+                                            {
+                                                <span class="social-item empty">
+                                                    <i class="fa fa-skype"></i>
+                                                </span>
+                                            }
                                         </li>
                                     </ul>
                                 </div>

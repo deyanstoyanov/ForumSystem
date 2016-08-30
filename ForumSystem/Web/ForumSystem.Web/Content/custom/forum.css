@@ -1018,6 +1018,10 @@
                     color: #fff;
                 }
 
+            .profile-wrapper .profile-info-social .social-item.empty {
+                opacity: .4;
+            }
+
 @media only screen and (min-width: 1199px) {
     .profile-wrapper .profile-info-social {
         padding-left: 15px;

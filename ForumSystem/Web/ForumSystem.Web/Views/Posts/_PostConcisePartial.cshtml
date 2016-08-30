@@ -16,6 +16,10 @@
                     {
                         <img src="@Url.Content(Model.AuthorPictureUrl)" alt="@(Model.Author) avatar" />
                     }
+                    else
+                    {
+                        @Html.Partial("_UserDefaultImagePartial", Model.Author)
+                    }
                 </span>
                 <span class="cell">
                     <a href="@Url.Action("Details", "Users", new { area = string.Empty, id = Model.AuthorId })" class="user-name">@Model.Author</a>
