@@ -492,6 +492,10 @@
         border-right: none;
     }
 
+    .forum-post .meta-info .buttons-holder {
+        padding: 28px 12px;
+    }
+
     .forum-post .meta-info.meta-details .details-holder,
     .forum-post .meta-info .post-details-holder {
         padding: 0;
@@ -515,6 +519,11 @@
         width: 88px;
         padding: 18px 20px;
         border-right: none;
+    }
+
+    .forum-post .stats-holder.likes-holder,
+    .forum-post .meta-info .buttons-holder {
+        padding: 31px 12px;
     }
 
     .forum-post .meta-info .stats-holder,
@@ -609,6 +618,7 @@
 
         .forum-post .stats-holder.likes-holder {
             width: 0;
+            padding: 31px 12px;
         }
 }
 

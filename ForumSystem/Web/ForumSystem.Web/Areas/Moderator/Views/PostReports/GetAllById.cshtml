@@ -1,11 +1,8 @@
 ﻿@using System.Collections.Generic
 
 @using NonFactors.Mvc.Grid
-@model IEnumerable<ForumSystem.Web.Areas.Moderator.ViewModels.PostReports.PostReportViewModel>
 
-<button type="button" class="btn primary-btn" data-toggle="modal" data-target="#post-reports">
-    Reports
-</button>
+@model IEnumerable<ForumSystem.Web.Areas.Moderator.ViewModels.PostReports.PostReportViewModel>
 
 <div class="modal fade" id="post-reports" tabindex="-1" role="dialog" aria-labelledby="post-reports-label">
     <div class="modal-dialog modal-lg" role="document">
@@ -32,8 +29,8 @@
                             .Encoded(false)
                             .RenderedAs(model => Html.Action("Delete", "PostReports", new { area = "Moderator", id = model.Id }));
                     })
-                      .Css("table table-responsive table-bordered table-striped")
-                      .Empty("No data found")
+                    .Css("table table-responsive table-bordered table-striped")
+                    .Empty("No data found")
                 )
             </div>
             <div class="modal-footer">

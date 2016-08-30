@@ -9,10 +9,6 @@
     int answerId = Model.Select(r => r.AnswerId).FirstOrDefault();
 }
 
-<button type="button" class="btn primary-btn" data-toggle="modal" data-target="#answer-reports-@answerId">
-    Reports
-</button>
-
 <div class="modal fade" id="answer-reports-@answerId" tabindex="-1" role="dialog" aria-labelledby="answer-reports-label-@answerId">
     <div class="modal-dialog modal-lg" role="document">
         <div class="modal-content">
@@ -38,8 +34,8 @@
                             .Encoded(false)
                             .RenderedAs(model => Html.Action("Delete", "AnswerReports", new { area = "Moderator", id = model.Id }));
                     })
-                      .Css("table table-responsive table-bordered table-striped")
-                      .Empty("No data found")
+                    .Css("table table-responsive table-bordered table-striped")
+                    .Empty("No data found")
                 )
             </div>
             <div class="modal-footer">

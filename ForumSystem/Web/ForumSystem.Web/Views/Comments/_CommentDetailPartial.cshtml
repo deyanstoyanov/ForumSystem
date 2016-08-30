@@ -112,14 +112,21 @@
                                 @Ajax.ActionLink("Delete", "Delete", "Comments", new { area = string.Empty, id = Model.Id }, new AjaxOptions
                                                    {
                                                        HttpMethod = "GET",
-                                                       InsertionMode = InsertionMode.ReplaceWith,
-                                                       UpdateTargetId = $"delete-comment-confirm-btn-{Model.Id}"
-                                                   }, new { @class = "btn primary-btn", id = $"delete-comment-confirm-btn-{Model.Id}" })
+                                                       InsertionMode = InsertionMode.Replace,
+                                                       UpdateTargetId = "show-modal",
+                                                       OnSuccess = $"DeleteCommentConfirm_{Model.Id}"
+                                                   }, new { @class = "btn primary-btn" })
                             }
 
                             @if (Model.ReportsCount > 0 && (User.IsModerator() || User.IsAdmin()))
                             {
-                                @Html.Action("GetAllById", "CommentReports", new { area = "Moderator", id = Model.Id })
+                                @Ajax.ActionLink("Reports", "GetAllById", "CommentReports", new { area = "Moderator", id = Model.Id }, new AjaxOptions
+                                                   {
+                                                       HttpMethod = "GET",
+                                                       InsertionMode = InsertionMode.Replace,
+                                                       UpdateTargetId = "show-modal",
+                                                       OnSuccess = $"LoadCommentReports_{Model.Id}"
+                                                   }, new { @class = "btn primary-btn" })
                             }
 
                             @if (User.Identity.GetUserId() != Model.AuthorId)
@@ -141,3 +148,13 @@
         }
     </article>
 </div>
+
+<script>
+    function DeleteCommentConfirm_@(Model.Id)() {
+        $('#delete-comment-confirm-@Model.Id').modal('show');
+    }
+
+    function LoadCommentReports_@(Model.Id)() {
+        $('#comment-reports-@Model.Id').modal('show');
+    }
+</script>

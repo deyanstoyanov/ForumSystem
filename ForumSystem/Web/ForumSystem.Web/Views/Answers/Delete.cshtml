@@ -1,9 +1,5 @@
 ﻿@model ForumSystem.Web.ViewModels.Answers.AnswerViewModel
 
-<a href="#" type="button" class="btn primary-btn" data-toggle="modal" data-target="#delete-answer-confirm-@Model.Id">
-    Delete
-</a>
-
 <div class="modal fade" id="delete-answer-confirm-@Model.Id" tabindex="-1" role="dialog" aria-labelledby="delete-answer-confirm-label-@Model.Id">
     <div class="modal-dialog mofal-sm" role="document">
         <div class="modal-content">
@@ -15,7 +11,7 @@
             </div>
             <div id="test">
                 @using (Html.BeginForm("Delete", "Answers", FormMethod.Post))
-            {
+                {
                     @Html.AntiForgeryToken()
 
                     <div class="modal-body">

@@ -130,12 +130,24 @@
 
                             @if (User.Identity.GetUserId() == Model.AuthorId || User.IsModerator() || User.IsAdmin())
                             {
-                                @Html.Action("Delete", "Posts", new { area = string.Empty, id = Model.Id })
+                                @Ajax.ActionLink("Delete", "Delete", "Posts", new { area = string.Empty, id = Model.Id }, new AjaxOptions
+                                                   {
+                                                       HttpMethod = "GET",
+                                                       InsertionMode = InsertionMode.Replace,
+                                                       UpdateTargetId = "show-modal",
+                                                       OnSuccess = $"DeletePostConfirm_{Model.Id}"
+                                                   }, new { @class = "btn primary-btn" })
                             }
 
                             @if (Model.ReportsCount > 0 && (User.IsModerator() || User.IsAdmin()))
                             {
-                                @Html.Action("GetAllById", "PostReports", new { area = "Moderator", id = Model.Id })
+                                @Ajax.ActionLink("Reports", "GetAllById", "PostReports", new { area = "Moderator", id = Model.Id }, new AjaxOptions
+                                                   {
+                                                       HttpMethod = "GET",
+                                                       InsertionMode = InsertionMode.Replace,
+                                                       UpdateTargetId = "show-modal",
+                                                       OnSuccess = "LoadPostReports"
+                                                   }, new { @class = "btn primary-btn" })
                             }
 
                             @if (User.Identity.GetUserId() != Model.AuthorId)

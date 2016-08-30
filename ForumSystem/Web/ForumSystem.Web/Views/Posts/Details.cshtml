@@ -14,3 +14,22 @@
 @Html.Partial("_PostDetailPartial", Model)
 
 @Html.Action("Answers", "Posts", new { area = string.Empty, id = Model.Id })
+
+<script>
+    function LoadPostReports() {
+        $('#post-reports').modal('show');
+    }
+
+    function DeletePostConfirm_@(Model.Id)() {
+        $('#delete-post-confirm-@Model.Id').modal('show');
+    }
+
+    $('.modal ').click(function () {
+        $('.modal, .inner').hide();
+
+    });
+
+    $('.inner').click(function (e) {
+        e.stopPropagation();
+    });
+</script>

@@ -1,8 +1,4 @@
 ﻿@model ForumSystem.Web.ViewModels.Comments.CommentViewModel
-    
-<a href="#" type="button" class="btn primary-btn" data-toggle="modal" data-target="#delete-comment-confirm-@Model.Id">
-    Delete
-</a>
 
 <div class="modal fade" id="delete-comment-confirm-@Model.Id" tabindex="-1" role="dialog" aria-labelledby="delete-comment-confirm-label-@Model.Id">
     <div class="modal-dialog mofal-sm" role="document">
@@ -15,7 +11,7 @@
             </div>
             <div id="test">
                 @using (Html.BeginForm("Delete", "Comments", FormMethod.Post))
-            {
+                {
                     @Html.AntiForgeryToken()
 
                     <div class="modal-body">

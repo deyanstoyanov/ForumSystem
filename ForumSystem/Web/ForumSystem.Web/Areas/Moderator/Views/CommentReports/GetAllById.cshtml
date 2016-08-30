@@ -9,10 +9,6 @@
     var commentId = Model.Select(r => r.CommentId).FirstOrDefault();
 }
 
-<button type="button" class="btn primary-btn" data-toggle="modal" data-target="#comment-reports-@commentId">
-    Reports
-</button>
-
 <div class="modal fade" id="comment-reports-@commentId" tabindex="-1" role="dialog" aria-labelledby="comment-reports-label-@commentId">
     <div class="modal-dialog modal-lg" role="document">
         <div class="modal-content">
@@ -38,8 +34,8 @@
                             .Encoded(false)
                             .RenderedAs(model => Html.Action("Delete", "CommentReports", new { area = "Moderator", id = model.Id }));
                     })
-                      .Css("table table-responsive table-bordered table-striped")
-                      .Empty("No data found")
+                    .Css("table table-responsive table-bordered table-striped")
+                    .Empty("No data found")
                 )
             </div>
             <div class="modal-footer">
