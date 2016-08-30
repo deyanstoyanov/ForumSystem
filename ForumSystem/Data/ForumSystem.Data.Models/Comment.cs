@@ -4,6 +4,7 @@
     using System.Collections.Generic;
     using System.ComponentModel.DataAnnotations;
 
+    using ForumSystem.Common.Constants;
     using ForumSystem.Data.Common.Models;
 
     public class Comment : AuditInfo, IDeletableEntity
@@ -18,7 +19,8 @@
         public int Id { get; set; }
 
         [Required]
-        [StringLength(100000, MinimumLength = 12, ErrorMessage = "The {0} must be between {1} and {2} symbols.")]
+        [MinLength(ValidationConstants.CommentContentMinLength)]
+        [MaxLength(ValidationConstants.CommentContentMaxLength)]
         public string Content { get; set; }
 
         public int AnswerId { get; set; }

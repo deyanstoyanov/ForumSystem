@@ -2,6 +2,8 @@ namespace ForumSystem.Web.ViewModels.Account
 {
     using System.ComponentModel.DataAnnotations;
 
+    using ForumSystem.Common.Constants;
+
     public class ResetPasswordViewModel
     {
         [Required]
@@ -10,7 +12,9 @@ namespace ForumSystem.Web.ViewModels.Account
         public string Email { get; set; }
 
         [Required]
-        [StringLength(100, ErrorMessage = "The {0} must be at least {2} characters long.", MinimumLength = 6)]
+        [StringLength(ValidationConstants.PasswordMaxLength, 
+            ErrorMessage = "The {0} must be at least {2} characters long.", 
+            MinimumLength = ValidationConstants.PasswordMinLength)]
         [DataType(DataType.Password)]
         [Display(Name = "Password")]
         public string Password { get; set; }

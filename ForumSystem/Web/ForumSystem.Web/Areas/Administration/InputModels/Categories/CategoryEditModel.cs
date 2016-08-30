@@ -4,15 +4,19 @@
     using System.ComponentModel.DataAnnotations;
     using System.Web.Mvc;
 
+    using ForumSystem.Common.Constants;
+
     public class CategoryEditModel
     {
         public int Id { get; set; }
 
         [Required]
-        [StringLength(200, MinimumLength = 3, ErrorMessage = "{0} must be between {1} and {2} symbols.")]
+        [StringLength(ValidationConstants.CategoryTitleMaxLength, 
+            MinimumLength = ValidationConstants.CategoryTitleMinLength, 
+            ErrorMessage = "{0} must be between {1} and {2} symbols.")]
         public string Title { get; set; }
 
-        [MaxLength(200)]
+        [MaxLength(ValidationConstants.CategoryDescriptionMaxLength)]
         public string Description { get; set; }
 
         public int SectionId { get; set; }

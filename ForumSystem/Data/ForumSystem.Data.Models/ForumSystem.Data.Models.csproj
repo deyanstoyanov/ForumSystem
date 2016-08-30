@@ -82,6 +82,10 @@
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\..\Common\ForumSystem.Common\ForumSystem.Common.csproj">
+      <Project>{D8F6FAC7-266C-47A6-B3B2-89F1CC013530}</Project>
+      <Name>ForumSystem.Common</Name>
+    </ProjectReference>
     <ProjectReference Include="..\ForumSystem.Data.Common\ForumSystem.Data.Common.csproj">
       <Project>{122071BD-42A5-40F2-A55F-A44E80CDD72B}</Project>
       <Name>ForumSystem.Data.Common</Name>

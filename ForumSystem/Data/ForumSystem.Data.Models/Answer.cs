@@ -5,6 +5,7 @@
     using System.ComponentModel.DataAnnotations;
     using System.Web.Mvc;
 
+    using ForumSystem.Common.Constants;
     using ForumSystem.Data.Common.Models;
 
     public class Answer : AuditInfo, IDeletableEntity
@@ -22,7 +23,8 @@
         [Required]
         [AllowHtml]
         [DataType(DataType.Html)]
-        [StringLength(100000, MinimumLength = 12, ErrorMessage = "The {0} must be between {1} and {2} symbols.")]
+        [MinLength(ValidationConstants.AnswerContentMinLength)]
+        [MaxLength(ValidationConstants.AnswerContentMaxLength)]
         public string Content { get; set; }
 
         public int PostId { get; set; }
@@ -42,6 +44,5 @@
         public virtual ICollection<AnswerReport> Reports { get; set; }
 
         public virtual ICollection<AnswerLike> Likes { get; set; }
-
     }
 }

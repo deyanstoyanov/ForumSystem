@@ -6,12 +6,12 @@
     using System.Security.Claims;
     using System.Threading.Tasks;
 
+    using ForumSystem.Common.Constants;
     using ForumSystem.Data.Common.Models;
 
     using Microsoft.AspNet.Identity;
     using Microsoft.AspNet.Identity.EntityFramework;
 
-    // You can add profile data for the user by adding more properties to your ApplicationUser class, please visit http://go.microsoft.com/fwlink/?LinkID=317594 to learn more.
     public class ApplicationUser : IdentityUser, IAuditInfo, IDeletableEntity
     {
         public ApplicationUser()
@@ -25,30 +25,50 @@
 
         public string PictureUrl { get; set; }
 
+        [MinLength(ValidationConstants.WebsiteUrlMinLength)]
+        [MaxLength(ValidationConstants.WebsiteUrlMaxLength)]
+        [RegularExpression(ValidationConstants.WebsiteUrlRegEx)]
         public string WebsiteUrl { get; set; }
 
+        [MinLength(ValidationConstants.OccupationMinLength)]
+        [MaxLength(ValidationConstants.OccupationMaxLength)]
         public string Occupation { get; set; }
 
+        [MinLength(ValidationConstants.InterestsMinLength)]
+        [MaxLength(ValidationConstants.InterestsMaxLength)]
         public string Interests { get; set; }
 
         [DataType(DataType.MultilineText)]
-        [StringLength(500, MinimumLength = 6, ErrorMessage = "{0} text must be between {2} and {1} symbols long.")]
+        [MinLength(ValidationConstants.AboutMeMinLength)]
+        [MaxLength(ValidationConstants.AboutMeMaxLength)]
         public string AboutMe { get; set; }
 
+        [MinLength(ValidationConstants.CountryMinLength)]
+        [MaxLength(ValidationConstants.CountryMaxLength)]
         public string Country { get; set; }
 
+        [MinLength(ValidationConstants.CityMinLength)]
+        [MaxLength(ValidationConstants.CityMaxLength)]
         public string City { get; set; }
 
+        [RegularExpression(ValidationConstants.GitHubProfileRegEx)]
         public string GitHubProfile { get; set; }
 
+        [RegularExpression(ValidationConstants.StackOverflowProfileRegEx)]
         public string StackOverflowProfile { get; set; }
 
+        [RegularExpression(ValidationConstants.LinkedInProfileRegEx)]
         public string LinkedInProfile { get; set; }
 
+        [RegularExpression(ValidationConstants.FacebookProfileRegEx)]
         public string FacebookProfile { get; set; }
 
+        [RegularExpression(ValidationConstants.TwitterProfileRegEx)]
         public string TwitterProfile { get; set; }
 
+        [MinLength(ValidationConstants.SkypeProfileMinLength)]
+        [MaxLength(ValidationConstants.SkypeProfileMaxLength)]
+        [RegularExpression(ValidationConstants.SkypeProfileRegEx)]
         public string SkypeProfile { get; set; }
 
         public DateTime CreatedOn { get; set; }

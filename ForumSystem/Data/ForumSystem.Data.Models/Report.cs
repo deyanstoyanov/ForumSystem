@@ -2,8 +2,8 @@
 {
     using System;
     using System.ComponentModel.DataAnnotations;
-    using System.Web.Mvc;
 
+    using ForumSystem.Common.Constants;
     using ForumSystem.Data.Common.Models;
 
     public class Report : AuditInfo, IDeletableEntity
@@ -12,9 +12,9 @@
         public int Id { get; set; }
 
         [Required]
-        [AllowHtml]
-        [DataType(DataType.Html)]
-        [StringLength(100000, MinimumLength = 12, ErrorMessage = "The {0} must be between {1} and {2} symbols.")]
+        [DataType(DataType.MultilineText)]
+        [MinLength(ValidationConstants.ReportDescriptionMinLength)]
+        [MaxLength(ValidationConstants.ReportDescriptionMaxLength)]
         public string Description { get; set; }
 
         public string AuthorId { get; set; }

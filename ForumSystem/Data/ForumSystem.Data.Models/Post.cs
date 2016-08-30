@@ -5,6 +5,7 @@
     using System.ComponentModel.DataAnnotations;
     using System.Web.Mvc;
 
+    using ForumSystem.Common.Constants;
     using ForumSystem.Data.Common.Models;
 
     public class Post : AuditInfo, IDeletableEntity
@@ -20,13 +21,15 @@
         public int Id { get; set; }
 
         [Required]
-        [StringLength(200, MinimumLength = 7, ErrorMessage = "The {0} must be between {1} and {2} symbols.")]
+        [MinLength(ValidationConstants.PostTitleMinLength)]
+        [MaxLength(ValidationConstants.PostTitleMaxLength)]
         public string Title { get; set; }
 
         [Required]
         [AllowHtml]
         [DataType(DataType.Html)]
-        [StringLength(100000, MinimumLength = 12, ErrorMessage = "The {0} must be between {1} and {2} symbols.")]
+        [MinLength(ValidationConstants.PostContentMinLength)]
+        [MaxLength(ValidationConstants.PostContentMaxLength)]
         public string Content { get; set; }
 
         public int CategoryId { get; set; }
