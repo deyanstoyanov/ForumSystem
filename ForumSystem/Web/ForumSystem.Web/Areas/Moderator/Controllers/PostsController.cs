@@ -46,7 +46,7 @@
 
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "Id,Title,Content,CategoryId")] PostEditModel model)
+        public ActionResult Edit(PostEditModel model)
         {
             if (this.ModelState.IsValid)
             {

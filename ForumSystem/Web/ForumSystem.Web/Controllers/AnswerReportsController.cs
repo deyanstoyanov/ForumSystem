@@ -45,7 +45,7 @@
 
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "AnswerId,Description")] AnswerReportInputModel input)
+        public ActionResult Create(AnswerReportInputModel input)
         {
             if (input != null && this.ModelState.IsValid)
             {

@@ -45,7 +45,7 @@
 
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "CommentId,Description")] CommentReportInputModel inputModel)
+        public ActionResult Create(CommentReportInputModel inputModel)
         {
             if (inputModel != null && this.ModelState.IsValid)
             {

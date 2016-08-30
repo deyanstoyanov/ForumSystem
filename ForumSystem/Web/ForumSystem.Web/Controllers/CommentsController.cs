@@ -88,7 +88,7 @@
         [HttpPost]
         [Authorize]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "AnswerId,Content")] CommentInputModel input)
+        public ActionResult Create(CommentInputModel input)
         {
             if (input != null && this.ModelState.IsValid)
             {
@@ -140,7 +140,7 @@
         [HttpPost]
         [Authorize]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "Id,Content")] CommentEditModel model)
+        public ActionResult Edit(CommentEditModel model)
         {
             if (model != null && this.ModelState.IsValid)
             {

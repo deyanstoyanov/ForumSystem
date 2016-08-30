@@ -118,7 +118,7 @@
         [HttpPost]
         [Authorize]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "Title,Content,CategoryId,Category")] PostInputModel input)
+        public ActionResult Create(PostInputModel input)
         {
             if (input != null && this.ModelState.IsValid)
             {
@@ -170,7 +170,7 @@
         [HttpPost]
         [Authorize]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "Id,Title,Content")] PostEditModel model)
+        public ActionResult Edit(PostEditModel model)
         {
             if (model != null && this.ModelState.IsValid)
             {
