@@ -139,6 +139,11 @@
                 this.Data.Posts.Add(post);
                 this.Data.SaveChanges();
 
+                post.LastActivity = post.CreatedOn;
+
+                this.Data.Posts.Update(post);
+                this.Data.SaveChanges();
+
                 return this.RedirectToAction("Details", "Posts", new { area = string.Empty, id = post.Id });
             }
 

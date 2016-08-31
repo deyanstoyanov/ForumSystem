@@ -22,7 +22,7 @@
         {
         }
 
-        // GET: Categories/Details/5
+        [HttpGet]
         public ActionResult Details(int? id)
         {
             if (id == null)
@@ -63,8 +63,9 @@
             var posts =
                 this.Data.Posts.All()
                     .Where(p => p.CategoryId == id)
-                    .OrderByDescending(p => p.CreatedOn)
-                    .ProjectTo<PostConciseViewModel>();
+                    .OrderByDescending(p => p.LastActivity)
+                    .ThenByDescending(p =>  p.CreatedOn)
+                    .ProjectTo<PostConciseViewModel>().ToList();
             var model = posts.ToPagedList(pagenumber, PostsPerPageDefaultValue);
 
             return this.PartialView("_CategoryPostsPartial", model);

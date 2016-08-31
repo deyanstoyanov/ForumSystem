@@ -98,6 +98,12 @@
                 this.Data.Answers.Add(answer);
                 this.Data.SaveChanges();
 
+                var post = this.Data.Posts.GetById(answer.PostId);
+                post.LastActivity = answer.CreatedOn;
+
+                this.Data.Posts.Update(post);
+                this.Data.SaveChanges();
+
                 var viewModel = Mapper.Map<AnswerViewModel>(answer);
 
                 return this.PartialView("_AnswerDetailPartial", viewModel);
