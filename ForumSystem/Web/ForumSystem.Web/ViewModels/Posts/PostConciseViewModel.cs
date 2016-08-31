@@ -26,6 +26,8 @@
 
         public string Category { get; set; }
 
+        public int Views { get; set; }
+
         public int AnswersCount { get; set; }
 
         public int ReportsCount { get; set; }

@@ -48,6 +48,11 @@
                     .ProjectTo<PostViewModel>()
                     .FirstOrDefault();
 
+            post.Views++;
+
+            this.Data.Posts.Update(post);
+            this.Data.SaveChanges();
+
             return this.View(viewModel);
         }
 
