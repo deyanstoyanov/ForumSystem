@@ -248,6 +248,7 @@
     <Compile Include="Areas\Administration\ViewModels\Sections\SectionViewModel.cs" />
     <Compile Include="Areas\Administration\ViewModels\Users\UserViewModel.cs" />
     <Compile Include="Areas\Moderator\Controllers\AnswerReportsController.cs" />
+    <Compile Include="Areas\Moderator\Controllers\AnswersController.cs" />
     <Compile Include="Areas\Moderator\Controllers\CommentReportsController.cs" />
     <Compile Include="Areas\Moderator\Controllers\Base\ModeratorController.cs" />
     <Compile Include="Areas\Moderator\Controllers\PostReportsController.cs" />
