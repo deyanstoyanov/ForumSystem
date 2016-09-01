@@ -322,6 +322,7 @@
     <Compile Include="ViewModels\Manage\VerifyPhoneNumberViewModel.cs" />
     <Compile Include="ViewModels\Posts\PostConciseViewModel.cs" />
     <Compile Include="ViewModels\Posts\PostViewModel.cs" />
+    <Compile Include="ViewModels\PostUpdates\PostUpdateViewModel.cs" />
     <Compile Include="ViewModels\Sections\SectionViewModel.cs" />
     <Compile Include="ViewModels\Users\UserViewModel.cs" />
   </ItemGroup>
@@ -737,6 +738,7 @@
     <Content Include="Views\Shared\_AnonymousUserLayout.cshtml" />
     <Content Include="Views\Comments\Details.cshtml" />
     <Content Include="Views\Shared\_UserDefaultImagePartial.cshtml" />
+    <Content Include="Views\PostUpdates\GetById.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
