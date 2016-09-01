@@ -253,6 +253,7 @@
     <Compile Include="Areas\Moderator\Controllers\Base\ModeratorController.cs" />
     <Compile Include="Areas\Moderator\Controllers\PostReportsController.cs" />
     <Compile Include="Areas\Moderator\Controllers\PostsController.cs" />
+    <Compile Include="Areas\Moderator\InputModels\Answers\AnswerEditModel.cs" />
     <Compile Include="Areas\Moderator\InputModels\Posts\PostEditModel.cs" />
     <Compile Include="Areas\Moderator\ModeratorAreaRegistration.cs" />
     <Compile Include="Areas\Moderator\ViewModels\AnswerReports\AnswerReportViewModel.cs" />
@@ -263,6 +264,7 @@
     <Compile Include="Controllers\AnswerLikesController.cs" />
     <Compile Include="Controllers\AnswerReportsController.cs" />
     <Compile Include="Controllers\AnswersController.cs" />
+    <Compile Include="Controllers\AnswerUpdatesController.cs" />
     <Compile Include="Controllers\Base\BaseController.cs" />
     <Compile Include="Controllers\CategoriesController.cs" />
     <Compile Include="Controllers\CommentLikesController.cs" />
@@ -304,6 +306,7 @@
     <Compile Include="ViewModels\Account\SendCodeViewModel.cs" />
     <Compile Include="ViewModels\Account\VerifyCodeViewModel.cs" />
     <Compile Include="ViewModels\Answers\AnswerViewModel.cs" />
+    <Compile Include="ViewModels\AnswerUpdates\AnswerUpdateViewModel.cs" />
     <Compile Include="ViewModels\Categories\CategoryConciseViewModel.cs" />
     <Compile Include="ViewModels\Categories\CategoryViewModel.cs" />
     <Compile Include="ViewModels\Comments\CommentViewModel.cs" />
@@ -403,6 +406,7 @@
     <Content Include="Content\fonts\font-awesome\fonts\FontAwesome.otf" />
     <Content Include="Areas\Administration\Views\Users\AddUserInRole.cshtml" />
     <Content Include="Areas\Administration\Views\Users\RemoveUserFromRole.cshtml" />
+    <Content Include="Areas\Moderator\Views\Answers\Edit.cshtml" />
     <None Include="Scripts\jquery\jquery-3.1.0.intellisense.js" />
     <Content Include="Scripts\bootstrap\bootstrap.js" />
     <Content Include="Scripts\bootstrap\bootstrap.min.js" />
@@ -740,6 +744,7 @@
     <Content Include="Views\Comments\Details.cshtml" />
     <Content Include="Views\Shared\_UserDefaultImagePartial.cshtml" />
     <Content Include="Views\PostUpdates\GetById.cshtml" />
+    <Content Include="Views\AnswerUpdates\GetById.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
