@@ -29,6 +29,8 @@
 
         IDeletableEntityRepository<CommentLike> CommentLikes { get; }
 
+        IDeletableEntityRepository<PostUpdate> PostUpdates { get; }
+
         void SaveChanges();
     }
 }

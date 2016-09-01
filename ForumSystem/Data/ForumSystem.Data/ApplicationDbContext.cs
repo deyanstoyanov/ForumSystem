@@ -38,6 +38,8 @@
 
         public virtual IDbSet<CommentLike> CommentLikes { get; set; }
 
+        public virtual IDbSet<PostUpdate> PostUpdates { get; set; }
+
         public static ApplicationDbContext Create()
         {
             return new ApplicationDbContext();

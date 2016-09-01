@@ -73,9 +73,11 @@
     <Compile Include="Answer.cs" />
     <Compile Include="PostLike.cs" />
     <Compile Include="PostReport.cs" />
+    <Compile Include="PostUpdate.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Report.cs" />
     <Compile Include="Section.cs" />
+    <Compile Include="Update.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />

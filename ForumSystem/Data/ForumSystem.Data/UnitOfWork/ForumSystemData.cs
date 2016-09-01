@@ -52,6 +52,8 @@
 
         public IDeletableEntityRepository<CommentLike> CommentLikes => this.GetRepository<CommentLike>();
 
+        public IDeletableEntityRepository<PostUpdate> PostUpdates => this.GetRepository<PostUpdate>();
+
         public void SaveChanges()
         {
             this.dbContext.SaveChanges();
