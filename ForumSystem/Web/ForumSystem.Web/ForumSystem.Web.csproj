@@ -251,6 +251,7 @@
     <Compile Include="Areas\Moderator\Controllers\AnswersController.cs" />
     <Compile Include="Areas\Moderator\Controllers\CommentReportsController.cs" />
     <Compile Include="Areas\Moderator\Controllers\Base\ModeratorController.cs" />
+    <Compile Include="Areas\Moderator\Controllers\CommentsController.cs" />
     <Compile Include="Areas\Moderator\Controllers\PostReportsController.cs" />
     <Compile Include="Areas\Moderator\Controllers\PostsController.cs" />
     <Compile Include="Areas\Moderator\InputModels\Answers\AnswerEditModel.cs" />
