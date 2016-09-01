@@ -38,6 +38,8 @@
 
         public int LikesCount { get; set; }
 
+        public bool IsUpdating { get; set; }
+
         public IEnumerable<CommentViewModel> Comments { get; set; }
 
         public void CreateMappings(IMapperConfiguration configuration)

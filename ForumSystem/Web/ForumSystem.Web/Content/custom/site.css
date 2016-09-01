@@ -17,6 +17,10 @@ textarea {
         height: 160px;
     }
 
+        textarea.form-control.small {
+            height: 100px;
+        }
+
 fieldset {
     padding: 25px 0;
 }
