@@ -7,11 +7,14 @@
     using AutoMapper;
     using AutoMapper.QueryableExtensions;
 
+    using ForumSystem.Data.Models;
     using ForumSystem.Data.UnitOfWork;
     using ForumSystem.Web.Areas.Administration.Controllers.Base;
     using ForumSystem.Web.Areas.Administration.InputModels.Posts;
     using ForumSystem.Web.Areas.Administration.ViewModels.Posts;
     using ForumSystem.Web.Areas.Moderator.ViewModels.Categories;
+
+    using Microsoft.AspNet.Identity;
 
     public class PostsController : AdministrationController
     {
@@ -63,6 +66,7 @@
             if (model != null && this.ModelState.IsValid)
             {
                 var post = this.Data.Posts.GetById(model.Id);
+                var userId = this.User.Identity.GetUserId();
 
                 post.Title = model.Title;
                 post.Content = model.Content;
@@ -71,6 +75,14 @@
 
                 this.Data.Posts.Update(post);
                 this.Data.SaveChanges();
+
+                if (model.Comment != null)
+                {
+                    var postUpdate = new PostUpdate { AuthorId = userId, PostId = post.Id, Comment = model.Comment };
+
+                    this.Data.PostUpdates.Add(postUpdate);
+                    this.Data.SaveChanges();
+                }
 
                 return this.RedirectToAction("All");
             }

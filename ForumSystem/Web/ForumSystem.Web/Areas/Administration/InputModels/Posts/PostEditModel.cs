@@ -25,6 +25,12 @@
             ErrorMessage = "{0} must be between {1} and {2} symbols.")]
         public string Content { get; set; }
 
+
+        [DataType(DataType.MultilineText)]
+        [MinLength(ValidationConstants.UpdateCommentMinLength)]
+        [MaxLength(ValidationConstants.UpdateCommentMaxLength)]
+        public string Comment { get; set; }
+
         public int CategoryId { get; set; }
 
         public bool IsDeleted { get; set; }
