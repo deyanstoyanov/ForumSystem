@@ -78,5 +78,9 @@
         // Report
         public const int ReportDescriptionMinLength = 12;
         public const int ReportDescriptionMaxLength = 100000;
+
+        // Updates
+        public const int UpdateCommentMinLength = 7;
+        public const int UpdateCommentMaxLength = 100000;
     }
 }
