@@ -40,6 +40,8 @@
 
         public virtual IDbSet<PostUpdate> PostUpdates { get; set; }
 
+        public virtual IDbSet<AnswerUpdate> AnswerUpdates { get; set; }
+
         public static ApplicationDbContext Create()
         {
             return new ApplicationDbContext();

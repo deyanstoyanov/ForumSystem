@@ -31,6 +31,8 @@
 
         IDeletableEntityRepository<PostUpdate> PostUpdates { get; }
 
+        IDeletableEntityRepository<AnswerUpdate> AnswerUpdates { get; }
+
         void SaveChanges();
     }
 }
