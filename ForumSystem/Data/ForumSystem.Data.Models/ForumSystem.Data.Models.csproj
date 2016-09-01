@@ -69,6 +69,7 @@
     <Compile Include="Comment.cs" />
     <Compile Include="CommentLike.cs" />
     <Compile Include="CommentReport.cs" />
+    <Compile Include="CommentUpdate.cs" />
     <Compile Include="Like.cs" />
     <Compile Include="Post.cs" />
     <Compile Include="Answer.cs" />

@@ -33,6 +33,8 @@
 
         IDeletableEntityRepository<AnswerUpdate> AnswerUpdates { get; }
 
+        IDeletableEntityRepository<CommentUpdate> CommentUpdates { get; }
+
         void SaveChanges();
     }
 }

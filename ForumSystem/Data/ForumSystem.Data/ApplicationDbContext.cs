@@ -42,6 +42,8 @@
 
         public virtual IDbSet<AnswerUpdate> AnswerUpdates { get; set; }
 
+        public virtual IDbSet<CommentUpdate> CommentUpdates { get; set; }
+
         public static ApplicationDbContext Create()
         {
             return new ApplicationDbContext();

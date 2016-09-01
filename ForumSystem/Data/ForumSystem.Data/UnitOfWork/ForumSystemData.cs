@@ -56,6 +56,8 @@
 
         public IDeletableEntityRepository<AnswerUpdate> AnswerUpdates => this.GetRepository<AnswerUpdate>();
 
+        public IDeletableEntityRepository<CommentUpdate> CommentUpdates => this.GetRepository<CommentUpdate>();
+
         public void SaveChanges()
         {
             this.dbContext.SaveChanges();
