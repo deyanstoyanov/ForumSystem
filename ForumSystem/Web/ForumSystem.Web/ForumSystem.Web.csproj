@@ -255,6 +255,7 @@
     <Compile Include="Areas\Moderator\Controllers\PostReportsController.cs" />
     <Compile Include="Areas\Moderator\Controllers\PostsController.cs" />
     <Compile Include="Areas\Moderator\InputModels\Answers\AnswerEditModel.cs" />
+    <Compile Include="Areas\Moderator\InputModels\Comments\CommentEditModel.cs" />
     <Compile Include="Areas\Moderator\InputModels\Posts\PostEditModel.cs" />
     <Compile Include="Areas\Moderator\ModeratorAreaRegistration.cs" />
     <Compile Include="Areas\Moderator\ViewModels\AnswerReports\AnswerReportViewModel.cs" />
@@ -408,6 +409,7 @@
     <Content Include="Areas\Administration\Views\Users\AddUserInRole.cshtml" />
     <Content Include="Areas\Administration\Views\Users\RemoveUserFromRole.cshtml" />
     <Content Include="Areas\Moderator\Views\Answers\Edit.cshtml" />
+    <Content Include="Areas\Moderator\Views\Comments\Edit.cshtml" />
     <None Include="Scripts\jquery\jquery-3.1.0.intellisense.js" />
     <Content Include="Scripts\bootstrap\bootstrap.js" />
     <Content Include="Scripts\bootstrap\bootstrap.min.js" />

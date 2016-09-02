@@ -30,7 +30,7 @@
         </div>
         <div class="meta-info table-holder meta-details">
 
-            @if (User.IsLoggedIn() && User.Identity.GetUserId() != Model.AuthorId)
+            @if (User.IsLoggedIn() && User.Identity.GetUserId() != Model.AuthorId && !Model.IsUpdating)
             {
                 <div id="comment-like-@Model.Id">
                     @Html.Action("Like", "CommentLikes", new { area = string.Empty, id = Model.Id })
@@ -101,9 +101,19 @@
                                                    InsertionMode = InsertionMode.Replace,
                                                    UpdateTargetId = $"answer-action-container-{Model.AnswerId}"
                                                }, new { @class = "btn primary-btn" })
-                            @if (User.Identity.GetUserId() == Model.AuthorId || User.IsModerator() || User.IsAdmin())
+                            @if (User.Identity.GetUserId() == Model.AuthorId && (!User.IsModerator() && !User.IsAdmin()))
                             {
                                 @Ajax.ActionLink("Edit", "Edit", "Comments", new { area = string.Empty, id = Model.Id }, new AjaxOptions
+                                                   {
+                                                       HttpMethod = "GET",
+                                                       InsertionMode = InsertionMode.Replace,
+                                                       UpdateTargetId = $"comment-action-container-{@Model.Id}"
+                                                   }, new { @class = "btn primary-btn" })
+                            }
+
+                            @if (User.IsModerator() || User.IsAdmin())
+                            {
+                                @Ajax.ActionLink("Edit", "Edit", "Comments", new { area = "Moderator", id = Model.Id }, new AjaxOptions
                                                    {
                                                        HttpMethod = "GET",
                                                        InsertionMode = InsertionMode.Replace,
