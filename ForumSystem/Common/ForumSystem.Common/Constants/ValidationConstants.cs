@@ -80,7 +80,7 @@
         public const int ReportDescriptionMaxLength = 100000;
 
         // Updates
-        public const int UpdateCommentMinLength = 7;
-        public const int UpdateCommentMaxLength = 100000;
+        public const int UpdateReasonMinLength = 7;
+        public const int UpdateReasonMaxLength = 100000;
     }
 }

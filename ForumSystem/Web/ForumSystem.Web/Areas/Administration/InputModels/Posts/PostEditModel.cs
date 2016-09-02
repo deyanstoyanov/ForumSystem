@@ -11,7 +11,7 @@
         public int Id { get; set; }
 
         [Required]
-        [StringLength(ValidationConstants.PostTitleMaxLength,
+        [StringLength(ValidationConstants.PostTitleMaxLength, 
             MinimumLength = ValidationConstants.PostTitleMinLength, 
             ErrorMessage = "{0} must be between {1} and {2} symbols.")]
         public string Title { get; set; }
@@ -25,11 +25,11 @@
             ErrorMessage = "{0} must be between {1} and {2} symbols.")]
         public string Content { get; set; }
 
-
         [DataType(DataType.MultilineText)]
-        [MinLength(ValidationConstants.UpdateCommentMinLength)]
-        [MaxLength(ValidationConstants.UpdateCommentMaxLength)]
-        public string Comment { get; set; }
+        [StringLength(ValidationConstants.UpdateReasonMaxLength, 
+            MinimumLength = ValidationConstants.UpdateReasonMinLength, 
+            ErrorMessage = "{0} must be between {1} and {2} symbols.")]
+        public string Reason { get; set; }
 
         public int CategoryId { get; set; }
 

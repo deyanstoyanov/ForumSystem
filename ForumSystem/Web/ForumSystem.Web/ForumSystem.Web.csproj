@@ -251,9 +251,11 @@
     <Compile Include="Areas\Moderator\Controllers\AnswersController.cs" />
     <Compile Include="Areas\Moderator\Controllers\CommentReportsController.cs" />
     <Compile Include="Areas\Moderator\Controllers\Base\ModeratorController.cs" />
+    <Compile Include="Areas\Moderator\Controllers\CommentsController.cs" />
     <Compile Include="Areas\Moderator\Controllers\PostReportsController.cs" />
     <Compile Include="Areas\Moderator\Controllers\PostsController.cs" />
     <Compile Include="Areas\Moderator\InputModels\Answers\AnswerEditModel.cs" />
+    <Compile Include="Areas\Moderator\InputModels\Comments\CommentEditModel.cs" />
     <Compile Include="Areas\Moderator\InputModels\Posts\PostEditModel.cs" />
     <Compile Include="Areas\Moderator\ModeratorAreaRegistration.cs" />
     <Compile Include="Areas\Moderator\ViewModels\AnswerReports\AnswerReportViewModel.cs" />
@@ -270,6 +272,7 @@
     <Compile Include="Controllers\CommentLikesController.cs" />
     <Compile Include="Controllers\CommentReportsController.cs" />
     <Compile Include="Controllers\CommentsController.cs" />
+    <Compile Include="Controllers\CommentUpdatesController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\LastActivitiesController.cs" />
     <Compile Include="Controllers\ManageController.cs" />
@@ -310,6 +313,7 @@
     <Compile Include="ViewModels\Categories\CategoryConciseViewModel.cs" />
     <Compile Include="ViewModels\Categories\CategoryViewModel.cs" />
     <Compile Include="ViewModels\Comments\CommentViewModel.cs" />
+    <Compile Include="ViewModels\CommentUpdates\CommentUpdateViewModel.cs" />
     <Compile Include="ViewModels\Home\IndexPageViewModel.cs" />
     <Compile Include="ViewModels\LastActivities\CategoryAllRepliesViewModel.cs" />
     <Compile Include="ViewModels\LastActivities\CategoryLastPostViewModel.cs" />
@@ -407,6 +411,7 @@
     <Content Include="Areas\Administration\Views\Users\AddUserInRole.cshtml" />
     <Content Include="Areas\Administration\Views\Users\RemoveUserFromRole.cshtml" />
     <Content Include="Areas\Moderator\Views\Answers\Edit.cshtml" />
+    <Content Include="Areas\Moderator\Views\Comments\Edit.cshtml" />
     <None Include="Scripts\jquery\jquery-3.1.0.intellisense.js" />
     <Content Include="Scripts\bootstrap\bootstrap.js" />
     <Content Include="Scripts\bootstrap\bootstrap.min.js" />
@@ -745,6 +750,7 @@
     <Content Include="Views\Shared\_UserDefaultImagePartial.cshtml" />
     <Content Include="Views\PostUpdates\GetById.cshtml" />
     <Content Include="Views\AnswerUpdates\GetById.cshtml" />
+    <Content Include="Views\CommentUpdates\GetById.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

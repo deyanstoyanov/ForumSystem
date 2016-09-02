@@ -53,16 +53,16 @@
                 this.Data.Answers.Update(answer);
                 this.Data.SaveChanges();
 
-                if (model.Comment != null)
+                if (model.Reason != null)
                 {
-                    var postUpdate = new AnswerUpdate
+                    var answerUpdate = new AnswerUpdate
                                          {
                                              AuthorId = userId, 
-                                             AnswerId = answer.Id, 
-                                             Comment = model.Comment
-                                         };
+                                             AnswerId = answer.Id,
+                        Reason = model.Reason
+                    };
 
-                    this.Data.AnswerUpdates.Add(postUpdate);
+                    this.Data.AnswerUpdates.Add(answerUpdate);
                     this.Data.SaveChanges();
                 }
 

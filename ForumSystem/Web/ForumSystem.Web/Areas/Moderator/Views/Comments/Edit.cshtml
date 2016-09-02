@@ -1,13 +1,13 @@
-﻿@model ForumSystem.Web.Areas.Moderator.InputModels.Answers.AnswerEditModel
-
-@using (Ajax.BeginForm("Edit", "Answers", new { area = "Moderator", id = Model.Id }, new AjaxOptions
+﻿@model ForumSystem.Web.Areas.Moderator.InputModels.Comments.CommentEditModel
+    
+@using (Ajax.BeginForm("Edit", "Comments", new { id = Model.Id }, new AjaxOptions()
                         {
                             HttpMethod = "POST",
                             InsertionMode = InsertionMode.Replace,
-                            UpdateTargetId = $"answer-{Model.Id}",
+                            UpdateTargetId = $"comment-{ Model.Id }",
                             OnFailure = "showAnswerRequiredErrorOnEdit",
-                            OnSuccess = "closeEditForm"
-                        }, null))
+                            OnSuccess = "closeEditCommentForm"
+                        }))
 {
     @Html.AntiForgeryToken()
 
@@ -17,7 +17,7 @@
         <div class="col-md-12 bottom-buffer">
             @Html.EditorFor(model => model.Content, new { @class = "form-control" })
             @Html.ValidationMessageFor(model => model.Content, string.Empty, new { @class = "text-danger" })
-            <div id="answer-field-validation-error-message"></div>
+            <div id="comment-field-validation-error-message"></div>
         </div>
         <div class="top-buffer bottom-buffer right-buffer left-buffer">
             <div class="col-md-12">
@@ -33,7 +33,7 @@
                     <div class="table-holder">
                         <div class="cell">
                             <input type="submit" value="Save" class="btn btn-success pull-left" />
-                            <input type="button" value="Cancel" class="btn btn-primary pull-right" onclick="closeEditForm()" />
+                            <input type="button" value="Cancel" class="btn btn-primary pull-right" onclick="closeEditCommentForm()" />
                         </div>
                     </div>
                 </div>
@@ -43,14 +43,14 @@
 }
 
 <script>
-    function closeEditForm() {
-        $("#answer-action-container-@Model.Id").empty();
+    function closeEditCommentForm() {
+        $("#comment-action-container-@Model.Id").empty();
     }
 
     function showAnswerRequiredErrorOnEdit(data) {
         $('<div class="top-buffer left-buffer field-validation-error">'
                 + data.responseJSON.errorMessage
-                + '</div>').prependTo('#answer-field-validation-error-message')
+                + '</div>').prependTo('#comment-field-validation-error-message')
             .delay(3000).fadeOut();
     }
 </script>
