@@ -313,6 +313,7 @@
     <Compile Include="ViewModels\Categories\CategoryConciseViewModel.cs" />
     <Compile Include="ViewModels\Categories\CategoryViewModel.cs" />
     <Compile Include="ViewModels\Comments\CommentViewModel.cs" />
+    <Compile Include="ViewModels\CommentUpdates\CommentUpdateViewModel.cs" />
     <Compile Include="ViewModels\Home\IndexPageViewModel.cs" />
     <Compile Include="ViewModels\LastActivities\CategoryAllRepliesViewModel.cs" />
     <Compile Include="ViewModels\LastActivities\CategoryLastPostViewModel.cs" />
@@ -749,6 +750,7 @@
     <Content Include="Views\Shared\_UserDefaultImagePartial.cshtml" />
     <Content Include="Views\PostUpdates\GetById.cshtml" />
     <Content Include="Views\AnswerUpdates\GetById.cshtml" />
+    <Content Include="Views\CommentUpdates\GetById.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

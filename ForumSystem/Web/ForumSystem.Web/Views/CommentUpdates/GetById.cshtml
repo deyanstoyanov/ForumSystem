@@ -1,0 +1,23 @@
+﻿@model ForumSystem.Web.ViewModels.CommentUpdates.CommentUpdateViewModel
+
+<div class="meta-info table-holder meta-details">
+    <div class="cell buttons-holder comment-holder">
+        <div class="table-holder">
+            <div class="cell">
+                <span class="item-wrap category-wrap pull-left" title="Edited by">
+                    <span class="icon-holder">
+                        <i class="fa fa-pencil"></i>
+                    </span>
+                </span>
+                <a href="@Url.Action("Details", "Users", new { area = string.Empty, id = Model.AuthorId })">
+                    @Model.Author
+                </a>
+                <div>
+                    <span>
+                        @Model.Reason
+                    </span>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

@@ -89,6 +89,8 @@
             </div>
         </div>
 
+        @Html.Action("GetById", "CommentUpdates", new { area = string.Empty, id = Model.Id })
+
         @if (User.IsLoggedIn())
         {
             <div class="meta-info table-holder meta-details post-actions-toolbar">
