@@ -272,6 +272,7 @@
     <Compile Include="Controllers\CommentLikesController.cs" />
     <Compile Include="Controllers\CommentReportsController.cs" />
     <Compile Include="Controllers\CommentsController.cs" />
+    <Compile Include="Controllers\CommentUpdatesController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\LastActivitiesController.cs" />
     <Compile Include="Controllers\ManageController.cs" />
