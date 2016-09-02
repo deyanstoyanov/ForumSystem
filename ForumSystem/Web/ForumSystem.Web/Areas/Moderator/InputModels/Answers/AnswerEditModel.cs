@@ -20,9 +20,9 @@
         public string Content { get; set; }
 
         [DataType(DataType.MultilineText)]
-        [StringLength(ValidationConstants.UpdateCommentMaxLength, 
-            MinimumLength = ValidationConstants.UpdateCommentMinLength, 
+        [StringLength(ValidationConstants.UpdateReasonMaxLength, 
+            MinimumLength = ValidationConstants.UpdateReasonMinLength, 
             ErrorMessage = "{0} must be between {2} and {1} symbols.")]
-        public string Comment { get; set; }
+        public string Reason { get; set; }
     }
 }

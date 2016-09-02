@@ -20,15 +20,16 @@
         [AllowHtml]
         [DataType(DataType.Html)]
         [UIHint("tinymce_full")]
-        [StringLength(ValidationConstants.PostContentMaxLength,
+        [StringLength(ValidationConstants.PostContentMaxLength, 
             MinimumLength = ValidationConstants.PostContentMinLength, 
             ErrorMessage = "{0} must be between {1} and {2} symbols.")]
         public string Content { get; set; }
 
         [DataType(DataType.MultilineText)]
-        [MinLength(ValidationConstants.UpdateCommentMinLength)]
-        [MaxLength(ValidationConstants.UpdateCommentMaxLength)]
-        public string Comment { get; set; }
+        [StringLength(ValidationConstants.UpdateReasonMaxLength, 
+            MinimumLength = ValidationConstants.UpdateReasonMinLength, 
+            ErrorMessage = "{0} must be between {1} and {2} symbols.")]
+        public string Reason { get; set; }
 
         public int CategoryId { get; set; }
 

@@ -13,7 +13,7 @@
 
         public string Author { get; set; }
 
-        public string Comment { get; set; }
+        public string Reason { get; set; }
 
         public void CreateMappings(IMapperConfiguration configuration)
         {

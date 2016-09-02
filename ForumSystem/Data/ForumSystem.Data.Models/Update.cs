@@ -17,9 +17,9 @@
 
         [Required]
         [DataType(DataType.MultilineText)]
-        [MinLength(ValidationConstants.UpdateCommentMinLength)]
-        [MaxLength(ValidationConstants.UpdateCommentMaxLength)]
-        public string Comment { get; set; }
+        [MinLength(ValidationConstants.UpdateReasonMinLength)]
+        [MaxLength(ValidationConstants.UpdateReasonMaxLength)]
+        public string Reason { get; set; }
 
         public bool IsDeleted { get; set; }
 

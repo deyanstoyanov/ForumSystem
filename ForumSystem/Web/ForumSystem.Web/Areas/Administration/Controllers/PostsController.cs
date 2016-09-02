@@ -76,9 +76,9 @@
                 this.Data.Posts.Update(post);
                 this.Data.SaveChanges();
 
-                if (model.Comment != null)
+                if (model.Reason != null)
                 {
-                    var postUpdate = new PostUpdate { AuthorId = userId, PostId = post.Id, Comment = model.Comment };
+                    var postUpdate = new PostUpdate { AuthorId = userId, PostId = post.Id, Reason = model.Reason };
 
                     this.Data.PostUpdates.Add(postUpdate);
                     this.Data.SaveChanges();

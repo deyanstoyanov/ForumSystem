@@ -21,8 +21,8 @@
         </div>
         <div class="top-buffer bottom-buffer right-buffer left-buffer">
             <div class="col-md-12">
-                @Html.EditorFor(model => model.Comment, new { htmlAttributes = new { @class = "form-control small", placeholder = "Reason" } })
-                @Html.ValidationMessageFor(model => model.Comment, string.Empty, new { @class = "text-danger" })
+                @Html.EditorFor(model => model.Reason, new { htmlAttributes = new { @class = "form-control small", placeholder = "Reason" } })
+                @Html.ValidationMessageFor(model => model.Reason, string.Empty, new { @class = "text-danger" })
             </div>
         </div>
     </div>
@@ -58,5 +58,3 @@
 @section Scripts {
     @Scripts.Render("~/bundles/jqueryval")
 }
-
-
