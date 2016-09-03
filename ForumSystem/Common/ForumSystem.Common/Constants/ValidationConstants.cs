@@ -67,6 +67,9 @@
         public const int PostContentMinLength = 12;
         public const int PostContentMaxLength = 100000;
 
+        public const int PostLockReasonMinLenght = 12;
+        public const int PostLockReasonMaxLenght = 100000;
+
         // Answer
         public const int AnswerContentMinLength = 12;
         public const int AnswerContentMaxLength = 100000;
