@@ -6,9 +6,12 @@
     using System.Text;
     using System.Web.Mvc;
 
-    using ForumSystem.Data.Models;
+    using AutoMapper;
+
     using ForumSystem.Data.UnitOfWork;
     using ForumSystem.Web.Controllers.Base;
+    using ForumSystem.Web.ViewModels.Answers;
+    using ForumSystem.Web.ViewModels.Comments;
     using ForumSystem.Web.ViewModels.LastActivities;
 
     public class LastActivitiesController : BaseController
@@ -52,71 +55,50 @@
                 return this.HttpNotFound();
             }
 
-            var model = this.GetLastActivity(lastAnswer, lastComment);
-
-            return this.PartialView("_PostLastActivityPartial", model);
-        }
-
-        private PostLastActivityViewModel GetLastActivity(Answer lastAnswer, Comment lastComment)
-        {
             var model = new PostLastActivityViewModel();
 
             if (lastAnswer == null)
             {
-                model = this.GetComment(lastComment);
+                model.Comment = Mapper.Map<CommentConciseViewModel>(lastComment);
 
-                return model;
+                return this.PartialView("_PostLastActivityPartial", model);
             }
 
             if (lastComment == null)
             {
-                model = this.GetAnswer(lastAnswer);
+                model.Answer = Mapper.Map<AnswerConciseViewModel>(lastAnswer);
 
-                return model;
+                return this.PartialView("_PostLastActivityPartial", model);
             }
 
-            var checkDate = DateTime.Compare(lastAnswer.CreatedOn, lastComment.CreatedOn);
-
-            if (checkDate < 0)
+            var lastDate = this.GetLastDate(lastAnswer.CreatedOn, lastComment.CreatedOn);
+            if (DateTime.Compare(lastDate.GetValueOrDefault(), lastComment.CreatedOn) == 0)
             {
-                model = this.GetComment(lastComment);
-            }
-            else if (checkDate > 0)
-            {
-                model = this.GetAnswer(lastAnswer);
-            }
-            else
-            {
-                model = this.GetAnswer(lastAnswer);
+                model.Comment = Mapper.Map<CommentConciseViewModel>(lastComment);
+
+                return this.PartialView("_PostLastActivityPartial", model);
             }
 
-            return model;
+            model.Answer = Mapper.Map<AnswerConciseViewModel>(lastAnswer);
+
+            return this.PartialView("_PostLastActivityPartial", model);
         }
 
-        private PostLastActivityViewModel GetComment(Comment lastComment)
+        private DateTime? GetLastDate(DateTime? firstDate, DateTime? secondDate)
         {
-            var model = new PostLastActivityViewModel
-                            {
-                                AnswerId = lastComment.AnswerId, 
-                                AuthorId = lastComment.AuthorId, 
-                                Author = lastComment.Author.UserName, 
-                                CreatedOn = lastComment.CreatedOn
-                            };
+            if (!firstDate.HasValue)
+            {
+                return secondDate;
+            }
 
-            return model;
-        }
+            if (!secondDate.HasValue)
+            {
+                return firstDate;
+            }
 
-        private PostLastActivityViewModel GetAnswer(Answer lastAnswer)
-        {
-            var model = new PostLastActivityViewModel
-                            {
-                                AnswerId = lastAnswer.Id, 
-                                AuthorId = lastAnswer.AuthorId, 
-                                Author = lastAnswer.Author.UserName, 
-                                CreatedOn = lastAnswer.CreatedOn
-                            };
+            var checkDate = DateTime.Compare(firstDate.GetValueOrDefault(), secondDate.GetValueOrDefault());
 
-            return model;
+            return checkDate < 0 ? secondDate : firstDate;
         }
 
         [ChildActionOnly]

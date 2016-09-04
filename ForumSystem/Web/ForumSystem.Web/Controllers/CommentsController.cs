@@ -103,6 +103,14 @@
                 this.Data.Comments.Add(comment);
                 this.Data.SaveChanges();
 
+                var postId = this.Data.Answers.GetById(comment.AnswerId).PostId;
+                var post = this.Data.Posts.GetById(postId);
+
+                post.LastActivity = comment.CreatedOn;
+
+                this.Data.Posts.Update(post);
+                this.Data.SaveChanges();
+
                 var viewModel = Mapper.Map<CommentViewModel>(comment);
 
                 return this.PartialView("_CommentDetailPartial", viewModel);

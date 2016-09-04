@@ -4,21 +4,55 @@
     <div class="table-holder">
         <div class="last-replay-inner cell">
             <div class="last-replay-title cell">
-                <a href="@Url.Action("Details", "Answers", new { area = string.Empty, id = Model.AnswerId })">
-                    Last activity:
-                </a>
+                @if (Model.Answer == null)
+                {
+                    <a href="@Url.Action("Details", "Comments", new { area = string.Empty, id = Model.Comment.Id })">
+                        Last activity:
+                    </a>
+                }
+                else
+                {
+                    <a href="@Url.Action("Details", "Answers", new { area = string.Empty, id = Model.Answer.Id })">
+                        Last activity:
+                    </a>
+                }
             </div>
             <div class="last-replay-author cell">
-                <a href="@Url.Action("Details", "Users", new { area = string.Empty, id = Model.AuthorId })" class="user-name">
-                    <i class="fa fa-user"></i>
-                    @Model.Author
-                </a>
-                @Html.Action("Roles", "Users", new { area = string.Empty, id = Model.AuthorId })
+                @if (Model.Answer == null)
+                {
+                    <a href="@Url.Action("Details", "Users", new { area = string.Empty, id = Model.Comment.AuthorId })" class="user-name">
+                        <i class="fa fa-user"></i>
+                        @Model.Comment.Author
+                    </a>
+                }
+                else
+                {
+                    <a href="@Url.Action("Details", "Users", new { area = string.Empty, id = Model.Answer.AuthorId })" class="user-name">
+                        <i class="fa fa-user"></i>
+                        @Model.Answer.Author
+                    </a>
+                }
+
+                @if (Model.Answer == null)
+                {
+                    @Html.Action("Roles", "Users", new { area = string.Empty, id = Model.Comment.AuthorId })
+                }
+                else
+                {
+                    @Html.Action("Roles", "Users", new { area = string.Empty, id = Model.Answer.AuthorId })
+                }
             </div>
             <div class="last-replay-date">
                 <span class="replay-date">
                     <i class="fa fa-clock-o"></i>
-                    @Model.CreatedOn
+                    @if (Model.Answer == null)
+                    {
+                        @Model.Comment.CreatedOn
+                    }
+                    else
+                    {
+                        @Model.Answer.CreatedOn
+                    }
                 </span>
             </div>
         </div>

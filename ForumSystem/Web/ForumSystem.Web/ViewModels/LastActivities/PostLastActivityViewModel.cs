@@ -1,15 +1,12 @@
 ﻿namespace ForumSystem.Web.ViewModels.LastActivities
 {
-    using System;
+    using ForumSystem.Web.ViewModels.Answers;
+    using ForumSystem.Web.ViewModels.Comments;
 
     public class PostLastActivityViewModel
     {
-        public int AnswerId { get; set; }
+        public AnswerConciseViewModel Answer { get; set; }
 
-        public string AuthorId { get; set; }
-
-        public string Author { get; set; }
-
-        public DateTime CreatedOn { get; set; }
+        public CommentConciseViewModel Comment { get; set; }
     }
 }

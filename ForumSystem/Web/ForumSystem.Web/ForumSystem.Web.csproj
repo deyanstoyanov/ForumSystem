@@ -287,6 +287,7 @@
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
     <Compile Include="InputModels\AnswerLikes\AnswerLikeInputModel.cs" />
+    <Compile Include="ViewModels\Answers\AnswerConciseViewModel.cs" />
     <Compile Include="InputModels\AnswerReports\AnswerReportInputModel.cs" />
     <Compile Include="InputModels\Answers\AnswerEditModel.cs" />
     <Compile Include="InputModels\Answers\AnswerInputModel.cs" />
@@ -313,6 +314,7 @@
     <Compile Include="ViewModels\AnswerUpdates\AnswerUpdateViewModel.cs" />
     <Compile Include="ViewModels\Categories\CategoryConciseViewModel.cs" />
     <Compile Include="ViewModels\Categories\CategoryViewModel.cs" />
+    <Compile Include="ViewModels\Comments\CommentConciseViewModel.cs" />
     <Compile Include="ViewModels\Comments\CommentViewModel.cs" />
     <Compile Include="ViewModels\CommentUpdates\CommentUpdateViewModel.cs" />
     <Compile Include="ViewModels\Home\IndexPageViewModel.cs" />
