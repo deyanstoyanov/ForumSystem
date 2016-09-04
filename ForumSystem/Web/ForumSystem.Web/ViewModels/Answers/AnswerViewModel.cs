@@ -1,14 +1,12 @@
 ﻿namespace ForumSystem.Web.ViewModels.Answers
 {
     using System;
-    using System.Collections.Generic;
     using System.Linq;
 
     using AutoMapper;
 
     using ForumSystem.Data.Models;
     using ForumSystem.Web.Infrastructure.Mapping;
-    using ForumSystem.Web.ViewModels.Comments;
 
     public class AnswerViewModel : IMapFrom<Answer>, IHaveCustomMappings
     {
@@ -40,7 +38,7 @@
 
         public bool IsUpdating { get; set; }
 
-        public IEnumerable<CommentViewModel> Comments { get; set; }
+        public bool IsPostLocked { get; set; }
 
         public void CreateMappings(IMapperConfiguration configuration)
         {
@@ -57,9 +55,9 @@
             configuration.CreateMap<Answer, AnswerViewModel>()
                 .ForMember(a => a.Post, config => config.MapFrom(a => a.Post.Title));
             configuration.CreateMap<Answer, AnswerViewModel>()
-                .ForMember(a => a.Comments, config => config.MapFrom(a => a.Comments));
-            configuration.CreateMap<Answer, AnswerViewModel>()
                 .ForMember(a => a.LikesCount, config => config.MapFrom(a => a.Likes.Count(l => !l.IsDeleted)));
+            configuration.CreateMap<Answer, AnswerViewModel>()
+                .ForMember(a => a.IsPostLocked, config => config.MapFrom(a => a.Post.IsLocked));
         }
     }
 }

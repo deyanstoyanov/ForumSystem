@@ -1,10 +1,10 @@
 ﻿@using System.Linq
 @using PagedList.Mvc
+
 @model PagedList.IPagedList<ForumSystem.Web.ViewModels.Answers.AnswerViewModel>
 
 @{
     const string AnswerPartialViewsFolder = "~/Views/Answers/{0}.cshtml";
-    const int AnswersPerPageDefaultValue = 10;
 
     var postId = Model.Select(m => m.PostId).FirstOrDefault();
 }
@@ -45,6 +45,11 @@
 <script>
     function closeForm() {
         $("#answer-action-container").empty();
+    }
+
+    function closeFormAndReload() {
+        $("#answer-action-container").empty();
+        window.location.reload();
     }
 
     function showAnswerRequiredError(data) {

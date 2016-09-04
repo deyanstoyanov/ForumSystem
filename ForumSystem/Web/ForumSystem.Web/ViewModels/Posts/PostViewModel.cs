@@ -36,6 +36,14 @@
 
         public DateTime? ModifiedOn { get; set; }
 
+        public bool IsLocked { get; set; }
+
+        public string LockedById { get; set; }
+
+        public string LockedBy { get; set; }
+
+        public string LockReason { get; set; }
+
         public void CreateMappings(IMapperConfiguration configuration)
         {
             configuration.CreateMap<Post, PostViewModel>()
@@ -47,7 +55,7 @@
             configuration.CreateMap<Post, PostViewModel>()
                 .ForMember(p => p.ReportsCount, config => config.MapFrom(p => p.Reports.Count(r => !r.IsDeleted)));
             configuration.CreateMap<Post, PostViewModel>()
-               .ForMember(p => p.LikesCount, config => config.MapFrom(p => p.Likes.Count(l => !l.IsDeleted)));
+                .ForMember(p => p.LikesCount, config => config.MapFrom(p => p.Likes.Count(l => !l.IsDeleted)));
             configuration.CreateMap<Post, PostViewModel>()
                 .ForMember(p => p.AnswersCount, config => config.MapFrom(p => p.Answers.Count(a => !a.IsDeleted)));
         }

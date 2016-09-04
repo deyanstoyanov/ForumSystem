@@ -34,6 +34,8 @@
 
         public int LikesCount { get; set; }
 
+        public bool IsLocked { get; set; }
+
         public void CreateMappings(IMapperConfiguration configuration)
         {
             configuration.CreateMap<Post, PostConciseViewModel>()

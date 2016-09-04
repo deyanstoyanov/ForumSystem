@@ -1,6 +1,5 @@
 ﻿@using ForumSystem.Web.Infrastructure.Extensions
 @using Microsoft.AspNet.Identity
-
 @model ForumSystem.Web.ViewModels.Posts.PostViewModel
 
 <div id="@Model.Id">
@@ -99,6 +98,34 @@
             </div>
         </div>
 
+        @if (Model.IsLocked)
+        {
+            <div class="meta-info table-holder meta-details">
+                <div class="cell buttons-holder comment-holder">
+                    <div class="table-holder">
+                        <div class="cell">
+                            <span class="item-wrap category-wrap pull-left" title="Locked by">
+                                <span class="icon-holder">
+                                    <i class="fa fa-lock"></i>
+                                </span>
+                            </span>
+                            <a href="@Url.Action("Details", "Users", new { area = string.Empty, id = Model.LockedById })">
+                                @Model.LockedBy
+                            </a>
+                            <div>
+                                <span>
+                                    @if (!string.IsNullOrEmpty(Model.LockReason))
+                                    {
+                                        @Model.LockReason
+                                    }
+                                </span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        }
+
         @Html.Action("GetById", "PostUpdates", new { area = string.Empty, id = Model.Id })
 
         @if (User.IsLoggedIn())
@@ -107,12 +134,16 @@
                 <div class="cell buttons-holder">
                     <div class="table-holder">
                         <div class="cell">
-                            @Ajax.ActionLink("Answer", "Create", "Answers", new { id = Model.Id }, new AjaxOptions
-                                               {
-                                                   HttpMethod = "GET",
-                                                   InsertionMode = InsertionMode.Replace,
-                                                   UpdateTargetId = "answer-action-container"
-                                               }, new { @class = "btn primary-btn" })
+                            @if (!Model.IsLocked)
+                            {
+                                @Ajax.ActionLink("Answer", "Create", "Answers", new { id = Model.Id }, new AjaxOptions
+                                                   {
+                                                       HttpMethod = "GET",
+                                                       InsertionMode = InsertionMode.Replace,
+                                                       UpdateTargetId = "answer-action-container"
+                                                   }, new { @class = "btn primary-btn" })
+                            }
+
                             @if (User.Identity.GetUserId() == Model.AuthorId && (!User.IsAdmin() && !User.IsModerator()))
                             {
                                 <a href="@Url.Action("Edit", "Posts", new { area = string.Empty, id = Model.Id })" class="btn primary-btn">
@@ -132,6 +163,27 @@
                                 <a href="@Url.Action("Edit", "Posts", new { area = "Administration", id = Model.Id })" class="btn primary-btn">
                                     Edit
                                 </a>
+                            }
+
+                            @if ((User.Identity.GetUserId() == Model.AuthorId || User.IsModerator() || User.IsAdmin()) && !Model.IsLocked)
+                            {
+                                @Ajax.ActionLink("Lock", "Lock", "Posts", new { area = string.Empty, id = Model.Id }, new AjaxOptions
+                                                   {
+                                                       HttpMethod = "GET",
+                                                       InsertionMode = InsertionMode.Replace,
+                                                       UpdateTargetId = "answer-action-container"
+                                                   }, new { @class = "btn primary-btn" })
+                            }
+
+                            @if ((User.Identity.GetUserId() == Model.AuthorId || User.IsModerator() || User.IsAdmin()) && Model.IsLocked)
+                            {
+                                @Ajax.ActionLink("Unlock", "Unlock", "Posts", new { area = string.Empty, id = Model.Id }, new AjaxOptions
+                                                   {
+                                                       HttpMethod = "GET",
+                                                       InsertionMode = InsertionMode.Replace,
+                                                       UpdateTargetId = "show-modal",
+                                                       OnSuccess = $"UnlockPostConfirm_{Model.Id}"
+                                                   }, new { @class = "btn primary-btn" })
                             }
 
                             @if (User.Identity.GetUserId() == Model.AuthorId || User.IsModerator() || User.IsAdmin())

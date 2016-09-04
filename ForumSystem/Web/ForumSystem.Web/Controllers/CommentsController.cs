@@ -75,7 +75,7 @@
             }
 
             var answer = this.Data.Answers.GetById(id);
-            if (answer == null || answer.IsDeleted)
+            if (answer == null || answer.IsDeleted || answer.Post.IsLocked)
             {
                 return this.HttpNotFound();
             }

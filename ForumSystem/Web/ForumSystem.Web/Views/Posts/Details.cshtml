@@ -24,6 +24,10 @@
         $('#delete-post-confirm-@Model.Id').modal('show');
     }
 
+    function UnlockPostConfirm_@(Model.Id)() {
+        $('#unlock-post-confirm-@Model.Id').modal('show');
+    }
+
     $('.modal ').click(function () {
         $('.modal, .inner').hide();
 

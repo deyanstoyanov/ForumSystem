@@ -70,7 +70,7 @@
             }
 
             var post = this.Data.Posts.GetById(id);
-            if (post == null || post.IsDeleted)
+            if (post == null || post.IsDeleted || post.IsLocked)
             {
                 return this.HttpNotFound();
             }

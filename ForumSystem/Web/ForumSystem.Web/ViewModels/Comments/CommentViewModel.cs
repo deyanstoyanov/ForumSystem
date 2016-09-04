@@ -36,6 +36,8 @@
 
         public bool IsUpdating { get; set; }
 
+        public bool IsPostLocked { get; set; }
+
         public void CreateMappings(IMapperConfiguration configuration)
         {
             configuration.CreateMap<Comment, CommentViewModel>()
@@ -50,6 +52,8 @@
                 .ForMember(c => c.Post, config => config.MapFrom(c => c.Answer.Post.Title));
             configuration.CreateMap<Comment, CommentViewModel>()
                 .ForMember(c => c.PostId, config => config.MapFrom(c => c.Answer.PostId));
+            configuration.CreateMap<Comment, CommentViewModel>()
+                .ForMember(c => c.IsPostLocked, config => config.MapFrom(c => c.Answer.Post.IsLocked));
         }
     }
 }

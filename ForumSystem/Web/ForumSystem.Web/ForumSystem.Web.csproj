@@ -298,6 +298,7 @@
     <Compile Include="InputModels\PostReports\PostReportInputModel.cs" />
     <Compile Include="InputModels\Posts\PostEditModel.cs" />
     <Compile Include="InputModels\Posts\PostInputModel.cs" />
+    <Compile Include="InputModels\Posts\PostLockInputModel.cs" />
     <Compile Include="InputModels\Users\UserEditModel.cs" />
     <Compile Include="ViewModels\Account\ForgotPasswordViewModel.cs" />
     <Compile Include="ViewModels\Account\ExternalLoginConfirmationViewModel.cs" />
@@ -751,6 +752,8 @@
     <Content Include="Views\PostUpdates\GetById.cshtml" />
     <Content Include="Views\AnswerUpdates\GetById.cshtml" />
     <Content Include="Views\CommentUpdates\GetById.cshtml" />
+    <Content Include="Views\Posts\Lock.cshtml" />
+    <Content Include="Views\Posts\Unlock.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

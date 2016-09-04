@@ -72,6 +72,16 @@
                 </span>
                 <span class="cell">@Model.AnswersCount</span>
             </span>
+
+            @if (Model.IsLocked)
+            {
+                <span class="item-wrap">
+                    <span class="icon-holder">
+                        <i class="fa fa-lock"></i>
+                    </span>
+                </span>
+            }
+
             @if (Model.ReportsCount > 0)
             {
                 <span class="item-wrap">

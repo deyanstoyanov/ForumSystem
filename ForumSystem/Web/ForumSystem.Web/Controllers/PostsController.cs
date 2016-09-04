@@ -48,6 +48,15 @@
                     .ProjectTo<PostViewModel>()
                     .FirstOrDefault();
 
+            if (viewModel != null && post.IsLocked)
+            {
+                viewModel.LockedBy =
+                    this.Data.Users.All()
+                        .Where(u => u.Id == post.LockedById)
+                        .Select(u => u.UserName)
+                        .FirstOrDefault();
+            }
+
             post.Views++;
 
             this.Data.Posts.Update(post);
@@ -91,7 +100,7 @@
                 return this.HttpNotFound();
             }
 
-            var model = 
+            var model =
                 this.Data.Posts.All()
                     .Where(p => p.Id == id)
                     .ProjectTo<PostViewModel>()
@@ -251,6 +260,117 @@
             this.Data.SaveChanges();
 
             return this.RedirectToAction("Details", "Categories", new { area = string.Empty, id = post.CategoryId });
+        }
+
+        [HttpGet]
+        [Authorize]
+        public ActionResult Lock(int? id)
+        {
+            if (id == null)
+            {
+                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+            }
+
+            var post = this.Data.Posts.GetById(id);
+            if (post == null || post.IsDeleted)
+            {
+                return this.HttpNotFound();
+            }
+
+            var userId = this.User.Identity.GetUserId();
+            if (post.AuthorId != userId && !this.User.IsModerator() && !this.User.IsAdmin())
+            {
+                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+            }
+
+            var model = new PostLockInputModel { PostId = post.Id };
+
+            return this.PartialView(model);
+        }
+
+        [HttpPost]
+        [Authorize]
+        [ValidateAntiForgeryToken]
+        public ActionResult Lock(PostLockInputModel input)
+        {
+            if (input != null && this.ModelState.IsValid)
+            {
+                var post = this.Data.Posts.GetById(input.PostId);
+                if (post == null || post.IsDeleted)
+                {
+                    return this.HttpNotFound();
+                }
+
+                var userId = this.User.Identity.GetUserId();
+                if (post.AuthorId != userId && !this.User.IsModerator() && !this.User.IsAdmin())
+                {
+                    return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+                }
+
+                post.LockReason = input.LockReason;
+                post.LockedById = userId;
+                post.IsLocked = true;
+
+                this.Data.Posts.Update(post);
+                this.Data.SaveChanges();
+
+                return this.RedirectToAction("Details", "Posts", new { area = string.Empty, id = post.Id });
+            }
+
+            return this.JsonError("Reason is required");
+        }
+
+        [HttpGet]
+        [Authorize]
+        public ActionResult Unlock(int? id)
+        {
+            if (id == null)
+            {
+                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+            }
+
+            var post = this.Data.Posts.GetById(id);
+            if (post == null || post.IsDeleted)
+            {
+                return this.HttpNotFound();
+            }
+
+            var userId = this.User.Identity.GetUserId();
+            if (post.AuthorId != userId && !this.User.IsModerator() && !this.User.IsAdmin())
+            {
+                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+            }
+
+            var model = Mapper.Map<PostViewModel>(post);
+
+            return this.PartialView(model);
+        }
+
+        [HttpPost]
+        [Authorize]
+        [ValidateAntiForgeryToken]
+        public ActionResult Unlock(int id)
+        {
+            var post = this.Data.Posts.GetById(id);
+            if (post == null || post.IsDeleted)
+            {
+                return this.HttpNotFound();
+            }
+
+            var userId = this.User.Identity.GetUserId();
+            if (post.AuthorId != userId && !this.User.IsModerator() && !this.User.IsAdmin())
+            {
+                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+            }
+
+            post.LockedById = null;
+            post.LockReason = null;
+            post.IsLocked = false;
+
+            this.Data.Posts.Update(post);
+            this.Data.SaveChanges();
+
+            return this.RedirectToAction("Details", "Posts", new { area = string.Empty, id = post.Id });
         }
     }
 }

@@ -45,6 +45,15 @@
 
         public DateTime? LastActivity { get; set; }
 
+        public bool IsLocked { get; set; }
+
+        public string LockedById { get; set; }
+
+        [DataType(DataType.MultilineText)]
+        [MinLength(ValidationConstants.PostLockReasonMinLenght)]
+        [MaxLength(ValidationConstants.PostLockReasonMaxLenght)]
+        public string LockReason { get; set; }
+
         public bool IsDeleted { get; set; }
 
         public DateTime? DeletedOn { get; set; }

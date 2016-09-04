@@ -96,14 +96,16 @@
                 <div class="cell buttons-holder">
                     <div class="table-holder">
                         <div class="cell">
-
-                            @Ajax.ActionLink("Comment", "Create", "Comments", new { area = string.Empty, id = Model.Id }, new AjaxOptions
-                                               {
-                                                   HttpMethod = "GET",
-                                                   InsertionMode = InsertionMode.Replace,
-                                                   UpdateTargetId = $"answer-action-container-{Model.Id}"
-                                               }, new { @class = "btn primary-btn" })
-
+                            @if (!Model.IsPostLocked)
+                            {
+                                @Ajax.ActionLink("Comment", "Create", "Comments", new { area = string.Empty, id = Model.Id }, new AjaxOptions
+                                                   {
+                                                       HttpMethod = "GET",
+                                                       InsertionMode = InsertionMode.Replace,
+                                                       UpdateTargetId = $"answer-action-container-{Model.Id}"
+                                                   }, new { @class = "btn primary-btn" })
+                            }
+                            
                             @if (User.Identity.GetUserId() == Model.AuthorId && (!User.IsModerator() && !User.IsAdmin()))
                             {
                                 @Ajax.ActionLink("Edit", "Edit", "Answers", new { area = string.Empty, id = Model.Id }, new AjaxOptions
