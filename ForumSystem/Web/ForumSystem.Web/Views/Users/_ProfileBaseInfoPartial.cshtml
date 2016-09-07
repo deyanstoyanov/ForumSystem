@@ -11,14 +11,7 @@
                         <div class="col-md-3">
                             <div class="head-info">
                                 <div class="user-avatar">
-                                    @if (!string.IsNullOrEmpty(Model.PictureUrl))
-            {
-                                        <img src="@Url.Content(Model.PictureUrl)" alt="@(Model.UserName) avatar" />
-                                    }
-                                    else
-                                    {
-                                        @Html.Partial("_UserDefaultImagePartial", Model.UserName)
-                                    }
+                                    @Html.Action("GetUserImage", "Users", new { area = string.Empty, id = Model.Id })
                                 </div>
                                 <div class="">
                                     <ul class="profile-info-social">
@@ -236,7 +229,6 @@
                                     </div>
                                 </div>
                             </div>
-
                         </div>
                     </div>
                 </div>

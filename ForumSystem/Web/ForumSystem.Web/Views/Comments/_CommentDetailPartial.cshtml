@@ -9,14 +9,7 @@
             <div class="cell">
                 <div class="user-wrap">
                     <span class="user-avatar">
-                        @if (!string.IsNullOrEmpty(Model.AuthorPictureUrl))
-                        {
-                            <img src="@Url.Content(Model.AuthorPictureUrl)" alt="@(Model.Author) avatar" />
-                        }
-                        else
-                        {
-                            @Html.Partial("_UserDefaultImagePartial", Model.Author)
-                        }
+                        @Html.Action("GetUserImage", "Users", new { area = string.Empty, id = Model.AuthorId })
                     </span>
                     <span class="cell">
                         <a href="@Url.Action("Details", "Users", new { area = string.Empty, id = Model.AuthorId })" class="user-name">@Model.Author</a>

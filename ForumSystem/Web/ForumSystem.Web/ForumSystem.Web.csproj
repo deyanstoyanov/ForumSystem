@@ -756,6 +756,7 @@
     <Content Include="Views\CommentUpdates\GetById.cshtml" />
     <Content Include="Views\Posts\Lock.cshtml" />
     <Content Include="Views\Posts\Unlock.cshtml" />
+    <Content Include="Views\Users\_UserImagePartial.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

@@ -1,0 +1,10 @@
+﻿@model string
+
+@if (!string.IsNullOrEmpty(Model))
+{
+    <img src="@Url.Content(Model)" />
+}
+else
+{
+    @Html.Partial("_UserDefaultImagePartial", Model)
+}

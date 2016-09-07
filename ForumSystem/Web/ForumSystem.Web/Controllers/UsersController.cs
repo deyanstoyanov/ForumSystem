@@ -208,5 +208,25 @@
 
             return this.PartialView("_UserRolesPartial", roles);
         }
+
+        [ChildActionOnly]
+        [AllowAnonymous]
+        public ActionResult GetUserImage(string id)
+        {
+            if (id == null)
+            {
+                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+            }
+
+            var user = this.Data.Users.GetById(id);
+            if (user == null)
+            {
+                return this.HttpNotFound();
+            }
+
+            var pictureUrl = this.Data.Users.All().Where(u => u.Id == id).Select(u => u.PictureUrl).FirstOrDefault();
+
+            return this.PartialView("_UserImagePartial", pictureUrl);
+        }
     }
 }
