@@ -295,6 +295,7 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
+    <Compile Include="Hubs\ForumSystemHub.cs" />
     <Compile Include="InputModels\AnswerLikes\AnswerLikeInputModel.cs" />
     <Compile Include="ViewModels\Answers\AnswerConciseViewModel.cs" />
     <Compile Include="InputModels\AnswerReports\AnswerReportInputModel.cs" />
