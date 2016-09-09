@@ -14,31 +14,51 @@
                                                    HttpMethod = "GET",
                                                    InsertionMode = InsertionMode.Replace,
                                                    UpdateTargetId = "forum-activity-data-holder",
+                                                   OnBegin = "ShowSpinner",
+                                                   OnComplete = "RemoveSpinner",
                                                    OnSuccess = "SelectPostTab"
                                                }, new { @class = "navbar-item", id = "user-posts-item" })
                         </li>
                         <li>
                             @Ajax.ActionLink("Answers", "Answers", "Users", new { area = string.Empty, id = Model.Id }, new AjaxOptions
-                                                {
-                                                    HttpMethod = "GET",
-                                                    InsertionMode = InsertionMode.Replace,
-                                                    UpdateTargetId = "forum-activity-data-holder",
-                                                    OnSuccess = "SelectAnswerTab"
-                                                }, new { @class = "navbar-item", id = "user-answers-item" })
+                                               {
+                                                   HttpMethod = "GET",
+                                                   InsertionMode = InsertionMode.Replace,
+                                                   UpdateTargetId = "forum-activity-data-holder",
+                                                   OnBegin = "ShowSpinner",
+                                                   OnComplete = "RemoveSpinner",
+                                                   OnSuccess = "SelectAnswerTab"
+                                               }, new { @class = "navbar-item", id = "user-answers-item" })
                         </li>
                         <li>
                             @Ajax.ActionLink("Comments", "Comments", "Users", new { area = string.Empty, id = Model.Id }, new AjaxOptions
-                                                {
-                                                    HttpMethod = "GET",
-                                                    InsertionMode = InsertionMode.Replace,
-                                                    UpdateTargetId = "forum-activity-data-holder",
-                                                    OnSuccess = "SelectCommentTab"
-                                                }, new { @class = "navbar-item", id = "user-comments-item" })
+                                               {
+                                                   HttpMethod = "GET",
+                                                   InsertionMode = InsertionMode.Replace,
+                                                   UpdateTargetId = "forum-activity-data-holder",
+                                                   OnBegin = "ShowSpinner",
+                                                   OnComplete = "RemoveSpinner",
+                                                   OnSuccess = "SelectCommentTab"
+                                               }, new { @class = "navbar-item", id = "user-comments-item" })
                         </li>
                     </ul>
-                    <div class="data-holder" id="forum-activity-data-holder"></div>
+                    <div class="data-holder" id="forum-activity-data-holder">
+                        <div class="spinner" id="loading">
+                            <i class="fa fa-spinner fa-pulse fa-3x fa-fw margin-bottom"></i>
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>
     </div>
 </div>
+
+<script>
+    function ShowSpinner() {
+        $('#loading').css("display", "block");
+    }
+
+    function RemoveSpinner() {
+        $('#loading').css("display", "none");
+    }
+</script>

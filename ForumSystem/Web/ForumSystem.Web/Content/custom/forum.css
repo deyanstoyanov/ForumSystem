@@ -1106,6 +1106,14 @@
     z-index: -1;
 }
 
+    .profile-forum-activity-wrapper .data-holder .spinner {
+        margin-top: 32px;
+        margin-bottom: 32px;
+        text-align: center;
+        vertical-align: middle;
+        display: none;
+    }
+
 .profile-forum-activity-wrapper .navbar-forum-activity {
     width: 100%;
     margin-bottom: -1px;
