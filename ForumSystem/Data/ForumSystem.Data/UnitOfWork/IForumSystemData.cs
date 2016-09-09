@@ -35,6 +35,8 @@
 
         IDeletableEntityRepository<CommentUpdate> CommentUpdates { get; }
 
+        IDeletableEntityRepository<Notification> Notifications { get; }
+
         void SaveChanges();
     }
 }

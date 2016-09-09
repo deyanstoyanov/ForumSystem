@@ -71,6 +71,8 @@
     <Compile Include="CommentReport.cs" />
     <Compile Include="CommentUpdate.cs" />
     <Compile Include="Like.cs" />
+    <Compile Include="Notification.cs" />
+    <Compile Include="NotificationType.cs" />
     <Compile Include="Post.cs" />
     <Compile Include="Answer.cs" />
     <Compile Include="PostLike.cs" />

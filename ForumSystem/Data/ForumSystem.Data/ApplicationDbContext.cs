@@ -44,6 +44,8 @@
 
         public virtual IDbSet<CommentUpdate> CommentUpdates { get; set; }
 
+        public virtual IDbSet<Notification> Notifications { get; set; }
+
         public static ApplicationDbContext Create()
         {
             return new ApplicationDbContext();

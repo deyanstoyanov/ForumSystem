@@ -58,6 +58,8 @@
 
         public IDeletableEntityRepository<CommentUpdate> CommentUpdates => this.GetRepository<CommentUpdate>();
 
+        public IDeletableEntityRepository<Notification> Notifications => this.GetRepository<Notification>();
+
         public void SaveChanges()
         {
             this.dbContext.SaveChanges();

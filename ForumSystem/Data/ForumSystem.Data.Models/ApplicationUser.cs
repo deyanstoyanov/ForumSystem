@@ -3,6 +3,7 @@
     using System;
     using System.Collections.Generic;
     using System.ComponentModel.DataAnnotations;
+    using System.ComponentModel.DataAnnotations.Schema;
     using System.Security.Claims;
     using System.Threading.Tasks;
 
@@ -19,6 +20,8 @@
             this.Posts = new HashSet<Post>();
             this.Answers = new HashSet<Answer>();
             this.Comments = new HashSet<Comment>();
+            this.ReceivedNotifications = new HashSet<Notification>();
+            this.SentNotifications = new HashSet<Notification>();
 
             this.CreatedOn = DateTime.Now;
         }
@@ -86,6 +89,12 @@
         public virtual ICollection<Answer> Answers { get; set; }
 
         public virtual ICollection<Comment> Comments { get; set; }
+
+        [InverseProperty("Receiver")]
+        public virtual ICollection<Notification> ReceivedNotifications { get; set; }
+
+        [InverseProperty("Sender")]
+        public virtual ICollection<Notification> SentNotifications { get; set; }
 
         public async Task<ClaimsIdentity> GenerateUserIdentityAsync(UserManager<ApplicationUser> manager)
         {
