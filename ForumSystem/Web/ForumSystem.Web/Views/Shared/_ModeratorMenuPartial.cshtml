@@ -1,17 +1,33 @@
-﻿<li class="dropdown">
-    <a href="" class="dropdown-toggle" id="moderator-menu" data-toggle="dropdown">
+﻿<li id="moderator-menu">
+    <a href="">
+        <i class="fa fa-pencil"></i>
         Moderator
         <span class="caret"></span>
     </a>
-    <ul class="dropdown-menu" role="menu" aria-labelledby="moderator-menu">
-        <li class="text-center" role="presentation">
-            <a href="@Url.Action("All", "PostReports", new { area = "Moderator" })" role="menuitem">Posts Reports</a>
+</li>
+<li>
+    <ul class="user-menu dropdown-menu dropdown-caret nested-menu" id="moderator-menu-items">
+        <li class="divider"></li>
+        <li>
+            <a href="@Url.Action("All", "PostReports", new { area = "Moderator" })">Posts Reports</a>
         </li>
-        <li class="text-center" role="presentation">
-            <a href="@Url.Action("All", "AnswerReports", new { area = "Moderator" })" role="menuitem">Answers Reports</a>
+        <li>
+            <a href="@Url.Action("All", "AnswerReports", new { area = "Moderator" })">Answers Reports</a>
         </li>
-        <li class="text-center" role="presentation">
-            <a href="@Url.Action("All", "CommentReports", new { area = "Moderator" })" role="menuitem">Comments Reports</a>
+        <li>
+            <a href="@Url.Action("All", "CommentReports", new { area = "Moderator" })">Comments Reports</a>
         </li>
+        <li class="divider"></li>
     </ul>
 </li>
+
+<script>
+    $(function () {
+        $('#moderator-menu-items').hide();
+
+        $('#moderator-menu').click(function () {
+            $(this).next().find('#moderator-menu-items').slideToggle(300);
+            return false;
+        });
+    });
+</script>

@@ -1,26 +1,42 @@
-﻿<li class="dropdown">
-    <a href="" class="dropdown-toggle" id="administration-menu" data-toggle="dropdown">
+﻿<li id="administration-menu">
+    <a href="">
+        <i class="fa fa-unlock"></i>
         Administration
         <span class="caret"></span>
     </a>
-    <ul class="dropdown-menu" role="menu" aria-labelledby="administration-menu">
-        <li class="text-center" role="presentation">
-            <a href="@Url.Action("All", "Sections", new { area = "Administration" })" role="menuitem">Sections</a>
+</li>
+<li>
+    <ul class="user-menu dropdown-menu dropdown-caret nested-menu" id="administration-menu-items">
+        <li class="divider"></li>
+        <li>
+            <a href="@Url.Action("All", "Sections", new { area = "Administration" })">Sections</a>
         </li>
-        <li class="text-center" role="presentation">
-            <a href="@Url.Action("All", "Categories", new { area = "Administration" })" role="menuitem">Categories</a>
+        <li>
+            <a href="@Url.Action("All", "Categories", new { area = "Administration" })">Categories</a>
         </li>
-        <li class="text-center" role="presentation">
-            <a href="@Url.Action("All", "Users", new { area = "Administration" })" role="menuitem">Users</a>
+        <li>
+            <a href="@Url.Action("All", "Users", new { area = "Administration" })">Users</a>
         </li>
-        <li class="text-center" role="presentation">
-            <a href="@Url.Action("All", "Posts", new { area = "Administration" })" role="menuitem">Posts</a>
+        <li>
+            <a href="@Url.Action("All", "Posts", new { area = "Administration" })">Posts</a>
         </li>
-        <li class="text-center" role="presentation">
-            <a href="@Url.Action("All", "Answers", new { area = "Administration" })" role="menuitem">Answers</a>
+        <li>
+            <a href="@Url.Action("All", "Answers", new { area = "Administration" })">Answers</a>
         </li>
-        <li class="text-center" role="presentation">
-            <a href="@Url.Action("All", "Comments", new { area = "Administration" })" role="menuitem">Comments</a>
+        <li>
+            <a href="@Url.Action("All", "Comments", new { area = "Administration" })">Comments</a>
         </li>
+        <li class="divider"></li>
     </ul>
 </li>
+
+<script>
+    $(function () {
+        $('#administration-menu-items').hide();
+
+        $('#administration-menu').click(function () {
+            $(this).next().find('#administration-menu-items').slideToggle(300);
+            return false;
+        });
+    });
+</script>

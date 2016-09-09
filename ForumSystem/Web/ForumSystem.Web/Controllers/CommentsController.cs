@@ -111,6 +111,23 @@
                 this.Data.Posts.Update(post);
                 this.Data.SaveChanges();
 
+                var answer = this.Data.Answers.GetById(comment.AnswerId);
+                if (answer.AuthorId != userId)
+                {
+                    var newNotification = new Notification
+                                              {
+                                                  NotificationType = NotificationType.CommentAnswer,
+                                                  ItemId = comment.Id,
+                                                  SenderId = userId,
+                                                  ReceiverId = answer.AuthorId
+                                              };
+
+                    this.Data.Notifications.Add(newNotification);
+                    this.Data.SaveChanges();
+
+                    this.UpdateNotificationsCount(answer.Author);
+                }
+
                 var viewModel = Mapper.Map<CommentViewModel>(comment);
 
                 return this.PartialView("_CommentDetailPartial", viewModel);

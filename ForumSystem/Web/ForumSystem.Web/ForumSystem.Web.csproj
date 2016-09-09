@@ -356,6 +356,7 @@
     <Content Include="Content\bootstrap\bootstrap.flatly.min.css" />
     <Content Include="Content\bootstrap\bootstrap.min.css" />
     <Content Include="Content\custom\forum.css" />
+    <Content Include="Content\custom\navbar.css" />
     <Content Include="Content\custom\site.common.css" />
     <Content Include="Content\fonts\font-awesome\css\font-awesome.css" />
     <Content Include="Content\fonts\font-awesome\css\font-awesome.min.css" />
@@ -771,6 +772,14 @@
     <Content Include="Views\Posts\Unlock.cshtml" />
     <Content Include="Views\Users\_UserImagePartial.cshtml" />
     <Content Include="Views\Shared\_LogoutPartial.cshtml" />
+    <Content Include="Views\Notifications\_AnswerPostNotificationDetailPartial.cshtml" />
+    <Content Include="Views\Notifications\_CommentAnswerNotificationDetailPartial.cshtml" />
+    <Content Include="Views\Notifications\_LastNotificationsPartial.cshtml" />
+    <Content Include="Views\Notifications\_LikeAnswerNotificationDetailPartial.cshtml" />
+    <Content Include="Views\Notifications\_LikeCommentNotificationDetailPartial.cshtml" />
+    <Content Include="Views\Notifications\_LikePostNotificationDetailPartial.cshtml" />
+    <Content Include="Views\Shared\_NotificationsNavbarPartial.cshtml" />
+    <Content Include="Views\Shared\_UserNavbarPartial.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

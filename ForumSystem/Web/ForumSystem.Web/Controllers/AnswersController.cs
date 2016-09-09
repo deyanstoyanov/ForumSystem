@@ -104,6 +104,22 @@
                 this.Data.Posts.Update(post);
                 this.Data.SaveChanges();
 
+                if (post.AuthorId != userId)
+                {
+                    var newNotification = new Notification
+                                              {
+                                                  NotificationType = NotificationType.AnswerPost,
+                                                  ItemId = answer.Id,
+                                                  SenderId = userId,
+                                                  ReceiverId = post.AuthorId
+                                              };
+
+                    this.Data.Notifications.Add(newNotification);
+                    this.Data.SaveChanges();
+
+                    this.UpdateNotificationsCount(post.Author);
+                }
+
                 var viewModel = Mapper.Map<AnswerViewModel>(answer);
 
                 return this.PartialView("_AnswerDetailPartial", viewModel);

@@ -1,0 +1,122 @@
+﻿@using System.Collections.Generic
+@using ForumSystem.Data.Models
+
+@model IEnumerable<ForumSystem.Web.ViewModels.Notifications.NotificationViewModel>
+
+@foreach (var item in Model)
+{
+    if (item.NotificationType == NotificationType.AnswerPost)
+    {
+        if (!item.IsChecked)
+        {
+            <li class="noti-wrap table-holder highlighted">
+                @Html.Partial("_AnswerPostNotificationDetailPartial", item)
+            </li>
+        }
+        else
+        {
+            <li class="noti-wrap table-holder">
+                @Html.Partial("_AnswerPostNotificationDetailPartial", item)
+            </li>
+        }
+    }
+
+    if (item.NotificationType == NotificationType.CommentAnswer)
+    {
+        if (!item.IsChecked)
+        {
+            <li class="noti-wrap table-holder highlighted">
+                @Html.Partial("_CommentAnswerNotificationDetailPartial", item)
+            </li>
+        }
+        else
+        {
+            <li class="noti-wrap table-holder">
+                @Html.Partial("_CommentAnswerNotificationDetailPartial", item)
+            </li>
+        }
+    }
+
+    if (item.NotificationType == NotificationType.LikePost)
+    {
+        if (!item.IsChecked)
+        {
+            <li class="noti-wrap table-holder highlighted">
+                @Html.Partial("_LikePostNotificationDetailPartial", item)
+            </li>
+        }
+        else
+        {
+            <li class="noti-wrap table-holder">
+                @Html.Partial("_LikePostNotificationDetailPartial", item)
+            </li>
+        }
+    }
+
+    if (item.NotificationType == NotificationType.LikeAnswer)
+    {
+        if (!item.IsChecked)
+        {
+            <li class="noti-wrap table-holder highlighted">
+                @Html.Partial("_LikeAnswerNotificationDetailPartial", item)
+            </li>
+        }
+        else
+        {
+            <li class="noti-wrap table-holder">
+                @Html.Partial("_LikeAnswerNotificationDetailPartial", item)
+            </li>
+        }
+    }
+
+    if (item.NotificationType == NotificationType.LikeComment)
+    {
+        if (!item.IsChecked)
+        {
+            <li class="noti-wrap table-holder highlighted">
+                @Html.Partial("_LikeCommentNotificationDetailPartial", item)
+            </li>
+        }
+        else
+        {
+            <li class="noti-wrap table-holder">
+                @Html.Partial("_LikeCommentNotificationDetailPartial", item)
+            </li>
+        }
+    }
+}
+
+<script>
+    var ajaxLoading = false;
+    function loadNotifications() {
+        $.ajax({
+            url: '@Url.Action("LoadMoreNotifications", "Notifications")',
+            data: { dateOfLastNotification: $('#notifications-container li').last().find('.msg-time').attr('created-on') },
+            success: function (data) {
+                $('#notifications-container').append(data), function() {
+                    ajaxLoading = false;
+                };
+            }
+        });
+    }
+
+    $(document).ready(function () {
+        var element = $('#notifications-container');
+        element.scroll(function () {
+            if (Math.ceil(element[0].scrollHeight - element.scrollTop()) == element.outerHeight()) {
+                if (!ajaxLoading) {
+                    ajaxLoading = true;
+                    loadNotifications();
+                }
+            }
+        });
+
+        $(document).ajaxStart(function () {
+            $('#loading-on-scroll').css("display", "block");
+        });
+
+        $(document).ajaxComplete(function () {
+            $('#loading-on-scroll').css("display", "none");
+        });
+    });
+</script>

@@ -1,6 +1,8 @@
 ﻿@using System
 
 @using ForumSystem.Web.Infrastructure.Extensions
+@using Microsoft.AspNet.Identity
+
 <!DOCTYPE html>
 <html>
 <head>
@@ -11,7 +13,8 @@
     @Styles.Render("~/Content/font-awesome")
 
     @Scripts.Render("~/bundles/jquery")
-
+    <script src="~/Scripts/jquery.signalR-2.2.1.min.js"></script>
+    <script src="~/signalr/hubs"></script>
 </head>
 <body>
     <div class="lead-wrapper">
@@ -26,22 +29,15 @@
                         </button>
                         @Html.ActionLink("Forum System", "Index", "Home", new { area = string.Empty }, new { @class = "navbar-brand" })
                     </div>
-                    <div class="navbar-collapse collapse">
-                        <ul class="nav navbar-nav">
-                            <li>@Html.ActionLink("Forum", "Index", "Home", new { area = string.Empty }, null)</li>
 
-                            @if (User.IsAdmin())
-                            {
-                                @Html.Partial("_AdministrationMenuPartial")
-                            }
-
-                            @if (User.IsModerator() || User.IsAdmin())
-                            {
-                                @Html.Partial("_ModeratorMenuPartial")
-                            }
-                        </ul>
+                    @if (User.IsLoggedIn())
+                    {
+                        @Html.Partial("_UserNavbarPartial");
+                    }
+                    else
+                    {
                         @Html.Partial("_LoginPartial")
-                    </div>
+                    }
                 </div>
             </div>
         </div>

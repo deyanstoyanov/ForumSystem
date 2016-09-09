@@ -19,6 +19,7 @@
                     "~/Content/custom/site.css", 
                     "~/Content/custom/site.common.css", 
                     "~/Content/custom/forum.css", 
+                    "~/Content/custom/navbar.css", 
                     "~/Content/MvcGrid/mvc-grid.css"));
 
             bundles.Add(

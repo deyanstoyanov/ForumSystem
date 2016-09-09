@@ -1,0 +1,74 @@
+﻿<li class="cell">
+    @Ajax.ActionLink(" ", "GetLastNotifications", "Notifications", new { area = string.Empty }, new AjaxOptions
+{
+    HttpMethod = "GET",
+    InsertionMode = InsertionMode.Replace,
+    UpdateTargetId = "notifications-container",
+    OnBegin = "ShowSpinner",
+    OnComplete = "RemoveSpinner",
+    OnSuccess = "UpdateCounters"
+}, new
+{
+    @class = "dropdown-toggle noti-info fa fa-globe",
+    data_toggle = "dropdown",
+    id = "noti-btn"
+})
+    <span class="noti-counter" id="notifications-count">0</span>
+
+    <ul class="pull-right dropdown-navbar dropdown-menu dropdown-caret dropdown-close dropdown-noti" id="notifications">
+        <li class="dropdown-header">
+            <span id="notifications-count-inner">0</span>
+            New Notifications
+        </li>
+
+        <li class="spinner" id="loading-on-click">
+            <i class="fa fa-spinner fa-pulse fa-fw margin-bottom"></i>
+        </li>
+
+        <ul class="noti-box" id="notifications-container"></ul>
+
+        <li class="spinner" id="loading-on-scroll">
+            <i class="fa fa-spinner fa-pulse fa-fw margin-bottom"></i>
+        </li>
+
+        <li class="see-all">
+            <a href="#">
+                See all
+                <i class="fa fa-arrow-right"></i>
+            </a>
+        </li>
+    </ul>
+</li>
+
+<script>
+    $(function () {
+        $.connection.hub.start().done(function () {
+            console.log("Notifications Connection is ready.");
+        });
+
+        var forumSystem = $.connection.forumSystemHub;
+
+        function updateNotificationsCount(notificationsCount) {
+            $('#notifications-count').text(notificationsCount);
+            $('#notifications-count-inner').text(notificationsCount);
+        }
+
+        forumSystem.client.updateNotificationsCount = updateNotificationsCount;
+
+        $('#notifications-count').load('/Notifications/GetNotificationsCount');
+        $('#notifications-count-inner').load('/Notifications/GetNotificationsCount');
+    });
+
+    function UpdateCounters() {
+        $('#notifications-count').load('/Notifications/GetNotificationsCount');
+        $('#notifications-count-inner').load('/Notifications/GetNotificationsCount');
+    }
+
+    function ShowSpinner() {
+        $('#loading-on-click').css("display", "block");
+    }
+
+    function RemoveSpinner() {
+        $('#loading-on-click').css("display", "none");
+    }
+</script>

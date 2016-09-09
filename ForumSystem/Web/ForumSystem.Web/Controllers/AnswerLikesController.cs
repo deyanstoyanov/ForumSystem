@@ -85,6 +85,19 @@
                 input.IsLiked = true;
                 input.LikesCount = likesCount;
 
+                var newNotification = new Notification
+                                          {
+                                              NotificationType = NotificationType.LikeAnswer,
+                                              ItemId = answer.Id,
+                                              SenderId = userId,
+                                              ReceiverId = answer.AuthorId
+                                          };
+
+                this.Data.Notifications.Add(newNotification);
+                this.Data.SaveChanges();
+
+                this.UpdateNotificationsCount(answer.Author);
+
                 return this.PartialView(input);
             }
 

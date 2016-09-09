@@ -1,0 +1,23 @@
+﻿@model ForumSystem.Web.ViewModels.Notifications.NotificationViewModel
+
+<div class="noti-details table-holder">
+    <span class="cell msg-photo">
+        <a href="@Url.Action("Details", "Users", new { area = string.Empty, id = Model.SenderId })">
+            @Html.Action("GetUserImage", "Users", new { area = string.Empty, id = Model.SenderId })
+        </a>
+    </span>
+    <span class="cell msg-body">
+        <span class="msg-title">
+            <a href="@Url.Action("Details", "Users", new { area = string.Empty, id = Model.SenderId })">
+                <span>@Model.Sender</span>
+            </a>
+            <a href="@Url.Action("Details", "Answers", new { area = string.Empty, id = Model.ItemId })" class="msg-text">
+                <span> answered on your post.</span>
+            </a>
+        </span>
+        <span class="msg-time" created-on="@Model.CreatedOn">
+            <i class="fa fa-comment"></i>
+            <span>@Model.CreatedOn</span>
+        </span>
+    </span>
+</div>
