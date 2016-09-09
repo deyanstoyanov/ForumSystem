@@ -276,6 +276,7 @@
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\LastActivitiesController.cs" />
     <Compile Include="Controllers\ManageController.cs" />
+    <Compile Include="Controllers\NotificationsController.cs" />
     <Compile Include="Controllers\PostLikesController.cs" />
     <Compile Include="Controllers\PostReportsController.cs" />
     <Compile Include="Controllers\PostsController.cs" />
