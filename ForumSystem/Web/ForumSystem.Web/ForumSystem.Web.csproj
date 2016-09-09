@@ -332,6 +332,7 @@
     <Compile Include="Startup.cs" />
     <Compile Include="ViewModels\Manage\SetPasswordViewModel.cs" />
     <Compile Include="ViewModels\Manage\VerifyPhoneNumberViewModel.cs" />
+    <Compile Include="ViewModels\Notifications\NotificationViewModel.cs" />
     <Compile Include="ViewModels\Posts\PostConciseViewModel.cs" />
     <Compile Include="ViewModels\Posts\PostViewModel.cs" />
     <Compile Include="ViewModels\PostUpdates\PostUpdateViewModel.cs" />
