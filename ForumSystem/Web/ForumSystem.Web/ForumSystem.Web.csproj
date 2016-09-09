@@ -759,6 +759,7 @@
     <Content Include="Views\Posts\Lock.cshtml" />
     <Content Include="Views\Posts\Unlock.cshtml" />
     <Content Include="Views\Users\_UserImagePartial.cshtml" />
+    <Content Include="Views\Shared\_LogoutPartial.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

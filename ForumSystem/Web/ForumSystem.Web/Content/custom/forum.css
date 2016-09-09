@@ -111,6 +111,10 @@
     margin-bottom: 30px;
 }
 
+    .post-wrapper .sidebar-nav li {
+        border-bottom: 1px solid #ddd;
+    }
+
 .forum-sidebar .btn-primary {
     font-size: 16px;
     margin-bottom: 6px;
@@ -173,6 +177,9 @@
         text-decoration: none;
     }
 
+.forum-sidebar .last-post .nav-link {
+    margin-left: 4px;
+}
 
 .forum-sidebar .last-post .icon-holder {
     padding-right: 3px;
@@ -1143,6 +1150,25 @@
 .navbar-user {
     margin-bottom: 56px;
 }
+
+    .navbar-user .logout form {
+        position: relative;
+        display: block;
+        padding: 20px 15px;
+    }
+
+        .navbar-user .logout form:hover {
+            background-color: #ecf0f1;
+        }
+
+        .navbar-user .logout form a {
+            padding-top: 19.5px;
+            padding-bottom: 19.5px;
+        }
+
+            .navbar-user .logout form a:hover {
+                text-decoration: none;
+            }
 
 .navbar-administration {
     margin-bottom: 30px;

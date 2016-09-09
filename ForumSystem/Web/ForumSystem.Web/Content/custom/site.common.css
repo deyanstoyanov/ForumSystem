@@ -19,6 +19,17 @@
         z-index: 1000;
     }
 
+        .lead-wrapper .header-wrapper .navbar-menu {
+            float: left;
+        }
+
+        .lead-wrapper .header-wrapper .navbar-buttons {
+            padding-left: 0;
+            display: table;
+            text-align: right;
+            float: left;
+        }
+
     .lead-wrapper .heading-wrapper {
         position: relative;
         width: 100%;
@@ -216,3 +227,19 @@
         color: #2c3e50;
         background-color: #ffffff;
     }
+
+.fa-rotate-45 {
+    -webkit-transform: rotate(45deg);
+    -moz-transform: rotate(45deg);
+    -ms-transform: rotate(45deg);
+    -o-transform: rotate(45deg);
+    transform: rotate(45deg);
+}
+
+.fa-rotate-315 {
+    -webkit-transform: rotate(315deg);
+    -moz-transform: rotate(315deg);
+    -ms-transform: rotate(315deg);
+    -o-transform: rotate(315deg);
+    transform: rotate(315deg);
+}
