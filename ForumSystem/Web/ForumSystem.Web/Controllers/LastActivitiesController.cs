@@ -16,7 +16,7 @@
 
     public class LastActivitiesController : BaseController
     {
-        private const int PostShortTitleLenght = 30;
+        private const int PostShortTitleLenght = 25;
 
         public LastActivitiesController(IForumSystemData data)
             : base(data)
