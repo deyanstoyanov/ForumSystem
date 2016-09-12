@@ -1,0 +1,104 @@
+﻿@using ForumSystem.Data.Models
+@using PagedList.Mvc
+
+@model PagedList.IPagedList<ForumSystem.Web.ViewModels.Notifications.NotificationViewModel>
+
+@{
+    ViewBag.Title = "Your Notifications";
+}
+
+<div class="notifications-wrapper">
+    <ul class="notifications">
+        @foreach (var item in Model)
+        {
+            if (item.NotificationType == NotificationType.AnswerPost)
+            {
+                if (!item.IsChecked)
+                {
+                    <li class="noti-wrap table-holder highlighted">
+                        @Html.Partial("_AnswerPostNotificationDetailPartial", item)
+                    </li>
+                }
+                else
+                {
+                    <li class="noti-wrap table-holder">
+                        @Html.Partial("_AnswerPostNotificationDetailPartial", item)
+                    </li>
+                }
+            }
+
+            if (item.NotificationType == NotificationType.CommentAnswer)
+            {
+                if (!item.IsChecked)
+                {
+                    <li class="noti-wrap table-holder highlighted">
+                        @Html.Partial("_CommentAnswerNotificationDetailPartial", item)
+                    </li>
+                }
+                else
+                {
+                    <li class="noti-wrap table-holder">
+                        @Html.Partial("_CommentAnswerNotificationDetailPartial", item)
+                    </li>
+                }
+            }
+
+            if (item.NotificationType == NotificationType.LikePost)
+            {
+                if (!item.IsChecked)
+                {
+                    <li class="noti-wrap table-holder highlighted">
+                        @Html.Partial("_LikePostNotificationDetailPartial", item)
+                    </li>
+                }
+                else
+                {
+                    <li class="noti-wrap table-holder">
+                        @Html.Partial("_LikePostNotificationDetailPartial", item)
+                    </li>
+                }
+            }
+
+            if (item.NotificationType == NotificationType.LikeAnswer)
+            {
+                if (!item.IsChecked)
+                {
+                    <li class="noti-wrap table-holder highlighted">
+                        @Html.Partial("_LikeAnswerNotificationDetailPartial", item)
+                    </li>
+                }
+                else
+                {
+                    <li class="noti-wrap table-holder">
+                        @Html.Partial("_LikeAnswerNotificationDetailPartial", item)
+                    </li>
+                }
+            }
+
+            if (item.NotificationType == NotificationType.LikeComment)
+            {
+                if (!item.IsChecked)
+                {
+                    <li class="noti-wrap table-holder highlighted">
+                        @Html.Partial("_LikeCommentNotificationDetailPartial", item)
+                    </li>
+                }
+                else
+                {
+                    <li class="noti-wrap table-holder">
+                        @Html.Partial("_LikeCommentNotificationDetailPartial", item)
+                    </li>
+                }
+            }
+        }
+    </ul>
+
+    @if (Model.HasNextPage || Model.HasPreviousPage)
+    {
+        <div class="pagination-container">
+            <div class="inner-holder">
+                @Html.PagedListPager(Model, page => Url.Action("All", new { page }), PagedListRenderOptions.ClassicPlusFirstAndLast)
+            </div>
+        </div>
+    }
+</div>

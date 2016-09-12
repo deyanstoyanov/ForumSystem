@@ -12,6 +12,8 @@
 
     using Microsoft.AspNet.Identity;
 
+    using PagedList;
+
     using WebGrease.Css.Extensions;
 
     [Authorize]
@@ -21,9 +23,34 @@
 
         private const int NotificationsOnAjaxLoadDefaultValue = 4;
 
+        private const int NotificationsPerPageDefaultValue = 10;
+
         public NotificationsController(IForumSystemData data)
             : base(data)
         {
+        }
+
+        [HttpGet]
+        public ActionResult All(int? page)
+        {
+            var userId = this.User.Identity.GetUserId();
+            var pageNumber = page ?? 1;
+            var notifications =
+                this.Data.Notifications.All()
+                    .Where(n => n.ReceiverId == userId)
+                    .OrderByDescending(n => n.CreatedOn)
+                    .ProjectTo<NotificationViewModel>()
+                    .ToList();
+
+            this.Data.Notifications.All()
+                .Where(n => n.ReceiverId == userId && !n.IsChecked)
+                .ForEach(n => n.IsChecked = true);
+
+            this.Data.SaveChanges();
+
+            var model = notifications.ToPagedList(pageNumber, NotificationsPerPageDefaultValue);
+
+            return this.View(model);
         }
 
         [HttpGet]
@@ -86,7 +113,7 @@
         }
 
         [HttpGet]
-        public ActionResult GetNotificationsCount() 
+        public ActionResult GetNotificationsCount()
         {
             var userId = this.User.Identity.GetUserId();
             var user = this.Data.Users.All().FirstOrDefault(u => u.Id == userId);

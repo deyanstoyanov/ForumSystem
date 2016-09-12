@@ -1194,3 +1194,118 @@
 .highlighted {
     background: #ecf0f1;
 }
+
+
+.notifications-wrapper {
+}
+
+    .notifications-wrapper .notifications {
+        overflow: auto;
+        padding-left: 0;
+    }
+
+        .notifications-wrapper .notifications > li:hover {
+            background-color: #f6f7f9;
+        }
+
+        .notifications-wrapper .notifications .noti-wrap {
+            width: 100%;
+            border-bottom: 1px solid #ddd;
+        }
+
+            .notifications-wrapper .notifications .noti-wrap .noti-details {
+                padding-right: 10px;
+            }
+
+            .notifications-wrapper .notifications .noti-wrap.highlighted {
+                background-color: #edeff5;
+            }
+
+                .notifications-wrapper .notifications .noti-wrap.highlighted:hover {
+                    background-color: #f6f7f9;
+                }
+
+        .notifications-wrapper .notifications .msg-photo img {
+            margin: -4px 8px 0 0;
+            width: 50px;
+            height: 50px;
+            max-width: 50px;
+        }
+
+        .notifications-wrapper .notifications .msg-body {
+            padding: 10px 2px;
+            margin: 0;
+            font-size: 12px;
+            line-height: 16px;
+            color: #555555;
+        }
+
+            .notifications-wrapper .notifications .msg-body .msg-text {
+                color: #666;
+            }
+
+    .notifications-wrapper > li.dropdown-header {
+        color: #8090a0;
+        border-bottom-color: #bcd4e5;
+        background-color: #ecf2f7;
+    }
+
+    .notifications-wrapper > li.dropdown-header {
+        text-shadow: none;
+        padding-top: 0;
+        padding-bottom: 0;
+        line-height: 34px;
+        font-size: 13px;
+        font-weight: bold;
+        text-transform: none;
+        border-bottom: 1px solid;
+    }
+
+    .notifications-wrapper > li,
+    .notifications-wrapper .notifications > li {
+        padding: 0 8px;
+        background-color: #ffffff;
+    }
+
+        .notifications-wrapper > li > a {
+            border-bottom-color: #e4ecf3;
+        }
+
+        .notifications-wrapper > li > a,
+        .notifications-wrapper .notifications > li > a {
+            padding: 10px 2px;
+            margin: 0;
+            border-bottom: 1px solid;
+            font-size: 12px;
+            line-height: 16px;
+            color: #555555;
+        }
+
+    .notifications-wrapper .msg-body,
+    .notifications-wrapper .notifications .msg-body {
+        display: inline-block;
+        line-height: 20px;
+        white-space: normal;
+        vertical-align: middle;
+        width: 100%;
+    }
+
+    .notifications-wrapper .msg-title,
+    .notifications-wrapper .notifications .msg-title {
+        display: inline-block;
+        line-height: 14px;
+        font-size: 14px;
+    }
+
+    .notifications-wrapper .msg-time,
+    .notifications-wrapper .notifications .msg-time {
+        display: block;
+        font-size: 11px;
+        color: #777777;
+    }
+
+    .notifications-wrapper > li > a:active,
+    .notifications-wrapper > li > a:hover,
+    .notifications-wrapper > li > a:focus {
+        color: #555555;
+    }

@@ -780,6 +780,7 @@
     <Content Include="Views\Notifications\_LikePostNotificationDetailPartial.cshtml" />
     <Content Include="Views\Shared\_NotificationsNavbarPartial.cshtml" />
     <Content Include="Views\Shared\_UserNavbarPartial.cshtml" />
+    <Content Include="Views\Notifications\All.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
