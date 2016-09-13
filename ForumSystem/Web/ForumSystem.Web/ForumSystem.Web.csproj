@@ -427,6 +427,8 @@
     <Content Include="Areas\Administration\Views\Users\RemoveUserFromRole.cshtml" />
     <Content Include="Areas\Moderator\Views\Answers\Edit.cshtml" />
     <Content Include="Areas\Moderator\Views\Comments\Edit.cshtml" />
+    <Content Include="Areas\Moderator\Views\Posts\Pin.cshtml" />
+    <Content Include="Areas\Moderator\Views\Posts\Unpin.cshtml" />
     <None Include="Scripts\jquery\jquery-3.1.0.intellisense.js" />
     <Content Include="Scripts\bootstrap\bootstrap.js" />
     <Content Include="Scripts\bootstrap\bootstrap.min.js" />

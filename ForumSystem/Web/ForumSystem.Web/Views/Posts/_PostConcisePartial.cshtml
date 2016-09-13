@@ -2,7 +2,7 @@
 
 @model ForumSystem.Web.ViewModels.Posts.PostConciseViewModel
 
-<article class="forum-post">
+<article class="forum-post" id="forum-post-@Model.Id">
     <div class="head-post">
         <h2 class="post-title">
             <a href="@Url.Action("Details", "Posts", new { area = string.Empty, id = Model.Id })" title="@Model.Title">
@@ -88,3 +88,12 @@
         @Html.Action("Post", "LastActivities", new { area = string.Empty, id = Model.Id })
     </div>
 </article>
+
+@if (Model.IsPinned)
+{
+    <script>
+           $(document).ready(function () {
+               $("#forum-post-@(Model.Id)").addClass('highlighted');
+        });
+    </script>
+}

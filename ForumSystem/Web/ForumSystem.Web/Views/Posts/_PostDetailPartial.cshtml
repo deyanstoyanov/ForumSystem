@@ -1,5 +1,6 @@
 ﻿@using ForumSystem.Web.Infrastructure.Extensions
 @using Microsoft.AspNet.Identity
+
 @model ForumSystem.Web.ViewModels.Posts.PostViewModel
 
 <div id="@Model.Id">
@@ -156,6 +157,28 @@
                                 <a href="@Url.Action("Edit", "Posts", new { area = "Administration", id = Model.Id })" class="btn primary-btn">
                                     Edit
                                 </a>
+                            }
+
+                            @if ((User.IsModerator() || User.IsAdmin()) && !Model.IsPinned)
+                            {
+                                @Ajax.ActionLink("Pin", "Pin", "Posts", new { area = "Moderator", id = Model.Id }, new AjaxOptions
+                                                   {
+                                                       HttpMethod = "GET",
+                                                       InsertionMode = InsertionMode.Replace,
+                                                       UpdateTargetId = "show-modal",
+                                                       OnSuccess = $"PinPostConfirm_{Model.Id}"
+                                                   }, new { @class = "btn primary-btn" })
+                            }
+
+                            @if ((User.IsModerator() || User.IsAdmin()) && Model.IsPinned)
+                            {
+                                @Ajax.ActionLink("Unpin", "Unpin", "Posts", new { area = "Moderator", id = Model.Id }, new AjaxOptions
+                                                   {
+                                                       HttpMethod = "GET",
+                                                       InsertionMode = InsertionMode.Replace,
+                                                       UpdateTargetId = "show-modal",
+                                                       OnSuccess = $"UnpinPostConfirm_{Model.Id}"
+                                                   }, new { @class = "btn primary-btn" })
                             }
 
                             @if ((User.Identity.GetUserId() == Model.AuthorId || User.IsModerator() || User.IsAdmin()) && !Model.IsLocked)

@@ -63,7 +63,8 @@
             var posts =
                 this.Data.Posts.All()
                     .Where(p => p.CategoryId == id)
-                    .OrderByDescending(p => p.LastActivity)
+                    .OrderByDescending(p => p.IsPinned)
+                    .ThenByDescending(p => p.LastActivity)
                     .ThenByDescending(p =>  p.CreatedOn)
                     .ProjectTo<PostConciseViewModel>().ToList();
             var model = posts.ToPagedList(pagenumber, PostsPerPageDefaultValue);

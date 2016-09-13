@@ -36,6 +36,8 @@
 
         public DateTime? ModifiedOn { get; set; }
 
+        public bool IsPinned { get; set; }
+
         public bool IsLocked { get; set; }
 
         public string LockedById { get; set; }

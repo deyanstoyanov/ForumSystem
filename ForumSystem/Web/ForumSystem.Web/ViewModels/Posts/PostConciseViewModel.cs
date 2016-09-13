@@ -36,6 +36,8 @@
 
         public bool IsLocked { get; set; }
 
+        public bool IsPinned { get; set; }
+
         public void CreateMappings(IMapperConfiguration configuration)
         {
             configuration.CreateMap<Post, PostConciseViewModel>()

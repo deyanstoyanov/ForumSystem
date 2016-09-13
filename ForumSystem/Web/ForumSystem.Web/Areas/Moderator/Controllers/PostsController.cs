@@ -65,7 +65,7 @@
 
                 if (model.Reason != null)
                 {
-                    var postUpdate = new PostUpdate() { AuthorId = userId, PostId = post.Id, Reason = model.Reason };
+                    var postUpdate = new PostUpdate { AuthorId = userId, PostId = post.Id, Reason = model.Reason };
 
                     this.Data.PostUpdates.Add(postUpdate);
                     this.Data.SaveChanges();
@@ -75,6 +75,76 @@
             }
 
             return this.View(model);
+        }
+
+        [HttpGet]
+        public ActionResult Pin(int? id)
+        {
+            if (id == null)
+            {
+                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+            }
+
+            var post = this.Data.Posts.GetById(id);
+            if (post == null || post.IsDeleted)
+            {
+                return this.HttpNotFound();
+            }
+
+            return this.PartialView(post.Id);
+        }
+
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public ActionResult Pin(int id)
+        {
+            var post = this.Data.Posts.GetById(id);
+            if (post == null || post.IsDeleted)
+            {
+                return this.HttpNotFound();
+            }
+
+            post.IsPinned = true;
+
+            this.Data.Posts.Update(post);
+            this.Data.SaveChanges();
+
+            return this.RedirectToAction("Details", "Posts", new { area = string.Empty, id = post.Id });
+        }
+
+        [HttpGet]
+        public ActionResult Unpin(int? id)
+        {
+            if (id == null)
+            {
+                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+            }
+
+            var post = this.Data.Posts.GetById(id);
+            if (post == null || post.IsDeleted)
+            {
+                return this.HttpNotFound();
+            }
+
+            return this.PartialView(post.Id);
+        }
+
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public ActionResult Unpin(int id)
+        {
+            var post = this.Data.Posts.GetById(id);
+            if (post == null || post.IsDeleted)
+            {
+                return this.HttpNotFound();
+            }
+
+            post.IsPinned = false;
+
+            this.Data.Posts.Update(post);
+            this.Data.SaveChanges();
+
+            return this.RedirectToAction("Details", "Posts", new { area = string.Empty, id = post.Id });
         }
     }
 }
