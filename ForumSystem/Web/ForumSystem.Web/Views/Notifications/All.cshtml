@@ -5,6 +5,7 @@
 
 @{
     ViewBag.Title = "Your Notifications";
+    Layout = "~/Views/Shared/_UserPageLayout.cshtml";
 }
 
 <div class="notifications-wrapper">
@@ -102,3 +103,9 @@
         </div>
     }
 </div>
+
+<script>
+    $(document).ready(function () {
+        $('#notifications-item').addClass('head-nav-selected-item');
+    });
+</script>
