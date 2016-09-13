@@ -54,6 +54,8 @@
         [MaxLength(ValidationConstants.PostLockReasonMaxLenght)]
         public string LockReason { get; set; }
 
+        public bool IsPinned { get; set; }
+
         public bool IsDeleted { get; set; }
 
         public DateTime? DeletedOn { get; set; }
