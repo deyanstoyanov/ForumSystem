@@ -1,5 +1,6 @@
 ﻿namespace ForumSystem.Web.Controllers
 {
+    using System.Linq;
     using System.Web.Mvc;
 
     using AutoMapper.QueryableExtensions;
@@ -16,9 +17,10 @@
         {
         }
 
+        [HttpGet]
         public ActionResult Index()
         {
-            var sections = this.Data.Sections.All().ProjectTo<SectionViewModel>();
+            var sections = this.Data.Sections.All().ProjectTo<SectionViewModel>().ToList();
             var viewModel = new IndexPageViewModel { Sections = sections };
 
             return this.View(viewModel);
