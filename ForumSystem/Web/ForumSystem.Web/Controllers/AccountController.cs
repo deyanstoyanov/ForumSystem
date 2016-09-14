@@ -15,6 +15,8 @@
     using Microsoft.AspNet.Identity.Owin;
     using Microsoft.Owin.Security;
 
+    using reCAPTCHA.MVC;
+
     [Authorize]
     public class AccountController : BaseController
     {
@@ -157,7 +159,8 @@
         [HttpPost]
         [AllowAnonymous]
         [ValidateAntiForgeryToken]
-        public async Task<ActionResult> Register(RegisterViewModel model)
+        [CaptchaValidator]
+        public async Task<ActionResult> Register(RegisterViewModel model, bool captchaValid)
         {
             if (this.userManager.FindByEmail(model.Email) != null)
             {
