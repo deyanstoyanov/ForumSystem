@@ -85,7 +85,9 @@
                 this.Data.Answers.All()
                     .Where(a => a.PostId == id)
                     .OrderBy(x => x.CreatedOn)
-                    .ProjectTo<AnswerViewModel>();
+                    .ProjectTo<AnswerViewModel>()
+                    .ToList();
+
             var model = answers.ToPagedList(pageNumber, AnswersPerPageDefaultValue);
 
             return this.PartialView("_PostAnswersPartial", model);

@@ -20,7 +20,8 @@
 
         public ActionResult All()
         {
-            var reports = this.Data.CommentReports.All().OrderBy(r => r.CreatedOn).ProjectTo<CommentReportViewModel>();
+            var reports =
+                this.Data.CommentReports.All().OrderBy(r => r.CreatedOn).ProjectTo<CommentReportViewModel>().ToList();
 
             return this.View(reports);
         }
@@ -43,7 +44,8 @@
                 this.Data.CommentReports.All()
                     .Where(r => r.CommentId == id)
                     .OrderBy(r => r.CreatedOn)
-                    .ProjectTo<CommentReportViewModel>();
+                    .ProjectTo<CommentReportViewModel>()
+                    .ToList();
 
             return this.PartialView(reports);
         }

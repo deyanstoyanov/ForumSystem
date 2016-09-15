@@ -58,7 +58,8 @@
                 this.Data.Categories.All()
                     .Where(c => c.SectionId == id)
                     .OrderByDescending(c => c.CreatedOn)
-                    .ProjectTo<CategoryConciseViewModel>();
+                    .ProjectTo<CategoryConciseViewModel>()
+                    .ToList();
 
             return this.PartialView("_SectionCategoriesPartial", categories);
         }

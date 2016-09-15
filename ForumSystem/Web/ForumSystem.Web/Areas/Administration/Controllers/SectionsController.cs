@@ -26,7 +26,8 @@
             var sections =
                 this.Data.Sections.AllWithDeleted()
                     .OrderByDescending(s => s.CreatedOn)
-                    .ProjectTo<SectionViewModel>();
+                    .ProjectTo<SectionViewModel>()
+                    .ToList();
 
             return this.View(sections);
         }

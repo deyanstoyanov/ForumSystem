@@ -27,10 +27,11 @@
         [HttpGet]
         public ActionResult All()
         {
-            var users = 
+            var users =
                 this.Data.Users.AllWithDeleted()
-                .OrderByDescending(u => u.CreatedOn)
-                .ProjectTo<UserViewModel>();
+                    .OrderByDescending(u => u.CreatedOn)
+                    .ProjectTo<UserViewModel>()
+                    .ToList();
 
             return this.View(users);
         }

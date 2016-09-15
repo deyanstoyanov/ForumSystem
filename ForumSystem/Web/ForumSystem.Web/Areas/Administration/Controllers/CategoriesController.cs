@@ -27,7 +27,8 @@
             var categories =
                 this.Data.Categories.AllWithDeleted()
                     .OrderByDescending(c => c.CreatedOn)
-                    .ProjectTo<CategoryViewModel>();
+                    .ProjectTo<CategoryViewModel>()
+                    .ToList();
 
             return this.View(categories);
         }
@@ -35,8 +36,7 @@
         [HttpGet]
         public ActionResult Create()
         {
-            var sections = 
-                this.Data.Sections.All().ProjectTo<SectionConciseViewModel>();
+            var sections = this.Data.Sections.All().ProjectTo<SectionConciseViewModel>().ToList();
             var inputModel = new CategoryInputModel { Sections = new SelectList(sections, "Id", "Title") };
 
             return this.View(inputModel);
@@ -113,7 +113,7 @@
                 return this.HttpNotFound();
             }
 
-            var sections = this.Data.Sections.All().ProjectTo<SectionConciseViewModel>();
+            var sections = this.Data.Sections.All().ProjectTo<SectionConciseViewModel>().ToList();
             var model = new CategoryEditModel
                             {
                                 Id = category.Id, 

@@ -24,7 +24,8 @@
             var comments =
                 this.Data.Comments.AllWithDeleted()
                     .OrderByDescending(c => c.CreatedOn)
-                    .ProjectTo<CommentViewModel>();
+                    .ProjectTo<CommentViewModel>()
+                    .ToList();
 
             return this.View(comments);
         }

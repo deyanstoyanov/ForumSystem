@@ -26,7 +26,8 @@
         [HttpGet]
         public ActionResult All()
         {
-            var posts = this.Data.Posts.AllWithDeleted().OrderByDescending(p => p.CreatedOn).ProjectTo<PostViewModel>();
+            var posts =
+                this.Data.Posts.AllWithDeleted().OrderByDescending(p => p.CreatedOn).ProjectTo<PostViewModel>().ToList();
 
             return this.View(posts);
         }
@@ -45,7 +46,7 @@
                 return this.HttpNotFound();
             }
 
-            var categories = this.Data.Categories.All().ProjectTo<CategoryConciseViewModel>();
+            var categories = this.Data.Categories.All().ProjectTo<CategoryConciseViewModel>().ToList();
             var model = new PostEditModel
                             {
                                 Id = post.Id, 

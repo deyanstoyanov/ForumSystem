@@ -65,8 +65,10 @@
                     .Where(p => p.CategoryId == id)
                     .OrderByDescending(p => p.IsPinned)
                     .ThenByDescending(p => p.LastActivity)
-                    .ThenByDescending(p =>  p.CreatedOn)
-                    .ProjectTo<PostConciseViewModel>().ToList();
+                    .ThenByDescending(p => p.CreatedOn)
+                    .ProjectTo<PostConciseViewModel>()
+                    .ToList();
+
             var model = posts.ToPagedList(pagenumber, PostsPerPageDefaultValue);
 
             return this.PartialView("_CategoryPostsPartial", model);

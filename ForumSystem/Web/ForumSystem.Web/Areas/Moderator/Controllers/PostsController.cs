@@ -1,5 +1,6 @@
 ﻿namespace ForumSystem.Web.Areas.Moderator.Controllers
 {
+    using System.Linq;
     using System.Net;
     using System.Web.Mvc;
 
@@ -34,7 +35,7 @@
                 return this.HttpNotFound();
             }
 
-            var categories = this.Data.Categories.All().ProjectTo<CategoryConciseViewModel>();
+            var categories = this.Data.Categories.All().ProjectTo<CategoryConciseViewModel>().ToList();
             var model = new PostEditModel
                             {
                                 Id = post.Id, 

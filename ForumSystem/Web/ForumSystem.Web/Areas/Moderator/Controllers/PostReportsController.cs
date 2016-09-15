@@ -21,7 +21,8 @@
         [HttpGet]
         public ActionResult All()
         {
-            var reports = this.Data.PostReports.All().OrderBy(r => r.CreatedOn).ProjectTo<PostReportViewModel>();
+            var reports =
+                this.Data.PostReports.All().OrderBy(r => r.CreatedOn).ProjectTo<PostReportViewModel>().ToList();
 
             return this.View(reports);
         }
@@ -44,7 +45,8 @@
                 this.Data.PostReports.All()
                     .Where(r => r.PostId == id)
                     .OrderBy(r => r.CreatedOn)
-                    .ProjectTo<PostReportViewModel>();
+                    .ProjectTo<PostReportViewModel>()
+                    .ToList();
 
             return this.PartialView(reports);
         }

@@ -25,7 +25,8 @@
             var posts =
                 this.Data.Answers.AllWithDeleted()
                     .OrderByDescending(p => p.CreatedOn)
-                    .ProjectTo<AnswerViewModel>();
+                    .ProjectTo<AnswerViewModel>()
+                    .ToList();
 
             return this.View(posts);
         }
