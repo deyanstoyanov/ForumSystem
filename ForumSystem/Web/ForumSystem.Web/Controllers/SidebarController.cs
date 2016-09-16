@@ -18,7 +18,6 @@
         {
         }
 
-        [HttpGet]
         [ChildActionOnly]
         //[OutputCache(Duration = 10 * 60)]
         public ActionResult AllSections()
@@ -28,7 +27,6 @@
             return this.PartialView(sections);
         }
 
-        [HttpGet]
         [ChildActionOnly]
         //[OutputCache(Duration = 10 * 60)]
         public ActionResult TopCategories()
@@ -44,7 +42,6 @@
             return this.PartialView(categories);
         }
 
-        [HttpGet]
         [ChildActionOnly]
         //[OutputCache(Duration = 30)]
         public ActionResult LastPosts()

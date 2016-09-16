@@ -19,7 +19,6 @@
         {
         }
 
-        [HttpGet]
         [ChildActionOnly]
         public ActionResult Like(int? id)
         {
