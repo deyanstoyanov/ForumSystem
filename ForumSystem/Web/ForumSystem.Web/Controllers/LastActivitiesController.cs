@@ -23,7 +23,6 @@
         {
         }
 
-        [HttpGet]
         [ChildActionOnly]
         public ActionResult Post(int? id)
         {
@@ -50,36 +49,34 @@
                     .OrderByDescending(c => c.CreatedOn)
                     .FirstOrDefault();
 
-            if (lastAnswer == null && lastComment == null)
-            {
-                return this.HttpNotFound();
-            }
-
             var model = new PostLastActivityViewModel();
 
-            if (lastAnswer == null)
+            if (lastAnswer == null && lastComment != null)
             {
                 model.Comment = Mapper.Map<CommentConciseViewModel>(lastComment);
 
                 return this.PartialView("_PostLastActivityPartial", model);
             }
 
-            if (lastComment == null)
+            if (lastComment == null && lastAnswer != null)
             {
                 model.Answer = Mapper.Map<AnswerConciseViewModel>(lastAnswer);
 
                 return this.PartialView("_PostLastActivityPartial", model);
             }
 
-            var lastDate = this.GetLastDate(lastAnswer.CreatedOn, lastComment.CreatedOn);
-            if (DateTime.Compare(lastDate.GetValueOrDefault(), lastComment.CreatedOn) == 0)
+            if (lastAnswer != null && lastComment != null)
             {
-                model.Comment = Mapper.Map<CommentConciseViewModel>(lastComment);
+                var lastDate = this.GetLastDate(lastAnswer.CreatedOn, lastComment.CreatedOn);
+                if (DateTime.Compare(lastDate.GetValueOrDefault(), lastComment.CreatedOn) == 0)
+                {
+                    model.Comment = Mapper.Map<CommentConciseViewModel>(lastComment);
 
-                return this.PartialView("_PostLastActivityPartial", model);
+                    return this.PartialView("_PostLastActivityPartial", model);
+                }
+
+                model.Answer = Mapper.Map<AnswerConciseViewModel>(lastAnswer);
             }
-
-            model.Answer = Mapper.Map<AnswerConciseViewModel>(lastAnswer);
 
             return this.PartialView("_PostLastActivityPartial", model);
         }

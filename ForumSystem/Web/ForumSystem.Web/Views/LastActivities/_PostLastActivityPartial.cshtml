@@ -1,60 +1,11 @@
 ﻿@model ForumSystem.Web.ViewModels.LastActivities.PostLastActivityViewModel
 
-<div class="cell last-replay">
-    <div class="table-holder">
-        <div class="last-replay-inner cell">
-            <div class="last-replay-title cell">
-                @if (Model.Answer == null)
-                {
-                    <a href="@Url.Action("Details", "Comments", new { area = string.Empty, id = Model.Comment.Id })">
-                        Last activity:
-                    </a>
-                }
-                else
-                {
-                    <a href="@Url.Action("Details", "Answers", new { area = string.Empty, id = Model.Answer.Id })">
-                        Last activity:
-                    </a>
-                }
-            </div>
-            <div class="last-replay-author cell">
-                @if (Model.Answer == null)
-                {
-                    <a href="@Url.Action("Details", "Users", new { area = string.Empty, id = Model.Comment.AuthorId })" class="user-name">
-                        <i class="fa fa-user"></i>
-                        @Model.Comment.Author
-                    </a>
-                }
-                else
-                {
-                    <a href="@Url.Action("Details", "Users", new { area = string.Empty, id = Model.Answer.AuthorId })" class="user-name">
-                        <i class="fa fa-user"></i>
-                        @Model.Answer.Author
-                    </a>
-                }
+@if (Model.Answer == null && Model.Comment != null)
+{
+    @Html.Partial("_PostLastActivityCommentPartial", Model.Comment)
+}
 
-                @if (Model.Answer == null)
-                {
-                    @Html.Action("Roles", "Users", new { area = string.Empty, id = Model.Comment.AuthorId })
-                }
-                else
-                {
-                    @Html.Action("Roles", "Users", new { area = string.Empty, id = Model.Answer.AuthorId })
-                }
-            </div>
-            <div class="last-replay-date">
-                <span class="replay-date">
-                    <i class="fa fa-clock-o"></i>
-                    @if (Model.Answer == null)
-                    {
-                        @Model.Comment.CreatedOn
-                    }
-                    else
-                    {
-                        @Model.Answer.CreatedOn
-                    }
-                </span>
-            </div>
-        </div>
-    </div>
-</div>
+@if (Model.Comment == null && Model.Answer != null)
+{
+    @Html.Partial("_PostLastActivityAnswerPartial", Model.Answer)
+}

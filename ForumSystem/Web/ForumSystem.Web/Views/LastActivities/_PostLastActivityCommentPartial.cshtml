@@ -1,0 +1,26 @@
+﻿@model ForumSystem.Web.ViewModels.Comments.CommentConciseViewModel
+
+<div class="cell last-replay">
+    <div class="table-holder">
+        <div class="last-replay-inner cell">
+            <div class="last-replay-title cell">
+                <a href="@Url.Action("Details", "Comments", new { area = string.Empty, id = Model.Id })">
+                    Last activity:
+                </a>
+            </div>
+            <div class="last-replay-author cell">
+                <a href="@Url.Action("Details", "Users", new { area = string.Empty, id = Model.AuthorId })" class="user-name">
+                    <i class="fa fa-user"></i>
+                    @Model.Author
+                </a>
+                @Html.Action("Roles", "Users", new { area = string.Empty, id = Model.AuthorId })
+            </div>
+            <div class="last-replay-date">
+                <span class="replay-date">
+                    <i class="fa fa-clock-o"></i>
+                    @Model.CreatedOn
+                </span>
+            </div>
+        </div>
+    </div>
+</div>

@@ -787,6 +787,8 @@
     <Content Include="Views\Shared\_NotificationsNavbarPartial.cshtml" />
     <Content Include="Views\Shared\_UserNavbarPartial.cshtml" />
     <Content Include="Views\Notifications\All.cshtml" />
+    <Content Include="Views\LastActivities\_PostLastActivityAnswerPartial.cshtml" />
+    <Content Include="Views\LastActivities\_PostLastActivityCommentPartial.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
