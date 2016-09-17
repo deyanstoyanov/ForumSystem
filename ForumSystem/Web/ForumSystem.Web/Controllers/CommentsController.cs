@@ -41,7 +41,8 @@
                 this.Data.Comments.All()
                     .Where(c => c.AnswerId == id)
                     .OrderBy(c => c.CreatedOn)
-                    .ProjectTo<CommentViewModel>();
+                    .ProjectTo<CommentViewModel>()
+                    .ToList();
 
             return this.PartialView(comments);
         }
