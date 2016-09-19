@@ -677,6 +677,16 @@
     line-height: 100%;
 }
 
+.forum-post .stats-holder.likes-holder {
+    border-right: none;
+    padding-right: 0;
+}
+
+.forum-post.post-item .stats-holder.likes-holder {
+    border-right: 1px solid #ccc;
+    padding: 20px 20px;
+}
+
 .forum-post .last-replay {
     font-size: 13px;
     color: #999;
