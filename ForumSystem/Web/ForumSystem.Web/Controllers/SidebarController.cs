@@ -13,6 +13,10 @@
 
     public class SidebarController : BaseController
     {
+        private const int TopCategoriesCountDefaultValue = 10;
+
+        private const int LastPostsCountDefaultValue = 6;
+
         public SidebarController(IForumSystemData data)
             : base(data)
         {
@@ -36,7 +40,7 @@
                     .Where(c => c.Posts.Count(p => !p.IsDeleted) > 0)
                     .OrderByDescending(c => c.Posts.Count)
                     .ProjectTo<CategoryConciseViewModel>()
-                    .Take(10)
+                    .Take(TopCategoriesCountDefaultValue)
                     .ToList();
 
             return this.PartialView(categories);
@@ -50,7 +54,7 @@
                 this.Data.Posts.All()
                     .OrderByDescending(p => p.CreatedOn)
                     .ProjectTo<PostConciseViewModel>()
-                    .Take(5)
+                    .Take(LastPostsCountDefaultValue)
                     .ToList();
 
             return this.PartialView(lastPosts);
