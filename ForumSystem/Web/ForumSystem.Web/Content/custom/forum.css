@@ -426,6 +426,8 @@
         .forum-post .meta-info .buttons-holder.comment-holder {
             font-weight: bold;
             font-size: 14px;
+            padding-top: 10px;
+            padding-bottom: 10px;
         }
 
             .forum-post .meta-info .buttons-holder.comment-holder .icon-holder {
@@ -482,6 +484,10 @@
 
     .forum-post .meta-info.meta-details {
     }
+
+        .forum-post .meta-info.meta-details.highlighted-yellow {
+            background-color: #fff7e5;
+        }
 
         .forum-post .meta-info.meta-details .buttons-holder {
             border-right: none;
@@ -545,7 +551,7 @@
     }
 
         .forum-post .meta-info .buttons-holder.comment-holder {
-            padding: 0 10px;
+            padding: 10px;
         }
 
     .forum-post .meta-info .stats-holder,
@@ -607,8 +613,8 @@
                 margin-right: 0;
             }
 
-        .forum-post .meta-info.meta-details .buttons-holder.comment-holder .table-holder {
-            padding: 0 10px 0 10px;
+        .forum-post .meta-info.meta-details .buttons-holder.comment-holder {
+            padding: 10px;
         }
 
     .forum-post .meta-info.meta-details .details-holder,
