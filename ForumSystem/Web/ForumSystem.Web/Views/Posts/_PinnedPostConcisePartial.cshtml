@@ -2,7 +2,7 @@
 
 @model ForumSystem.Web.ViewModels.Posts.PostConciseViewModel
 
-<article class="forum-post" id="forum-post-@Model.Id">
+<article class="forum-post highlighted-post" id="forum-post-@Model.Id">
     <div class="head-post">
         <h2 class="post-title">
             <a href="@Url.Action("Details", "Posts", new { area = string.Empty, id = Model.Id })" title="@Model.Title">

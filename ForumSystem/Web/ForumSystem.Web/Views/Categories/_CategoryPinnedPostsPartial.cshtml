@@ -1,0 +1,15 @@
+﻿@using System.Collections.Generic;
+
+@model IEnumerable<ForumSystem.Web.ViewModels.Posts.PostConciseViewModel>
+
+@{
+    const string PostsPartialViewsFolder = "~/Views/Posts/{0}.cshtml";
+}
+
+@if (Model.Any())
+{
+    foreach (var post in Model)
+    {
+        @Html.Partial(string.Format(PostsPartialViewsFolder, "_PinnedPostConcisePartial"), post)
+    }
+}

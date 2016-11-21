@@ -9,4 +9,5 @@
     <span>New Post</span>
 </a>
 
+@Html.Action("PinnedPosts", "Categories", new { area = string.Empty, id = Model.Id })
 @Html.Action("Posts", "Categories", new { area = string.Empty, id = Model.Id })

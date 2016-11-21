@@ -789,6 +789,8 @@
     <Content Include="Views\Notifications\All.cshtml" />
     <Content Include="Views\LastActivities\_PostLastActivityAnswerPartial.cshtml" />
     <Content Include="Views\LastActivities\_PostLastActivityCommentPartial.cshtml" />
+    <Content Include="Views\Categories\_CategoryPinnedPostsPartial.cshtml" />
+    <Content Include="Views\Posts\_PinnedPostConcisePartial.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
