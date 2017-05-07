@@ -12,6 +12,6 @@
     [HubName("forumSystemHub")]
     public class ForumSystemHub : Hub
     {
-        public static IForumSystemData Data => new ForumSystemData(new ApplicationDbContext());
+        public static IForumSystemData Data => new ForumSystemData(new ForumSystemDbContext());
     }
 }

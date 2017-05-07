@@ -48,7 +48,7 @@
 
         private static void RegisterServices(ContainerBuilder builder)
         {
-            builder.Register(x => new ApplicationDbContext())
+            builder.Register(x => new ForumSystemDbContext())
                 .As<DbContext>()
                 .InstancePerRequest();
 

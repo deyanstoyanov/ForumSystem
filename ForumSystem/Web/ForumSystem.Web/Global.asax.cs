@@ -15,7 +15,7 @@
     {
         protected void Application_Start()
         {
-            Database.SetInitializer(new MigrateDatabaseToLatestVersion<ApplicationDbContext, Configuration>());
+            Database.SetInitializer(new MigrateDatabaseToLatestVersion<ForumSystemDbContext, Configuration>());
 
             AutofacConfig.RegisterAutofac();
             AreaRegistration.RegisterAllAreas();

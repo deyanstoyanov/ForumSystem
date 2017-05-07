@@ -10,7 +10,7 @@ namespace ForumSystem.Data.Migrations
     using Microsoft.AspNet.Identity;
     using Microsoft.AspNet.Identity.EntityFramework;
 
-    public sealed class Configuration : DbMigrationsConfiguration<ApplicationDbContext>
+    public sealed class Configuration : DbMigrationsConfiguration<ForumSystemDbContext>
     {
         public Configuration()
         {
@@ -18,13 +18,13 @@ namespace ForumSystem.Data.Migrations
             this.AutomaticMigrationDataLossAllowed = true;
         }
 
-        protected override void Seed(ApplicationDbContext context)
+        protected override void Seed(ForumSystemDbContext context)
         {
             this.SeedRoles(context);
             this.SeedUsers(context);
         }
 
-        private void SeedRoles(ApplicationDbContext context)
+        private void SeedRoles(ForumSystemDbContext context)
         {
             if (!context.Roles.Any())
             {
@@ -42,7 +42,7 @@ namespace ForumSystem.Data.Migrations
             }
         }
 
-        private void SeedUsers(ApplicationDbContext context)
+        private void SeedUsers(ForumSystemDbContext context)
         {
             if (!context.Users.Any())
             {

@@ -9,9 +9,9 @@
 
     using Microsoft.AspNet.Identity.EntityFramework;
 
-    public class ApplicationDbContext : IdentityDbContext<ApplicationUser>
+    public class ForumSystemDbContext : IdentityDbContext<ApplicationUser>
     {
-        public ApplicationDbContext()
+        public ForumSystemDbContext()
             : base("DefaultConnection", false)
         {
         }
@@ -46,9 +46,9 @@
 
         public virtual IDbSet<Notification> Notifications { get; set; }
 
-        public static ApplicationDbContext Create()
+        public static ForumSystemDbContext Create()
         {
-            return new ApplicationDbContext();
+            return new ForumSystemDbContext();
         }
 
         public override int SaveChanges()
