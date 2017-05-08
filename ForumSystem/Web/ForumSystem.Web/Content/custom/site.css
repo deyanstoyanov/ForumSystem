@@ -10,10 +10,13 @@ ul, li {
 }
 
 textarea {
+    -moz-resize: vertical;
+    -ms-resize: vertical;
+    -o-resize: vertical;
     resize: vertical;
 }
 
-    textarea.form-control {
+textarea.form-control {
         height: 160px;
     }
 

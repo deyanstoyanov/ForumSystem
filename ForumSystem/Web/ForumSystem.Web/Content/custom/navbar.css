@@ -18,7 +18,11 @@
 .dropdown-navbar {
     padding: 0;
     width: 240px;
+    -webkit-box-shadow: #1e1e64 0 2px 4px;
     -webkit-box-shadow: rgba(30, 30, 100, 0.247059) 0 2px 4px;
+    -ms-box-shadow: #1e1e64 0 2px 4px;
+    -ms-box-shadow: rgba(30, 30, 100, 0.247059) 0 2px 4px;
+    box-shadow: #1e1e64 0 2px 4px;
     box-shadow: rgba(30, 30, 100, 0.247059) 0 2px 4px;
     border-color: #bcd4e5;
 }
@@ -52,6 +56,10 @@
     text-align: center;
     height: 100%;
     width: auto;
+    -moz-min-width: 50px;
+    -ms-min-width: 50px;
+    -o-min-width: 50px;
+    -webkit-min-width: 50px;
     min-width: 50px;
     padding: 0 12px;
     position: relative;
@@ -67,6 +75,7 @@
 }
 
 .mynav .noti-counter {
+    -ms-opacity: 1;
     opacity: 1;
     top: -10px;
     display: block;
@@ -79,12 +88,17 @@
     margin: 22px 0 0 30px;
     line-height: 1;
     vertical-align: baseline;
+    -moz-min-width: 10px;
+    -ms-min-width: 10px;
+    -o-min-width: 10px;
+    -webkit-min-width: 10px;
     min-width: 10px;
     white-space: nowrap;
     text-align: center;
-    border-radius: 2px;
+    -ms-border-radius: 2px;
     -moz-border-radius: 2px;
     -webkit-border-radius: 2px;
+    border-radius: 2px;
     z-index: 1;
 }
 
@@ -106,11 +120,12 @@
     background: #F6F7F8;
     font-size: 12px;
     font-weight: bold;
+    border-top: solid 1px #646464;
     border-top: solid 1px rgba(100, 100, 100, .30);
     text-align: center;
 }
 
-    .dropdown-navbar .see-all a {
+.dropdown-navbar .see-all a {
         color: #3b5998;
         border-bottom: none;
     }
@@ -133,6 +148,7 @@
 
 .dropdown-navbar .spinner {
     text-align: center;
+    -ms-text-shadow: none;
     text-shadow: none;
     padding-top: 0;
     padding-bottom: 0;
@@ -142,7 +158,7 @@
     display: none;
 }
 
-    .dropdown-navbar .spinner:hover {
+.dropdown-navbar .spinner:hover {
         background-color: #ffffff;
     }
 
@@ -172,6 +188,10 @@
     width: 50px;
     height: 50px;
     max-width: 50px;
+    -webkit-border-radius: 2px;
+    -moz-border-radius: 2px;
+    -ms-border-radius: 2px;
+    border-radius: 2px;
 }
 
 .dropdown-navbar .noti-box .msg-body {
@@ -193,6 +213,7 @@
 }
 
 .dropdown-navbar > li.dropdown-header {
+    -ms-text-shadow: none;
     text-shadow: none;
     padding-top: 0;
     padding-bottom: 0;
@@ -259,8 +280,10 @@
 .dropdown-menu .nested-menu {
     position: relative;
     border: none;
-    box-shadow: none;
+    -ms-box-shadow: none;
     -webkit-box-shadow: none;
+    box-shadow: none;
+    -ms-background-clip: initial;
     background-clip: initial;
     float: none;
     left: 0;
@@ -290,13 +313,15 @@
 .mynav .nav-user-photo img {
     margin: -4px 8px 0 0;
     max-width: 40px;
-    border-radius: 50%;
+    -ms-border-radius: 2px;
+    border-radius: 2px;
 }
 
 .nav-user-info,
 .nav-user-info .username {
     max-width: 100px;
     overflow: hidden;
+    -moz-text-overflow: ellipsis;
     text-overflow: ellipsis;
     white-space: nowrap;
     line-height: 15px;
