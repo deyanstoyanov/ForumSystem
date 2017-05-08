@@ -8,8 +8,8 @@
     {
         columns.Add(model => model.Post).Titled("Post")
             .RenderedAs(model => Html.ActionLink(model.Post, "Details", new { area = string.Empty, controller = "Comments", Id = model.Id }));
-        columns.Add(model => model.Author).Titled("Author")
-            .RenderedAs(model => Html.ActionLink(model.Author, "Details", new { area = string.Empty, controller = "Users", id = model.AuthorId }));
+        columns.Add(model => model.PostAuthor).Titled("Post Author")
+            .RenderedAs(model => Html.ActionLink(model.PostAuthor, "Details", new { area = string.Empty, controller = "Users", id = model.PostAuthorId }));
         columns.Add(model => model.LikesCount).Titled("Likes");
         columns.Add(model => model.ReportsCount).Titled("Reports");
         columns.Add(model => model.CreatedOn).Titled("CreatedOn");

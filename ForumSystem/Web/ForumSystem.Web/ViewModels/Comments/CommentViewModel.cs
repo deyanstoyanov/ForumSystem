@@ -18,6 +18,10 @@
 
         public int PostId { get; set; }
 
+        public string PostAuthor { get; set; }
+
+        public string PostAuthorId { get; set; }
+
         public int AnswerId { get; set; }
 
         public string AuthorId { get; set; }
@@ -54,6 +58,10 @@
                 .ForMember(c => c.PostId, config => config.MapFrom(c => c.Answer.PostId));
             configuration.CreateMap<Comment, CommentViewModel>()
                 .ForMember(c => c.IsPostLocked, config => config.MapFrom(c => c.Answer.Post.IsLocked));
+            configuration.CreateMap<Comment, CommentViewModel>()
+                .ForMember(c => c.PostAuthor, config => config.MapFrom(c => c.Answer.Post.Author.UserName));
+            configuration.CreateMap<Comment, CommentViewModel>()
+                .ForMember(c => c.PostAuthorId, config => config.MapFrom(c => c.Answer.Post.AuthorId));
         }
     }
 }
