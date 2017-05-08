@@ -176,7 +176,7 @@
     color: #2c3e50;
 }
 
-.forum-sidebar .user-name:hover {
+    .forum-sidebar .user-name:hover {
         color: #18bc9c;
         text-decoration: none;
     }
@@ -255,7 +255,7 @@
         opacity: .4;
     }
 
-.forum-post .btn-default,
+    .forum-post .btn-default,
     .forum-post .btn-primary {
         margin-right: 4px;
         padding: 2px 15px;
@@ -364,7 +364,7 @@
     transition: all .2s ease;
 }
 
-.forum-post .post-title:hover {
+    .forum-post .post-title:hover {
         color: #18bc9c;
     }
 
@@ -374,7 +374,8 @@
     }
 }
 
-.forum-post .user-wrap {
+.forum-post .user-wrap,
+.forum-post .meta-info-wrap {
     width: auto;
     height: auto;
     float: left;
@@ -417,14 +418,13 @@
     transition: all .2s ease;
 }
 
-.forum-post .user-name:hover {
+    .forum-post .user-name:hover {
         text-decoration: none;
         color: #18bc9c;
     }
 
 .forum-post .meta-info {
     width: 100%;
-    border-top: 1px solid #ccc;
 }
 
     .forum-post .meta-info:after {
@@ -433,14 +433,16 @@
         clear: both;
     }
 
-    .forum-post .meta-info .stats-holder,
+    .forum-post .meta-info .stats-holder {
+        padding: 5px 14px 20px 20px;
+    }
+
     .forum-post .meta-info .last-replay {
-        padding: 20px 20px;
+        padding: 5px 20px 20px 14px;
     }
 
     .forum-post .meta-info .buttons-holder {
-        padding: 0 12px;
-        border-right: 1px solid #ccc;
+        padding: 5px 0 20px 20px;
         font-family: "LatoBlack", "Arial", "Helvetica", sans-serif;
     }
 
@@ -482,7 +484,7 @@
         transition: all .2s ease;
     }
 
-.forum-post .meta-info .thumbs-btn.liked-btn:hover {
+        .forum-post .meta-info .thumbs-btn.liked-btn:hover {
             color: #18bc9c;
         }
 
@@ -498,7 +500,7 @@
             transition: all .2s ease;
         }
 
-.forum-post .meta-info .arrows-buttons {
+    .forum-post .meta-info .arrows-buttons {
         display: inline-block;
         padding: 0 10px;
     }
@@ -528,12 +530,13 @@
 
         .forum-post .meta-info.meta-details .stats-holder {
             float: left;
+            padding: 12px 10px 13px 20px;
         }
 
         .forum-post .meta-info.meta-details .vote-holder {
             float: left;
             width: 66px;
-            padding: 21px 0;
+            padding: 14px 0;
             text-align: center;
             border-right: 1px solid #ccc;
         }
@@ -662,7 +665,6 @@
 }
 
 .forum-post .stats-holder {
-    border-right: 1px solid #ccc;
     font-family: "LatoBlack", "Arial", "Helvetica", sans-serif;
     font-size: 20px;
     color: #666;
@@ -718,8 +720,7 @@
 }
 
 .forum-post.post-item .stats-holder.likes-holder {
-    border-right: 1px solid #ccc;
-    padding: 20px 20px;
+    padding: 10px 10px 10px 20px;
 }
 
 .forum-post .last-replay {
@@ -858,6 +859,11 @@
             margin-right: 8px;
         }
 
+        .post-item .head-post .meta-info-wrap {
+            padding: 16px 18px 17px 0;
+            margin-right: 8px;
+        }
+
         .post-item .head-post .user-avatar {
             height: 40px;
             width: 40px;
@@ -892,7 +898,7 @@
             word-wrap: break-word;
         }
 
-.post-item .post-content p:last-child {
+            .post-item .post-content p:last-child {
                 margin-bottom: 0;
             }
 
@@ -900,9 +906,21 @@
             margin-bottom: 15px;
         }
 
-    .post-item .meta-info .table-holder {
-        width: 100%;
+    .post-item .meta-info {
+        border-top: 1px solid #ccc;
     }
+
+        .post-item .meta-info .buttons-holder {
+            padding: 0 12px;
+        }
+
+            .post-item .meta-info .buttons-holder.vote-holder {
+                border-right: 1px solid #ccc;
+            }
+
+        .post-item .meta-info .table-holder {
+            width: 100%;
+        }
 
 @media only screen and (max-width: 767px) {
     .post-item .meta-info .table-holder form {
@@ -921,14 +939,14 @@
 
 .post-item .meta-info .post-details-holder {
     vertical-align: middle;
-    padding: 10px 18px;
+    padding: 10px 10px;
     color: #2c3e50;
 }
 
 .post-item .meta-info .details-holder {
     float: left;
     vertical-align: middle;
-    padding: 18px 20px;
+    padding: 10px 10px;
     color: #2c3e50;
 }
 
@@ -1030,7 +1048,7 @@
             border-radius: 29px 29px 29px 29px;
         }
 
-.profile-wrapper .profile-info .heading-wrap .user-name {
+            .profile-wrapper .profile-info .heading-wrap .user-name {
                 font-family: "Lato", "Helvetica Neue", Helvetica, Arial, sans-serif;
                 font-weight: 400;
                 line-height: 1.1;
@@ -1083,7 +1101,7 @@
             transition: all .2s ease;
         }
 
-.profile-wrapper .profile-info-social .social-item:hover {
+            .profile-wrapper .profile-info-social .social-item:hover {
                 background-color: #2c3e50;
                 top: -2px;
             }
@@ -1316,7 +1334,7 @@
         border-bottom: 1px solid;
     }
 
-.notifications-wrapper > li,
+    .notifications-wrapper > li,
     .notifications-wrapper .notifications > li {
         padding: 0 8px;
         background-color: #ffffff;

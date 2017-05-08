@@ -16,6 +16,20 @@
                         @Html.Action("Roles", "Users", new { area = string.Empty, id = Model.AuthorId })
                     </span>
                 </div>
+                <div class="meta-info-wrap">
+                    <span class="item-wrap" title="Views">
+                        <span class="icon-holder">
+                            <i class="fa fa-eye"></i>
+                        </span>
+                        <span class="cell">@Model.Views</span>
+                    </span>
+                    <span class="item-wrap" title="Answers">
+                        <span class="icon-holder">
+                            <i class="fa fa-comments"></i>
+                        </span>
+                        <span class="cell">@Model.AnswersCount</span>
+                    </span>
+                </div>
             </div>
         </div>
         <div class="post-content">
@@ -33,7 +47,7 @@
             }
             else
             {
-                <div class="cell stats-holder">
+                <div class="cell stats-holder likes-holder">
                     <div class="table-holder">
                         <div class="cell">
                             <span class="item-wrap votes-post">

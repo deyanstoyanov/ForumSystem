@@ -16,6 +16,14 @@
                         @Html.Action("Roles", "Users", new { area = string.Empty, id = Model.AuthorId })
                     </span>
                 </div>
+                <div class="meta-info-wrap">
+                    <span class="item-wrap" title="Comments">
+                        <span class="icon-holder">
+                            <i class="fa fa-comment"></i>
+                        </span>
+                        <span class="cell">@Model.CommentsCount</span>
+                    </span>
+                </div>
             </div>
         </div>
         <div class="post-content">

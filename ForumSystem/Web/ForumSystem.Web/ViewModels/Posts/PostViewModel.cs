@@ -46,6 +46,8 @@
 
         public string LockReason { get; set; }
 
+        public int Views { get; set; }
+
         public void CreateMappings(IMapperConfiguration configuration)
         {
             configuration.CreateMap<Post, PostViewModel>()

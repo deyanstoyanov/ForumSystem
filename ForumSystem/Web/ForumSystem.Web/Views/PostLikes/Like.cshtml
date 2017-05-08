@@ -5,7 +5,7 @@
 
 @if (User.IsLoggedIn() && User.Identity.GetUserId() != Model.PostAuthorId)
 {
-    <div class="cell buttons-holder pending-vote">
+    <div class="cell buttons-holder vote-holder">
         @using (Ajax.BeginForm("Like", "PostLikes", new { area = string.Empty, id = Model.PostId }, new AjaxOptions
                                 {
                                     HttpMethod = "POST",
