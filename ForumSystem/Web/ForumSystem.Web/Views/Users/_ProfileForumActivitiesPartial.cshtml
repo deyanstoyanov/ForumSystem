@@ -9,7 +9,7 @@
                 <div class="panel-body collapse in" id="forum-activity">
                     <ul class="nav navbar-nav navbar-forum-activity">
                         <li>
-                            @Ajax.ActionLink("Posts", "Posts", "Users", new { area = string.Empty, id = Model.Id }, new AjaxOptions
+                            @Ajax.ActionLink($"Posts ({Model.PostsCount})", "Posts", "Users", new { area = string.Empty, id = Model.Id }, new AjaxOptions
                                                {
                                                    HttpMethod = "GET",
                                                    InsertionMode = InsertionMode.Replace,
@@ -20,7 +20,7 @@
                                                }, new { @class = "navbar-item", id = "user-posts-item" })
                         </li>
                         <li>
-                            @Ajax.ActionLink("Answers", "Answers", "Users", new { area = string.Empty, id = Model.Id }, new AjaxOptions
+                            @Ajax.ActionLink($"Answers ({Model.AnswersCount})", "Answers", "Users", new { area = string.Empty, id = Model.Id }, new AjaxOptions
                                                {
                                                    HttpMethod = "GET",
                                                    InsertionMode = InsertionMode.Replace,
@@ -31,7 +31,7 @@
                                                }, new { @class = "navbar-item", id = "user-answers-item" })
                         </li>
                         <li>
-                            @Ajax.ActionLink("Comments", "Comments", "Users", new { area = string.Empty, id = Model.Id }, new AjaxOptions
+                            @Ajax.ActionLink($"Comments ({Model.CommentsCount})", "Comments", "Users", new { area = string.Empty, id = Model.Id }, new AjaxOptions
                                                {
                                                    HttpMethod = "GET",
                                                    InsertionMode = InsertionMode.Replace,
