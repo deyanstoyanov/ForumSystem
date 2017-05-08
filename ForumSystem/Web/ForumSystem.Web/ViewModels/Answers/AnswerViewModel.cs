@@ -18,6 +18,10 @@
 
         public string Post { get; set; }
 
+        public string PostAuthor { get; set; }
+
+        public string PostAuthorId { get; set; }
+
         public string AuthorId { get; set; }
 
         public string AuthorPictureUrl { get; set; }
@@ -58,6 +62,10 @@
                 .ForMember(a => a.LikesCount, config => config.MapFrom(a => a.Likes.Count(l => !l.IsDeleted)));
             configuration.CreateMap<Answer, AnswerViewModel>()
                 .ForMember(a => a.IsPostLocked, config => config.MapFrom(a => a.Post.IsLocked));
+            configuration.CreateMap<Answer, AnswerViewModel>()
+                .ForMember(a => a.PostAuthor, config => config.MapFrom(a => a.Post.Author.UserName));
+            configuration.CreateMap<Answer, AnswerViewModel>()
+                .ForMember(a => a.PostAuthorId, config => config.MapFrom(a => a.Post.AuthorId));
         }
     }
 }
